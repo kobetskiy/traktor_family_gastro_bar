@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/core/localization/app_localization.dart';
 import 'package:traktor_family_gastro_bar/core/ui/theme.dart';
-import 'package:traktor_family_gastro_bar/features/app/view/home_page.dart';
+import 'package:traktor_family_gastro_bar/home_screen.dart';
 
 class App extends StatelessWidget {
   const App({super.key});

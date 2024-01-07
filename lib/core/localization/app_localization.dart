@@ -3,7 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
 abstract class AppLocalization {
-  static Locale locale = const Locale('en');
+  static Locale locale = const Locale('uk');
   static Iterable<LocalizationsDelegate> localizationsDelegates = const [
     S.delegate,
     GlobalCupertinoLocalizations.delegate,

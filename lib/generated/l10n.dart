@@ -49,6 +49,66 @@ class S {
   static S? maybeOf(BuildContext context) {
     return Localizations.of<S>(context, S);
   }
+
+  /// `European cuisine`
+  String get europeanCuisine {
+    return Intl.message(
+      'European cuisine',
+      name: 'europeanCuisine',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Barbecue menu`
+  String get barbecueMenu {
+    return Intl.message(
+      'Barbecue menu',
+      name: 'barbecueMenu',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bar`
+  String get bar {
+    return Intl.message(
+      'Bar',
+      name: 'bar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hookah`
+  String get hookah {
+    return Intl.message(
+      'Hookah',
+      name: 'hookah',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `UAH`
+  String get uah {
+    return Intl.message(
+      'UAH',
+      name: 'uah',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `g`
+  String get gramsSymbol {
+    return Intl.message(
+      'g',
+      name: 'gramsSymbol',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

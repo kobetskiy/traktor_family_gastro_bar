@@ -42,6 +42,18 @@ final ThemeData theme = ThemeData(
   cardTheme: CardTheme(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
   ),
+  bottomSheetTheme: BottomSheetThemeData(
+    backgroundColor: AppColors.backgroundColor,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(24),
+        topRight: Radius.circular(24),
+      ),
+    ),
+  ),
   textTheme: TextTheme(
-      bodyMedium: bodyMedium, bodySmall: bodySmall, titleMedium: titleMedium),
+    bodyMedium: bodyMedium,
+    bodySmall: bodySmall,
+    titleMedium: titleMedium,
+  ),
 );

@@ -57,16 +57,21 @@ class MealCardLikes extends StatelessWidget {
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(6),
           border: Border.all(color: AppColors.subtitleColor)),
-      child: SizedBox(
-        width: 70,
-        height: 40,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(Icons.favorite_border_rounded),
-            Center(
-              child: Text(likesCount),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 5),
+              child: Icon(Icons.favorite_border_rounded),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 5),
+              child: Center(
+                child: Text(likesCount),
+              ),
             )
           ],
         ),

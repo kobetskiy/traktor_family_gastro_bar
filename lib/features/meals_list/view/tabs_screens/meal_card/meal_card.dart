@@ -1,24 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:traktor_family_gastro_bar/features/meals_list/models/meal_model.dart';
+import 'package:traktor_family_gastro_bar/features/meals_list/view/meal_details_screen/meal_details_screen.dart';
 
 import 'meal_card_information.dart';
 
 class MealCard extends StatelessWidget {
   const MealCard({
     super.key,
-    required this.title,
-    required this.cost,
-    required this.likesCount,
-    this.imageURL,
-    this.subtitle,
-    required this.grams,
+    required this.mealModel,
   });
 
-  final String title;
-  final String? subtitle;
-  final String? imageURL;
-  final String cost;
-  final String likesCount;
-  final String grams;
+  final MealModel mealModel;
 
   @override
   Widget build(BuildContext context) {
@@ -30,17 +22,21 @@ class MealCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             MealCardInformation(
-              title: title,
-              cost: cost,
-              subtitle: subtitle,
-              likesCount: likesCount,
-              grams: '390',
+              title: mealModel.title,
+              cost: mealModel.cost,
+              subtitle: mealModel.subtitle,
+              likesCount: mealModel.likesCount,
+              grams: mealModel.grams,
             ),
-            MealCardImage(imageURL: imageURL),
+            MealCardImage(imageURL: mealModel.imageURL),
           ],
         ),
       ),
-      onTap: () {},
+      onTap: () => showModalBottomSheet(
+        isScrollControlled: true,
+        context: context,
+        builder: (context) => MealDetailsScreen(mealModel: mealModel),
+      ),
     );
   }
 }

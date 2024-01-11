@@ -16,59 +16,81 @@ class MealDetailsScreen extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(24),
-            child: Image.network(mealModel.imageURL ??
-                'https://cdn-media.choiceqr.com/prod-eat-traktorgastrobar/menu/sCQGZhk-IEZJXnx-henbgqF.jpeg'),
-          ),
+          _Image(mealModel: mealModel),
           const SizedBox(height: 10),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Flexible(
-                      flex: 3,
-                      child: Text(mealModel.title,
-                          style: Theme.of(context).textTheme.titleMedium),
-                    ),
-                    Flexible(
-                      flex: 1,
-                      child: Text(
-                        '${mealModel.cost} ${S.current.uah}',
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleMedium!
-                            .copyWith(color: AppColors.primaryColor),
-                      ),
-                    )
-                  ],
-                ),
-                mealModel.subtitle != null
-                    ? const SizedBox(height: 10)
-                    : const SizedBox.shrink(),
-                Text(
-                  mealModel.subtitle ?? '',
+          _Information(mealModel: mealModel)
+        ],
+      ),
+    );
+  }
+}
+
+class _Information extends StatelessWidget {
+  const _Information({required this.mealModel});
+
+  final MealModel mealModel;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Flexible(
+                flex: 3,
+                child: Text(mealModel.title,
+                    style: Theme.of(context).textTheme.titleMedium),
+              ),
+              Flexible(
+                flex: 1,
+                child: Text(
+                  '${mealModel.cost} ${S.current.uah}',
                   style: Theme.of(context)
                       .textTheme
-                      .bodySmall!
-                      .copyWith(color: AppColors.subtitleColor),
+                      .titleMedium!
+                      .copyWith(color: AppColors.primaryColor),
                 ),
-                const SizedBox(height: 15),
-                Row(
-                  children: [
-                    MealCardLikes(likesCount: mealModel.likesCount),
-                    const SizedBox(width: 15),
-                    MealCardGrams(grams: mealModel.grams)
-                  ],
-                )
-              ],
-            ),
+              )
+            ],
+          ),
+          mealModel.subtitle != null
+              ? const SizedBox(height: 10)
+              : const SizedBox.shrink(),
+          Text(
+            mealModel.subtitle ?? '',
+            style: Theme.of(context)
+                .textTheme
+                .bodySmall!
+                .copyWith(color: AppColors.subtitleColor),
+          ),
+          const SizedBox(height: 15),
+          Row(
+            children: [
+              MealCardLikes(likesCount: mealModel.likesCount),
+              const SizedBox(width: 15),
+              MealCardGrams(grams: mealModel.grams)
+            ],
           )
         ],
       ),
+    );
+  }
+}
+
+class _Image extends StatelessWidget {
+  const _Image({required this.mealModel});
+
+  final MealModel mealModel;
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(24),
+      child: Image.network(mealModel.imageURL ??
+          'https://cdn-media.choiceqr.com/prod-eat-traktorgastrobar/menu/sCQGZhk-IEZJXnx-henbgqF.jpeg'),
     );
   }
 }

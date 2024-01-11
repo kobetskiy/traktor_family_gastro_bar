@@ -21,14 +21,14 @@ class MealCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            MealCardInformation(
+            _MealCardInformation(
               title: mealModel.title,
               cost: mealModel.cost,
               subtitle: mealModel.subtitle,
               likesCount: mealModel.likesCount,
               grams: mealModel.grams,
             ),
-            MealCardImage(imageURL: mealModel.imageURL),
+            _MealCardImage(imageURL: mealModel.imageURL),
           ],
         ),
       ),
@@ -41,9 +41,8 @@ class MealCard extends StatelessWidget {
   }
 }
 
-class MealCardInformation extends StatelessWidget {
-  const MealCardInformation({
-    super.key,
+class _MealCardInformation extends StatelessWidget {
+  const _MealCardInformation({
     required this.title,
     required this.cost,
     required this.subtitle,
@@ -87,11 +86,8 @@ class MealCardInformation extends StatelessWidget {
   }
 }
 
-class MealCardImage extends StatelessWidget {
-  const MealCardImage({
-    super.key,
-    required this.imageURL,
-  });
+class _MealCardImage extends StatelessWidget {
+  const _MealCardImage({required this.imageURL});
 
   final String? imageURL;
 

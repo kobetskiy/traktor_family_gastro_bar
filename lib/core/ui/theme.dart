@@ -22,9 +22,6 @@ final titleMedium = TextStyle(
 final ThemeData theme = ThemeData(
   colorScheme: ColorScheme.fromSeed(
     seedColor: AppColors.primaryColor,
-    // primary: AppColors.primaryColor,
-    // background: AppColors.backgroundColor,
-    // surface: AppColors.formColor,
     brightness: Brightness.dark,
   ),
   primaryColor: AppColors.primaryColor,

@@ -7,8 +7,7 @@
 // ignore_for_file:unnecessary_brace_in_string_interps, unnecessary_new
 // ignore_for_file:prefer_single_quotes,comment_references, directives_ordering
 // ignore_for_file:annotate_overrides,prefer_generic_function_type_aliases
-// ignore_for_file:unused_import, file_names, avoid_escaping_inner_quotes
-// ignore_for_file:unnecessary_string_interpolations, unnecessary_string_escapes
+// ignore_for_file:unused_import, file_names
 
 import 'package:intl/intl.dart';
 import 'package:intl/message_lookup_by_library.dart';
@@ -21,13 +20,17 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'uk';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "bar": MessageLookupByLibrary.simpleMessage("Бар"),
-        "barbecueMenu": MessageLookupByLibrary.simpleMessage("Мангал меню"),
-        "europeanCuisine":
-            MessageLookupByLibrary.simpleMessage("Європейська кухня"),
-        "gramsSymbol": MessageLookupByLibrary.simpleMessage("г"),
-        "hookah": MessageLookupByLibrary.simpleMessage("Кальян"),
-        "uah": MessageLookupByLibrary.simpleMessage("грн")
-      };
+  static _notInlinedMessages(_) => <String, Function> {
+    "bar" : MessageLookupByLibrary.simpleMessage("Бар"),
+    "barbecueMenu" : MessageLookupByLibrary.simpleMessage("Мангал меню"),
+    "chechYourConnection" : MessageLookupByLibrary.simpleMessage("Немає підключення до Інтернету.\nПеревірте підключення до Wi-Fi або мобільного інтернету."),
+    "europeanCuisine" : MessageLookupByLibrary.simpleMessage("Європейська кухня"),
+    "gramsSymbol" : MessageLookupByLibrary.simpleMessage("г"),
+    "hookah" : MessageLookupByLibrary.simpleMessage("Кальян"),
+    "noInternet" : MessageLookupByLibrary.simpleMessage("Немає з\'єднання"),
+    "pleaseTryAgainLater" : MessageLookupByLibrary.simpleMessage("Спробуйте будь ласка пізніше"),
+    "serverError" : MessageLookupByLibrary.simpleMessage("Помилка серверу"),
+    "tryAgain" : MessageLookupByLibrary.simpleMessage("Спробувати ще раз"),
+    "uah" : MessageLookupByLibrary.simpleMessage("грн")
+  };
 }

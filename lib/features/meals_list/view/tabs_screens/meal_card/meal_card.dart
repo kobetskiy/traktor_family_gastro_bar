@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:traktor_family_gastro_bar/features/meals_list/models/meal_model.dart';
+import 'package:traktor_family_gastro_bar/features/meals_list/data/models/meal_model.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/view/meal_details_screen/meal_details_screen.dart';
 
 import 'meal_card_information.dart';

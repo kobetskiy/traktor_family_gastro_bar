@@ -4,5 +4,10 @@
   "bar": "Бар",
   "hookah": "Кальян",
   "uah": "грн",
-  "gramsSymbol": "г"
+  "gramsSymbol": "г",
+  "serverError": "Помилка серверу",
+  "pleaseTryAgainLater": "Спробуйте будь ласка пізніше",
+  "tryAgain": "Спробувати ще раз",
+  "noInternet": "Немає з'єднання",
+  "chechYourConnection": "Немає підключення до Інтернету.\nПеревірте підключення до Wi-Fi або мобільного інтернету."
 }

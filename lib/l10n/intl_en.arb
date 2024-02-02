@@ -4,5 +4,10 @@
   "bar": "Bar",
   "hookah": "Hookah",
   "uah": "UAH",
-  "gramsSymbol": "g"
+  "gramsSymbol": "g",
+  "serverError": "Server error",
+  "pleaseTryAgainLater": "Please try again later",
+  "tryAgain": "Try again",
+  "noInternet": "No internet",
+  "chechYourConnection": "No internet connection found.\nCheck your connection to Wi-Fi or mobile network."
 }

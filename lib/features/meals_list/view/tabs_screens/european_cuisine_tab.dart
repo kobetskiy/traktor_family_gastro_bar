@@ -1,72 +1,85 @@
 import 'package:flutter/material.dart';
-import 'package:traktor_family_gastro_bar/features/meals_list/data/database/meals_database_service.dart';
-import 'package:traktor_family_gastro_bar/features/meals_list/models/meal_model.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:traktor_family_gastro_bar/core/ui/colors.dart';
+import 'package:traktor_family_gastro_bar/core/ui/images.dart';
+import 'package:traktor_family_gastro_bar/features/meals_list/bloc/meals_list_bloc.dart';
+import 'package:traktor_family_gastro_bar/features/meals_list/data/models/meal_model.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/view/tabs_screens/meal_card/meal_card.dart';
+import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
-class EuropeanCuisineTab extends StatelessWidget {
+class EuropeanCuisineTab extends StatefulWidget {
   const EuropeanCuisineTab({super.key});
 
   @override
+  State<EuropeanCuisineTab> createState() => _EuropeanCuisineTabState();
+}
+
+class _EuropeanCuisineTabState extends State<EuropeanCuisineTab> {
+  final _mealsListBloc = MealsListBloc();
+
+  @override
+  void initState() {
+    super.initState();
+    _mealsListBloc.add(LoadMealsList());
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return StreamBuilder(
-        stream: MealsDatabaseService.europeanCuisine,
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            return Center(
-              child: Text(snapshot.error.toString()),
-            );
-          } else if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          }
-
-          final data = snapshot.requireData;
-
+    return BlocBuilder<MealsListBloc, MealsListState>(
+      bloc: _mealsListBloc,
+      builder: (context, state) {
+        if (state is MealsListSuccess) {
           return ListView.separated(
-            itemCount: data.size,
-            itemBuilder: (BuildContext context, int index) {
-              return MealCard(
-                mealModel: MealModel(
-                  title: data.docs[index]['title'],
-                  cost: data.docs[index]['cost'],
-                  likesCount: data.docs[index]['likesCount'],
-                  grams: data.docs[index]['grams'],
-                  subtitle: data.docs[index]['subtitle'],
-                  imageURL: data.docs[index]['imageURL'],
-                ),
-              );
-            },
+            itemCount: state.data.size,
+            itemBuilder: (BuildContext context, int index) => MealCard(
+              mealModel: MealModel(
+                title: state.data.docs[index]['title'],
+                cost: state.data.docs[index]['cost'],
+                likesCount: state.data.docs[index]['likesCount'],
+                grams: state.data.docs[index]['grams'],
+                subtitle: state.data.docs[index]['subtitle'],
+                imageURL: state.data.docs[index]['imageURL'],
+              ),
+            ),
             separatorBuilder: (context, index) => const Divider(
               height: 0,
               indent: 0,
               thickness: 1,
             ),
           );
-        });
+        }
+        if (state is MealsListFailure) {
+          return Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(40),
+                child: Image.asset(AppImages.loadingFailure),
+              ),
+              Text(
+                S.of(context).serverError,
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+              const SizedBox(height: 10),
+              Text(
+                S.of(context).pleaseTryAgainLater,
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyMedium!
+                    .copyWith(color: AppColors.subtitleColor),
+              ),
+              const SizedBox(height: 40),
+              TextButton(
+                child: Text(
+                  S.of(context).tryAgain,
+                  style: const TextStyle(fontSize: 16),
+                ),
+                onPressed: () => _mealsListBloc.add(LoadMealsList()),
+              )
+            ],
+          );
+        }
+        return const Center(child: CircularProgressIndicator.adaptive());
+      },
+    );
   }
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   return ListView.separated(
-  //     itemCount: 15,
-  //     itemBuilder: (BuildContext context, int index) {
-  //       return MealCard(
-  //         mealModel: MealModel(
-  //           title: 'Бургер з качиною котлетою та грушею',
-  //           cost: '135',
-  //           likesCount: '13',
-  //           grams: '370',
-  //           subtitle:
-  //               'Страва з яєць, баварських ковбасок з фасолю, беконом та міксом салату. Також в страві подається грінки з піджаркою луку та бекону',
-  //           imageURL:
-  //               'https://cdn-media.choiceqr.com/prod-eat-traktorgastrobar/menu/SyLrtkb-ylGeFXa-mJvsCuP.jpeg',
-  //         ),
-  //       );
-  //     },
-  //     separatorBuilder: (context, index) => const Divider(
-  //       height: 0,
-  //       indent: 0,
-  //       thickness: 1,
-  //     ),
-  //   );
-  // }
 }

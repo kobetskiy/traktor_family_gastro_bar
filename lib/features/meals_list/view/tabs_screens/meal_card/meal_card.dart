@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/data/models/meal_model.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/view/meal_details_screen/meal_details_screen.dart';
@@ -66,16 +67,19 @@ class _MealCardInformation extends StatelessWidget {
           MealCardTitle(title: title),
           const SizedBox(height: 5),
           MealCardCost(cost: cost),
-          subtitle != null
+          subtitle != ''
               ? const SizedBox(height: 5)
               : const SizedBox.shrink(),
-          subtitle != null
+          subtitle != ''
               ? MealCardSubtitle(subtitle: subtitle)
               : const SizedBox.shrink(),
           const SizedBox(height: 8),
           Row(
             children: [
-              MealCardLikes(likesCount: likesCount),
+              InkWell(
+                onTap: () {},
+                child: MealCardLikes(likesCount: likesCount),
+              ),
               const SizedBox(width: 15),
               MealCardGrams(grams: grams)
             ],
@@ -97,10 +101,21 @@ class _MealCardImage extends StatelessWidget {
       flex: 1,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(8.0),
-        child: Image.network(
-          imageURL ??
+        child: CachedNetworkImage(
+          imageUrl: imageURL ??
               'https://cdn-media.choiceqr.com/prod-eat-traktorgastrobar/menu/zExBcGl-uoPjKNI-doWEOQD.jpeg',
-          fit: BoxFit.fitHeight,
+          key: UniqueKey(),
+          fit: BoxFit.cover,
+          placeholder: (context, url) =>
+              const ColoredBox(color: Colors.white12),
+          errorWidget: (context, url, error) => const SizedBox(
+            height: 80.1,
+            width: 106.7,
+            child: ColoredBox(
+              color: Colors.white12,
+              child: Center(child: Icon(Icons.error)),
+            ),
+          ),
         ),
       ),
     );

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/core/ui/colors.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/data/models/meal_model.dart';
@@ -56,16 +57,18 @@ class _Information extends StatelessWidget {
               )
             ],
           ),
-          mealModel.subtitle != null
+          mealModel.subtitle != ''
               ? const SizedBox(height: 10)
               : const SizedBox.shrink(),
-          Text(
-            mealModel.subtitle ?? '',
-            style: Theme.of(context)
-                .textTheme
-                .bodySmall!
-                .copyWith(color: AppColors.subtitleColor),
-          ),
+          mealModel.subtitle != ''
+              ? Text(
+                  mealModel.subtitle!,
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodySmall!
+                      .copyWith(color: AppColors.subtitleColor),
+                )
+              : const SizedBox.shrink(),
           const SizedBox(height: 15),
           Row(
             children: [
@@ -89,8 +92,21 @@ class _Image extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(24),
-      child: Image.network(mealModel.imageURL ??
-          'https://cdn-media.choiceqr.com/prod-eat-traktorgastrobar/menu/sCQGZhk-IEZJXnx-henbgqF.jpeg'),
+      child: CachedNetworkImage(
+        imageUrl: mealModel.imageURL ??
+            'https://cdn-media.choiceqr.com/prod-eat-traktorgastrobar/menu/zExBcGl-uoPjKNI-doWEOQD.jpeg',
+        key: UniqueKey(),
+        fit: BoxFit.cover,
+        placeholder: (context, url) => const ColoredBox(color: Colors.white12),
+        errorWidget: (context, url, error) => const SizedBox(
+          height: 270.1,
+          width: 360,
+          child: ColoredBox(
+            color: Colors.white12,
+            child: Icon(Icons.error),
+          ),
+        ),
+      ),
     );
   }
 }

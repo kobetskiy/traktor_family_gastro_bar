@@ -13,6 +13,13 @@ class MealCardTitle extends StatelessWidget {
   }
 }
 
+String checkCost(String cost) {
+  String result = '';
+  result = int.tryParse(cost).toString();
+  if (result == 'null') result = '';
+  return result;
+}
+
 class MealCardCost extends StatelessWidget {
   const MealCardCost({super.key, required this.cost});
 
@@ -21,7 +28,9 @@ class MealCardCost extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      '$cost ${S.of(context).uah}',
+      checkCost(cost).isEmpty
+          ? cost
+          : '${checkCost(cost)} ${S.of(context).uah}',
       style: Theme.of(context)
           .textTheme
           .bodyMedium!
@@ -88,7 +97,9 @@ class MealCardGrams extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      grams + S.of(context).gramsSymbol,
+      grams.isNotEmpty
+          ? grams + S.of(context).gramsSymbol
+          : '',
       style: Theme.of(context)
           .textTheme
           .bodySmall!

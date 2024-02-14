@@ -8,12 +8,14 @@ part 'meals_list_event.dart';
 part 'meals_list_state.dart';
 
 class MealsListBloc extends Bloc<MealsListEvent, MealsListState> {
-  MealsListBloc() : super(MealsListInitial()) {
+  final String collection;
+
+  MealsListBloc({required this.collection}) : super(MealsListInitial()) {
     on<LoadMealsList>((event, emit) async {
       try {
         emit(MealsListLoading());
         final data = await FirebaseFirestore.instance
-            .collection('european-cuisine')
+            .collection(collection)
             .get();
         if (data.docs.isEmpty) throw ServerExeption();
         emit(MealsListSuccess(data: data));

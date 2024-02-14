@@ -10,7 +10,6 @@ final class MealsListLoading extends MealsListState {}
 final class MealsListSuccess extends MealsListState {
   final QuerySnapshot<Map<String, dynamic>> data;
   MealsListSuccess({required this.data});
-
 }
 
 final class MealsListFailure extends MealsListState {

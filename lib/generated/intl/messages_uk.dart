@@ -27,7 +27,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "europeanCuisine" : MessageLookupByLibrary.simpleMessage("Європейська кухня"),
     "gramsSymbol" : MessageLookupByLibrary.simpleMessage("г"),
     "hookah" : MessageLookupByLibrary.simpleMessage("Кальян"),
-    "noInternet" : MessageLookupByLibrary.simpleMessage("Немає з'єднання"),
+    "noInternet" : MessageLookupByLibrary.simpleMessage("Немає з\'єднання"),
     "pleaseTryAgainLater" : MessageLookupByLibrary.simpleMessage("Спробуйте будь ласка пізніше"),
     "serverError" : MessageLookupByLibrary.simpleMessage("Помилка серверу"),
     "tryAgain" : MessageLookupByLibrary.simpleMessage("Спробувати ще раз"),

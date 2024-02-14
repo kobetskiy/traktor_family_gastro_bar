@@ -18,7 +18,10 @@ class MealsListScreen extends StatelessWidget {
               AppBarWidget(
                 title: 'Traktor Family Gastro Bar',
                 actions: [
-                  IconButton(onPressed: () {}, icon: const Icon(Icons.search))
+                  IconButton(
+                    icon: const Icon(Icons.search),
+                    onPressed: () {},
+                  )
                 ],
               ),
             ],

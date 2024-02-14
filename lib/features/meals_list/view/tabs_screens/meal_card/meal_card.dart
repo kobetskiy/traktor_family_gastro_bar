@@ -53,7 +53,7 @@ class _MealCardInformation extends StatelessWidget {
 
   final String title;
   final String cost;
-  final String? subtitle;
+  final String subtitle;
   final String likesCount;
   final String grams;
 
@@ -93,7 +93,7 @@ class _MealCardInformation extends StatelessWidget {
 class _MealCardImage extends StatelessWidget {
   const _MealCardImage({required this.imageURL});
 
-  final String? imageURL;
+  final String imageURL;
 
   @override
   Widget build(BuildContext context) {
@@ -102,8 +102,7 @@ class _MealCardImage extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(8.0),
         child: CachedNetworkImage(
-          imageUrl: imageURL ??
-              'https://cdn-media.choiceqr.com/prod-eat-traktorgastrobar/menu/zExBcGl-uoPjKNI-doWEOQD.jpeg',
+          imageUrl: imageURL,
           key: UniqueKey(),
           fit: BoxFit.cover,
           placeholder: (context, url) =>

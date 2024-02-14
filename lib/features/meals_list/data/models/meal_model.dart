@@ -1,7 +1,7 @@
 class MealModel {
   final String title;
-  final String? subtitle;
-  final String? imageURL;
+  final String subtitle;
+  final String imageURL;
   final String cost;
   final String likesCount;
   final String grams;
@@ -11,7 +11,7 @@ class MealModel {
     required this.cost,
     required this.likesCount,
     required this.grams,
-    this.imageURL,
-    this.subtitle,
+    required this.imageURL,
+    required this.subtitle,
   });
 }

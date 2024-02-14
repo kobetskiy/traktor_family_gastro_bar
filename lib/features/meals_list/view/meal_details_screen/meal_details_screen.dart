@@ -62,7 +62,7 @@ class _Information extends StatelessWidget {
               : const SizedBox.shrink(),
           mealModel.subtitle != ''
               ? Text(
-                  mealModel.subtitle!,
+                  mealModel.subtitle,
                   style: Theme.of(context)
                       .textTheme
                       .bodySmall!
@@ -93,8 +93,7 @@ class _Image extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(24),
       child: CachedNetworkImage(
-        imageUrl: mealModel.imageURL ??
-            'https://cdn-media.choiceqr.com/prod-eat-traktorgastrobar/menu/zExBcGl-uoPjKNI-doWEOQD.jpeg',
+        imageUrl: mealModel.imageURL,
         key: UniqueKey(),
         fit: BoxFit.cover,
         placeholder: (context, url) => const ColoredBox(color: Colors.white12),

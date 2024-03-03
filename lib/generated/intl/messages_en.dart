@@ -26,6 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "chechYourConnection" : MessageLookupByLibrary.simpleMessage("No internet connection found.\nCheck your connection to Wi-Fi or mobile network."),
     "checkTheRequest" : MessageLookupByLibrary.simpleMessage("Check the request is correct and try again"),
     "europeanCuisine" : MessageLookupByLibrary.simpleMessage("European cuisine"),
+    "favorites" : MessageLookupByLibrary.simpleMessage("Favorites"),
     "gramsSymbol" : MessageLookupByLibrary.simpleMessage("g"),
     "hookah" : MessageLookupByLibrary.simpleMessage("Hookah"),
     "japaneseCuisine" : MessageLookupByLibrary.simpleMessage("japanese cuisine"),

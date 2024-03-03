@@ -49,9 +49,9 @@ class _MealsListScreenState extends State<MealsListScreen> {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: allTabs.length,
-      child: SafeArea(
-        child: Scaffold(
-          body: NestedScrollView(
+      child: Scaffold(
+        body: SafeArea(
+          child: NestedScrollView(
             floatHeaderSlivers: true,
             headerSliverBuilder: (context, innerBoxIsScrolled) => [
               AppBarWidget(

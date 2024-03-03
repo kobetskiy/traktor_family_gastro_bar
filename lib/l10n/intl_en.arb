@@ -13,5 +13,6 @@
   "search": "Search...",
   "nothingFound": "Nothing found",
   "checkTheRequest": "Check the request is correct and try again",
-  "japaneseCuisine": "japanese cuisine"
+  "japaneseCuisine": "japanese cuisine",
+  "favorites": "Favorites"
 }

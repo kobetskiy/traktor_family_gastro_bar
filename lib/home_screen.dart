@@ -20,9 +20,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _onItemTapped(int index) {
     if (_selectedIndex == index) return;
-    setState(() {
-      _selectedIndex = index;
-    });
+    _selectedIndex = index;
+    setState(() {});
   }
 
   @override

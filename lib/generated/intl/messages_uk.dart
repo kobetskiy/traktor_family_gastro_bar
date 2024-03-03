@@ -26,6 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "chechYourConnection" : MessageLookupByLibrary.simpleMessage("Немає підключення до Інтернету.\nПеревірте підключення до Wi-Fi або мобільного інтернету."),
     "checkTheRequest" : MessageLookupByLibrary.simpleMessage("Перевірте правильність запиту та спробуйте ще раз"),
     "europeanCuisine" : MessageLookupByLibrary.simpleMessage("Європейська кухня"),
+    "favorites" : MessageLookupByLibrary.simpleMessage("Улюблені"),
     "gramsSymbol" : MessageLookupByLibrary.simpleMessage("г"),
     "hookah" : MessageLookupByLibrary.simpleMessage("Кальян"),
     "japaneseCuisine" : MessageLookupByLibrary.simpleMessage("Японська кухня"),

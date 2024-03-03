@@ -22,11 +22,7 @@ class MealsListViewWidget extends StatelessWidget {
           grams: state.data[index]['grams'],
         ),
       ),
-      separatorBuilder: (_, __) => const Divider(
-        height: 0,
-        indent: 0,
-        thickness: 1,
-      ),
+      separatorBuilder: (_, __) => const Divider(height: 0),
     );
   }
 }

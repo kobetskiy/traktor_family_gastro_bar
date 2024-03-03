@@ -156,6 +156,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Search...`
+  String get search {
+    return Intl.message(
+      'Search...',
+      name: 'search',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nothing found`
+  String get nothingFound {
+    return Intl.message(
+      'Nothing found',
+      name: 'nothingFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check the request is correct and try again`
+  String get checkTheRequest {
+    return Intl.message(
+      'Check the request is correct and try again',
+      name: 'checkTheRequest',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -4,13 +4,12 @@ import 'package:traktor_family_gastro_bar/core/ui/images.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/bloc/meals_list_bloc.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
-class ServerErrorWidget extends StatelessWidget {
-  const ServerErrorWidget({
-    super.key,
-    required MealsListBloc mealsListBloc,
-  }) : _mealsListBloc = mealsListBloc;
+final mealsListBloc = MealsListBloc();
 
-  final MealsListBloc _mealsListBloc;
+class ServerErrorWidget extends StatelessWidget {
+  const ServerErrorWidget({super.key, required this.collection});
+
+  final String collection;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +37,8 @@ class ServerErrorWidget extends StatelessWidget {
             S.of(context).tryAgain,
             style: const TextStyle(fontSize: 16),
           ),
-          onPressed: () => _mealsListBloc.add(LoadMealsList()),
+          onPressed: () =>
+              mealsListBloc.add(LoadAllMealsList(collection: collection)),
         )
       ],
     );

@@ -72,7 +72,10 @@ class _Information extends StatelessWidget {
           const SizedBox(height: 15),
           Row(
             children: [
-              MealCardLikes(likesCount: mealModel.likesCount),
+              InkWell(
+                onTap: () {},
+                child: MealCardLikes(likesCount: mealModel.likesCount),
+              ),
               const SizedBox(width: 15),
               MealCardGrams(grams: mealModel.grams)
             ],
@@ -96,8 +99,8 @@ class _Image extends StatelessWidget {
         imageUrl: mealModel.imageURL,
         key: UniqueKey(),
         fit: BoxFit.cover,
-        placeholder: (context, url) => const ColoredBox(color: Colors.white12),
-        errorWidget: (context, url, error) => const SizedBox(
+        placeholder: (_, __) => const ColoredBox(color: Colors.white12),
+        errorWidget: (_, __, ___) => const SizedBox(
           height: 270.1,
           width: 360,
           child: ColoredBox(

@@ -11,7 +11,6 @@ class NoDataWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          // const SizedBox(height: 40),
           Text(
             S.of(context).nothingFound,
             style: Theme.of(context).textTheme.titleMedium,

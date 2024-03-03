@@ -36,7 +36,7 @@ class MealCard extends StatelessWidget {
       onTap: () => showModalBottomSheet(
         isScrollControlled: true,
         context: context,
-        builder: (context) => MealDetailsScreen(mealModel: mealModel),
+        builder: (_) => MealDetailsScreen(mealModel: mealModel),
       ),
     );
   }
@@ -105,9 +105,9 @@ class _MealCardImage extends StatelessWidget {
           imageUrl: imageURL,
           key: UniqueKey(),
           fit: BoxFit.cover,
-          placeholder: (context, url) =>
+          placeholder: (_, __) =>
               const ColoredBox(color: Colors.white12),
-          errorWidget: (context, url, error) => const SizedBox(
+          errorWidget: (_, __, ___) => const SizedBox(
             height: 80.1,
             width: 106.7,
             child: ColoredBox(

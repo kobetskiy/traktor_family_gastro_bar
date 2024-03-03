@@ -12,7 +12,7 @@ class MealsListViewWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
       itemCount: state.data.length,
-      itemBuilder: (BuildContext context, int index) => MealCard(
+      itemBuilder: (_, int index) => MealCard(
         mealModel: MealModel(
           title: state.data[index]['title'],
           subtitle: state.data[index]['subtitle'],
@@ -22,7 +22,7 @@ class MealsListViewWidget extends StatelessWidget {
           grams: state.data[index]['grams'],
         ),
       ),
-      separatorBuilder: (context, index) => const Divider(
+      separatorBuilder: (_, __) => const Divider(
         height: 0,
         indent: 0,
         thickness: 1,

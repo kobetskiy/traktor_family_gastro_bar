@@ -186,6 +186,16 @@ class S {
       args: [],
     );
   }
+
+  /// `japanese cuisine`
+  String get japaneseCuisine {
+    return Intl.message(
+      'japanese cuisine',
+      name: 'japaneseCuisine',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

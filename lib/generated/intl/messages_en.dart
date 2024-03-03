@@ -28,6 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "europeanCuisine" : MessageLookupByLibrary.simpleMessage("European cuisine"),
     "gramsSymbol" : MessageLookupByLibrary.simpleMessage("g"),
     "hookah" : MessageLookupByLibrary.simpleMessage("Hookah"),
+    "japaneseCuisine" : MessageLookupByLibrary.simpleMessage("japanese cuisine"),
     "noInternet" : MessageLookupByLibrary.simpleMessage("No internet"),
     "nothingFound" : MessageLookupByLibrary.simpleMessage("Nothing found"),
     "pleaseTryAgainLater" : MessageLookupByLibrary.simpleMessage("Please try again later"),

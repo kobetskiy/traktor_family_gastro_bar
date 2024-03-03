@@ -12,6 +12,22 @@ class MealsListScreen extends StatefulWidget {
   State<MealsListScreen> createState() => _MealsListScreenState();
 }
 
+const allTabs = [
+  EuropeanCuisineTab(),
+  JapaneseCuisineTab(),
+  BarbecueMenuTab(),
+  BarTab(),
+  HookahTab(),
+];
+
+List<Tab> allTabsNames(BuildContext context) => [
+  Tab(child: Text(S.of(context).europeanCuisine)),
+  Tab(child: Text(S.of(context).japaneseCuisine)),
+  Tab(child: Text(S.of(context).barbecueMenu)),
+  Tab(child: Text(S.of(context).bar)),
+  Tab(child: Text(S.of(context).hookah)),
+];
+
 class _MealsListScreenState extends State<MealsListScreen> {
   bool isSearchShown = false;
   final _textController = TextEditingController();
@@ -32,7 +48,7 @@ class _MealsListScreenState extends State<MealsListScreen> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 4,
+      length: allTabs.length,
       child: SafeArea(
         child: Scaffold(
           body: NestedScrollView(
@@ -75,12 +91,7 @@ class _TabBarWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return TabBar(
       isScrollable: true,
-      tabs: [
-        Tab(child: Text(S.of(context).europeanCuisine)),
-        Tab(child: Text(S.of(context).barbecueMenu)),
-        Tab(child: Text(S.of(context).bar)),
-        Tab(child: Text(S.of(context).hookah)),
-      ],
+      tabs: allTabsNames(context),
     );
   }
 }
@@ -93,12 +104,7 @@ class _TabBarViewWidget extends StatelessWidget {
     return const Expanded(
       child: TabBarView(
         physics: NeverScrollableScrollPhysics(),
-        children: [
-          EuropeanCuisineTab(),
-          BarbecueMenuTab(),
-          BarTab(),
-          HookahTab(),
-        ],
+        children: allTabs,
       ),
     );
   }

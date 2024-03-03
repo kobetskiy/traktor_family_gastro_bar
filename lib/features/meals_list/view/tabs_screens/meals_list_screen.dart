@@ -1,10 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:traktor_family_gastro_bar/features/meals_list/bloc/meals_list_bloc.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/view/tabs_screens/tabs_screens.dart';
+import 'package:traktor_family_gastro_bar/features/meals_list/widgets/index.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/widgets.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
-class MealsListScreen extends StatelessWidget {
+class MealsListScreen extends StatefulWidget {
   const MealsListScreen({super.key});
+
+  @override
+  State<MealsListScreen> createState() => _MealsListScreenState();
+}
+
+class _MealsListScreenState extends State<MealsListScreen> {
+  bool isSearchShown = false;
+  final _textController = TextEditingController();
+  final mealsListBloc = MealsListBloc();
+
+  void switchSearchField() {
+    _textController.clear();
+    isSearchShown = !isSearchShown;
+    setState(() {});
+  }
+
+  @override
+  void dispose() {
+    _textController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,15 +43,22 @@ class MealsListScreen extends StatelessWidget {
                 actions: [
                   IconButton(
                     icon: const Icon(Icons.search),
-                    onPressed: () {},
+                    onPressed: switchSearchField,
                   )
                 ],
               ),
             ],
-            body: const Column(
+            body: Column(
+              mainAxisSize: MainAxisSize.max,
               children: [
-                TabBarWidget(),
-                TabBarViewWidget(),
+                isSearchShown
+                    ? SearchTextFieldWidget(
+                        controller: _textController, bloc: mealsListBloc)
+                    : const _TabBarWidget(),
+                isSearchShown
+                    ? SearchedMealsListWidget(
+                        controller: _textController, bloc: mealsListBloc)
+                    : const _TabBarViewWidget(),
               ],
             ),
           ),
@@ -38,8 +68,8 @@ class MealsListScreen extends StatelessWidget {
   }
 }
 
-class TabBarWidget extends StatelessWidget {
-  const TabBarWidget({super.key});
+class _TabBarWidget extends StatelessWidget {
+  const _TabBarWidget();
 
   @override
   Widget build(BuildContext context) {
@@ -55,8 +85,8 @@ class TabBarWidget extends StatelessWidget {
   }
 }
 
-class TabBarViewWidget extends StatelessWidget {
-  const TabBarViewWidget({super.key});
+class _TabBarViewWidget extends StatelessWidget {
+  const _TabBarViewWidget();
 
   @override
   Widget build(BuildContext context) {

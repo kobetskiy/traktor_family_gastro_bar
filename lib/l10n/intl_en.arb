@@ -9,5 +9,8 @@
   "pleaseTryAgainLater": "Please try again later",
   "tryAgain": "Try again",
   "noInternet": "No internet",
-  "chechYourConnection": "No internet connection found.\nCheck your connection to Wi-Fi or mobile network."
+  "chechYourConnection": "No internet connection found.\nCheck your connection to Wi-Fi or mobile network.",
+  "search": "Search...",
+  "nothingFound": "Nothing found",
+  "checkTheRequest": "Check the request is correct and try again"
 }

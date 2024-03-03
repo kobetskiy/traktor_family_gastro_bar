@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:traktor_family_gastro_bar/core/localization/app_localization.dart';
 import 'package:traktor_family_gastro_bar/core/ui/theme.dart';
+import 'package:traktor_family_gastro_bar/features/meals_list/bloc/meals_list_bloc.dart';
 import 'package:traktor_family_gastro_bar/home_screen.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 
@@ -15,8 +16,11 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => InternetCubit(connectivity: connectivity),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<MealsListBloc>(create: (context) => MealsListBloc()),
+        BlocProvider<InternetCubit>(create: (context) => InternetCubit(connectivity: connectivity)),
+      ],
       child: MaterialApp(
         title: "Traktor Bar",
         debugShowCheckedModeBanner: false,

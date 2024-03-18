@@ -35,9 +35,12 @@ class _SearchTextFieldWidgetState extends State<SearchTextFieldWidget> {
               .bodyMedium!
               .copyWith(color: AppColors.subtitleColor),
           contentPadding: const EdgeInsets.symmetric(horizontal: 20),
-          border: const OutlineInputBorder(),
+          border: const OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(8)),
+          ),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(color: AppColors.titleColor),
+            borderRadius: const BorderRadius.all(Radius.circular(8)),
           ),
           suffixIcon: IconButton(
             onPressed: () {

@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/core/ui/colors.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/data/models/meal_model.dart';
-import 'package:traktor_family_gastro_bar/features/meals_list/view/tabs_screens/meal_card/meal_card_information.dart';
+import 'package:traktor_family_gastro_bar/features/meals_list/widgets/meal_card/meal_card_information.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
 class MealDetailsScreen extends StatelessWidget {

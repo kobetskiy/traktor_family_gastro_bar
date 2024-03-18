@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/bloc/meals_list_bloc.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/data/models/meal_model.dart';
-import 'package:traktor_family_gastro_bar/features/meals_list/view/tabs_screens/meal_card/meal_card.dart';
+import 'package:traktor_family_gastro_bar/features/meals_list/widgets/meal_card/meal_card.dart';
 
 class MealsListViewWidget extends StatelessWidget {
   const MealsListViewWidget({super.key, required this.state});

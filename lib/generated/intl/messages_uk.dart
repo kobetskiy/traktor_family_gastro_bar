@@ -23,6 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static _notInlinedMessages(_) => <String, Function> {
     "bar" : MessageLookupByLibrary.simpleMessage("Бар"),
     "barbecueMenu" : MessageLookupByLibrary.simpleMessage("Мангал меню"),
+    "categories" : MessageLookupByLibrary.simpleMessage("Категорії"),
     "chechYourConnection" : MessageLookupByLibrary.simpleMessage("Немає підключення до Інтернету.\nПеревірте підключення до Wi-Fi або мобільного інтернету."),
     "checkTheRequest" : MessageLookupByLibrary.simpleMessage("Перевірте правильність запиту та спробуйте ще раз"),
     "europeanCuisine" : MessageLookupByLibrary.simpleMessage("Європейська кухня"),

@@ -55,7 +55,7 @@ class _MealsListScreenState extends State<MealsListScreen> {
             floatHeaderSlivers: true,
             headerSliverBuilder: (context, innerBoxIsScrolled) => [
               AppBarWidget(
-                title: 'Traktor Family Gastro Bar',
+                title: S.of(context).categories,
                 actions: [
                   IconButton(
                     icon: const Icon(Icons.search),

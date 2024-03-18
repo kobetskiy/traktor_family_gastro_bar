@@ -31,11 +31,11 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
           label: '',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.favorite_rounded),
+          icon: Icon(Icons.search_rounded),
           label: '',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.event_note_rounded),
+          icon: Icon(Icons.favorite_rounded),
           label: '',
         ),
         BottomNavigationBarItem(

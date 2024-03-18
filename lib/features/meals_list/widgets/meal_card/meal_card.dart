@@ -67,9 +67,7 @@ class _MealCardInformation extends StatelessWidget {
           MealCardTitle(title: title),
           const SizedBox(height: 5),
           MealCardCost(cost: cost),
-          subtitle != ''
-              ? const SizedBox(height: 5)
-              : const SizedBox.shrink(),
+          subtitle != '' ? const SizedBox(height: 5) : const SizedBox.shrink(),
           subtitle != ''
               ? MealCardSubtitle(subtitle: subtitle)
               : const SizedBox.shrink(),
@@ -78,6 +76,9 @@ class _MealCardInformation extends StatelessWidget {
             children: [
               InkWell(
                 onTap: () {},
+                customBorder: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(6),
+                ),
                 child: MealCardLikes(likesCount: likesCount),
               ),
               const SizedBox(width: 15),
@@ -105,8 +106,7 @@ class _MealCardImage extends StatelessWidget {
           imageUrl: imageURL,
           key: UniqueKey(),
           fit: BoxFit.cover,
-          placeholder: (_, __) =>
-              const ColoredBox(color: Colors.white12),
+          placeholder: (_, __) => const ColoredBox(color: Colors.white12),
           errorWidget: (_, __, ___) => const SizedBox(
             height: 80.1,
             width: 106.7,

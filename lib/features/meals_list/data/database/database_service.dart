@@ -24,7 +24,6 @@ class DatabaseServise {
             .toList());
         if (allMealsList.docs.isEmpty) throw ServerExeption();
       }
-      print(searchedData);
     }
     return searchedData;
   }

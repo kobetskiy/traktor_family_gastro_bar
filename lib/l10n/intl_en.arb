@@ -12,5 +12,8 @@
   "chechYourConnection": "No internet connection found.\nCheck your connection to Wi-Fi or mobile network.",
   "search": "Search...",
   "nothingFound": "Nothing found",
-  "checkTheRequest": "Check the request is correct and try again"
+  "checkTheRequest": "Check the request is correct and try again",
+  "japaneseCuisine": "japanese cuisine",
+  "favorites": "Favorites",
+  "categories": "Categories"
 }

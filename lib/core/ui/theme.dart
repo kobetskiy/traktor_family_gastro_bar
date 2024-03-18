@@ -39,6 +39,10 @@ final ThemeData theme = ThemeData(
   cardTheme: CardTheme(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
   ),
+  dividerTheme: const DividerThemeData(
+    indent: 0,
+    thickness: 1,
+  ),
   bottomSheetTheme: BottomSheetThemeData(
     backgroundColor: AppColors.backgroundColor,
     shape: const RoundedRectangleBorder(

@@ -1,28 +1,28 @@
 import 'package:flutter/material.dart';
+
 import 'features/screens.dart';
 import 'features/widgets/bottom_navigation_bar_widget.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class AppScreen extends StatefulWidget {
+  const AppScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<AppScreen> createState() => _AppScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _AppScreenState extends State<AppScreen> {
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = [
+    HomeScreen(),
     MealsListScreen(),
     FavoriteScreen(),
-    OrderedMealsScreen(),
     SettingsScreen(),
   ];
 
   void _onItemTapped(int index) {
     if (_selectedIndex == index) return;
-    setState(() {
-      _selectedIndex = index;
-    });
+    _selectedIndex = index;
+    setState(() {});
   }
 
   @override

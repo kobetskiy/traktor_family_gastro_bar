@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/bloc/meals_list_bloc.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/data/models/meal_model.dart';
-import 'package:traktor_family_gastro_bar/features/meals_list/view/tabs_screens/meal_card/meal_card.dart';
+import 'package:traktor_family_gastro_bar/features/meals_list/widgets/meal_card/meal_card.dart';
 
 class MealsListViewWidget extends StatelessWidget {
   const MealsListViewWidget({super.key, required this.state});
@@ -12,7 +12,7 @@ class MealsListViewWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
       itemCount: state.data.length,
-      itemBuilder: (BuildContext context, int index) => MealCard(
+      itemBuilder: (_, int index) => MealCard(
         mealModel: MealModel(
           title: state.data[index]['title'],
           subtitle: state.data[index]['subtitle'],
@@ -22,11 +22,7 @@ class MealsListViewWidget extends StatelessWidget {
           grams: state.data[index]['grams'],
         ),
       ),
-      separatorBuilder: (context, index) => const Divider(
-        height: 0,
-        indent: 0,
-        thickness: 1,
-      ),
+      separatorBuilder: (_, __) => const Divider(height: 0),
     );
   }
 }

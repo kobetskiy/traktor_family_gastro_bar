@@ -15,5 +15,9 @@
   "checkTheRequest": "Перевірте правильність запиту та спробуйте ще раз",
   "japaneseCuisine": "Японська кухня",
   "favorites": "Улюблені",
-  "categories": "Категорії"
+  "categories": "Категорії",
+  "writeOnInstagram": "Написати в Instagram",
+  "writeOnEmail": "Написати на Email",
+  "writeOnFacebook": "Написати в Facebook",
+  "wrongLinkDialogText": "Схоже, що посилання застаріло. Ми вже виправляємо цю помилку"
 }

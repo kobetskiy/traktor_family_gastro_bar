@@ -37,6 +37,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "search" : MessageLookupByLibrary.simpleMessage("Пошук..."),
     "serverError" : MessageLookupByLibrary.simpleMessage("Помилка серверу"),
     "tryAgain" : MessageLookupByLibrary.simpleMessage("Спробувати ще раз"),
-    "uah" : MessageLookupByLibrary.simpleMessage("грн")
+    "uah" : MessageLookupByLibrary.simpleMessage("грн"),
+    "writeOnEmail" : MessageLookupByLibrary.simpleMessage("Написати на Email"),
+    "writeOnFacebook" : MessageLookupByLibrary.simpleMessage("Написати в Facebook"),
+    "writeOnInstagram" : MessageLookupByLibrary.simpleMessage("Написати в Instagram"),
+    "wrongLinkDialogText" : MessageLookupByLibrary.simpleMessage("Схоже, що посилання застаріло. Ми вже виправляємо цю помилку")
   };
 }

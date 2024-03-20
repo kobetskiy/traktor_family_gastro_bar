@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/core/ui/colors.dart';
-import 'package:traktor_family_gastro_bar/features/home/widgets/bottom_sheet_buttons_link/index.dart';
+import 'package:traktor_family_gastro_bar/features/home/view/bottom_sheet_buttons/index.dart';
 import 'package:traktor_family_gastro_bar/features/home/widgets/index.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/widgets.dart';
 

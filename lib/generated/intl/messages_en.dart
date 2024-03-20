@@ -37,6 +37,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "search" : MessageLookupByLibrary.simpleMessage("Search..."),
     "serverError" : MessageLookupByLibrary.simpleMessage("Server error"),
     "tryAgain" : MessageLookupByLibrary.simpleMessage("Try again"),
-    "uah" : MessageLookupByLibrary.simpleMessage("UAH")
+    "uah" : MessageLookupByLibrary.simpleMessage("UAH"),
+    "writeOnEmail" : MessageLookupByLibrary.simpleMessage("Write on Email"),
+    "writeOnFacebook" : MessageLookupByLibrary.simpleMessage("Write on Facebook"),
+    "writeOnInstagram" : MessageLookupByLibrary.simpleMessage("Write on Instagram"),
+    "wrongLinkDialogText" : MessageLookupByLibrary.simpleMessage("It looks like the link is out of date. We are already fixing it")
   };
 }

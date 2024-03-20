@@ -216,6 +216,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Write on Instagram`
+  String get writeOnInstagram {
+    return Intl.message(
+      'Write on Instagram',
+      name: 'writeOnInstagram',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Write on Email`
+  String get writeOnEmail {
+    return Intl.message(
+      'Write on Email',
+      name: 'writeOnEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Write on Facebook`
+  String get writeOnFacebook {
+    return Intl.message(
+      'Write on Facebook',
+      name: 'writeOnFacebook',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `It looks like the link is out of date. We are already fixing it`
+  String get wrongLinkDialogText {
+    return Intl.message(
+      'It looks like the link is out of date. We are already fixing it',
+      name: 'wrongLinkDialogText',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

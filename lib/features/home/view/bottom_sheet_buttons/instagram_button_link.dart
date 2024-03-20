@@ -1,33 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/core/ui/icons.dart';
-import 'package:traktor_family_gastro_bar/features/widgets/adaptive_alert_dialog.dart';
+import 'package:traktor_family_gastro_bar/features/home/service/contact_button_service.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/primary_button.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class InstagramButtonLink extends StatelessWidget {
   const InstagramButtonLink({super.key});
 
   @override
   Widget build(BuildContext context) {
-    void onInstagramButtonPressed() async {
-      final uri = Uri.parse('https://www.instagram.com/traktor_gastrobar/');
-      if (await canLaunchUrl(uri)) {
-        launchUrl(uri);
-      } else {
-        if (context.mounted) {
-          showAdaptiveDialog(
-            context: context,
-            builder: (context) => AdaptiveAlertDialog(
-              content: S.current.wrongLinkDialogText,
-            ),
-          );
-        }
-      }
-    }
+
+    final contactButtonService = ContactButtonService();
+    final uri = Uri.parse(contactButtonService.instagramLink);
 
     return PrimaryButton.outlined(
-      onPressed: onInstagramButtonPressed,
+      onPressed: () => contactButtonService.openLink(context, uri),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,

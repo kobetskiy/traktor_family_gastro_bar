@@ -3,6 +3,7 @@ import 'package:traktor_family_gastro_bar/core/ui/colors.dart';
 import 'package:traktor_family_gastro_bar/features/home/view/bottom_sheet_buttons/index.dart';
 import 'package:traktor_family_gastro_bar/features/home/widgets/index.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/widgets.dart';
+import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -16,7 +17,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   @override
   void initState() {
-    tabController = TabController(length: 5, vsync: this);
+    tabController = TabController(length: 3, vsync: this);
     super.initState();
   }
 
@@ -56,6 +57,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 const SizedBox(height: 20),
                 Center(
                   child: PrimaryButton.outlined(
+                    width: 315,
                     child: const ContactUsButtonContent(),
                     onPressed: () => showContactUsSheet(context),
                   ),
@@ -88,9 +90,12 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 ),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 25),
-              child: Text('З\'язатися з нами', style: TextStyle(fontSize: 18)),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 25),
+              child: Text(
+                S.of(context).contactUs,
+                style: const TextStyle(fontSize: 18),
+              ),
             ),
             const InstagramButtonLink(),
             const SizedBox(height: 15),

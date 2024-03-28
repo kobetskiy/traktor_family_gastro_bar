@@ -13,11 +13,14 @@
   "search": "Search...",
   "nothingFound": "Nothing found",
   "checkTheRequest": "Check the request is correct and try again",
-  "japaneseCuisine": "japanese cuisine",
+  "japaneseCuisine": "Japanese cuisine",
   "favorites": "Favorites",
   "categories": "Categories",
   "writeOnInstagram": "Write on Instagram",
   "writeOnEmail": "Write on Email",
   "writeOnFacebook": "Write on Facebook",
-  "wrongLinkDialogText": "It looks like the link is out of date. We are already fixing it"
+  "wrongLinkDialogText": "It looks like the link is out of date. We are already fixing it",
+  "contactUs": "Contact us",
+  "haveAQuestionContactUs": "Have a question? Contact us!",
+  "from10amTo9pmFreeInUkraine": "From 10am to 9pm free in Ukraine"
 }

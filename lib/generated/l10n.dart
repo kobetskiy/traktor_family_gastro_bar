@@ -187,10 +187,10 @@ class S {
     );
   }
 
-  /// `japanese cuisine`
+  /// `Japanese cuisine`
   String get japaneseCuisine {
     return Intl.message(
-      'japanese cuisine',
+      'Japanese cuisine',
       name: 'japaneseCuisine',
       desc: '',
       args: [],
@@ -252,6 +252,36 @@ class S {
     return Intl.message(
       'It looks like the link is out of date. We are already fixing it',
       name: 'wrongLinkDialogText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact us`
+  String get contactUs {
+    return Intl.message(
+      'Contact us',
+      name: 'contactUs',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Have a question? Contact us!`
+  String get haveAQuestionContactUs {
+    return Intl.message(
+      'Have a question? Contact us!',
+      name: 'haveAQuestionContactUs',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `From 10am to 9pm free in Ukraine`
+  String get from10amTo9pmFreeInUkraine {
+    return Intl.message(
+      'From 10am to 9pm free in Ukraine',
+      name: 'from10amTo9pmFreeInUkraine',
       desc: '',
       args: [],
     );

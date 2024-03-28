@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <!--
     If you are serving your web app in a path other than the root, change the
@@ -27,10 +28,29 @@
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="icon" type="image/png" href="favicon.png" />
 
   <title>traktor_family_gastro_bar</title>
   <link rel="manifest" href="manifest.json">
+
+  <script>
+    import { initializeApp } from "firebase/app";
+    import { getAnalytics } from "firebase/analytics";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyA8MUrPiS-kPbqMAHwgDI_3q22At578oNI",
+      authDomain: "traktor-family-gastro-bar.firebaseapp.com",
+      databaseURL: "https://traktor-family-gastro-bar-default-rtdb.firebaseio.com",
+      projectId: "traktor-family-gastro-bar",
+      storageBucket: "traktor-family-gastro-bar.appspot.com",
+      messagingSenderId: "907812321603",
+      appId: "1:907812321603:web:9cdea74d1e2eaa0f8197f6",
+      measurementId: "G-S1RTN99YKL"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
 
   <script>
     // The value below is injected by flutter build, do not touch.
@@ -39,16 +59,17 @@
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
 </head>
+
 <body>
   <script>
-    window.addEventListener('load', function(ev) {
+    window.addEventListener('load', function (ev) {
       // Download main.dart.js
       _flutter.loader.loadEntrypoint({
         serviceWorker: {
           serviceWorkerVersion: serviceWorkerVersion,
         },
-        onEntrypointLoaded: function(engineInitializer) {
-          engineInitializer.initializeEngine().then(function(appRunner) {
+        onEntrypointLoaded: function (engineInitializer) {
+          engineInitializer.initializeEngine().then(function (appRunner) {
             appRunner.runApp();
           });
         }
@@ -56,4 +77,5 @@
     });
   </script>
 </body>
+
 </html>

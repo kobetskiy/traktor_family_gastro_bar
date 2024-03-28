@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:traktor_family_gastro_bar/core/ui/images.dart';
 
 class TopBanners extends StatelessWidget {
   const TopBanners({super.key, required this.tabController});
@@ -8,24 +9,28 @@ class TopBanners extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 150,
-      child: PageView.builder(
-        onPageChanged: (index) => tabController!.index = index,
-        itemCount: 5,
-        itemBuilder: (_, __) => Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: InkWell(
-            onTap: () {},
-            customBorder: RoundedRectangleBorder(
+      child: AspectRatio(
+        aspectRatio: 2 / 1,
+        child: PageView.builder(
+          onPageChanged: (index) => tabController!.index = index,
+          itemCount: 3,
+          itemBuilder: (_, int index) => Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: ClipRRect(
               borderRadius: BorderRadius.circular(15),
-            ),
-            child: Container(
-              width: 300,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(15)),
-                color: Colors.white12,
+              child: Material(
+                child: Ink.image(
+                  image: AssetImage(AppImages.banners[index]),
+                  fit: BoxFit.fitHeight,
+                  // child: InkWell(
+                  //   onTap: () {},
+                  //   customBorder: RoundedRectangleBorder(
+                  //     borderRadius: BorderRadius.circular(15),
+                  //   ),
+                  // ),
+                  // ! think about adding callback on banner
+                ),
               ),
-              child: const Center(child: Text('Image banner here')),
             ),
           ),
         ),

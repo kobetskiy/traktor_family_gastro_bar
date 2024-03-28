@@ -1,32 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/core/ui/icons.dart';
+import 'package:traktor_family_gastro_bar/features/home/service/contact_button_service.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/widgets.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class FacebookButtonLink extends StatelessWidget {
   const FacebookButtonLink({super.key});
 
   @override
   Widget build(BuildContext context) {
-    void onFacebookButtonPressed() async {
-      final uri = Uri.parse('https://www.facebook.com/traktorgastrobar');
-      if (await canLaunchUrl(uri)) {
-        launchUrl(uri);
-      } else {
-        if (context.mounted) {
-          showAdaptiveDialog(
-            context: context,
-            builder: (context) => AdaptiveAlertDialog(
-              content: S.current.wrongLinkDialogText,
-            ),
-          );
-        }
-      }
-    }
+
+    final contactButtonService = ContactButtonService();
+    final uri = Uri.parse(contactButtonService.facebookLink);
     
     return PrimaryButton.outlined(
-      onPressed: onFacebookButtonPressed,
+      onPressed: () => contactButtonService.openLink(context, uri),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,

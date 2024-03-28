@@ -49,8 +49,11 @@ class _HomeMealsCardContent extends StatelessWidget {
               const SizedBox(height: 10),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 5),
-                child: Text("Шакшука з трюфельним крем-сиром та кензою",
-                    maxLines: 1, overflow: TextOverflow.ellipsis),
+                child: Text(
+                  "Шакшука з трюфельним крем-сиром та кензою",
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
               const SizedBox(height: 10),
               Padding(

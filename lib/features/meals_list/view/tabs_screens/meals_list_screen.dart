@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/bloc/meals_list_bloc.dart';
-import 'package:traktor_family_gastro_bar/features/meals_list/view/tabs_screens/tabs_screens.dart';
+import 'package:traktor_family_gastro_bar/features/meals_list/view/tabs_screens/tab_service.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/widgets/index.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/widgets.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
@@ -12,30 +12,15 @@ class MealsListScreen extends StatefulWidget {
   State<MealsListScreen> createState() => _MealsListScreenState();
 }
 
-const allTabs = [
-  EuropeanCuisineTab(),
-  JapaneseCuisineTab(),
-  BarbecueMenuTab(),
-  BarTab(),
-  HookahTab(),
-];
-
-List<Tab> allTabsNames(BuildContext context) => [
-  Tab(child: Text(S.of(context).europeanCuisine)),
-  Tab(child: Text(S.of(context).japaneseCuisine)),
-  Tab(child: Text(S.of(context).barbecueMenu)),
-  Tab(child: Text(S.of(context).bar)),
-  Tab(child: Text(S.of(context).hookah)),
-];
+final _tabService = TabService();
 
 class _MealsListScreenState extends State<MealsListScreen> {
-  bool isSearchShown = false;
   final _textController = TextEditingController();
   final mealsListBloc = MealsListBloc();
 
   void switchSearchField() {
     _textController.clear();
-    isSearchShown = !isSearchShown;
+    _tabService.switchSearchField();
     setState(() {});
   }
 
@@ -48,7 +33,7 @@ class _MealsListScreenState extends State<MealsListScreen> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: allTabs.length,
+      length: _tabService.allTabs.length,
       child: Scaffold(
         body: SafeArea(
           child: NestedScrollView(
@@ -67,11 +52,11 @@ class _MealsListScreenState extends State<MealsListScreen> {
             body: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                isSearchShown
+                _tabService.isSearchShown
                     ? SearchTextFieldWidget(
                         controller: _textController, bloc: mealsListBloc)
                     : const _TabBarWidget(),
-                isSearchShown
+                _tabService.isSearchShown
                     ? SearchedMealsListWidget(
                         controller: _textController, bloc: mealsListBloc)
                     : const _TabBarViewWidget(),
@@ -84,14 +69,20 @@ class _MealsListScreenState extends State<MealsListScreen> {
   }
 }
 
-class _TabBarWidget extends StatelessWidget {
+class _TabBarWidget extends StatefulWidget {
   const _TabBarWidget();
 
   @override
+  State<_TabBarWidget> createState() => _TabBarWidgetState();
+}
+
+class _TabBarWidgetState extends State<_TabBarWidget> {
+  @override
   Widget build(BuildContext context) {
     return TabBar(
+      controller: _tabService.tabController,
       isScrollable: true,
-      tabs: allTabsNames(context),
+      tabs: _tabService.allTabsNames(context),
     );
   }
 }
@@ -101,10 +92,10 @@ class _TabBarViewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Expanded(
+    return Expanded(
       child: TabBarView(
-        physics: NeverScrollableScrollPhysics(),
-        children: allTabs,
+        physics: const NeverScrollableScrollPhysics(),
+        children: _tabService.allTabs,
       ),
     );
   }

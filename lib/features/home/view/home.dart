@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/core/ui/colors.dart';
 import 'package:traktor_family_gastro_bar/features/home/view/bottom_sheet_buttons/index.dart';
 import 'package:traktor_family_gastro_bar/features/home/widgets/index.dart';
+import 'package:traktor_family_gastro_bar/features/meals_list/view/tabs_screens/tab_service.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/widgets.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
@@ -13,11 +14,16 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
-  TabController? tabController;
+  TabController? bannerController;
+  final tabService = TabService();
 
   @override
   void initState() {
-    tabController = TabController(length: 3, vsync: this);
+    bannerController = TabController(length: 3, vsync: this);
+    tabService.tabController = TabController(
+      length: tabService.allTabs.length,
+      vsync: this,
+    );
     super.initState();
   }
 
@@ -35,9 +41,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                TopBanners(tabController: tabController),
+                TopBanners(bannerController: bannerController),
                 const SizedBox(height: 5),
-                Center(child: TabPageSelector(controller: tabController)),
+                Center(child: TabPageSelector(controller: bannerController)),
                 const SizedBox(height: 20),
                 const HomeCategoriesListView(),
                 const SizedBox(height: 20),

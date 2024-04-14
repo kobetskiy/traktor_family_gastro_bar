@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/core/ui/colors.dart';
 
 class BottomNavigationBarWidget extends StatefulWidget {
-  const BottomNavigationBarWidget(
-      {super.key, required this.tabIndex, this.onTap});
+  const BottomNavigationBarWidget({
+    super.key,
+    required this.tabIndex,
+    this.onTap,
+  });
 
   final int tabIndex;
-  final Function(int)? onTap;
+  final void Function(int)? onTap;
 
   @override
   State<BottomNavigationBarWidget> createState() =>

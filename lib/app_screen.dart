@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:traktor_family_gastro_bar/bottom_navigation_bar_service.dart';
 
-import 'features/screens.dart';
 import 'features/widgets/bottom_navigation_bar_widget.dart';
 
 class AppScreen extends StatefulWidget {
@@ -11,31 +11,22 @@ class AppScreen extends StatefulWidget {
 }
 
 class _AppScreenState extends State<AppScreen> {
-  int _selectedIndex = 0;
-  static const List<Widget> _widgetOptions = [
-    HomeScreen(),
-    MealsListScreen(),
-    FavoriteScreen(),
-    SettingsScreen(),
-  ];
-
-  void _onItemTapped(int index) {
-    if (_selectedIndex == index) return;
-    _selectedIndex = index;
-    setState(() {});
-  }
+  final bottomNavBarService = BottomNavigationBarService();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _widgetOptions.elementAt(_selectedIndex),
+      body: bottomNavBarService.widgetOptions.elementAt(
+        bottomNavBarService.getSelectedIndex,
+      ),
       bottomNavigationBar: Theme(
-        data: ThemeData(
-          splashColor: Colors.transparent,
-        ),
+        data: ThemeData(splashColor: Colors.transparent),
         child: BottomNavigationBarWidget(
-          tabIndex: _selectedIndex,
-          onTap: _onItemTapped,
+          tabIndex: bottomNavBarService.getSelectedIndex,
+          onTap: (int value) {
+            bottomNavBarService.onTap(value);
+            setState(() {});
+          },
         ),
       ),
     );

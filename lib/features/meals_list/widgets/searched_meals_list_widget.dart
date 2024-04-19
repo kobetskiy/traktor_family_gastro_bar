@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:traktor_family_gastro_bar/features/data/database/database_constants.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/bloc/exeptions.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/bloc/meals_list_bloc.dart';
-import 'package:traktor_family_gastro_bar/features/meals_list/data/database/collections.dart';
 
 import 'index.dart';
 
@@ -41,7 +41,7 @@ class _SearchedMealsListWidgetState extends State<SearchedMealsListWidget> {
             return const NoDataWidget();
           } else if (state.exception is ServerExeption) {
             return const ServerErrorWidget(
-              collection: Collections.europeanCuisine,
+              collection: DatabaseCategories.europeanCuisine,
             );
           }
         }

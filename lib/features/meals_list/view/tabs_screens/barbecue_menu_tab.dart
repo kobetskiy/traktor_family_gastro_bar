@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:traktor_family_gastro_bar/features/data/database/database_constants.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/bloc/meals_list_bloc.dart';
-import 'package:traktor_family_gastro_bar/features/meals_list/data/database/collections.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/widgets/index.dart';
 
 class BarbecueMenuTab extends StatefulWidget {
@@ -12,25 +12,25 @@ class BarbecueMenuTab extends StatefulWidget {
 }
 
 class _BarbecueMenuTabState extends State<BarbecueMenuTab> {
-  final _mealsListBloc = MealsListBloc();
+  final _bloc = MealsListBloc();
 
   @override
   void initState() {
     super.initState();
-    _mealsListBloc.add(LoadAllMealsList(collection: Collections.barbecueMenu));
+    _bloc.add(LoadAllMealsList(collection: DatabaseCategories.barbecueMenu));
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MealsListBloc, MealsListState>(
-      bloc: _mealsListBloc,
+      bloc: _bloc,
       builder: (context, state) {
         if (state is MealsListSuccess) {
           return MealsListViewWidget(state: state);
         }
         if (state is MealsListFailure) {
           return const ServerErrorWidget(
-            collection: Collections.barbecueMenu,
+            collection: DatabaseCategories.barbecueMenu,
           );
         }
         return const Center(child: CircularProgressIndicator.adaptive());

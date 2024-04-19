@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/core/ui/colors.dart';
+import 'package:traktor_family_gastro_bar/features/data/database/database_constants.dart';
 import 'package:traktor_family_gastro_bar/features/home/view/bottom_sheet_buttons/index.dart';
 import 'package:traktor_family_gastro_bar/features/home/widgets/index.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/view/tabs_screens/tab_service.dart';
@@ -47,25 +48,29 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 const SizedBox(height: 20),
                 const HomeCategoriesListView(),
                 const SizedBox(height: 20),
-                const Padding(
-                  padding: EdgeInsets.only(left: 30),
-                  child: Text('Популярні'),
+                Padding(
+                  padding: const EdgeInsets.only(left: 30),
+                  child: Text(S.of(context).popular),
                 ),
                 const SizedBox(height: 10),
-                const HomePopularMealsListView(),
+                const HomeMealsPresentation(
+                  filterField: DatabaseMealFields.likesCount,
+                ),
                 const SizedBox(height: 20),
-                const Padding(
-                  padding: EdgeInsets.only(left: 30),
-                  child: Text('Новинки'),
+                Padding(
+                  padding: const EdgeInsets.only(left: 30),
+                  child: Text(S.of(context).novelty),
                 ),
                 const SizedBox(height: 10),
-                const HomePopularMealsListView(),
+                const HomeMealsPresentation(
+                  filterField: DatabaseMealFields.date,
+                ),
                 const SizedBox(height: 20),
                 Center(
                   child: PrimaryButton.outlined(
                     width: 315,
                     child: const ContactUsButtonContent(),
-                    onPressed: () => showContactUsSheet(context),
+                    onPressed: () => _showContactUsSheet(context),
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -77,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     );
   }
 
-  Future<T?> showContactUsSheet<T>(BuildContext context) {
+  Future<T?> _showContactUsSheet<T>(BuildContext context) {
     return showModalBottomSheet(
       context: context,
       builder: (context) => SizedBox(

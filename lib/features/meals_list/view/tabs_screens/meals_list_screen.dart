@@ -16,7 +16,7 @@ final _tabService = TabService();
 
 class _MealsListScreenState extends State<MealsListScreen> {
   final _textController = TextEditingController();
-  final mealsListBloc = MealsListBloc();
+  final _mealsListBloc = MealsListBloc();
 
   void switchSearchField() {
     _textController.clear();
@@ -54,11 +54,11 @@ class _MealsListScreenState extends State<MealsListScreen> {
               children: [
                 _tabService.isSearchShown
                     ? SearchTextFieldWidget(
-                        controller: _textController, bloc: mealsListBloc)
+                        controller: _textController, bloc: _mealsListBloc)
                     : const _TabBarWidget(),
                 _tabService.isSearchShown
                     ? SearchedMealsListWidget(
-                        controller: _textController, bloc: mealsListBloc)
+                        controller: _textController, bloc: _mealsListBloc)
                     : const _TabBarViewWidget(),
               ],
             ),

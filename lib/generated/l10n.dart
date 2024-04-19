@@ -286,6 +286,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Novelty`
+  String get novelty {
+    return Intl.message(
+      'Novelty',
+      name: 'novelty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Popular`
+  String get popular {
+    return Intl.message(
+      'Popular',
+      name: 'popular',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

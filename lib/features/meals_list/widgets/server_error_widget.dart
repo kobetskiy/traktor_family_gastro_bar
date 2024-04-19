@@ -7,9 +7,9 @@ import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 final mealsListBloc = MealsListBloc();
 
 class ServerErrorWidget extends StatelessWidget {
-  const ServerErrorWidget({super.key, required this.collection});
+  const ServerErrorWidget({super.key, this.collection});
 
-  final String collection;
+  final String? collection;
 
   @override
   Widget build(BuildContext context) {
@@ -31,15 +31,17 @@ class ServerErrorWidget extends StatelessWidget {
               .bodyMedium!
               .copyWith(color: AppColors.subtitleColor),
         ),
-        const SizedBox(height: 40),
-        TextButton(
+        collection != null
+            ? const SizedBox(height: 40)
+            : const SizedBox.shrink(),
+        collection != null ? TextButton(
           child: Text(
             S.of(context).tryAgain,
             style: const TextStyle(fontSize: 16),
           ),
           onPressed: () =>
-              mealsListBloc.add(LoadAllMealsList(collection: collection)),
-        )
+              mealsListBloc.add(LoadAllMealsList(collection: collection!)),
+        ) : const SizedBox.shrink(),
       ],
     );
   }

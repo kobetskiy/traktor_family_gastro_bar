@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:traktor_family_gastro_bar/features/meals_list/data/models/meal_model.dart';
+import 'package:traktor_family_gastro_bar/features/data/models/meal_model.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/view/meal_details_screen/meal_details_screen.dart';
 
 import 'meal_card_information.dart';
@@ -52,9 +52,9 @@ class _MealCardInformation extends StatelessWidget {
   });
 
   final String title;
-  final String cost;
+  final int cost;
   final String subtitle;
-  final String likesCount;
+  final int likesCount;
   final String grams;
 
   @override

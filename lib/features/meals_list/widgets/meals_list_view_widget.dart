@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:traktor_family_gastro_bar/features/data/database/database_constants.dart';
+import 'package:traktor_family_gastro_bar/features/data/models/meal_model.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/bloc/meals_list_bloc.dart';
-import 'package:traktor_family_gastro_bar/features/meals_list/data/models/meal_model.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/widgets/meal_card/meal_card.dart';
 
 class MealsListViewWidget extends StatelessWidget {
@@ -14,12 +15,14 @@ class MealsListViewWidget extends StatelessWidget {
       itemCount: state.data.length,
       itemBuilder: (_, int index) => MealCard(
         mealModel: MealModel(
-          title: state.data[index]['title'],
-          subtitle: state.data[index]['subtitle'],
-          imageURL: state.data[index]['imageURL'],
-          cost: state.data[index]['cost'],
-          likesCount: state.data[index]['likesCount'],
-          grams: state.data[index]['grams'],
+          title: state.data[index][DatabaseMealFields.title],
+          subtitle: state.data[index][DatabaseMealFields.subtitle],
+          imageURL: state.data[index][DatabaseMealFields.imageURL],
+          cost: state.data[index][DatabaseMealFields.cost],
+          likesCount: state.data[index][DatabaseMealFields.likesCount],
+          grams: state.data[index][DatabaseMealFields.grams],
+          category: state.data[index][DatabaseMealFields.category],
+          date: state.data[index][DatabaseMealFields.date],
         ),
       ),
       separatorBuilder: (_, __) => const Divider(height: 0),

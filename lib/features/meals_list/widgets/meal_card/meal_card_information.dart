@@ -23,14 +23,12 @@ String checkCost(String cost) {
 class MealCardCost extends StatelessWidget {
   const MealCardCost({super.key, required this.cost});
 
-  final String cost;
+  final int cost;
 
   @override
   Widget build(BuildContext context) {
     return Text(
-      checkCost(cost).isEmpty
-          ? cost
-          : '${checkCost(cost)} ${S.of(context).uah}',
+          '${checkCost(cost.toString())} ${S.of(context).uah}',
       style: Theme.of(context)
           .textTheme
           .bodyMedium!
@@ -58,7 +56,7 @@ class MealCardSubtitle extends StatelessWidget {
 class MealCardLikes extends StatelessWidget {
   const MealCardLikes({super.key, required this.likesCount});
 
-  final String likesCount;
+  final int likesCount;
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +77,7 @@ class MealCardLikes extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(right: 5),
               child: Center(
-                child: Text(likesCount),
+                child: Text(likesCount.toString()),
               ),
             )
           ],

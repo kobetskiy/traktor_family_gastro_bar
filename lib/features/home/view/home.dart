@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:traktor_family_gastro_bar/core/ui/colors.dart';
+import 'package:traktor_family_gastro_bar/core/ui/ui_constants.dart';
 import 'package:traktor_family_gastro_bar/features/data/database/database_constants.dart';
-import 'package:traktor_family_gastro_bar/features/home/view/bottom_sheet_buttons/index.dart';
+import 'package:traktor_family_gastro_bar/features/home/widgets/bottom_sheet_buttons/index.dart';
 import 'package:traktor_family_gastro_bar/features/home/widgets/index.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/view/tabs_screens/tab_service.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/widgets.dart';
@@ -20,12 +20,12 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   @override
   void initState() {
+    super.initState();
     bannerController = TabController(length: 3, vsync: this);
     tabService.tabController = TabController(
       length: tabService.allTabs.length,
       vsync: this,
     );
-    super.initState();
   }
 
   @override
@@ -43,14 +43,17 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 TopBanners(bannerController: bannerController),
-                const SizedBox(height: 5),
+                const SizedBox(height: 15),
                 Center(child: TabPageSelector(controller: bannerController)),
-                const SizedBox(height: 20),
+                const SizedBox(height: 15),
                 const HomeCategoriesListView(),
                 const SizedBox(height: 20),
                 Padding(
                   padding: const EdgeInsets.only(left: 30),
-                  child: Text(S.of(context).popular),
+                  child: Text(
+                    S.of(context).popular,
+                    style: AppTextStyles.titleSmall,
+                  ),
                 ),
                 const SizedBox(height: 10),
                 const HomeMealsPresentation(
@@ -59,7 +62,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 const SizedBox(height: 20),
                 Padding(
                   padding: const EdgeInsets.only(left: 30),
-                  child: Text(S.of(context).novelty),
+                  child: Text(
+                    S.of(context).novelty,
+                    style: AppTextStyles.titleSmall,
+                  ),
                 ),
                 const SizedBox(height: 10),
                 const HomeMealsPresentation(
@@ -105,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 25),
               child: Text(
                 S.of(context).contactUs,
-                style: const TextStyle(fontSize: 18),
+                style: AppTextStyles.titleSmall.copyWith(fontSize: 18),
               ),
             ),
             const InstagramButtonLink(),

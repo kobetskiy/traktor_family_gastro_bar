@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:traktor_family_gastro_bar/core/ui/icons.dart';
-import 'package:traktor_family_gastro_bar/features/home/service/contact_button_service.dart';
+import 'package:traktor_family_gastro_bar/core/ui/icons_constants.dart';
+import 'package:traktor_family_gastro_bar/features/home/data/service/contact_button_service.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/widgets.dart';
+import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
-class PhoneButtonLink extends StatelessWidget {
-  const PhoneButtonLink({super.key});
+class FacebookButtonLink extends StatelessWidget {
+  const FacebookButtonLink({super.key});
 
   @override
   Widget build(BuildContext context) {
 
     final contactButtonService = ContactButtonService();
-    final uri = Uri.parse('tel:${contactButtonService.phoneNumber}');
-
+    final uri = Uri.parse(contactButtonService.facebookLink);
+    
     return PrimaryButton.outlined(
       onPressed: () => contactButtonService.openLink(context, uri),
       child: Row(
@@ -21,10 +22,10 @@ class PhoneButtonLink extends StatelessWidget {
           SizedBox(
             width: 60,
             height: 60,
-            child: Image.asset(AppIcons.phone),
+            child: Image.asset(AppIcons.facebook),
           ),
           const SizedBox(width: 10),
-          Text(contactButtonService.phoneNumber),
+          Text(S.of(context).writeOnFacebook),
         ],
       ),
     );

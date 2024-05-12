@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:traktor_family_gastro_bar/core/ui/colors.dart';
+import 'package:traktor_family_gastro_bar/core/ui/colors_constants.dart';
+import 'package:traktor_family_gastro_bar/core/ui/font_constants.dart';
 import 'package:traktor_family_gastro_bar/features/data/models/meal_model.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/widgets/meal_card/meal_card_information.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
@@ -42,16 +43,13 @@ class _Information extends StatelessWidget {
             children: [
               Flexible(
                 flex: 3,
-                child: Text(mealModel.title,
-                    style: Theme.of(context).textTheme.titleMedium),
+                child: Text(mealModel.title, style: AppTextStyles.titleLarge),
               ),
               Flexible(
                 flex: 1,
                 child: Text(
                   '${mealModel.cost} ${S.current.uah}',
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleMedium!
+                  style: AppTextStyles.titleLarge
                       .copyWith(color: AppColors.primaryColor),
                 ),
               )
@@ -63,9 +61,7 @@ class _Information extends StatelessWidget {
           mealModel.subtitle != ''
               ? Text(
                   mealModel.subtitle,
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodySmall!
+                  style: AppTextStyles.subtitle
                       .copyWith(color: AppColors.subtitleColor),
                 )
               : const SizedBox.shrink(),
@@ -73,6 +69,9 @@ class _Information extends StatelessWidget {
           Row(
             children: [
               InkWell(
+                customBorder: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(6),
+                ),
                 onTap: () {},
                 child: MealCardLikes(likesCount: mealModel.likesCount),
               ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:traktor_family_gastro_bar/core/ui/colors.dart';
-import 'package:traktor_family_gastro_bar/core/ui/images.dart';
+import 'package:traktor_family_gastro_bar/core/ui/colors_constants.dart';
+import 'package:traktor_family_gastro_bar/core/ui/font_constants.dart';
+import 'package:traktor_family_gastro_bar/core/ui/images_constants.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
 class NoInternetScreen extends StatelessWidget {
@@ -19,7 +20,7 @@ class NoInternetScreen extends StatelessWidget {
             ),
             Text(
               S.of(context).noInternet,
-              style: Theme.of(context).textTheme.titleMedium,
+              style: AppTextStyles.titleLarge,
             ),
             const SizedBox(height: 10),
             Padding(
@@ -27,9 +28,7 @@ class NoInternetScreen extends StatelessWidget {
               child: Text(
                 S.of(context).chechYourConnection,
                 textAlign: TextAlign.center,
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyMedium!
+                style: AppTextStyles.titleSmall
                     .copyWith(color: AppColors.subtitleColor),
               ),
             ),

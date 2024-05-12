@@ -5,8 +5,7 @@ import 'database_constants.dart';
 
 class DatabaseServise {
   Future<QuerySnapshot<Map<String, dynamic>>> getAllMeals(
-    String category,
-  ) async {
+      String category) async {
     return await FirebaseFirestore.instance
         .collection(DatabaseCollections.mealsCollection)
         .where(DatabaseMealFields.category, isEqualTo: category)
@@ -14,8 +13,7 @@ class DatabaseServise {
   }
 
   Future<List<QueryDocumentSnapshot<Map<String, dynamic>>>> getSearchedMeals(
-    String query,
-  ) async {
+      String query) async {
     List<QueryDocumentSnapshot<Map<String, dynamic>>> searchedData = [];
     if (query != '') {
       final allMealsList = await FirebaseFirestore.instance

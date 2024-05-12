@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:traktor_family_gastro_bar/core/ui/colors.dart';
+import 'package:traktor_family_gastro_bar/core/ui/colors_constants.dart';
+import 'package:traktor_family_gastro_bar/core/ui/font_constants.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
 class MealCardTitle extends StatelessWidget {
@@ -9,7 +10,7 @@ class MealCardTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(title, style: Theme.of(context).textTheme.bodyMedium);
+    return Text(title, style: AppTextStyles.titleSmall);
   }
 }
 
@@ -22,10 +23,7 @@ class MealCardCost extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       '$cost ${S.of(context).uah}',
-      style: Theme.of(context)
-          .textTheme
-          .bodyMedium!
-          .copyWith(color: AppColors.primaryColor),
+      style: AppTextStyles.titleSmall.copyWith(color: AppColors.primaryColor),
     );
   }
 }

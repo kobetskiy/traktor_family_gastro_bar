@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:traktor_family_gastro_bar/core/ui/colors.dart';
+import 'package:traktor_family_gastro_bar/core/ui/colors_constants.dart';
+import 'package:traktor_family_gastro_bar/core/ui/font_constants.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
 class MealCardTitle extends StatelessWidget {
@@ -9,7 +10,7 @@ class MealCardTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(title, style: Theme.of(context).textTheme.bodyMedium);
+    return Text(title, style: AppTextStyles.titleSmall);
   }
 }
 
@@ -28,11 +29,8 @@ class MealCardCost extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-          '${checkCost(cost.toString())} ${S.of(context).uah}',
-      style: Theme.of(context)
-          .textTheme
-          .bodyMedium!
-          .copyWith(color: AppColors.primaryColor),
+      '${checkCost(cost.toString())} ${S.of(context).uah}',
+      style: AppTextStyles.titleSmall.copyWith(color: AppColors.primaryColor),
     );
   }
 }
@@ -46,7 +44,7 @@ class MealCardSubtitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       subtitle ?? '',
-      style: Theme.of(context).textTheme.bodySmall,
+      style: AppTextStyles.subtitle,
       maxLines: 3,
       overflow: TextOverflow.fade,
     );
@@ -95,12 +93,8 @@ class MealCardGrams extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      grams.isNotEmpty
-          ? grams + S.of(context).gramsSymbol
-          : '',
-      style: Theme.of(context)
-          .textTheme
-          .bodySmall!
+      grams.isNotEmpty ? grams + S.of(context).gramsSymbol : '',
+      style: AppTextStyles.subtitle
           .copyWith(color: AppColors.subtitleColor),
     );
   }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:traktor_family_gastro_bar/core/ui/colors.dart';
+import 'package:traktor_family_gastro_bar/core/ui/colors_constants.dart';
 
 class PrimaryButton extends StatelessWidget {
   const PrimaryButton({

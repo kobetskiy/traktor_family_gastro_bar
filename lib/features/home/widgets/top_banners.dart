@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:traktor_family_gastro_bar/core/ui/images.dart';
+import 'package:traktor_family_gastro_bar/core/ui/images_constants.dart';
+import 'package:traktor_family_gastro_bar/features/home/data/service/banner_service.dart';
 
 class TopBanners extends StatelessWidget {
   const TopBanners({super.key, required this.bannerController});
@@ -8,6 +9,8 @@ class TopBanners extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bannerService = BannerService();
+
     return Center(
       child: ConstrainedBox(
         constraints: const BoxConstraints(maxHeight: 300),
@@ -24,13 +27,12 @@ class TopBanners extends StatelessWidget {
                   child: Ink.image(
                     image: AssetImage(AppImages.banners[index]),
                     fit: BoxFit.fitHeight,
-                    // child: InkWell(
-                    //   onTap: () {},
-                    //   customBorder: RoundedRectangleBorder(
-                    //     borderRadius: BorderRadius.circular(15),
-                    //   ),
-                    // ),
-                    // ! think about adding callback on banner
+                    child: InkWell(
+                      onTap: () => bannerService.navigateTo(context, index),
+                      customBorder: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                    ),
                   ),
                 ),
               ),

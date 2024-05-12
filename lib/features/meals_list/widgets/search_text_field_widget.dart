@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:traktor_family_gastro_bar/core/ui/colors.dart';
+import 'package:traktor_family_gastro_bar/core/ui/colors_constants.dart';
+import 'package:traktor_family_gastro_bar/core/ui/font_constants.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/bloc/meals_list_bloc.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
@@ -27,12 +28,10 @@ class _SearchTextFieldWidgetState extends State<SearchTextFieldWidget> {
         autofocus: true,
         onChanged: (query) =>
             widget.bloc.add(LoadSearchedMealsList(query: query)),
-        style: Theme.of(context).textTheme.bodyMedium,
+        style: AppTextStyles.titleSmall,
         decoration: InputDecoration(
           hintText: S.of(context).search,
-          hintStyle: Theme.of(context)
-              .textTheme
-              .bodyMedium!
+          hintStyle: AppTextStyles.titleSmall
               .copyWith(color: AppColors.subtitleColor),
           contentPadding: const EdgeInsets.symmetric(horizontal: 20),
           border: const OutlineInputBorder(

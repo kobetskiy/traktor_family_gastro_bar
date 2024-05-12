@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:traktor_family_gastro_bar/core/ui/icons.dart';
-import 'package:traktor_family_gastro_bar/features/home/service/contact_button_service.dart';
+import 'package:traktor_family_gastro_bar/core/ui/icons_constants.dart';
+import 'package:traktor_family_gastro_bar/features/home/data/service/contact_button_service.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/widgets.dart';
-import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
-class EmailButtonLink extends StatelessWidget {
-  const EmailButtonLink({super.key});
+class PhoneButtonLink extends StatelessWidget {
+  const PhoneButtonLink({super.key});
 
   @override
   Widget build(BuildContext context) {
 
     final contactButtonService = ContactButtonService();
-    final uri = Uri(scheme: contactButtonService.emailScheme);
+    final uri = Uri.parse('tel:${contactButtonService.phoneNumber}');
 
     return PrimaryButton.outlined(
       onPressed: () => contactButtonService.openLink(context, uri),
@@ -22,10 +21,10 @@ class EmailButtonLink extends StatelessWidget {
           SizedBox(
             width: 60,
             height: 60,
-            child: Image.asset(AppIcons.email),
+            child: Image.asset(AppIcons.phone),
           ),
           const SizedBox(width: 10),
-          Text(S.of(context).writeOnEmail),
+          Text(contactButtonService.phoneNumber),
         ],
       ),
     );

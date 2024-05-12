@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:traktor_family_gastro_bar/core/ui/icons.dart';
-import 'package:traktor_family_gastro_bar/features/home/service/contact_button_service.dart';
+import 'package:traktor_family_gastro_bar/core/ui/icons_constants.dart';
+import 'package:traktor_family_gastro_bar/features/home/data/service/contact_button_service.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/primary_button.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 

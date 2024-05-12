@@ -31,7 +31,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "favorites" : MessageLookupByLibrary.simpleMessage("Улюблені"),
     "from10amTo9pmFreeInUkraine" : MessageLookupByLibrary.simpleMessage("З 10:00 до 21:00"),
     "gramsSymbol" : MessageLookupByLibrary.simpleMessage("г"),
-    "haveAQuestionContactUs" : MessageLookupByLibrary.simpleMessage("Є питання? Зв\'яжіться з нами"),
+    "haveAQuestionContactUs" : MessageLookupByLibrary.simpleMessage("Питання? Зв\'яжіться з нами"),
     "hookah" : MessageLookupByLibrary.simpleMessage("Кальян"),
     "japaneseCuisine" : MessageLookupByLibrary.simpleMessage("Японська кухня"),
     "noInternet" : MessageLookupByLibrary.simpleMessage("Немає з\'єднання"),

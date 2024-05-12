@@ -1,23 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:traktor_family_gastro_bar/core/ui/colors.dart';
-
-final bodyMedium = TextStyle(
-  color: AppColors.titleColor,
-  fontSize: 15,
-  fontWeight: FontWeight.w600,
-);
-
-final bodySmall = TextStyle(
-  color: AppColors.titleColor,
-  fontSize: 14,
-  fontWeight: FontWeight.w300,
-);
-
-final titleMedium = TextStyle(
-  color: AppColors.titleColor,
-  fontSize: 19,
-  fontWeight: FontWeight.w600,
-);
+import 'package:traktor_family_gastro_bar/core/ui/colors_constants.dart';
 
 final ThemeData theme = ThemeData(
   colorScheme: ColorScheme.fromSeed(
@@ -26,9 +8,10 @@ final ThemeData theme = ThemeData(
   ),
   primaryColor: AppColors.primaryColor,
   iconButtonTheme: IconButtonThemeData(
-      style: ButtonStyle(
-    iconColor: MaterialStatePropertyAll(AppColors.subtitleColor),
-  )),
+    style: ButtonStyle(
+      iconColor: MaterialStatePropertyAll(AppColors.subtitleColor),
+    ),
+  ),
   useMaterial3: true,
   scaffoldBackgroundColor: AppColors.backgroundColor,
   fontFamily: 'OpenSans',
@@ -51,10 +34,5 @@ final ThemeData theme = ThemeData(
         topRight: Radius.circular(24),
       ),
     ),
-  ),
-  textTheme: TextTheme(
-    bodyMedium: bodyMedium,
-    bodySmall: bodySmall,
-    titleMedium: titleMedium,
   ),
 );

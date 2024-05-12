@@ -31,27 +31,30 @@ class App extends StatelessWidget {
         localizationsDelegates: AppLocalization.localizationsDelegates,
         supportedLocales: AppLocalization.supportedLocales,
         home: const LoadingScreen(),
-        builder: (context, child) => BlocListener<InternetCubit, InternetState>(
-          listener: (context, state) {
-            late final Widget page;
-            switch (state.type) {
-              case InternetTypes.connected:
-                page = const AppScreen();
-                break;
-              case InternetTypes.offline:
-                page = const NoInternetScreen();
-                break;
-              default:
-                page = const LoadingScreen();
-            }
-            kNavigatorKey.currentState!.pushAndRemoveUntil(
-              MaterialPageRoute(
-                builder: (_) => page,
-              ),
-              (route) => false,
-            );
-          },
-          child: child,
+        builder: (context, child) => MediaQuery(
+          data: MediaQuery.of(context).copyWith(textScaleFactor: 1),
+          child: BlocListener<InternetCubit, InternetState>(
+            listener: (context, state) {
+              late final Widget page;
+              switch (state.type) {
+                case InternetTypes.connected:
+                  page = const AppScreen();
+                  break;
+                case InternetTypes.offline:
+                  page = const NoInternetScreen();
+                  break;
+                default:
+                  page = const LoadingScreen();
+              }
+              kNavigatorKey.currentState!.pushAndRemoveUntil(
+                MaterialPageRoute(
+                  builder: (_) => page,
+                ),
+                (route) => false,
+              );
+            },
+            child: child,
+          ),
         ),
       ),
     );

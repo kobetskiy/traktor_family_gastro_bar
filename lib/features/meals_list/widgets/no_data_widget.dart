@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:traktor_family_gastro_bar/core/ui/colors.dart';
+import 'package:traktor_family_gastro_bar/core/ui/colors_constants.dart';
+import 'package:traktor_family_gastro_bar/core/ui/font_constants.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
 class NoDataWidget extends StatelessWidget {
@@ -13,16 +14,14 @@ class NoDataWidget extends StatelessWidget {
         children: [
           Text(
             S.of(context).nothingFound,
-            style: Theme.of(context).textTheme.titleMedium,
+            style: AppTextStyles.titleLarge,
           ),
           const SizedBox(height: 5),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Text(
               S.of(context).checkTheRequest,
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyMedium!
+              style: AppTextStyles.titleSmall
                   .copyWith(color: AppColors.subtitleColor),
               textAlign: TextAlign.center,
             ),

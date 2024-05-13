@@ -32,7 +32,7 @@ class App extends StatelessWidget {
         supportedLocales: AppLocalization.supportedLocales,
         home: const LoadingScreen(),
         builder: (context, child) => MediaQuery(
-          data: MediaQuery.of(context).copyWith(textScaleFactor: 1),
+          data: MediaQuery.of(context).copyWith(textScaler: const TextScaler.linear(1)),
           child: BlocListener<InternetCubit, InternetState>(
             listener: (context, state) {
               late final Widget page;

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:traktor_family_gastro_bar/features/data/database/database_constants.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/bloc/meals_list_bloc.dart';
+import 'package:traktor_family_gastro_bar/features/meals_list/widgets/categories_meals_shimmer_loading.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/widgets/index.dart';
 
 class EuropeanCuisineTab extends StatefulWidget {
@@ -31,9 +32,10 @@ class _EuropeanCuisineTabState extends State<EuropeanCuisineTab> {
         }
         if (state is MealsListFailure) {
           return const ServerErrorWidget(
-              collection: DatabaseMealCategories.europeanCuisine);
+            collection: DatabaseMealCategories.europeanCuisine,
+          );
         }
-        return const Center(child: CircularProgressIndicator.adaptive());
+        return const CategoriesMealsShimmerLoading();
       },
     );
   }

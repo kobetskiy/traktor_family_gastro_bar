@@ -1,45 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:traktor_family_gastro_bar/core/ui/images_constants.dart';
-import 'package:traktor_family_gastro_bar/features/home/data/service/banner_service.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:traktor_family_gastro_bar/features/home/bloc/banner_bloc/banner_bloc.dart';
+import 'package:traktor_family_gastro_bar/features/home/widgets/index.dart';
+import 'package:traktor_family_gastro_bar/features/meals_list/widgets/server_error_widget.dart';
 
-class TopBanners extends StatelessWidget {
-  const TopBanners({super.key, required this.bannerController});
+class TopBanners extends StatefulWidget {
+  const TopBanners({super.key});
 
-  final TabController? bannerController;
+  @override
+  State<TopBanners> createState() => _JapaneseCuisineTabState();
+}
+
+class _JapaneseCuisineTabState extends State<TopBanners> {
+  final _bannerBloc = BannerBloc();
+
+  @override
+  void initState() {
+    super.initState();
+    _bannerBloc.add(LoadBannersList());
+  }
 
   @override
   Widget build(BuildContext context) {
-    final bannerService = BannerService();
-
-    return Center(
-      child: ConstrainedBox(
-        constraints: const BoxConstraints(maxHeight: 300),
-        child: AspectRatio(
-          aspectRatio: 2.13 / 1,
-          child: PageView.builder(
-            onPageChanged: (index) => bannerController!.index = index,
-            itemCount: 3,
-            itemBuilder: (_, int index) => Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(15),
-                child: Material(
-                  child: Ink.image(
-                    image: AssetImage(AppImages.banners[index]),
-                    fit: BoxFit.fitHeight,
-                    child: InkWell(
-                      onTap: () => bannerService.navigateTo(context, index),
-                      customBorder: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
+    return BlocBuilder<BannerBloc, BannerState>(
+      bloc: _bannerBloc,
+      builder: (context, state) {
+        if (state is BannerSuccess) {
+          return BannersPageView(state: state);
+        }
+        if (state is BannerFailure) {
+          return const ServerErrorWidget();
+        }
+        return const Center(child: CircularProgressIndicator.adaptive());
+      },
     );
   }
 }

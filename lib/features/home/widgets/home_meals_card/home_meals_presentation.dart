@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:traktor_family_gastro_bar/features/home/bloc/filtered_meals_list_bloc.dart';
+import 'package:traktor_family_gastro_bar/features/home/bloc/filtered_meals_list_bloc/filtered_meals_list_bloc.dart';
 import 'package:traktor_family_gastro_bar/features/home/widgets/home_meals_card/home_meals_list_view.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/widgets/server_error_widget.dart';
 

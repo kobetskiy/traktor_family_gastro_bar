@@ -1,8 +1,9 @@
 abstract class DatabaseCollections {
   static const String mealsCollection = 'meals';
+  static const String bannersCollection = 'banners';
 }
 
-abstract class DatabaseCategories {
+abstract class DatabaseMealCategories {
   static const String europeanCuisine = 'european-cuisine';
   static const String japaneseCuisine = 'japanese-cuisine';
   static const String barbecueMenu = 'barbecue-menu';

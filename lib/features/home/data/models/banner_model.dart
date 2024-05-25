@@ -1,10 +1,10 @@
-class UserBanner {
+class BannerModel {
   final String title;
   final String content;
   final String appBarTitle;
   final String imageURL;
 
-  UserBanner({
+  BannerModel({
     required this.title,
     required this.content,
     required this.appBarTitle,

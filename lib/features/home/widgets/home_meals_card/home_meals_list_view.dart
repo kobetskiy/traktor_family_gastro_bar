@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/features/data/database/database_constants.dart';
 import 'package:traktor_family_gastro_bar/features/data/models/meal_model.dart';
-import 'package:traktor_family_gastro_bar/features/home/bloc/filtered_meals_list_bloc.dart';
+import 'package:traktor_family_gastro_bar/features/home/bloc/filtered_meals_list_bloc/filtered_meals_list_bloc.dart';
 import 'package:traktor_family_gastro_bar/features/home/widgets/home_meals_card/home_meals_card.dart';
 
 class HomeMealsListView extends StatelessWidget {

@@ -33,7 +33,7 @@ class _CupertinoAlertDialogWidget extends StatelessWidget {
         TextButton(
           onPressed: () => Navigator.pop(context),
           style: ButtonStyle(
-            overlayColor: MaterialStateProperty.all(Colors.transparent),
+            overlayColor: WidgetStateProperty.all(Colors.transparent),
           ),
           child: const Text('OK'),
         )

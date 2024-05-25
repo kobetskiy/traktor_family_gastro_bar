@@ -17,7 +17,8 @@ class _BarbecueMenuTabState extends State<BarbecueMenuTab> {
   @override
   void initState() {
     super.initState();
-    _bloc.add(LoadAllMealsList(collection: DatabaseCategories.barbecueMenu));
+    _bloc
+        .add(LoadAllMealsList(collection: DatabaseMealCategories.barbecueMenu));
   }
 
   @override
@@ -30,7 +31,7 @@ class _BarbecueMenuTabState extends State<BarbecueMenuTab> {
         }
         if (state is MealsListFailure) {
           return const ServerErrorWidget(
-            collection: DatabaseCategories.barbecueMenu,
+            collection: DatabaseMealCategories.barbecueMenu,
           );
         }
         return const Center(child: CircularProgressIndicator.adaptive());

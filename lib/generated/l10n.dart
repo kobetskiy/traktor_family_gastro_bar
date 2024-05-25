@@ -306,6 +306,26 @@ class S {
       args: [],
     );
   }
+
+  /// `The picture is temporarily unavailable`
+  String get thePictureIsTemporarilyUnavailable {
+    return Intl.message(
+      'The picture is temporarily unavailable',
+      name: 'thePictureIsTemporarilyUnavailable',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We are already working on a solution to this problem`
+  String get weAreAlreadyWorkingOnASolutionToThisProblem {
+    return Intl.message(
+      'We are already working on a solution to this problem',
+      name: 'weAreAlreadyWorkingOnASolutionToThisProblem',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

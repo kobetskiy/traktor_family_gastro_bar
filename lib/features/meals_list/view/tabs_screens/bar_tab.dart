@@ -17,7 +17,8 @@ class _BarTabState extends State<BarTab> {
   @override
   void initState() {
     super.initState();
-    _mealsListBloc.add(LoadAllMealsList(collection: DatabaseCategories.bar));
+    _mealsListBloc
+        .add(LoadAllMealsList(collection: DatabaseMealCategories.bar));
   }
 
   @override
@@ -29,7 +30,8 @@ class _BarTabState extends State<BarTab> {
           return MealsListViewWidget(state: state);
         }
         if (state is MealsListFailure) {
-          return const ServerErrorWidget(collection: DatabaseCategories.bar);
+          return const ServerErrorWidget(
+              collection: DatabaseMealCategories.bar);
         }
         return const Center(child: CircularProgressIndicator.adaptive());
       },

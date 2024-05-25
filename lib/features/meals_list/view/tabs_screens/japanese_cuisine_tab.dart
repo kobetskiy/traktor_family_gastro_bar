@@ -17,8 +17,8 @@ class _JapaneseCuisineTabState extends State<JapaneseCuisineTab> {
   @override
   void initState() {
     super.initState();
-    _mealsListBloc
-        .add(LoadAllMealsList(collection: DatabaseCategories.japaneseCuisine));
+    _mealsListBloc.add(
+        LoadAllMealsList(collection: DatabaseMealCategories.japaneseCuisine));
   }
 
   @override
@@ -31,7 +31,7 @@ class _JapaneseCuisineTabState extends State<JapaneseCuisineTab> {
         }
         if (state is MealsListFailure) {
           return const ServerErrorWidget(
-              collection: DatabaseCategories.japaneseCuisine);
+              collection: DatabaseMealCategories.japaneseCuisine);
         }
         return const Center(child: CircularProgressIndicator.adaptive());
       },

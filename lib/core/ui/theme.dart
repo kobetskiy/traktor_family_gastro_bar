@@ -9,7 +9,7 @@ final ThemeData theme = ThemeData(
   primaryColor: AppColors.primaryColor,
   iconButtonTheme: IconButtonThemeData(
     style: ButtonStyle(
-      iconColor: MaterialStatePropertyAll(AppColors.subtitleColor),
+      iconColor: WidgetStatePropertyAll(AppColors.subtitleColor),
     ),
   ),
   useMaterial3: true,

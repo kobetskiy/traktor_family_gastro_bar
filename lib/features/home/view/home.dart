@@ -15,13 +15,11 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
-  TabController? bannerController;
   final tabService = TabService();
 
   @override
   void initState() {
     super.initState();
-    bannerController = TabController(length: 3, vsync: this);
     tabService.tabController = TabController(
       length: tabService.allTabs.length,
       vsync: this,
@@ -42,18 +40,13 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                TopBanners(bannerController: bannerController),
-                const SizedBox(height: 15),
-                Center(child: TabPageSelector(controller: bannerController)),
-                const SizedBox(height: 15),
+                const TopBanners(),
                 const HomeCategoriesListView(),
                 const SizedBox(height: 20),
                 Padding(
                   padding: const EdgeInsets.only(left: 30),
-                  child: Text(
-                    S.of(context).popular,
-                    style: AppTextStyles.titleSmall,
-                  ),
+                  child: Text(S.of(context).popular,
+                      style: AppTextStyles.titleSmall),
                 ),
                 const SizedBox(height: 10),
                 const HomeMealsPresentation(

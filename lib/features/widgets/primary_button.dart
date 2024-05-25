@@ -27,11 +27,11 @@ class PrimaryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ButtonStyle style = ButtonStyle(
-      padding: const MaterialStatePropertyAll(
+      padding: const WidgetStatePropertyAll(
         EdgeInsets.symmetric(vertical: 10, horizontal: 20),
       ),
-      foregroundColor: MaterialStatePropertyAll(AppColors.titleColor),
-      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+      foregroundColor: WidgetStatePropertyAll(AppColors.titleColor),
+      shape: WidgetStateProperty.all<RoundedRectangleBorder>(
         RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
       ),
     );

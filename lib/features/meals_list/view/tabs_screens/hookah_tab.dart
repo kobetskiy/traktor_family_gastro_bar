@@ -18,7 +18,7 @@ class _HookahTabState extends State<HookahTab> {
   void initState() {
     super.initState();
     _mealsListBloc
-        .add(LoadAllMealsList(collection: DatabaseCategories.hookah));
+        .add(LoadAllMealsList(collection: DatabaseMealCategories.hookah));
   }
 
   @override
@@ -31,7 +31,7 @@ class _HookahTabState extends State<HookahTab> {
         }
         if (state is MealsListFailure) {
           return const ServerErrorWidget(
-              collection: DatabaseCategories.hookah);
+              collection: DatabaseMealCategories.hookah);
         }
         return const Center(child: CircularProgressIndicator.adaptive());
       },

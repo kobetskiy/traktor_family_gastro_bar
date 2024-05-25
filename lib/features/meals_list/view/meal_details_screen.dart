@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:traktor_family_gastro_bar/core/ui/colors_constants.dart';
-import 'package:traktor_family_gastro_bar/core/ui/font_constants.dart';
+import 'package:traktor_family_gastro_bar/core/ui/ui_constants.dart';
 import 'package:traktor_family_gastro_bar/features/data/models/meal_model.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/widgets/meal_card/meal_card_information.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
@@ -99,12 +98,32 @@ class _Image extends StatelessWidget {
         key: UniqueKey(),
         fit: BoxFit.cover,
         placeholder: (_, __) => const ColoredBox(color: Colors.white12),
-        errorWidget: (_, __, ___) => const SizedBox(
+        errorWidget: (_, __, ___) => SizedBox(
           height: 270.1,
           width: 360,
           child: ColoredBox(
             color: Colors.white12,
-            child: Icon(Icons.error),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    S.of(context).thePictureIsTemporarilyUnavailable,
+                    style: AppTextStyles.titleLarge,
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 10),
+                  Text(
+                    S.of(context).weAreAlreadyWorkingOnASolutionToThisProblem,
+                    style: AppTextStyles.titleSmall.copyWith(
+                      color: AppColors.subtitleColor,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
+            ),
           ),
         ),
       ),

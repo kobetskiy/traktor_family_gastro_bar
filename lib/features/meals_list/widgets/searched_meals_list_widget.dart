@@ -41,7 +41,7 @@ class _SearchedMealsListWidgetState extends State<SearchedMealsListWidget> {
             return const NoDataWidget();
           } else if (state.exception is ServerExeption) {
             return const ServerErrorWidget(
-              collection: DatabaseCategories.europeanCuisine,
+              collection: DatabaseMealCategories.europeanCuisine,
             );
           }
         }

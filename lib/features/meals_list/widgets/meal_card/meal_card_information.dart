@@ -94,8 +94,7 @@ class MealCardGrams extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       grams.isNotEmpty ? grams + S.of(context).gramsSymbol : '',
-      style: AppTextStyles.subtitle
-          .copyWith(color: AppColors.subtitleColor),
+      style: AppTextStyles.subtitle.copyWith(color: AppColors.subtitleColor),
     );
   }
 }

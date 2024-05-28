@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:traktor_family_gastro_bar/core/ui/ui_constants.dart';
 import 'package:traktor_family_gastro_bar/features/data/database/database_constants.dart';
 import 'package:traktor_family_gastro_bar/features/home/widgets/bottom_sheet_buttons/index.dart';
@@ -15,15 +16,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
-  final tabService = TabService();
+  late TabService _tabService;
 
   @override
   void initState() {
     super.initState();
-    tabService.tabController = TabController(
-      length: tabService.allTabs.length,
-      vsync: this,
-    );
+    _tabService = Provider.of<TabService>(context, listen: false);
+    _tabService.init(this);
   }
 
   @override

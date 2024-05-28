@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/bloc/meals_list_bloc.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/view/tabs_screens/tab_service.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/widgets/index.dart';
@@ -12,15 +13,14 @@ class MealsListScreen extends StatefulWidget {
   State<MealsListScreen> createState() => _MealsListScreenState();
 }
 
-final _tabService = TabService();
-
-class _MealsListScreenState extends State<MealsListScreen> {
+class _MealsListScreenState extends State<MealsListScreen>
+    with TickerProviderStateMixin {
   final _textController = TextEditingController();
   final _mealsListBloc = MealsListBloc();
 
-  void switchSearchField() {
+  void switchSearchField(TabService tabService) {
     _textController.clear();
-    _tabService.switchSearchField();
+    tabService.switchSearchField();
     setState(() {});
   }
 
@@ -32,8 +32,10 @@ class _MealsListScreenState extends State<MealsListScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final tabService = Provider.of<TabService>(context, listen: false);
+
     return DefaultTabController(
-      length: _tabService.allTabs.length,
+      length: tabService.allTabs.length,
       child: Scaffold(
         body: SafeArea(
           child: NestedScrollView(
@@ -44,19 +46,18 @@ class _MealsListScreenState extends State<MealsListScreen> {
                 actions: [
                   IconButton(
                     icon: const Icon(Icons.search),
-                    onPressed: switchSearchField,
+                    onPressed: () => switchSearchField(tabService),
                   )
                 ],
               ),
             ],
             body: Column(
-              mainAxisSize: MainAxisSize.max,
               children: [
-                _tabService.isSearchShown
+                tabService.isSearchShown
                     ? SearchTextFieldWidget(
                         controller: _textController, bloc: _mealsListBloc)
                     : const _TabBarWidget(),
-                _tabService.isSearchShown
+                tabService.isSearchShown
                     ? SearchedMealsListWidget(
                         controller: _textController, bloc: _mealsListBloc)
                     : const _TabBarViewWidget(),
@@ -79,10 +80,12 @@ class _TabBarWidget extends StatefulWidget {
 class _TabBarWidgetState extends State<_TabBarWidget> {
   @override
   Widget build(BuildContext context) {
+    final tabService = Provider.of<TabService>(context, listen: false);
     return TabBar(
-      controller: _tabService.tabController,
+      tabAlignment: TabAlignment.start,
+      controller: tabService.controller,
       isScrollable: true,
-      tabs: _tabService.allTabsNames(context),
+      tabs: tabService.allTabsNames(context),
     );
   }
 }
@@ -92,10 +95,12 @@ class _TabBarViewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final tabService = Provider.of<TabService>(context, listen: false);
     return Expanded(
       child: TabBarView(
+        controller: tabService.controller,
         physics: const NeverScrollableScrollPhysics(),
-        children: _tabService.allTabs,
+        children: tabService.allTabs,
       ),
     );
   }

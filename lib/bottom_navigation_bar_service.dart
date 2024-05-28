@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-
 import 'features/screens.dart';
 
-class BottomNavigationBarService {
+class BottomNavigationBarService with ChangeNotifier {
   int _selectedIndex = 0;
 
-  int get getSelectedIndex => _selectedIndex;
-  set setSelectedIndex(int value) => _selectedIndex = value;
+  int get selectedIndex => _selectedIndex;
 
   final List<Widget> widgetOptions = [
     const HomeScreen(),
@@ -18,5 +16,6 @@ class BottomNavigationBarService {
   void onTap(int index) {
     if (_selectedIndex == index) return;
     _selectedIndex = index;
+    notifyListeners();
   }
 }

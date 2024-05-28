@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:traktor_family_gastro_bar/bottom_navigation_bar_service.dart';
 import 'package:traktor_family_gastro_bar/core/ui/icons_constants.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/view/tabs_screens/tab_service.dart';
@@ -36,32 +37,39 @@ class _HomeCategoriesContent extends StatefulWidget {
 }
 
 class _HomeCategoriesContentState extends State<_HomeCategoriesContent> {
-  final bottomNavBarService = BottomNavigationBarService();
-
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15),
-      ),
-      margin: EdgeInsets.zero,
-      child: InkWell(
-        customBorder: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
-        ),
-        onTap: () {},
-        child: SizedBox(
-          width: 80,
-          height: 80,
-          child: Center(
-            child: Image.asset(
-              TabIcons.tabIconsList[widget.index],
-              width: 30,
-              height: 30,
+    final tabService = Provider.of<TabService>(context, listen: false);
+
+    return Consumer<BottomNavigationBarService>(
+        builder: (context, bottomNavBarService, child) {
+        return Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
+          margin: EdgeInsets.zero,
+          child: InkWell(
+            customBorder: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
+            onTap: () {
+              tabService.controller!.index = widget.index;
+              bottomNavBarService.onTap(1);
+            },
+            child: SizedBox(
+              width: 80,
+              height: 80,
+              child: Center(
+                child: Image.asset(
+                  TabIcons.tabIconsList[widget.index],
+                  width: 30,
+                  height: 30,
+                ),
+              ),
             ),
           ),
-        ),
-      ),
+        );
+      }
     );
   }
 }

@@ -3,12 +3,12 @@ import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
 import 'tabs_screens.dart';
 
-class TabService {
-  TabController? tabController;
+class TabService with ChangeNotifier {
+  TabController? controller;
   bool _isSearchShown = false;
   bool get isSearchShown => _isSearchShown;
 
-  List<Widget> allTabs = [
+  final List<Widget> allTabs = [
     const EuropeanCuisineTab(),
     const JapaneseCuisineTab(),
     const BarbecueMenuTab(),
@@ -24,7 +24,18 @@ class TabService {
         Tab(child: Text(S.of(context).hookah)),
       ];
 
+  void init(TickerProvider vsync) {
+    controller = TabController(length: allTabs.length, vsync: vsync);
+    controller!.addListener(notifyListeners);
+  }
+
+  void disposeController() {
+    controller?.removeListener(notifyListeners);
+    controller?.dispose();
+  }
+
   void switchSearchField() {
     _isSearchShown = !_isSearchShown;
+    notifyListeners();
   }
 }

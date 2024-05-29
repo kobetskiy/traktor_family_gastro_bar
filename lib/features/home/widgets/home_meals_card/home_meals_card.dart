@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/core/ui/colors_constants.dart';
 import 'package:traktor_family_gastro_bar/core/ui/font_constants.dart';
@@ -25,11 +26,11 @@ class HomeMealsCard extends StatelessWidget {
           ),
           child: Column(
             children: [
-              _HomeMealsCardImage(mealModel: mealModel),
+              _HomeMealsCardImage(imageURL: mealModel.imageURL),
               const SizedBox(height: 10),
-              _HomeMealsCardTitle(mealModel: mealModel),
+              _HomeMealsCardTitle(title: mealModel.title),
               const SizedBox(height: 4),
-              _HomeMealsCardCost(mealModel: mealModel)
+              _HomeMealsCardCost(cost: mealModel.cost)
             ],
           ),
         ),
@@ -39,16 +40,16 @@ class HomeMealsCard extends StatelessWidget {
 }
 
 class _HomeMealsCardCost extends StatelessWidget {
-  const _HomeMealsCardCost({required this.mealModel});
+  const _HomeMealsCardCost({required this.cost});
 
-  final MealModel mealModel;
+  final int cost;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Text(
-        '${mealModel.cost} ${S.current.uah}',
+        '$cost ${S.current.uah}',
         style: AppTextStyles.titleSmall.copyWith(color: AppColors.primaryColor),
       ),
     );
@@ -56,16 +57,16 @@ class _HomeMealsCardCost extends StatelessWidget {
 }
 
 class _HomeMealsCardTitle extends StatelessWidget {
-  const _HomeMealsCardTitle({required this.mealModel});
+  const _HomeMealsCardTitle({required this.title});
 
-  final MealModel mealModel;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Text(
-        mealModel.title,
+        title,
         style: AppTextStyles.titleSmall,
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
@@ -75,9 +76,9 @@ class _HomeMealsCardTitle extends StatelessWidget {
 }
 
 class _HomeMealsCardImage extends StatelessWidget {
-  const _HomeMealsCardImage({required this.mealModel});
+  const _HomeMealsCardImage({required this.imageURL});
 
-  final MealModel mealModel;
+  final String imageURL;
 
   @override
   Widget build(BuildContext context) {
@@ -85,9 +86,14 @@ class _HomeMealsCardImage extends StatelessWidget {
       children: [
         ClipRRect(
           borderRadius: const BorderRadius.all(Radius.circular(15)),
-          child: Image.network(
-            mealModel.imageURL,
-            fit: BoxFit.cover,
+          child: AspectRatio(
+            aspectRatio: 1.33 / 1,
+            child: CachedNetworkImage(
+              imageUrl: imageURL,
+              fit: BoxFit.fitWidth,
+              progressIndicatorBuilder: (context, url, progress) =>
+                  const AspectRatio(aspectRatio: 1.33 / 1),
+            ),
           ),
         ),
         const Positioned(

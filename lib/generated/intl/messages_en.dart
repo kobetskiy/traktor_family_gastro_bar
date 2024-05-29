@@ -43,7 +43,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "serverError" : MessageLookupByLibrary.simpleMessage("Server error"),
     "thePictureIsTemporarilyUnavailable" : MessageLookupByLibrary.simpleMessage("The picture is temporarily unavailable"),
     "tryAgain" : MessageLookupByLibrary.simpleMessage("Try again"),
-    "uah" : MessageLookupByLibrary.simpleMessage("UAH"),
+    "uah" : MessageLookupByLibrary.simpleMessage("uah"),
     "weAreAlreadyWorkingOnASolutionToThisProblem" : MessageLookupByLibrary.simpleMessage("We are already working on a solution to this problem"),
     "writeOnEmail" : MessageLookupByLibrary.simpleMessage("Write on Email"),
     "writeOnFacebook" : MessageLookupByLibrary.simpleMessage("Write on Facebook"),

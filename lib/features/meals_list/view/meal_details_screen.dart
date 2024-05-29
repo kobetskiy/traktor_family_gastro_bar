@@ -97,10 +97,9 @@ class _Image extends StatelessWidget {
         imageUrl: mealModel.imageURL,
         key: UniqueKey(),
         fit: BoxFit.cover,
-        placeholder: (_, __) => const ColoredBox(color: Colors.white12),
-        errorWidget: (_, __, ___) => SizedBox(
-          height: 270.1,
-          width: 360,
+        progressIndicatorBuilder: (context, url, progress) => const AspectRatio(aspectRatio: 1.33 / 1),
+        errorWidget: (_, __, ___) => AspectRatio(
+          aspectRatio: 1.33 / 1,
           child: ColoredBox(
             color: Colors.white12,
             child: Padding(

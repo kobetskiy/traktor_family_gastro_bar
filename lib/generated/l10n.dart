@@ -87,10 +87,10 @@ class S {
     );
   }
 
-  /// `UAH`
+  /// `uah`
   String get uah {
     return Intl.message(
-      'UAH',
+      'uah',
       name: 'uah',
       desc: '',
       args: [],

@@ -26,5 +26,7 @@
   "novelty": "Novelty",
   "popular": "Popular",
   "thePictureIsTemporarilyUnavailable": "The picture is temporarily unavailable",
-  "weAreAlreadyWorkingOnASolutionToThisProblem": "We are already working on a solution to this problem"
+  "weAreAlreadyWorkingOnASolutionToThisProblem": "We are already working on a solution to this problem",
+  "settings": "Settings",
+  "general": "General"
 }

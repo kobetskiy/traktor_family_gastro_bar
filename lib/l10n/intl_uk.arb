@@ -26,5 +26,7 @@
   "novelty": "Новинки",
   "popular": "Популярні",
   "thePictureIsTemporarilyUnavailable": "Картинка тимчасово відсутня",
-  "weAreAlreadyWorkingOnASolutionToThisProblem": "Ми вже працюємо над вирішенням цієї промлеми"
+  "weAreAlreadyWorkingOnASolutionToThisProblem": "Ми вже працюємо над вирішенням цієї промлеми",
+  "settings": "Налаштування",
+  "general": "Головне"
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/core/ui/colors_constants.dart';
+import 'package:traktor_family_gastro_bar/core/ui/icons_constants.dart';
 
 class BottomNavigationBarWidget extends StatefulWidget {
   const BottomNavigationBarWidget({
@@ -30,19 +31,27 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
       showUnselectedLabels: false,
       items: const [
         BottomNavigationBarItem(
-          icon: Icon(Icons.home_rounded),
+          icon: ImageIcon(
+            AssetImage(AppIcons.home),
+          ),
           label: '',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.search_rounded),
+          icon: ImageIcon(
+            AssetImage(AppIcons.search),
+          ),
           label: '',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.favorite_rounded),
+          icon: ImageIcon(
+            AssetImage(AppIcons.heart),
+          ),
           label: '',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.settings_rounded),
+          icon: ImageIcon(
+            AssetImage(AppIcons.settings),
+          ),
           label: '',
         ),
       ],

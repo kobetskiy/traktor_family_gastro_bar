@@ -13,33 +13,25 @@ class SettingsMainSection extends StatelessWidget {
         SettingsTile(
           title: 'Personal information',
           subtitle: 'Change account information',
-          child: ImageIcon(
-            AssetImage(AppIcons.profile),
-          ),
+          child: ImageIcon(AssetImage(AppIcons.profile)),
         ),
         Divider(height: 0),
         SettingsTile(
           title: 'Notifications',
           subtitle: 'Set up notifications',
-          child: ImageIcon(
-            AssetImage(AppIcons.notification),
-          ),
+          child: ImageIcon(AssetImage(AppIcons.notification)),
         ),
         Divider(height: 0),
         SettingsTile(
           title: 'Language',
           subtitle: 'Customize language',
-          child: ImageIcon(
-            AssetImage(AppIcons.language),
-          ),
+          child: ImageIcon(AssetImage(AppIcons.language)),
         ),
         Divider(height: 0),
         SettingsTile(
-          title: 'Dark theme',
+          title: 'Theme',
           subtitle: 'Select the application theme',
-          child: ImageIcon(
-            AssetImage(AppIcons.lightTheme),
-          ),
+          child: ImageIcon(AssetImage(AppIcons.lightTheme)),
         ),
       ],
     );

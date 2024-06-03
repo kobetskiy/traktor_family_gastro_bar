@@ -38,7 +38,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                   const SettingsMainSection(),
                   const SizedBox(height: 20),
                   Text(
-                    "Інше",
+                    S.of(context).more,
                     style: AppTextStyles.titleLarge.copyWith(fontSize: 22),
                   ),
                   const SizedBox(height: 10),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/core/ui/icons_constants.dart';
+import 'package:traktor_family_gastro_bar/features/settings/view/privacy_policy_screen.dart';
 import 'package:traktor_family_gastro_bar/features/settings/widgets/settings_tile.dart';
 
 import 'settings_section.dart';
@@ -7,40 +8,40 @@ import 'settings_section.dart';
 class SettingsMoreSection extends StatelessWidget {
   const SettingsMoreSection({super.key});
 
+  void pushTo(BuildContext context, Widget screen) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => screen),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return const SettingsSection(
+    return SettingsSection(
       children: [
-        SettingsTile(
+        const SettingsTile(
           title: 'Report a bug',
           subtitle: 'Write to us if you find a bug',
-          child: ImageIcon(
-            AssetImage(AppIcons.alert),
-          ),
+          child: ImageIcon(AssetImage(AppIcons.alert)),
         ),
-        Divider(height: 0),
-        SettingsTile(
+        const Divider(height: 0),
+        const SettingsTile(
           title: 'Write a review',
           subtitle: 'Rate our app or service',
-          child: ImageIcon(
-            AssetImage(AppIcons.review),
-          ),
+          child: ImageIcon(AssetImage(AppIcons.review)),
         ),
-        Divider(height: 0),
+        const Divider(height: 0),
         SettingsTile(
-          title: 'Privacy Policy',
+          title: 'Privacy policy',
           subtitle: 'Read this before using app',
-          child: ImageIcon(
-            AssetImage(AppIcons.privacy),
-          ),
+          child: const ImageIcon(AssetImage(AppIcons.privacy)),
+          onTap: () => pushTo(context, const PrivacyPolicyScreen()),
         ),
-        Divider(height: 0),
-        SettingsTile(
+        const Divider(height: 0),
+        const SettingsTile(
           title: 'FAQ',
           subtitle: 'Frequently asked question',
-          child: ImageIcon(
-            AssetImage(AppIcons.faq),
-          ),
+          child: ImageIcon(AssetImage(AppIcons.faq)),
         ),
       ],
     );

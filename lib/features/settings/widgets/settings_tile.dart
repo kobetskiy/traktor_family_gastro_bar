@@ -35,7 +35,7 @@ class SettingsTile extends StatelessWidget {
       ),
       trailing: trailing,
       iconColor: AppColors.titleColor,
-      onTap: trailing.runtimeType != Switch ? () {} : null, // ! check this
+      onTap: trailing.runtimeType != Switch ? onTap : null, // ! check this
     );
   }
 }

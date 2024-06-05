@@ -13,7 +13,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
         child: NestedScrollView(
           floatHeaderSlivers: true,
           headerSliverBuilder: (context, innerBoxIsScrolled) => [
-            const AppBarWidget(title: "Privacy policy"),
+            AppBarWidget(title: S.of(context).privacyPolicy),
           ],
           body: ListView(
             padding: const EdgeInsets.symmetric(horizontal: 20),

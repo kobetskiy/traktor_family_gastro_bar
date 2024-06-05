@@ -26,14 +26,16 @@ class PrimaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ButtonStyle style = ButtonStyle(
-      padding: const WidgetStatePropertyAll(
-        EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-      ),
-      foregroundColor: WidgetStatePropertyAll(AppColors.titleColor),
-      shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-        RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
-      ),
+    const padding = EdgeInsets.symmetric(vertical: 10, horizontal: 20);
+
+    ButtonStyle style = OutlinedButton.styleFrom(
+      padding: padding,
+      backgroundColor: !isOutlined ? AppColors.primaryColor : null,
+      disabledBackgroundColor: !isOutlined ? Colors.grey[800] : null,
+      foregroundColor:
+          !isOutlined ? AppColors.backgroundColor : AppColors.titleColor,
+      disabledForegroundColor: !isOutlined ? Colors.white : Colors.grey[600],
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
     );
 
     return SizedBox(

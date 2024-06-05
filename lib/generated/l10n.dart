@@ -476,6 +476,166 @@ class S {
       args: [],
     );
   }
+
+  /// `Personal information`
+  String get personalInformation {
+    return Intl.message(
+      'Personal information',
+      name: 'personalInformation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change account information`
+  String get changeAccountInformation {
+    return Intl.message(
+      'Change account information',
+      name: 'changeAccountInformation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Notifications`
+  String get notifications {
+    return Intl.message(
+      'Notifications',
+      name: 'notifications',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Set up notifications`
+  String get setUpNotifications {
+    return Intl.message(
+      'Set up notifications',
+      name: 'setUpNotifications',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Language`
+  String get language {
+    return Intl.message(
+      'Language',
+      name: 'language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Customize language`
+  String get customizeLanguage {
+    return Intl.message(
+      'Customize language',
+      name: 'customizeLanguage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Theme`
+  String get theme {
+    return Intl.message(
+      'Theme',
+      name: 'theme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select the application theme`
+  String get selectTheApplicationTheme {
+    return Intl.message(
+      'Select the application theme',
+      name: 'selectTheApplicationTheme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Report a bug`
+  String get reportABug {
+    return Intl.message(
+      'Report a bug',
+      name: 'reportABug',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Write to us if you find a bug`
+  String get writeToUsIfYouFindABug {
+    return Intl.message(
+      'Write to us if you find a bug',
+      name: 'writeToUsIfYouFindABug',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Write a review`
+  String get writeAReview {
+    return Intl.message(
+      'Write a review',
+      name: 'writeAReview',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rate our app and service`
+  String get rateOurAppAndService {
+    return Intl.message(
+      'Rate our app and service',
+      name: 'rateOurAppAndService',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Privacy policy`
+  String get privacyPolicy {
+    return Intl.message(
+      'Privacy policy',
+      name: 'privacyPolicy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Read this before using app`
+  String get readThisBeforeUsingApp {
+    return Intl.message(
+      'Read this before using app',
+      name: 'readThisBeforeUsingApp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `FAQ`
+  String get faq {
+    return Intl.message(
+      'FAQ',
+      name: 'faq',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Frequently asked question`
+  String get frequentlyAskedQuestion {
+    return Intl.message(
+      'Frequently asked question',
+      name: 'frequentlyAskedQuestion',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

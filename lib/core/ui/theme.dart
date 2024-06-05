@@ -12,6 +12,7 @@ final ThemeData theme = ThemeData(
       iconColor: WidgetStatePropertyAll(AppColors.subtitleColor),
     ),
   ),
+  
   useMaterial3: true,
   scaffoldBackgroundColor: AppColors.backgroundColor,
   fontFamily: 'OpenSans',

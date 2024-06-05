@@ -41,5 +41,21 @@
   "privacy_policy_5_content": "5.1. The user has the right to independently edit the Personal Information provided by him during registration in his Personal account at any time.\n\n5.2. In the event of termination of the concluded contract, the user can exercise the right to withdraw consent to the processing of his personal data and delete the User's Account by sending a request to the Seller to delete his account at the address traktorgastrobar.kh@gmail.com,\n\n5.3. In order to improve the quality of the Site and its Services and to ensure the possibility of legal protection, the Seller has the right to keep log files about the actions taken by the user within the framework of using the Site and its Services, as well as in connection with the conclusion and execution by the User of the Agreement and other contracts with for its part, within 6 (Six) months from the moment of their commission.",
   "privacy_policy_6": "6. Change of privacy policy",
   "privacy_policy_6_content": "6.1. This Policy may be changed by the Seller unilaterally without prior notice to the User. The new version of the Policy enters into force from the moment of its posting on the Seller's Website, unless otherwise provided by the new version of the Policy.",
-  "more": "More"
+  "more": "More",
+  "personalInformation": "Personal information",
+  "changeAccountInformation": "Change account information",
+  "notifications": "Notifications",
+  "setUpNotifications": "Set up notifications",
+  "language": "Language",
+  "customizeLanguage": "Customize language",
+  "theme": "Theme",
+  "selectTheApplicationTheme": "Select the application theme",
+  "reportABug": "Report a bug",
+  "writeToUsIfYouFindABug": "Write to us if you find a bug",
+  "writeAReview": "Write a review",
+  "rateOurAppAndService": "Rate our app and service",
+  "privacyPolicy": "Privacy policy",
+  "readThisBeforeUsingApp": "Read this before using app",
+  "faq": "FAQ",
+  "frequentlyAskedQuestion": "Frequently asked question"
 }

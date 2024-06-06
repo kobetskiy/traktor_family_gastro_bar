@@ -30,42 +30,15 @@ class _WriteReviewScreenState extends State<WriteReviewScreen> {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                SizedBox(height: MediaQuery.of(context).size.height * 0.04),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.05),
                 Text(
                   "Оцініть наш сервіс",
                   style: AppTextStyles.titleLarge.copyWith(fontSize: 22),
                 ),
-                const SizedBox(height: 15),
+                const SizedBox(height: 20),
                 const _RatingBarWidget(),
-                const SizedBox(height: 25),
-                TextField(
-                  controller: controller,
-                  style: AppTextStyles.titleSmall,
-                  keyboardType: TextInputType.multiline,
-                  minLines: 1,
-                  maxLines: 6,
-                  decoration: InputDecoration(
-                    hintText: 'Зауваження або побажання',
-                    hintStyle: AppTextStyles.titleSmall
-                        .copyWith(color: AppColors.subtitleColor),
-                    contentPadding: const EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 10,
-                    ),
-                    border: const OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(8)),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: AppColors.titleColor),
-                      borderRadius: const BorderRadius.all(Radius.circular(8)),
-                    ),
-                    suffixIcon: IconButton(
-                      icon: const Icon(Icons.clear_rounded),
-                      color: AppColors.subtitleColor,
-                      onPressed: () => controller.clear(),
-                    ),
-                  ),
-                ),
+                const SizedBox(height: 30),
+                _ReviewTextField(controller: controller),
               ],
             ),
           ),
@@ -75,6 +48,44 @@ class _WriteReviewScreenState extends State<WriteReviewScreen> {
       floatingActionButton: PrimaryButton(
         onPressed: () {},
         child: const Text('Send'),
+      ),
+    );
+  }
+}
+
+class _ReviewTextField extends StatelessWidget {
+  const _ReviewTextField({required this.controller});
+
+  final TextEditingController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      controller: controller,
+      style: AppTextStyles.titleSmall,
+      keyboardType: TextInputType.multiline,
+      minLines: 1,
+      maxLines: 6,
+      decoration: InputDecoration(
+        hintText: 'Зауваження або побажання',
+        hintStyle:
+            AppTextStyles.titleSmall.copyWith(color: AppColors.subtitleColor),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 20,
+          vertical: 10,
+        ),
+        border: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(8)),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: AppColors.titleColor),
+          borderRadius: const BorderRadius.all(Radius.circular(8)),
+        ),
+        suffixIcon: IconButton(
+          icon: const Icon(Icons.clear_rounded),
+          color: AppColors.subtitleColor,
+          onPressed: () => controller.clear(),
+        ),
       ),
     );
   }

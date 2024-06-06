@@ -24,6 +24,7 @@ class SettingsMoreSection extends StatelessWidget {
           title: S.of(context).reportABug,
           subtitle: S.of(context).writeToUsIfYouFindABug,
           child: const ImageIcon(AssetImage(AppIcons.alert)),
+          onTap: () => pushTo(context, const ReportBugScreen()),
         ),
         const Divider(height: 0),
         SettingsTile(
@@ -44,6 +45,7 @@ class SettingsMoreSection extends StatelessWidget {
           title: S.of(context).faq,
           subtitle: S.of(context).frequentlyAskedQuestion,
           child: const ImageIcon(AssetImage(AppIcons.faq)),
+          onTap: () => pushTo(context, const FAQScreen()),
         ),
       ],
     );

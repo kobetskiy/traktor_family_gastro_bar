@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/core/ui/colors_constants.dart';
+import 'package:traktor_family_gastro_bar/core/ui/font_constants.dart';
 
 class PrimaryButton extends StatelessWidget {
   const PrimaryButton({
@@ -26,10 +27,9 @@ class PrimaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const padding = EdgeInsets.symmetric(vertical: 10, horizontal: 20);
-
     ButtonStyle style = OutlinedButton.styleFrom(
-      padding: padding,
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+      textStyle: AppTextStyles.titleSmall,
       backgroundColor: !isOutlined ? AppColors.primaryColor : null,
       disabledBackgroundColor: !isOutlined ? Colors.grey[800] : null,
       foregroundColor:

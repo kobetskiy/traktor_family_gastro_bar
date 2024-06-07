@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/core/ui/ui_constants.dart';
 import 'package:traktor_family_gastro_bar/features/settings/widgets/rating_bar.dart';
+import 'package:traktor_family_gastro_bar/features/settings/widgets/settings_text_field.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/app_bar_widget.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/primary_button.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
@@ -32,13 +33,16 @@ class _WriteReviewScreenState extends State<WriteReviewScreen> {
               children: [
                 SizedBox(height: MediaQuery.of(context).size.height * 0.05),
                 Text(
-                  "Оцініть наш сервіс",
+                  S.of(context).rateOurService,
                   style: AppTextStyles.titleLarge.copyWith(fontSize: 22),
                 ),
                 const SizedBox(height: 20),
                 const _RatingBarWidget(),
                 const SizedBox(height: 30),
-                _ReviewTextField(controller: controller),
+                SettingsTextField(
+                  controller: controller,
+                  hintText: S.of(context).remarksOrWishes,
+                ),
               ],
             ),
           ),
@@ -47,45 +51,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: PrimaryButton(
         onPressed: () {},
-        child: const Text('Send'),
-      ),
-    );
-  }
-}
-
-class _ReviewTextField extends StatelessWidget {
-  const _ReviewTextField({required this.controller});
-
-  final TextEditingController controller;
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      controller: controller,
-      style: AppTextStyles.titleSmall,
-      keyboardType: TextInputType.multiline,
-      minLines: 1,
-      maxLines: 6,
-      decoration: InputDecoration(
-        hintText: 'Зауваження або побажання',
-        hintStyle:
-            AppTextStyles.titleSmall.copyWith(color: AppColors.subtitleColor),
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 10,
-        ),
-        border: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(8)),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.titleColor),
-          borderRadius: const BorderRadius.all(Radius.circular(8)),
-        ),
-        suffixIcon: IconButton(
-          icon: const Icon(Icons.clear_rounded),
-          color: AppColors.subtitleColor,
-          onPressed: () => controller.clear(),
-        ),
+        child: Text(S.of(context).send),
       ),
     );
   }

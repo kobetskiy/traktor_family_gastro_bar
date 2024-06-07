@@ -57,5 +57,21 @@
   "privacyPolicy": "Privacy policy",
   "readThisBeforeUsingApp": "Read this before using app",
   "faq": "FAQ",
-  "frequentlyAskedQuestion": "Frequently asked question"
+  "frequentlyAskedQuestion": "Frequently asked question",
+  "send": "Send",
+  "remarksOrWishes": "Remarks or wishes",
+  "rateOurService": "Rate our service",
+  "howToReturnTheProduct": "How to return the product?",
+  "howToReturnTheProductContent": "Rejection of the product is possible at the time of receipt and if it is of inadequate quality. The transferred funds are returned to your bank account within 5 - 30 working days (the term depends on the Bank that issued your bank card).",
+  "whatAreThePaymentMethods": "What are the payment methods?",
+  "whatAreThePaymentMethodsContent": "To choose to pay for the product using a bank card on the corresponding page, click the button \"Pay for the order by bank card\". Payment is made through the liqpay system using Bank cards of the Visa and Mastercard payment systems",
+  "howDoesDeliveryWork": "How does delivery work?",
+  "howDoesDeliveryWorkContent": "Delivery of orders is carried out exclusively by the taxi services of the city of Kharkiv, according to the service tariffs. The minimum order amount for delivery is 300 UAH.\\n\\nFor orders from 500 UAH within 7 km from the restaurant, the delivery of orders is FREE!\\n\\nIn the case of orders, the distance of which is more than 7 km from In such cases, the customer pays the delivery cost of UAH 100. For example, the cost of the glass delivery is UAH 100. In this case, the restaurant pays UAH 150. customer.\\n\\nOrders from UAH 3,000 are delivered in Kharkov for FREE! Estimated preparation time from 15 to 40 minutes depending on the load of the kitchen.\\n\\nDelivery time depends on the speed of delivery by the taxi service and the speed of delivery by the driver.\\n \\nThe customer receives all orders at the entrance of his house. There is no delivery to the door!",
+  "howToPlaceAnOrder": "How to place an order?",
+  "howToPlaceAnOrderContent": "Orders can be made online in the Traktor Family Gastro Bar application or by calling 073-133-61-87 / 093-676-76-46.\\n\\nPayment for orders is made online in the Traktor Family Gastro Bar application or by card transfer to the restaurant's account. \\n\\nOrders are accepted from Monday to Sunday from 11:00 a.m. to 8:45 p.m.",
+  "inCaseOfAnyQuestionsPleaseCall": "In case of any questions, please call 073-133-61-87.",
+  "foundAnError": "Found an error?",
+  "notifyUsOfAnErrorInTheOperationOfApp": "Notify us of an error in the operation of the application and we will solve it in the near future",
+  "describeTheProblem": "Describe the problem",
+  "addAPhoto": "Add a photo"
 }

@@ -636,6 +636,166 @@ class S {
       args: [],
     );
   }
+
+  /// `Send`
+  String get send {
+    return Intl.message(
+      'Send',
+      name: 'send',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Remarks or wishes`
+  String get remarksOrWishes {
+    return Intl.message(
+      'Remarks or wishes',
+      name: 'remarksOrWishes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rate our service`
+  String get rateOurService {
+    return Intl.message(
+      'Rate our service',
+      name: 'rateOurService',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `How to return the product?`
+  String get howToReturnTheProduct {
+    return Intl.message(
+      'How to return the product?',
+      name: 'howToReturnTheProduct',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rejection of the product is possible at the time of receipt and if it is of inadequate quality. The transferred funds are returned to your bank account within 5 - 30 working days (the term depends on the Bank that issued your bank card).`
+  String get howToReturnTheProductContent {
+    return Intl.message(
+      'Rejection of the product is possible at the time of receipt and if it is of inadequate quality. The transferred funds are returned to your bank account within 5 - 30 working days (the term depends on the Bank that issued your bank card).',
+      name: 'howToReturnTheProductContent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `What are the payment methods?`
+  String get whatAreThePaymentMethods {
+    return Intl.message(
+      'What are the payment methods?',
+      name: 'whatAreThePaymentMethods',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `To choose to pay for the product using a bank card on the corresponding page, click the button "Pay for the order by bank card". Payment is made through the liqpay system using Bank cards of the Visa and Mastercard payment systems`
+  String get whatAreThePaymentMethodsContent {
+    return Intl.message(
+      'To choose to pay for the product using a bank card on the corresponding page, click the button "Pay for the order by bank card". Payment is made through the liqpay system using Bank cards of the Visa and Mastercard payment systems',
+      name: 'whatAreThePaymentMethodsContent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `How does delivery work?`
+  String get howDoesDeliveryWork {
+    return Intl.message(
+      'How does delivery work?',
+      name: 'howDoesDeliveryWork',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delivery of orders is carried out exclusively by the taxi services of the city of Kharkiv, according to the service tariffs. The minimum order amount for delivery is 300 UAH.\n\nFor orders from 500 UAH within 7 km from the restaurant, the delivery of orders is FREE!\n\nIn the case of orders, the distance of which is more than 7 km from In such cases, the customer pays the delivery cost of UAH 100. For example, the cost of the glass delivery is UAH 100. In this case, the restaurant pays UAH 150. customer.\n\nOrders from UAH 3,000 are delivered in Kharkov for FREE! Estimated preparation time from 15 to 40 minutes depending on the load of the kitchen.\n\nDelivery time depends on the speed of delivery by the taxi service and the speed of delivery by the driver.\n \nThe customer receives all orders at the entrance of his house. There is no delivery to the door!`
+  String get howDoesDeliveryWorkContent {
+    return Intl.message(
+      'Delivery of orders is carried out exclusively by the taxi services of the city of Kharkiv, according to the service tariffs. The minimum order amount for delivery is 300 UAH.\n\nFor orders from 500 UAH within 7 km from the restaurant, the delivery of orders is FREE!\n\nIn the case of orders, the distance of which is more than 7 km from In such cases, the customer pays the delivery cost of UAH 100. For example, the cost of the glass delivery is UAH 100. In this case, the restaurant pays UAH 150. customer.\n\nOrders from UAH 3,000 are delivered in Kharkov for FREE! Estimated preparation time from 15 to 40 minutes depending on the load of the kitchen.\n\nDelivery time depends on the speed of delivery by the taxi service and the speed of delivery by the driver.\n \nThe customer receives all orders at the entrance of his house. There is no delivery to the door!',
+      name: 'howDoesDeliveryWorkContent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `How to place an order?`
+  String get howToPlaceAnOrder {
+    return Intl.message(
+      'How to place an order?',
+      name: 'howToPlaceAnOrder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Orders can be made online in the Traktor Family Gastro Bar application or by calling 073-133-61-87 / 093-676-76-46.\n\nPayment for orders is made online in the Traktor Family Gastro Bar application or by card transfer to the restaurant's account. \n\nOrders are accepted from Monday to Sunday from 11:00 a.m. to 8:45 p.m.`
+  String get howToPlaceAnOrderContent {
+    return Intl.message(
+      'Orders can be made online in the Traktor Family Gastro Bar application or by calling 073-133-61-87 / 093-676-76-46.\n\nPayment for orders is made online in the Traktor Family Gastro Bar application or by card transfer to the restaurant\'s account. \n\nOrders are accepted from Monday to Sunday from 11:00 a.m. to 8:45 p.m.',
+      name: 'howToPlaceAnOrderContent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `In case of any questions, please call 073-133-61-87.`
+  String get inCaseOfAnyQuestionsPleaseCall {
+    return Intl.message(
+      'In case of any questions, please call 073-133-61-87.',
+      name: 'inCaseOfAnyQuestionsPleaseCall',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Found an error?`
+  String get foundAnError {
+    return Intl.message(
+      'Found an error?',
+      name: 'foundAnError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Notify us of an error in the operation of the application and we will solve it in the near future`
+  String get notifyUsOfAnErrorInTheOperationOfApp {
+    return Intl.message(
+      'Notify us of an error in the operation of the application and we will solve it in the near future',
+      name: 'notifyUsOfAnErrorInTheOperationOfApp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Describe the problem`
+  String get describeTheProblem {
+    return Intl.message(
+      'Describe the problem',
+      name: 'describeTheProblem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add a photo`
+  String get addAPhoto {
+    return Intl.message(
+      'Add a photo',
+      name: 'addAPhoto',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

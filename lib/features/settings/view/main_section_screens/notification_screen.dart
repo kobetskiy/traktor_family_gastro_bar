@@ -50,8 +50,9 @@ class NotificationScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      "Ви не авторизовані, тому не вам не можуть приходити сповіщення на телефон та email",
+                      "Ви не авторизовані, тому вам не можуть приходити сповіщення на телефон та email",
                       style: TextStyle(color: Colors.red[400]),
+                      textAlign: TextAlign.center,
                     ),
                     TextButton(
                       onPressed: () {},

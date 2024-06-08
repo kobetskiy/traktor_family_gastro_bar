@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:traktor_family_gastro_bar/core/ui/font_constants.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/app_bar_widget.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
@@ -27,7 +28,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
             children: [
               SizedBox(height: MediaQuery.of(context).size.height * 0.05),
               RadioListTile<LanguageValues>(
-                title: const Text('Українська'),
+                title: Text('Українська', style: AppTextStyles.titleSmall),
                 value: LanguageValues.uk,
                 groupValue: _currentValue,
                 onChanged: (LanguageValues? value) {
@@ -36,7 +37,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
                 },
               ),
               RadioListTile<LanguageValues>(
-                title: const Text('English'),
+                title: Text('English', style: AppTextStyles.titleSmall),
                 value: LanguageValues.en,
                 groupValue: _currentValue,
                 onChanged: (LanguageValues? value) {
@@ -45,7 +46,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
                 },
               ),
               RadioListTile<LanguageValues>(
-                title: const Text('Авто.'),
+                title: Text('Авто.', style: AppTextStyles.titleSmall),
                 value: LanguageValues.auto,
                 groupValue: _currentValue,
                 onChanged: (LanguageValues? value) {

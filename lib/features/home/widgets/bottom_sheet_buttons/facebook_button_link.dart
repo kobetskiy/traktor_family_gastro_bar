@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:traktor_family_gastro_bar/core/ui/font_constants.dart';
 import 'package:traktor_family_gastro_bar/core/ui/icons_constants.dart';
 import 'package:traktor_family_gastro_bar/features/home/data/service/contact_button_service.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/widgets.dart';
@@ -9,10 +10,9 @@ class FacebookButtonLink extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final contactButtonService = ContactButtonService();
     final uri = Uri.parse(contactButtonService.facebookLink);
-    
+
     return PrimaryButton.outlined(
       onPressed: () => contactButtonService.openLink(context, uri),
       child: Row(
@@ -25,7 +25,12 @@ class FacebookButtonLink extends StatelessWidget {
             child: Image.asset(AppIcons.facebook),
           ),
           const SizedBox(width: 10),
-          Text(S.of(context).writeOnFacebook),
+          Text(
+            S.of(context).writeOnFacebook,
+            style: AppTextStyles.titleSmall.copyWith(
+              fontWeight: FontWeight.w500,
+            ),
+          ),
         ],
       ),
     );

@@ -637,11 +637,11 @@ class S {
     );
   }
 
-  /// `Send`
-  String get send {
+  /// `Submit`
+  String get submit {
     return Intl.message(
-      'Send',
-      name: 'send',
+      'Submit',
+      name: 'submit',
       desc: '',
       args: [],
     );
@@ -792,6 +792,176 @@ class S {
     return Intl.message(
       'Add a photo',
       name: 'addAPhoto',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Apply`
+  String get apply {
+    return Intl.message(
+      'Apply',
+      name: 'apply',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Log in`
+  String get logIn {
+    return Intl.message(
+      'Log in',
+      name: 'logIn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You are not authorized, so you cannot change personal data`
+  String get youAreNotAuthorized {
+    return Intl.message(
+      'You are not authorized, so you cannot change personal data',
+      name: 'youAreNotAuthorized',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone number`
+  String get phoneNumber {
+    return Intl.message(
+      'Phone number',
+      name: 'phoneNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your name`
+  String get enterYourName {
+    return Intl.message(
+      'Enter your name',
+      name: 'enterYourName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name`
+  String get name {
+    return Intl.message(
+      'Name',
+      name: 'name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email`
+  String get email {
+    return Intl.message(
+      'Email',
+      name: 'email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email notification`
+  String get emailNotification {
+    return Intl.message(
+      'Email notification',
+      name: 'emailNotification',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delivery notification`
+  String get deliveryNotification {
+    return Intl.message(
+      'Delivery notification',
+      name: 'deliveryNotification',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reservation notification`
+  String get reservationNotification {
+    return Intl.message(
+      'Reservation notification',
+      name: 'reservationNotification',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New dishes notification`
+  String get newDishesNotification {
+    return Intl.message(
+      'New dishes notification',
+      name: 'newDishesNotification',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You are not authorized, so you cannot enable email notifications`
+  String get youAreNotAuthorizedNotifications {
+    return Intl.message(
+      'You are not authorized, so you cannot enable email notifications',
+      name: 'youAreNotAuthorizedNotifications',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Thank you!`
+  String get thankYou {
+    return Intl.message(
+      'Thank you!',
+      name: 'thankYou',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We will fix this error as soon as possible`
+  String get weWillFixThisErrorAsSoonAsPossible {
+    return Intl.message(
+      'We will fix this error as soon as possible',
+      name: 'weWillFixThisErrorAsSoonAsPossible',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Oops, something went wrong`
+  String get oopsSomethingWentWrong {
+    return Intl.message(
+      'Oops, something went wrong',
+      name: 'oopsSomethingWentWrong',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We are already fixing this bug, please try again later`
+  String get weAreAlreadyFixingThisBugPleaseTryAgainLater {
+    return Intl.message(
+      'We are already fixing this bug, please try again later',
+      name: 'weAreAlreadyFixingThisBugPleaseTryAgainLater',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tell us what problem you found`
+  String get tellMeWhatProblemYouFound {
+    return Intl.message(
+      'Tell us what problem you found',
+      name: 'tellMeWhatProblemYouFound',
       desc: '',
       args: [],
     );

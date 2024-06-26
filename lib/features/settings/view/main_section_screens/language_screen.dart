@@ -26,7 +26,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
           ],
           body: Column(
             children: [
-              SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+              SizedBox(height: MediaQuery.sizeOf(context).height * 0.05),
               RadioListTile<LanguageValues>(
                 title: Text('Українська', style: AppTextStyles.titleSmall),
                 value: LanguageValues.uk,

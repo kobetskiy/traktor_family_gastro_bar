@@ -19,7 +19,7 @@ class FAQScreen extends StatelessWidget {
           ],
           body: ListView(
             children: [
-              SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+              SizedBox(height: MediaQuery.sizeOf(context).height * 0.05),
               _ExpansionTileWidget(
                 title: S.of(context).howToReturnTheProduct,
                 content: [

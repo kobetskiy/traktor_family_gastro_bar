@@ -26,7 +26,7 @@ class _ThemeScreenState extends State<ThemeScreen> {
           ],
           body: Column(
             children: [
-              SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+              SizedBox(height: MediaQuery.sizeOf(context).height * 0.05),
               RadioListTile<ThemeValues>(
                 title: Text('Темна', style: AppTextStyles.titleSmall),
                 value: ThemeValues.dark,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:traktor_family_gastro_bar/core/ui/font_constants.dart';
 import 'package:traktor_family_gastro_bar/core/ui/icons_constants.dart';
 import 'package:traktor_family_gastro_bar/features/home/data/service/contact_button_service.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/primary_button.dart';
@@ -9,7 +10,6 @@ class InstagramButtonLink extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final contactButtonService = ContactButtonService();
     final uri = Uri.parse(contactButtonService.instagramLink);
 
@@ -25,7 +25,12 @@ class InstagramButtonLink extends StatelessWidget {
             child: Image.asset(AppIcons.instagram),
           ),
           const SizedBox(width: 10),
-          Text(S.of(context).writeOnInstagram),
+          Text(
+            S.of(context).writeOnInstagram,
+            style: AppTextStyles.titleSmall.copyWith(
+              fontWeight: FontWeight.w500,
+            ),
+          ),
         ],
       ),
     );

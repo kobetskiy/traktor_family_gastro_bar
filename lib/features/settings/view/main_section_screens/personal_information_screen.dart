@@ -18,7 +18,6 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen> {
   final nameControler = TextEditingController();
   final emailControler = TextEditingController();
   final phoneControler = TextEditingController();
-
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -38,18 +37,18 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-                    Text("Ім'я", style: AppTextStyles.titleLarge),
+                    SizedBox(height: MediaQuery.sizeOf(context).height * 0.05),
+                    Text(S.of(context).name, style: AppTextStyles.titleLarge),
                     const SizedBox(height: 5),
                     SettingsTextField.form(
                       controller: nameControler,
                       enabled: false,
-                      hintText: "Введіть ваше ім'я",
+                      hintText: S.of(context).enterYourName,
                       keyboardType: TextInputType.name,
                       validator: TextFieldValidator.validateName,
                     ),
                     const SizedBox(height: 15),
-                    Text("Ел. пошта", style: AppTextStyles.titleLarge),
+                    Text(S.of(context).email, style: AppTextStyles.titleLarge),
                     const SizedBox(height: 5),
                     SettingsTextField.form(
                       controller: emailControler,
@@ -59,7 +58,8 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen> {
                       validator: TextFieldValidator.validateEmail,
                     ),
                     const SizedBox(height: 15),
-                    Text("Номер телефону", style: AppTextStyles.titleLarge),
+                    Text(S.of(context).phoneNumber,
+                        style: AppTextStyles.titleLarge),
                     const SizedBox(height: 5),
                     SettingsTextField.form(
                       controller: phoneControler,
@@ -72,7 +72,7 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen> {
                     const SizedBox(height: 20),
                     Center(
                       child: Text(
-                        "Ви не авторизовані, тому ви не можете змінювати особисті дані",
+                        S.of(context).youAreNotAuthorized,
                         style: TextStyle(color: Colors.red[400]),
                         textAlign: TextAlign.center,
                       ),
@@ -80,7 +80,7 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen> {
                     Center(
                       child: TextButton(
                         onPressed: () {},
-                        child: const Text("Авторизуватись"),
+                        child: Text(S.of(context).logIn),
                       ),
                     ),
                   ],
@@ -91,9 +91,10 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen> {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: const PrimaryButton(
+      floatingActionButton: PrimaryButton(
         onPressed: null,
-        child: Text("Submit"), // () => _formKey.currentState!.validate(),
+        child: Text(
+            S.of(context).apply), // () => _formKey.currentState!.validate(),
       ),
     );
   }

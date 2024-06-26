@@ -18,7 +18,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
           body: ListView(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             children: [
-              SizedBox(height: MediaQuery.of(context).size.height * 0.04),
+              SizedBox(height: MediaQuery.sizeOf(context).height * 0.04),
               Point(
                 title: S.of(context).privacy_policy_1,
                 content: S.of(context).privacy_policy_1_content,
@@ -48,7 +48,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
                 title: S.of(context).privacy_policy_6,
                 content: S.of(context).privacy_policy_6_content,
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.04),
+              SizedBox(height: MediaQuery.sizeOf(context).height * 0.04),
             ],
           ),
         ),

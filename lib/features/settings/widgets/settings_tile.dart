@@ -10,6 +10,7 @@ class SettingsTile extends StatelessWidget {
     this.subtitle,
     this.onTap,
     this.trailing = const Icon(Icons.arrow_forward_ios_rounded),
+    this.customBorder,
   });
 
   final String title;
@@ -17,25 +18,29 @@ class SettingsTile extends StatelessWidget {
   final String? subtitle;
   final Function()? onTap;
   final Widget? trailing;
+  final ShapeBorder? customBorder;
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
-      title: Text(title),
-      titleTextStyle: AppTextStyles.titleSmall,
-      subtitle: subtitle != null ? Text(subtitle!) : null,
-      subtitleTextStyle: AppTextStyles.subtitle.copyWith(
-        color: AppColors.subtitleColor,
-      ),
-      leading: SizedBox(
-        width: 24,
-        height: 24,
-        child: child,
-      ),
-      trailing: trailing,
-      iconColor: AppColors.titleColor,
+    return InkWell(
+      customBorder: customBorder,
       onTap: trailing.runtimeType != Switch ? onTap : null, // ! check this
+      child: ListTile(
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
+        title: Text(title),
+        titleTextStyle: AppTextStyles.titleSmall,
+        subtitle: subtitle != null ? Text(subtitle!) : null,
+        subtitleTextStyle: AppTextStyles.subtitle.copyWith(
+          color: AppColors.subtitleColor,
+        ),
+        leading: SizedBox(
+          width: 24,
+          height: 24,
+          child: child,
+        ),
+        trailing: trailing,
+        iconColor: AppColors.titleColor,
+      ),
     );
   }
 }

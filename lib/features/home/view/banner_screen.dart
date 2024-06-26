@@ -29,7 +29,7 @@ class BannerScreen extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.06),
+                  SizedBox(height: MediaQuery.sizeOf(context).height * 0.06),
                   Text(
                     title,
                     style: AppTextStyles.titleLarge.copyWith(
@@ -38,7 +38,7 @@ class BannerScreen extends StatelessWidget {
                       height: 1.25,
                     ),
                   ),
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.06),
+                  SizedBox(height: MediaQuery.sizeOf(context).height * 0.06),
                   Text(content, style: AppTextStyles.titleSmall),
                   const SizedBox(height: 20),
                 ],

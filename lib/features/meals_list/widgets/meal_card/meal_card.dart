@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/features/data/models/meal_model.dart';
-import 'package:traktor_family_gastro_bar/features/meals_list/view/meal_details_screen.dart';
+import 'package:traktor_family_gastro_bar/features/widgets/meal_details_screen.dart';
 
 import 'meal_card_information.dart';
 

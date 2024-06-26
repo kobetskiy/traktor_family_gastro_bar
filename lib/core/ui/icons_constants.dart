@@ -35,4 +35,5 @@ abstract class AppIcons {
   static const String privacy = 'assets/icons/privacy.png';
   static const String profile = 'assets/icons/profile.png';
   static const String review = 'assets/icons/review.png';
+  static const String trash = 'assets/icons/trash.png';
 }

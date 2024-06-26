@@ -2,65 +2,74 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:traktor_family_gastro_bar/generated/l10n.dart';
+import 'package:traktor_family_gastro_bar/core/ui/colors_constants.dart';
 
 class AdaptiveAlertDialog extends StatelessWidget {
-  const AdaptiveAlertDialog({super.key, required this.content});
+  const AdaptiveAlertDialog({
+    super.key,
+    required this.actions,
+    this.title,
+    this.content,
+  }) : assert(title != null, content != null);
 
-  final String content;
+  final String? title;
+  final String? content;
+  final List<Widget> actions;
 
   @override
   Widget build(BuildContext context) {
     return Platform.isIOS
-        ? _CupertinoAlertDialogWidget(content)
-        : _MaterialAlertDialogWidget(content);
+        ? _CupertinoAlertDialogWidget(title, content, actions)
+        : _MaterialAlertDialogWidget(title, content, actions);
   }
 }
 
 class _CupertinoAlertDialogWidget extends StatelessWidget {
-  const _CupertinoAlertDialogWidget(this.content);
+  const _CupertinoAlertDialogWidget(this.title, this.content, this.actions);
 
-  final String content;
+  final String? title;
+  final String? content;
+  final List<Widget> actions;
 
   @override
   Widget build(BuildContext context) {
     return CupertinoAlertDialog(
-      content: Text(
-        content,
-        style: const TextStyle(fontSize: 16),
-      ),
-      actions: [
-        TextButton(
-          onPressed: () => Navigator.pop(context),
-          style: ButtonStyle(
-            overlayColor: WidgetStateProperty.all(Colors.transparent),
-          ),
-          child: const Text('OK'),
-        )
-      ],
+      title: title != null ? Text(
+        title!,
+        style: const TextStyle(fontWeight: FontWeight.w500),
+      ): null,
+      content: content != null
+          ? Text(content!, style: const TextStyle(fontSize: 16))
+          : null,
+      actions: actions,
     );
   }
 }
 
 class _MaterialAlertDialogWidget extends StatelessWidget {
-  const _MaterialAlertDialogWidget(this.content);
+  const _MaterialAlertDialogWidget(this.title, this.content, this.actions);
 
-  final String content;
+  final String? title;
+  final String? content;
+  final List<Widget> actions;
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      content: Text(
-        S.of(context).wrongLinkDialogText,
-        style: const TextStyle(fontSize: 16),
-        textAlign: TextAlign.center,
-      ),
-      actions: [
-        TextButton(
-          onPressed: () => Navigator.pop(context),
-          child: const Text('OK'),
-        )
-      ],
+      title: title != null ? Text(
+        title!,
+        style: TextStyle(
+          fontWeight: FontWeight.w500,
+          color: AppColors.titleColor,
+        ),
+      ) : null,
+      content: content != null
+          ? Text(
+              content!,
+              style: TextStyle(fontSize: 16, color: AppColors.titleColor),
+            )
+          : null,
+      actions: actions,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(15)),
       ),

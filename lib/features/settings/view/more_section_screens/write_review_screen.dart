@@ -31,7 +31,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen> {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+                SizedBox(height: MediaQuery.sizeOf(context).height * 0.05),
                 Text(
                   S.of(context).rateOurService,
                   style: AppTextStyles.titleLarge.copyWith(fontSize: 22),
@@ -51,7 +51,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: PrimaryButton(
         onPressed: () {},
-        child: Text(S.of(context).send),
+        child: Text(S.of(context).submit),
       ),
     );
   }

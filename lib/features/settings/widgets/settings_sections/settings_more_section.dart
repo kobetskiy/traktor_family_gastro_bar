@@ -23,8 +23,14 @@ class SettingsMoreSection extends StatelessWidget {
         SettingsTile(
           title: S.of(context).reportABug,
           subtitle: S.of(context).writeToUsIfYouFindABug,
-          child: const ImageIcon(AssetImage(AppIcons.alert)),
           onTap: () => pushTo(context, const ReportBugScreen()),
+          customBorder: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(12),
+              topRight: Radius.circular(12),
+            ),
+          ),
+          child: const ImageIcon(AssetImage(AppIcons.alert)),
         ),
         const Divider(height: 0),
         SettingsTile(
@@ -44,8 +50,14 @@ class SettingsMoreSection extends StatelessWidget {
         SettingsTile(
           title: S.of(context).faq,
           subtitle: S.of(context).frequentlyAskedQuestion,
-          child: const ImageIcon(AssetImage(AppIcons.faq)),
           onTap: () => pushTo(context, const FAQScreen()),
+          customBorder: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(12),
+              bottomRight: Radius.circular(12),
+            ),
+          ),
+          child: const ImageIcon(AssetImage(AppIcons.faq)),
         ),
       ],
     );

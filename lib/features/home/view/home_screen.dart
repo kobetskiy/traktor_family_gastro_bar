@@ -84,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     return showModalBottomSheet(
       context: context,
       builder: (context) => SizedBox(
-        width: MediaQuery.of(context).size.width,
+        width: MediaQuery.sizeOf(context).width,
         height: 500,
         child: Column(
           children: [
@@ -103,7 +103,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 25),
               child: Text(
                 S.of(context).contactUs,
-                style: AppTextStyles.titleSmall.copyWith(fontSize: 18),
+                style: AppTextStyles.titleLarge.copyWith(fontSize: 18),
               ),
             ),
             const InstagramButtonLink(),

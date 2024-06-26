@@ -1,3 +1,5 @@
+// ignore_for_file: unused_element
+
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/core/ui/ui_constants.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/app_bar_widget.dart';
@@ -17,30 +19,9 @@ class NotificationScreen extends StatelessWidget {
           ],
           body: Column(
             children: [
-              SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-              SwitchListTile.adaptive(
-                title: Text(
-                  "Сповіщення на телефон",
-                  style: AppTextStyles.titleSmall,
-                ),
-                subtitle: Text(
-                  "Оберіть чи хочете ви отримувати сповіщення на телефон",
-                  style: AppTextStyles.subtitle
-                      .copyWith(color: AppColors.subtitleColor),
-                ),
-                value: false,
-                onChanged: null,
-              ),
-              SwitchListTile.adaptive(
-                title: Text(
-                  "Сповіщення на email",
-                  style: AppTextStyles.titleSmall,
-                ),
-                subtitle: Text(
-                  "Оберіть чи хочете ви отримувати сповіщення на email",
-                  style: AppTextStyles.subtitle
-                      .copyWith(color: AppColors.subtitleColor),
-                ),
+              SizedBox(height: MediaQuery.sizeOf(context).height * 0.05),
+              _SwitchTileWidget(
+                title: S.of(context).emailNotification,
                 value: false,
                 onChanged: null,
               ),
@@ -50,30 +31,32 @@ class NotificationScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      "Ви не авторизовані, тому вам не можуть приходити сповіщення на телефон та email",
+                      S.of(context).youAreNotAuthorizedNotifications,
                       style: TextStyle(color: Colors.red[400]),
                       textAlign: TextAlign.center,
                     ),
                     TextButton(
                       onPressed: () {},
-                      child: const Text(
-                        "Авторизуватись",
-                      ),
+                      child: Text(S.of(context).logIn),
                     ),
                   ],
                 ),
               ),
               const SizedBox(height: 10),
-              SwitchListTile.adaptive(
-                title: Text(
-                  "Нові страви",
-                  style: AppTextStyles.titleSmall,
-                ),
-                subtitle: Text(
-                  "Ви будете сповіщені, коли у меню додадуть нову страву",
-                  style: AppTextStyles.subtitle
-                      .copyWith(color: AppColors.subtitleColor),
-                ),
+              _SwitchTileWidget(
+                title: S.of(context).deliveryNotification,
+                value: true,
+                onChanged: (bool value) {},
+              ),
+              const SizedBox(height: 10),
+              _SwitchTileWidget(
+                title: S.of(context).reservationNotification,
+                value: true,
+                onChanged: (bool value) {},
+              ),
+              const SizedBox(height: 10),
+              _SwitchTileWidget(
+                title: S.of(context).newDishesNotification,
                 value: true,
                 onChanged: (bool value) {},
               ),
@@ -81,6 +64,38 @@ class NotificationScreen extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class _SwitchTileWidget extends StatelessWidget {
+  const _SwitchTileWidget({
+    required this.title,
+    required this.value,
+    required this.onChanged,
+    this.subtitle,
+  });
+
+  final String title;
+  final String? subtitle;
+  final bool value;
+  final void Function(bool)? onChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    return SwitchListTile.adaptive(
+      contentPadding: const EdgeInsets.symmetric(horizontal: 20),
+      title: Text(title, style: AppTextStyles.titleSmall),
+      subtitle: subtitle != null
+          ? Text(
+              subtitle!,
+              style: AppTextStyles.subtitle.copyWith(
+                color: AppColors.subtitleColor,
+              ),
+            )
+          : null,
+      value: value,
+      onChanged: onChanged,
     );
   }
 }

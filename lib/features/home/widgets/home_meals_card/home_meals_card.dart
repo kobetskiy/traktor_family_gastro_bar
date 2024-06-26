@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/core/ui/colors_constants.dart';
 import 'package:traktor_family_gastro_bar/core/ui/font_constants.dart';
 import 'package:traktor_family_gastro_bar/features/data/models/meal_model.dart';
+import 'package:traktor_family_gastro_bar/features/widgets/meal_details_screen.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
 class HomeMealsCard extends StatelessWidget {
@@ -13,7 +14,6 @@ class HomeMealsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
       customBorder: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15),
       ),
@@ -34,6 +34,11 @@ class HomeMealsCard extends StatelessWidget {
             ],
           ),
         ),
+      ),
+            onTap: () => showModalBottomSheet(
+        isScrollControlled: true,
+        context: context,
+        builder: (_) => MealDetailsScreen(mealModel: mealModel),
       ),
     );
   }

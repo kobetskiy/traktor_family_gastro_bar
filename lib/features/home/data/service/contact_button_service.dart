@@ -12,14 +12,20 @@ class ContactButtonService {
         showAdaptiveDialog(
           context: context,
           builder: (context) => AdaptiveAlertDialog(
-            content: S.current.wrongLinkDialogText,
+            content: S.of(context).wrongLinkDialogText,
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text('OK'),
+              ),
+            ],
           ),
         );
       }
     }
   }
 
-  final String instagramLink = 'https://www.instagram.com/traktor_gastrobar/';
+  final String instagramLink = 'https://www.instagram.com/traktor_gastrobar';
   final String facebookLink = 'https://www.facebook.com/traktorgastrobar';
   final String emailAddress = 'tractor.rest@gmail.com';
   final String emailScheme = 'mailto';

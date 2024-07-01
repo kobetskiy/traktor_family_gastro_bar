@@ -90,5 +90,8 @@
   "weWillFixThisErrorAsSoonAsPossible": "Ми виправимо цю помилку якнайшвидше",
   "oopsSomethingWentWrong": "Упс, щось пішло не так",
   "weAreAlreadyFixingThisBugPleaseTryAgainLater": "Ми вже виправляємо цю помилку, спробуйте будь ласка пізніше",
-  "tellMeWhatProblemYouFound": "Pозкажіть яку проблему ви знайшли"
+  "tellMeWhatProblemYouFound": "Pозкажіть яку проблему ви знайшли",
+  "goBack": "Повернутися назад",
+  "thankYouForYourFeedback": "Дякуємо за ваш відгук",
+  "weTryToImproveOurServiceEveryDay": "Ми намагаємося покращувати наш сервіс кожен день, щоб бачити вас частіше у нашому ресторані"
 }

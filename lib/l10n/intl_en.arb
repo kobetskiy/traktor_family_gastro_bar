@@ -90,5 +90,8 @@
   "weWillFixThisErrorAsSoonAsPossible": "We will fix this error as soon as possible",
   "oopsSomethingWentWrong": "Oops, something went wrong",
   "weAreAlreadyFixingThisBugPleaseTryAgainLater": "We are already fixing this bug, please try again later",
-  "tellMeWhatProblemYouFound": "Tell us what problem you found"
+  "tellMeWhatProblemYouFound": "Tell us what problem you found",
+  "goBack": "Go back",
+  "thankYouForYourFeedback": "Thank you for your feedback",
+  "weTryToImproveOurServiceEveryDay": "We try to improve our service every day to see you more often in our restaurant"
 }

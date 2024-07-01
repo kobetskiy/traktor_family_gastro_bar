@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:traktor_family_gastro_bar/core/ui/colors_constants.dart';
-import 'package:traktor_family_gastro_bar/core/ui/font_constants.dart';
+import 'package:traktor_family_gastro_bar/core/ui/ui_constants.dart';
 import 'package:traktor_family_gastro_bar/features/data/models/meal_model.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/meal_details_screen.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
@@ -13,32 +12,39 @@ class HomeMealsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      customBorder: RoundedRectangleBorder(
+    return Card(
+      elevation: 6,
+      shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15),
       ),
-      child: SizedBox(
-        width: 155,
-        child: DecoratedBox(
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(15)),
-            color: Colors.white12,
-          ),
-          child: Column(
-            children: [
-              _HomeMealsCardImage(imageURL: mealModel.imageURL),
-              const SizedBox(height: 10),
-              _HomeMealsCardTitle(title: mealModel.title),
-              const SizedBox(height: 4),
-              _HomeMealsCardCost(cost: mealModel.cost)
-            ],
+      margin: const EdgeInsets.only(bottom: 10),
+      child: InkWell(
+        customBorder: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: SizedBox(
+          width: 155,
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.all(Radius.circular(15)),
+              color: AppColors.formColor,
+            ),
+            child: Column(
+              children: [
+                _HomeMealsCardImage(imageURL: mealModel.imageURL),
+                const SizedBox(height: 6),
+                _HomeMealsCardTitle(title: mealModel.title),
+                const SizedBox(height: 3),
+                _HomeMealsCardCost(cost: mealModel.cost)
+              ],
+            ),
           ),
         ),
-      ),
-            onTap: () => showModalBottomSheet(
-        isScrollControlled: true,
-        context: context,
-        builder: (_) => MealDetailsScreen(mealModel: mealModel),
+        onTap: () => showModalBottomSheet(
+          isScrollControlled: true,
+          context: context,
+          builder: (_) => MealDetailsScreen(mealModel: mealModel),
+        ),
       ),
     );
   }
@@ -122,8 +128,11 @@ class _HomeMealsCardImage extends StatelessWidget {
           right: 10,
           child: GestureDetector(
             onTap: () {},
-            child: const Icon(
+            child: Icon(
               Icons.favorite_border_rounded,
+              color: Theme.of(context).brightness == Brightness.light
+                  ? Colors.white
+                  : null,
               size: 28,
             ),
           ),

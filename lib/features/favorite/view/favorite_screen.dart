@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/app_bar_widget.dart';
+import 'package:traktor_family_gastro_bar/features/widgets/watermark_widget.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
 import 'favorite_meal_card/favorite_meal_card.dart';
@@ -30,6 +31,7 @@ class FavoriteScreen extends StatelessWidget {
                   separatorBuilder: (_, __) => const Divider(height: 0),
                 ),
               ),
+              const WatermarkWidget()
             ],
           ),
         ),

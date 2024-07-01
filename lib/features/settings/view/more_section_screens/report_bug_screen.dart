@@ -2,8 +2,8 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/core/ui/ui_constants.dart';
-import 'package:traktor_family_gastro_bar/features/settings/services/error_service.dart';
-import 'package:traktor_family_gastro_bar/features/settings/view/more_section_screens/report_bug/error_sending_result_screen.dart';
+import 'package:traktor_family_gastro_bar/features/settings/data/services/error_service.dart';
+import 'package:traktor_family_gastro_bar/features/settings/widgets/sending_result_screen.dart';
 import 'package:traktor_family_gastro_bar/features/settings/widgets/settings_text_field.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/adaptive_alert_dialog.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/app_bar_widget.dart';
@@ -53,7 +53,7 @@ class _ReportBugScreenState extends State<ReportBugScreen> with OverlayLoader {
     setState(() {});
   }
 
-  void sendErrorToFirebase() async {
+  Future<void> sendErrorToFirebase() async {
     try {
       startLoading();
       await errorService.sendError(
@@ -62,7 +62,13 @@ class _ReportBugScreenState extends State<ReportBugScreen> with OverlayLoader {
       );
       stopLoading();
       if (mounted) {
-        errorService.navigateTo(context, const ErrorSendingResult.success());
+        errorService.navigateTo(
+          context,
+          SendingResultScreen.success(
+            title: S.of(context).thankYou,
+            subtitle: S.of(context).weWillFixThisErrorAsSoonAsPossible,
+          ),
+        );
       }
       errorController.clear();
       image = null;
@@ -70,15 +76,16 @@ class _ReportBugScreenState extends State<ReportBugScreen> with OverlayLoader {
     } catch (e) {
       stopLoading();
       if (mounted) {
-        errorService.navigateTo(context, const ErrorSendingResult.failure());
+        errorService.navigateTo(
+          context,
+          SendingResultScreen.failure(
+            title: S.of(context).oopsSomethingWentWrong,
+            subtitle:
+                S.of(context).weAreAlreadyFixingThisBugPleaseTryAgainLater,
+          ),
+        );
       }
     }
-  }
-
-  String? validate(String? value) {
-    return value!.trim().isEmpty
-        ? S.of(context).tellMeWhatProblemYouFound
-        : null;
   }
 
   @override
@@ -115,7 +122,9 @@ class _ReportBugScreenState extends State<ReportBugScreen> with OverlayLoader {
                     child: SettingsTextField.form(
                       controller: errorController,
                       hintText: S.of(context).describeTheProblem,
-                      validator: validate,
+                      validator: (String? value) {
+                        return errorService.validate(context, value);
+                      },
                     ),
                   ),
                   const SizedBox(height: 20),
@@ -136,10 +145,10 @@ class _ReportBugScreenState extends State<ReportBugScreen> with OverlayLoader {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: PrimaryButton(
-        onPressed: () {
+        onPressed: () async {
           formKey.currentState!.validate();
           if (errorController.text != '') {
-            sendErrorToFirebase();
+            await sendErrorToFirebase();
           }
         },
         child: Text(S.of(context).submit),

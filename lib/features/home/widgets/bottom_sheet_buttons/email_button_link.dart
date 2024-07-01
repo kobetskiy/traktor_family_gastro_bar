@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/core/ui/font_constants.dart';
 import 'package:traktor_family_gastro_bar/core/ui/icons_constants.dart';
-import 'package:traktor_family_gastro_bar/features/home/data/service/contact_button_service.dart';
+import 'package:traktor_family_gastro_bar/features/data/services/url_launcher_service.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/widgets.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
@@ -10,7 +10,7 @@ class EmailButtonLink extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final contactButtonService = ContactButtonService();
+    final contactButtonService = UrlLauncherService();
     final uri = Uri(scheme: contactButtonService.emailScheme);
 
     return PrimaryButton.outlined(

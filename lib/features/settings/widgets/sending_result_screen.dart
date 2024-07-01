@@ -6,10 +6,21 @@ import 'package:traktor_family_gastro_bar/core/ui/images_constants.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/primary_button.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
-class ErrorSendingResult extends StatelessWidget {
-  const ErrorSendingResult.success({super.key}) : isSuccess = true;
-  const ErrorSendingResult.failure({super.key}) : isSuccess = false;
+class SendingResultScreen extends StatelessWidget {
+  const SendingResultScreen.success({
+    super.key,
+    required this.title,
+    required this.subtitle,
+  }) : isSuccess = true;
 
+  const SendingResultScreen.failure({
+    super.key,
+    required this.title,
+    required this.subtitle,
+  }) : isSuccess = false;
+
+  final String title;
+  final String subtitle;
   final bool isSuccess;
 
   @override
@@ -24,16 +35,10 @@ class ErrorSendingResult extends StatelessWidget {
                 ? Image.asset(AppImages.success)
                 : Image.asset(AppImages.failure),
             const SizedBox(height: 20),
-            Text(
-                isSuccess
-                    ? S.of(context).thankYou
-                    : S.of(context).oopsSomethingWentWrong,
-                style: AppTextStyles.titleLarge),
+            Text(title, style: AppTextStyles.titleLarge),
             const SizedBox(height: 10),
             Text(
-              isSuccess
-                  ? S.of(context).weWillFixThisErrorAsSoonAsPossible
-                  : S.of(context).weAreAlreadyFixingThisBugPleaseTryAgainLater,
+              subtitle,
               textAlign: TextAlign.center,
               style: AppTextStyles.titleSmall
                   .copyWith(color: AppColors.subtitleColor),
@@ -48,7 +53,7 @@ class ErrorSendingResult extends StatelessWidget {
           MaterialPageRoute(builder: (context) => const AppScreen()),
           (route) => false,
         ),
-        child: const Text("Повернутися назад"),
+        child: Text(S.of(context).goBack),
       ),
     );
   }

@@ -4,7 +4,7 @@ import 'package:traktor_family_gastro_bar/core/ui/colors_constants.dart';
 final ThemeData theme = ThemeData(
   colorScheme: ColorScheme.fromSeed(
     seedColor: AppColors.primaryColor,
-    brightness: Brightness.dark,
+    brightness: Brightness.light,
   ),
   primaryColor: AppColors.primaryColor,
   iconButtonTheme: IconButtonThemeData(

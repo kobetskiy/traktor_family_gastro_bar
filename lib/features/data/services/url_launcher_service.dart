@@ -3,7 +3,7 @@ import 'package:traktor_family_gastro_bar/features/widgets/adaptive_alert_dialog
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class ContactButtonService {
+class UrlLauncherService {
   void openLink(BuildContext context, Uri uri) async {
     if (await canLaunchUrl(uri)) {
       launchUrl(uri);
@@ -25,6 +25,7 @@ class ContactButtonService {
     }
   }
 
+  final String creatorInstagram = 'https://www.instagram.com/kobetskiy.dev';
   final String instagramLink = 'https://www.instagram.com/traktor_gastrobar';
   final String facebookLink = 'https://www.facebook.com/traktorgastrobar';
   final String emailAddress = 'tractor.rest@gmail.com';

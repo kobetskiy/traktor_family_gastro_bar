@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/features/home/bloc/banner_bloc/banner_bloc.dart';
 import 'package:traktor_family_gastro_bar/features/home/data/models/banner_model.dart';
@@ -30,7 +31,7 @@ class _BannersPageViewState extends State<BannersPageView>
     return Column(
       children: [
         _BannersList(state: widget.state, controller: bannerController),
-        const SizedBox(height: 15),
+        const SizedBox(height: 5),
         _BannerPageSelectors(controller: bannerController),
       ],
     );
@@ -50,7 +51,7 @@ class _BannersList extends StatelessWidget {
       child: ConstrainedBox(
         constraints: const BoxConstraints(maxHeight: 300),
         child: AspectRatio(
-          aspectRatio: 2.13 / 1,
+          aspectRatio: 1.89 / 1,
           child: PageView.builder(
             onPageChanged: (index) => controller.index = index,
             itemCount: controller.length,
@@ -64,12 +65,15 @@ class _BannersList extends StatelessWidget {
 
               return Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(15),
-                  child: Material(
-                    child: Ink.image(
-                      image: NetworkImage(bannerModel.imageURL),
-                      fit: BoxFit.fitHeight,
+                child: Card(
+                  elevation: 6,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  margin: const EdgeInsets.symmetric(vertical: 10),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(15),
+                    child: Material(
                       child: InkWell(
                         onTap: () => bannerService.navigateTo(
                           context: context,
@@ -79,6 +83,10 @@ class _BannersList extends StatelessWidget {
                         ),
                         customBorder: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: CachedNetworkImage(
+                          imageUrl: bannerModel.imageURL,
+                          fit: BoxFit.fitHeight,
                         ),
                       ),
                     ),
@@ -105,17 +113,10 @@ class _BannerPageSelectors extends StatefulWidget {
 class _BannerPageSelectorsState extends State<_BannerPageSelectors> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        widget.controller.length > 1
-            ? Center(
-                child: TabPageSelector(controller: widget.controller),
-              )
-            : const SizedBox.shrink(),
-        widget.controller.length > 1
-            ? const SizedBox(height: 15)
-            : const SizedBox.shrink(),
-      ],
-    );
+    return widget.controller.length > 1
+        ? Center(
+            child: TabPageSelector(controller: widget.controller),
+          )
+        : const SizedBox.shrink();
   }
 }

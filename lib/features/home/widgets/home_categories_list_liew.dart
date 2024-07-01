@@ -12,12 +12,11 @@ class HomeCategoriesListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 80,
+      height: 110,
       child: Center(
         child: ListView.separated(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           scrollDirection: Axis.horizontal,
-          shrinkWrap: true,
           itemCount: _tabService.allTabs.length,
           itemBuilder: (_, int index) => _HomeCategoriesContent(index: index),
           separatorBuilder: (_, __) => const SizedBox(width: 20),
@@ -42,34 +41,36 @@ class _HomeCategoriesContentState extends State<_HomeCategoriesContent> {
     final tabService = Provider.of<TabService>(context, listen: false);
 
     return Consumer<BottomNavigationBarService>(
-        builder: (context, bottomNavBarService, child) {
-        return Card(
-          shape: RoundedRectangleBorder(
+      builder: (context, bottomNavBarService, child) => Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+        margin: const EdgeInsets.symmetric(vertical: 15),
+        elevation: 7,
+        child: InkWell(
+          customBorder: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15),
           ),
-          margin: EdgeInsets.zero,
-          child: InkWell(
-            customBorder: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15),
-            ),
-            onTap: () {
-              tabService.controller!.index = widget.index;
-              bottomNavBarService.onTap(1);
-            },
-            child: SizedBox(
-              width: 80,
-              height: 80,
-              child: Center(
-                child: Image.asset(
-                  TabIcons.tabIconsList[widget.index],
-                  width: 30,
-                  height: 30,
-                ),
+          onTap: () {
+            tabService.controller!.index = widget.index;
+            bottomNavBarService.onTap(1);
+          },
+          child: SizedBox(
+            width: 80,
+            child: Center(
+              child: Image.asset(
+                TabIcons.tabIconsList[widget.index],
+                color:
+                    Theme.of(context).brightness == Brightness.light
+                        ? Colors.black
+                        : null,
+                width: 30,
+                height: 30,
               ),
             ),
           ),
-        );
-      }
+        ),
+      ),
     );
   }
 }

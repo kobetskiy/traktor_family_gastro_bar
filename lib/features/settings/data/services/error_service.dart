@@ -4,6 +4,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:traktor_family_gastro_bar/features/data/database/database_constants.dart';
+import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
 class ErrorService {
   final _storage = FirebaseStorage.instance;
@@ -36,6 +37,12 @@ class ErrorService {
       return await file.readAsBytes();
     }
     return null;
+  }
+
+    String? validate(BuildContext context, String? value) {
+    return value!.trim().isEmpty
+        ? S.of(context).tellMeWhatProblemYouFound
+        : null;
   }
 
   void navigateTo(BuildContext context, Widget page) {

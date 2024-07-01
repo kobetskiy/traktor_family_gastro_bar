@@ -15,7 +15,7 @@ class SettingsSection extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
         ),
         color: AppColors.formColor,
-        elevation: 10,
+        elevation: 7,
         child: Column(children: children),
       ),
     );

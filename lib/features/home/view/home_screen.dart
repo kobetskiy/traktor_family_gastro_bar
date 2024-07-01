@@ -71,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     onPressed: () => _showContactUsSheet(context),
                   ),
                 ),
-                const SizedBox(height: 20),
+                const WatermarkWidget()
               ],
             ),
           ),

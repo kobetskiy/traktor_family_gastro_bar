@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:traktor_family_gastro_bar/features/settings/services/localization_service.dart';
+import 'package:traktor_family_gastro_bar/features/settings/data/services/localization_service.dart';
 
 part 'localization_event.dart';
 part 'localization_state.dart';

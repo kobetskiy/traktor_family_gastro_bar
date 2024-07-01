@@ -2,6 +2,7 @@ abstract class DatabaseCollections {
   static const String mealsCollection = 'meals';
   static const String bannersCollection = 'banners';
   static const String errorsCollection = 'errors';
+  static const String reviewsCollection = 'reviews';
 }
 
 abstract class DatabaseMealCategories {

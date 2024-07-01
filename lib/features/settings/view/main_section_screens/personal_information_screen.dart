@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/core/ui/font_constants.dart';
-import 'package:traktor_family_gastro_bar/features/settings/services/text_field_validator.dart';
+import 'package:traktor_family_gastro_bar/features/settings/data/services/text_field_validator.dart';
 import 'package:traktor_family_gastro_bar/features/settings/widgets/settings_text_field.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/app_bar_widget.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/primary_button.dart';

@@ -1,8 +1,12 @@
+// ignore_for_file: must_be_immutable
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/core/ui/ui_constants.dart';
+import 'package:traktor_family_gastro_bar/features/settings/data/services/review_service.dart';
 import 'package:traktor_family_gastro_bar/features/settings/widgets/rating_bar.dart';
+import 'package:traktor_family_gastro_bar/features/settings/widgets/sending_result_screen.dart';
 import 'package:traktor_family_gastro_bar/features/settings/widgets/settings_text_field.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/app_bar_widget.dart';
+import 'package:traktor_family_gastro_bar/features/widgets/overlay_loader.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/primary_button.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
@@ -13,8 +17,46 @@ class WriteReviewScreen extends StatefulWidget {
   State<WriteReviewScreen> createState() => _WriteReviewScreenState();
 }
 
-class _WriteReviewScreenState extends State<WriteReviewScreen> {
-  final controller = TextEditingController();
+class _WriteReviewScreenState extends State<WriteReviewScreen>
+    with OverlayLoader {
+  final reviewController = TextEditingController();
+  final reviewService = ReviewService();
+  double rating = 0;
+
+  Future<void> sendReviewToFirebase() async {
+    try {
+      startLoading();
+      await reviewService.sendReview(
+        text: reviewController.text,
+        rating: rating,
+      );
+      stopLoading();
+      if (mounted) {
+        reviewService.navigateTo(
+          context,
+          SendingResultScreen.success(
+            title: S.of(context).thankYouForYourFeedback,
+            subtitle: S.of(context).weTryToImproveOurServiceEveryDay,
+          ),
+        );
+      }
+      reviewController.clear();
+      rating = 0;
+      setState(() {});
+    } catch (e) {
+      stopLoading();
+      if (mounted) {
+        reviewService.navigateTo(
+          context,
+          SendingResultScreen.failure(
+            title: S.of(context).oopsSomethingWentWrong,
+            subtitle:
+                S.of(context).weAreAlreadyFixingThisBugPleaseTryAgainLater,
+          ),
+        );
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,10 +79,18 @@ class _WriteReviewScreenState extends State<WriteReviewScreen> {
                   style: AppTextStyles.titleLarge.copyWith(fontSize: 22),
                 ),
                 const SizedBox(height: 20),
-                const _RatingBarWidget(),
+                RatingBar.builder(
+                  itemPadding: const EdgeInsets.symmetric(horizontal: 10),
+                  itemCount: 5,
+                  itemBuilder: (context, index) => Icon(
+                    Icons.star_rate_rounded,
+                    color: AppColors.primaryColor,
+                  ),
+                  onRatingUpdate: (value) => rating = value,
+                ),
                 const SizedBox(height: 30),
                 SettingsTextField(
-                  controller: controller,
+                  controller: reviewController,
                   hintText: S.of(context).remarksOrWishes,
                 ),
               ],
@@ -50,30 +100,11 @@ class _WriteReviewScreenState extends State<WriteReviewScreen> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: PrimaryButton(
-        onPressed: () {},
+        onPressed: () async {
+          await sendReviewToFirebase();
+        },
         child: Text(S.of(context).submit),
       ),
-    );
-  }
-}
-
-class _RatingBarWidget extends StatelessWidget {
-  const _RatingBarWidget();
-
-  @override
-  Widget build(BuildContext context) {
-    return RatingBar.builder(
-      itemPadding: const EdgeInsets.symmetric(horizontal: 10),
-      itemCount: 5,
-      itemBuilder: (context, index) {
-        return Icon(
-          Icons.star_rate_rounded,
-          color: AppColors.primaryColor,
-        );
-      },
-      onRatingUpdate: (rating) {
-        print(rating);
-      },
     );
   }
 }

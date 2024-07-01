@@ -43,6 +43,7 @@ class _SettingsScreenState extends State<SettingsScreen>
                   ),
                   const SizedBox(height: 10),
                   const SettingsMoreSection(),
+                  const WatermarkWidget()
                 ],
               ),
             ),

@@ -18,6 +18,10 @@ class SettingsMoreSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final iconsColor = Theme.of(context).brightness == Brightness.light
+        ? Colors.black87
+        : Colors.white;
+
     return SettingsSection(
       children: [
         SettingsTile(
@@ -30,20 +34,29 @@ class SettingsMoreSection extends StatelessWidget {
               topRight: Radius.circular(12),
             ),
           ),
-          child: const ImageIcon(AssetImage(AppIcons.alert)),
+          child: ImageIcon(
+            const AssetImage(AppIcons.alert),
+            color: iconsColor,
+          ),
         ),
         const Divider(height: 0),
         SettingsTile(
           title: S.of(context).writeAReview,
           subtitle: S.of(context).rateOurAppAndService,
-          child: const ImageIcon(AssetImage(AppIcons.review)),
+          child: ImageIcon(
+            const AssetImage(AppIcons.review),
+            color: iconsColor,
+          ),
           onTap: () => pushTo(context, const WriteReviewScreen()),
         ),
         const Divider(height: 0),
         SettingsTile(
           title: S.of(context).privacyPolicy,
           subtitle: S.of(context).readThisBeforeUsingApp,
-          child: const ImageIcon(AssetImage(AppIcons.privacy)),
+          child: ImageIcon(
+            const AssetImage(AppIcons.privacy),
+            color: iconsColor,
+          ),
           onTap: () => pushTo(context, const PrivacyPolicyScreen()),
         ),
         const Divider(height: 0),
@@ -57,7 +70,10 @@ class SettingsMoreSection extends StatelessWidget {
               bottomRight: Radius.circular(12),
             ),
           ),
-          child: const ImageIcon(AssetImage(AppIcons.faq)),
+          child: ImageIcon(
+            const AssetImage(AppIcons.faq),
+            color: iconsColor,
+          ),
         ),
       ],
     );

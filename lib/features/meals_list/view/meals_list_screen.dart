@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/bloc/meals_list_bloc.dart';
-import 'package:traktor_family_gastro_bar/features/meals_list/view/tabs_screens/tab_service.dart';
+import 'package:traktor_family_gastro_bar/features/meals_list/services/tab_service.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/widgets/index.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/widgets.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
@@ -80,8 +80,14 @@ class _TabBarWidget extends StatefulWidget {
 class _TabBarWidgetState extends State<_TabBarWidget> {
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     final tabService = Provider.of<TabService>(context, listen: false);
     return TabBar(
+      labelStyle: theme.textTheme.titleSmall!.copyWith(
+        color: theme.colorScheme.secondary,
+      ),
+      indicatorColor: theme.colorScheme.secondary,
+      unselectedLabelStyle: Theme.of(context).textTheme.titleSmall,
       tabAlignment: TabAlignment.start,
       controller: tabService.controller,
       isScrollable: true,

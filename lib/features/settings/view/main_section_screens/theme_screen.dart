@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:traktor_family_gastro_bar/core/ui/font_constants.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/app_bar_widget.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
@@ -28,7 +27,8 @@ class _ThemeScreenState extends State<ThemeScreen> {
             children: [
               SizedBox(height: MediaQuery.sizeOf(context).height * 0.05),
               RadioListTile<ThemeValues>(
-                title: Text('Темна', style: AppTextStyles.titleSmall),
+                title: Text('Темна',
+                    style: Theme.of(context).textTheme.titleSmall),
                 value: ThemeValues.dark,
                 groupValue: _currentValue,
                 onChanged: (ThemeValues? value) {
@@ -37,7 +37,8 @@ class _ThemeScreenState extends State<ThemeScreen> {
                 },
               ),
               RadioListTile<ThemeValues>(
-                title: Text('Світла', style: AppTextStyles.titleSmall),
+                title: Text('Світла',
+                    style: Theme.of(context).textTheme.titleSmall),
                 value: ThemeValues.light,
                 groupValue: _currentValue,
                 onChanged: (ThemeValues? value) {
@@ -46,7 +47,8 @@ class _ThemeScreenState extends State<ThemeScreen> {
                 },
               ),
               RadioListTile<ThemeValues>(
-                title: Text('Авто.', style: AppTextStyles.titleSmall),
+                title: Text('Авто.',
+                    style: Theme.of(context).textTheme.titleSmall),
                 value: ThemeValues.auto,
                 groupValue: _currentValue,
                 onChanged: (ThemeValues? value) {

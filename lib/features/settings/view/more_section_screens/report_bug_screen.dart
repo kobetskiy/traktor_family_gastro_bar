@@ -107,13 +107,18 @@ class _ReportBugScreenState extends State<ReportBugScreen> with OverlayLoader {
                   SizedBox(height: MediaQuery.sizeOf(context).height * 0.05),
                   Text(
                     S.of(context).foundAnError,
-                    style: AppTextStyles.titleLarge.copyWith(fontSize: 22),
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleLarge!
+                        .copyWith(fontSize: 22),
                   ),
                   const SizedBox(height: 15),
                   Text(
                     S.of(context).notifyUsOfAnErrorInTheOperationOfApp,
-                    style: AppTextStyles.subtitle
-                        .copyWith(color: AppColors.subtitleColor),
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodySmall!
+                        .copyWith(color: Colors.grey[600]),
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 25),

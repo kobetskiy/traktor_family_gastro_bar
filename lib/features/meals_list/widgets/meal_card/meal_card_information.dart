@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:traktor_family_gastro_bar/core/ui/colors_constants.dart';
-import 'package:traktor_family_gastro_bar/core/ui/font_constants.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
 class MealCardTitle extends StatelessWidget {
@@ -10,7 +8,7 @@ class MealCardTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(title, style: AppTextStyles.titleSmall);
+    return Text(title, style: Theme.of(context).textTheme.titleSmall);
   }
 }
 
@@ -30,7 +28,10 @@ class MealCardCost extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       '${checkCost(cost.toString())} ${S.of(context).uah}',
-      style: AppTextStyles.titleSmall.copyWith(color: AppColors.primaryColor),
+      style: Theme.of(context)
+          .textTheme
+          .titleSmall!
+          .copyWith(color: Theme.of(context).primaryColor),
     );
   }
 }
@@ -44,7 +45,7 @@ class MealCardSubtitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       subtitle ?? '',
-      style: AppTextStyles.subtitle,
+      style: Theme.of(context).textTheme.bodySmall,
       maxLines: 3,
       overflow: TextOverflow.fade,
     );
@@ -61,7 +62,7 @@ class MealCardLikes extends StatelessWidget {
     return DecoratedBox(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(6),
-          border: Border.all(color: AppColors.subtitleColor)),
+          border: Border.all(color: Colors.grey[600]!)),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
         child: Row(
@@ -75,7 +76,10 @@ class MealCardLikes extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(right: 5),
               child: Center(
-                child: Text(likesCount.toString()),
+                child: Text(
+                  likesCount.toString(),
+                  style: Theme.of(context).textTheme.titleSmall,
+                ),
               ),
             )
           ],
@@ -94,7 +98,10 @@ class MealCardGrams extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       grams.isNotEmpty ? grams + S.of(context).gramsSymbol : '',
-      style: AppTextStyles.subtitle.copyWith(color: AppColors.subtitleColor),
+      style: Theme.of(context)
+          .textTheme
+          .bodySmall!
+          .copyWith(color: Colors.grey[600]),
     );
   }
 }

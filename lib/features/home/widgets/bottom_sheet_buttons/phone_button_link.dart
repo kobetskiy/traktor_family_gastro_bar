@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:traktor_family_gastro_bar/core/ui/font_constants.dart';
 import 'package:traktor_family_gastro_bar/core/ui/icons_constants.dart';
 import 'package:traktor_family_gastro_bar/features/data/services/url_launcher_service.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/widgets.dart';
@@ -26,9 +25,9 @@ class PhoneButtonLink extends StatelessWidget {
           const SizedBox(width: 10),
           Text(
             contactButtonService.phoneNumber,
-            style: AppTextStyles.titleSmall.copyWith(
-              fontWeight: FontWeight.w500,
-            ),
+            style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                  fontWeight: FontWeight.w500,
+                ),
           ),
         ],
       ),

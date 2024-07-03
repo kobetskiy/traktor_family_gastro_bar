@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:traktor_family_gastro_bar/core/ui/colors_constants.dart';
-import 'package:traktor_family_gastro_bar/core/ui/font_constants.dart';
 
 class SettingsTile extends StatelessWidget {
   const SettingsTile({
@@ -9,7 +7,7 @@ class SettingsTile extends StatelessWidget {
     required this.child,
     this.subtitle,
     this.onTap,
-    this.trailing = const Icon(Icons.arrow_forward_ios_rounded),
+    this.trailing,
     this.customBorder,
   });
 
@@ -28,19 +26,27 @@ class SettingsTile extends StatelessWidget {
       child: ListTile(
         contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
         title: Text(title),
-        titleTextStyle: AppTextStyles.titleSmall,
+        titleTextStyle: Theme.of(context).textTheme.titleSmall,
         subtitle: subtitle != null ? Text(subtitle!) : null,
-        subtitleTextStyle: AppTextStyles.subtitle.copyWith(
-          color: AppColors.subtitleColor,
-        ),
+        subtitleTextStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
+              color: Colors.grey[600],
+            ),
         leading: SizedBox(
           width: 24,
           height: 24,
           child: child,
         ),
-        trailing: trailing,
-        iconColor: AppColors.titleColor,
-      ),
+        trailing: trailing ??
+            Icon(
+              Icons.arrow_forward_ios_rounded,
+              color: Theme.of(context).brightness == Brightness.light
+                  ? Colors.black87
+                  : Colors.white,
+            ),
+        iconColor: Theme.of(context).brightness == Brightness.light
+                  ? Colors.black87
+                  : Colors.white,
+            ),
     );
   }
 }

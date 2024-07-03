@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element
 
 import 'package:flutter/material.dart';
-import 'package:traktor_family_gastro_bar/core/ui/ui_constants.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/app_bar_widget.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
@@ -85,13 +84,13 @@ class _SwitchTileWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SwitchListTile.adaptive(
       contentPadding: const EdgeInsets.symmetric(horizontal: 20),
-      title: Text(title, style: AppTextStyles.titleSmall),
+      title: Text(title, style: Theme.of(context).textTheme.titleSmall),
       subtitle: subtitle != null
           ? Text(
               subtitle!,
-              style: AppTextStyles.subtitle.copyWith(
-                color: AppColors.subtitleColor,
-              ),
+              style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                    color: Colors.grey[600],
+                  ),
             )
           : null,
       value: value,

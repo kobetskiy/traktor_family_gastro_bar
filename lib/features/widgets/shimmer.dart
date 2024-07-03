@@ -26,7 +26,7 @@ class Shimmer extends StatefulWidget {
     end: Alignment(1.0, 0.3),
     tileMode: TileMode.clamp,
   );
-  
+
   @override
   ShimmerState createState() => ShimmerState();
 }
@@ -76,19 +76,6 @@ class ShimmerState extends State<Shimmer> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return widget.child ?? const SizedBox();
-  }
-}
-
-class _SlidingGradientTransform extends GradientTransform {
-  const _SlidingGradientTransform({
-    required this.slidePercent,
-  });
-
-  final double slidePercent;
-
-  @override
-  Matrix4? transform(Rect bounds, {TextDirection? textDirection}) {
-    return Matrix4.translationValues(bounds.width * slidePercent, 0.0, 0.0);
   }
 }
 

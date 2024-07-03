@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element
 
 import 'package:flutter/material.dart';
-import 'package:traktor_family_gastro_bar/core/ui/ui_constants.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/app_bar_widget.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
@@ -25,7 +24,7 @@ class FAQScreen extends StatelessWidget {
                 content: [
                   Text(
                     S.of(context).howToReturnTheProductContent,
-                    style: AppTextStyles.subtitle,
+                    style: Theme.of(context).textTheme.bodySmall,
                   )
                 ],
               ),
@@ -34,7 +33,7 @@ class FAQScreen extends StatelessWidget {
                 content: [
                   Text(
                     S.of(context).whatAreThePaymentMethodsContent,
-                    style: AppTextStyles.subtitle,
+                    style: Theme.of(context).textTheme.bodySmall,
                   )
                 ],
               ),
@@ -43,7 +42,7 @@ class FAQScreen extends StatelessWidget {
                 content: [
                   Text(
                     S.of(context).howDoesDeliveryWorkContent,
-                    style: AppTextStyles.subtitle,
+                    style: Theme.of(context).textTheme.bodySmall,
                   )
                 ],
               ),
@@ -52,7 +51,7 @@ class FAQScreen extends StatelessWidget {
                 content: [
                   Text(
                     S.of(context).howToPlaceAnOrderContent,
-                    style: AppTextStyles.subtitle,
+                    style: Theme.of(context).textTheme.bodySmall,
                   )
                 ],
               ),
@@ -60,8 +59,10 @@ class FAQScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(20),
                 child: Text(
                   S.of(context).inCaseOfAnyQuestionsPleaseCall,
-                  style: AppTextStyles.titleSmall
-                      .copyWith(color: AppColors.subtitleColor),
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleSmall!
+                      .copyWith(color: Colors.grey[600]),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -94,13 +95,18 @@ class _ExpansionTileWidget extends StatelessWidget {
       leading: leading != null ? const Icon(Icons.inbox) : null,
       title: Text(
         title,
-        style: AppTextStyles.titleSmall.copyWith(fontWeight: FontWeight.w700),
+        style: Theme.of(context)
+            .textTheme
+            .titleSmall!
+            .copyWith(fontWeight: FontWeight.w700),
       ),
       subtitle: subtitle != null
           ? Text(
               subtitle!,
-              style: AppTextStyles.subtitle
-                  .copyWith(color: AppColors.subtitleColor),
+              style: Theme.of(context)
+                  .textTheme
+                  .bodySmall!
+                  .copyWith(color: Colors.grey[600]),
             )
           : null,
       children: content,

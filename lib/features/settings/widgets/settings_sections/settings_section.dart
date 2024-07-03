@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:traktor_family_gastro_bar/core/ui/ui_constants.dart';
 
 class SettingsSection extends StatelessWidget {
   const SettingsSection({super.key, required this.children});
@@ -14,7 +13,9 @@ class SettingsSection extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),
-        color: AppColors.formColor,
+        color: Theme.of(context).brightness == Brightness.light
+          ? const Color(0xFFE1E1E1)
+          : const Color(0xFF1E1E1E),
         elevation: 7,
         child: Column(children: children),
       ),

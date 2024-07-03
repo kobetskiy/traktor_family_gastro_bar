@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
-import 'tabs_screens.dart';
+import '../view/tabs_screens/tabs_screens.dart';
 
 class TabService with ChangeNotifier {
   TabController? controller;

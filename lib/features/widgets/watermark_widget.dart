@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:traktor_family_gastro_bar/core/ui/colors_constants.dart';
 import 'package:traktor_family_gastro_bar/features/data/services/url_launcher_service.dart';
 
 class WatermarkWidget extends StatelessWidget {
@@ -7,7 +6,6 @@ class WatermarkWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final urlLauncherService = UrlLauncherService();
     final uri = Uri.parse(urlLauncherService.creatorInstagram);
 
@@ -19,7 +17,7 @@ class WatermarkWidget extends StatelessWidget {
             onTap: () => urlLauncherService.openLink(context, uri),
             child: Text(
               "Made by @kobetskiy.dev",
-              style: TextStyle(color: AppColors.subtitleColor),
+              style: TextStyle(color: Colors.grey[600]),
             ),
           ),
         ),

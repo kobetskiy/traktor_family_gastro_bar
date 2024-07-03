@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:traktor_family_gastro_bar/core/ui/colors_constants.dart';
-import 'package:traktor_family_gastro_bar/core/ui/font_constants.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
 class MealCardTitle extends StatelessWidget {
@@ -10,7 +8,7 @@ class MealCardTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(title, style: AppTextStyles.titleSmall);
+    return Text(title, style: Theme.of(context).textTheme.titleSmall);
   }
 }
 
@@ -23,7 +21,10 @@ class MealCardCost extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       '$cost ${S.of(context).uah}',
-      style: AppTextStyles.titleSmall.copyWith(color: AppColors.primaryColor),
+      style: Theme.of(context)
+          .textTheme
+          .titleSmall!
+          .copyWith(color: Theme.of(context).primaryColor),
     );
   }
 }
@@ -76,7 +77,11 @@ class _RemoveOrAddButton extends StatelessWidget {
       onTap: onTap,
       child: DecoratedBox(
         decoration: BoxDecoration(
-            border: Border.all(color: AppColors.titleColor),
+            border: Border.all(
+              color: Theme.of(context).brightness == Brightness.light
+                  ? Colors.black87
+                  : Colors.white,
+            ),
             borderRadius: const BorderRadius.all(Radius.circular(6))),
         child: Padding(
           padding: const EdgeInsets.all(3),

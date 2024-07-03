@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:traktor_family_gastro_bar/core/ui/font_constants.dart';
-import 'package:traktor_family_gastro_bar/features/settings/bloc/localization_bloc.dart';
+import 'package:traktor_family_gastro_bar/features/settings/bloc/localization_bloc/localization_bloc.dart';
 import 'package:traktor_family_gastro_bar/features/settings/data/models/language_model.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/app_bar_widget.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
@@ -40,7 +39,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
                         final item = languageModel[index];
                         return RadioListTile(
                           title: Text(item.language,
-                              style: AppTextStyles.titleSmall),
+                              style: Theme.of(context).textTheme.titleSmall),
                           value: item.languageCode,
                           groupValue: groupValue,
                           onChanged: (String? value) {

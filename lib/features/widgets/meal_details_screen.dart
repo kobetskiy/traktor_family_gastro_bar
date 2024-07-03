@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:traktor_family_gastro_bar/core/ui/ui_constants.dart';
 import 'package:traktor_family_gastro_bar/features/data/models/meal_model.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/widgets/meal_card/meal_card_information.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
@@ -42,14 +41,17 @@ class _Information extends StatelessWidget {
             children: [
               Flexible(
                 flex: 3,
-                child: Text(mealModel.title, style: AppTextStyles.titleLarge),
+                child: Text(mealModel.title,
+                    style: Theme.of(context).textTheme.titleLarge),
               ),
               Flexible(
                 flex: 1,
                 child: Text(
                   '${mealModel.cost} ${S.current.uah}',
-                  style: AppTextStyles.titleLarge
-                      .copyWith(color: AppColors.primaryColor),
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleLarge!
+                      .copyWith(color: Theme.of(context).primaryColor),
                 ),
               )
             ],
@@ -60,8 +62,10 @@ class _Information extends StatelessWidget {
           mealModel.subtitle != ''
               ? Text(
                   mealModel.subtitle,
-                  style: AppTextStyles.subtitle
-                      .copyWith(color: AppColors.subtitleColor),
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodySmall!
+                      .copyWith(color: Colors.grey[600]),
                 )
               : const SizedBox.shrink(),
           const SizedBox(height: 15),
@@ -97,7 +101,8 @@ class _Image extends StatelessWidget {
         imageUrl: mealModel.imageURL,
         key: UniqueKey(),
         fit: BoxFit.cover,
-        progressIndicatorBuilder: (context, url, progress) => const AspectRatio(aspectRatio: 1.33 / 1),
+        progressIndicatorBuilder: (context, url, progress) =>
+            const AspectRatio(aspectRatio: 1.33 / 1),
         errorWidget: (_, __, ___) => AspectRatio(
           aspectRatio: 1.33 / 1,
           child: ColoredBox(
@@ -109,15 +114,15 @@ class _Image extends StatelessWidget {
                 children: [
                   Text(
                     S.of(context).thePictureIsTemporarilyUnavailable,
-                    style: AppTextStyles.titleLarge,
+                    style: Theme.of(context).textTheme.titleLarge,
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 10),
                   Text(
                     S.of(context).weAreAlreadyWorkingOnASolutionToThisProblem,
-                    style: AppTextStyles.titleSmall.copyWith(
-                      color: AppColors.subtitleColor,
-                    ),
+                    style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                          color: Colors.grey[600],
+                        ),
                     textAlign: TextAlign.center,
                   ),
                 ],

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:traktor_family_gastro_bar/core/ui/colors_constants.dart';
-import 'package:traktor_family_gastro_bar/core/ui/font_constants.dart';
 import 'package:traktor_family_gastro_bar/core/ui/icons_constants.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
@@ -14,7 +12,12 @@ class ContactUsButtonContent extends StatelessWidget {
         SizedBox(
           height: 38,
           width: 38,
-          child: Image.asset(AppIcons.outlinedPhone),
+          child: Image.asset(
+            AppIcons.outlinedPhone,
+            color: Theme.of(context).brightness == Brightness.light
+                ? Colors.black87
+                : Colors.white,
+          ),
         ),
         const SizedBox(width: 15),
         Column(
@@ -22,14 +25,14 @@ class ContactUsButtonContent extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(S.of(context).haveAQuestionContactUs,
-                style: AppTextStyles.titleSmall),
+                style: Theme.of(context).textTheme.titleSmall),
             const SizedBox(height: 3),
             Text(
               S.of(context).from10amTo9pmFreeInUkraine,
               style: Theme.of(context)
                   .textTheme
                   .labelMedium!
-                  .copyWith(color: AppColors.subtitleColor),
+                  .copyWith(color: Colors.grey[600]),
             ),
           ],
         ),

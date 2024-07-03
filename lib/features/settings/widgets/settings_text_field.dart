@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:traktor_family_gastro_bar/core/ui/colors_constants.dart';
-import 'package:traktor_family_gastro_bar/core/ui/font_constants.dart';
 
 class SettingsTextField extends StatelessWidget {
   const SettingsTextField({
@@ -37,13 +35,14 @@ class SettingsTextField extends StatelessWidget {
       prefixIcon: prefix != null
           ? Padding(
               padding: const EdgeInsets.only(left: 20, top: 12.5),
-              child: Text(prefix!, style: AppTextStyles.titleSmall),
+              child:
+                  Text(prefix!, style: Theme.of(context).textTheme.titleSmall),
             )
           : null,
       hintText: hintText,
-      hintStyle: AppTextStyles.titleSmall.copyWith(
-        color: AppColors.subtitleColor,
-      ),
+      hintStyle: Theme.of(context).textTheme.titleSmall!.copyWith(
+            color: Colors.grey[600],
+          ),
       contentPadding: const EdgeInsets.symmetric(
         horizontal: 20,
         vertical: 10,
@@ -52,12 +51,16 @@ class SettingsTextField extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(8)),
       ),
       enabledBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: AppColors.titleColor),
+        borderSide: BorderSide(
+          color: Theme.of(context).brightness == Brightness.light
+              ? Colors.black
+              : Colors.white,
+        ),
         borderRadius: const BorderRadius.all(Radius.circular(8)),
       ),
       suffixIcon: IconButton(
         icon: const Icon(Icons.clear_rounded),
-        color: AppColors.subtitleColor,
+        color: Colors.grey[600],
         onPressed: () => controller.clear(),
       ),
     );
@@ -66,7 +69,7 @@ class SettingsTextField extends StatelessWidget {
         ? TextFormField(
             controller: controller,
             enabled: enabled,
-            style: AppTextStyles.titleSmall,
+            style: Theme.of(context).textTheme.titleSmall,
             keyboardType: keyboardType,
             validator: validator,
             autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -74,7 +77,7 @@ class SettingsTextField extends StatelessWidget {
           )
         : TextField(
             controller: controller,
-            style: AppTextStyles.titleSmall,
+            style: Theme.of(context).textTheme.titleSmall,
             keyboardType: keyboardType,
             minLines: 1,
             maxLines: 6,

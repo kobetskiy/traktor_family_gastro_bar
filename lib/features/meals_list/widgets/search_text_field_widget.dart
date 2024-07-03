@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:traktor_family_gastro_bar/core/ui/colors_constants.dart';
-import 'package:traktor_family_gastro_bar/core/ui/font_constants.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/bloc/meals_list_bloc.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
@@ -28,17 +26,22 @@ class _SearchTextFieldWidgetState extends State<SearchTextFieldWidget> {
         autofocus: true,
         onChanged: (query) =>
             widget.bloc.add(LoadSearchedMealsList(query: query)),
-        style: AppTextStyles.titleSmall,
+        style: Theme.of(context).textTheme.titleSmall,
         decoration: InputDecoration(
           hintText: S.of(context).search,
-          hintStyle: AppTextStyles.titleSmall
-              .copyWith(color: AppColors.subtitleColor),
+          hintStyle: Theme.of(context)
+              .textTheme
+              .titleSmall!
+              .copyWith(color: Colors.grey[600]),
           contentPadding: const EdgeInsets.symmetric(horizontal: 20),
           border: const OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(8)),
           ),
           enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: AppColors.titleColor),
+            borderSide: BorderSide(color: Theme.of(context).brightness == Brightness.light
+                  ? Colors.black87
+                  : Colors.white,
+            ),
             borderRadius: const BorderRadius.all(Radius.circular(8)),
           ),
           suffixIcon: IconButton(
@@ -48,7 +51,7 @@ class _SearchTextFieldWidgetState extends State<SearchTextFieldWidget> {
                   .add(LoadSearchedMealsList(query: widget.controller.text));
             },
             icon: const Icon(Icons.clear_rounded),
-            color: AppColors.subtitleColor,
+            color: Colors.grey[600],
           ),
         ),
       ),

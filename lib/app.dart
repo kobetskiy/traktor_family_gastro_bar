@@ -7,8 +7,8 @@ import 'package:traktor_family_gastro_bar/bottom_navigation_bar_service.dart';
 import 'package:traktor_family_gastro_bar/core/localization/app_localization.dart';
 import 'package:traktor_family_gastro_bar/core/ui/theme.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/bloc/meals_list_bloc.dart';
-import 'package:traktor_family_gastro_bar/features/meals_list/view/tabs_screens/tab_service.dart';
-import 'package:traktor_family_gastro_bar/features/settings/bloc/localization_bloc.dart';
+import 'package:traktor_family_gastro_bar/features/meals_list/services/tab_service.dart';
+import 'package:traktor_family_gastro_bar/features/settings/bloc/localization_bloc/localization_bloc.dart';
 
 import 'internet_connection/index.dart';
 
@@ -38,7 +38,9 @@ class App extends StatelessWidget {
           return MaterialApp(
             title: "Traktor Bar",
             debugShowCheckedModeBanner: false,
-            theme: theme,
+            theme: AppTheme.lightTheme,
+            darkTheme: AppTheme.darkTheme,
+            themeMode: ThemeMode.light,
             navigatorKey: kNavigatorKey,
             locale: state.locale,
             localizationsDelegates: AppLocalization.localizationsDelegates,

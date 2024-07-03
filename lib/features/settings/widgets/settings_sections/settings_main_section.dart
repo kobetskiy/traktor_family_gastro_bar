@@ -17,6 +17,10 @@ class SettingsMainSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final iconsColor = Theme.of(context).brightness == Brightness.light
+        ? Colors.black87
+        : Colors.white;
+
     return SettingsSection(
       children: [
         SettingsTile(
@@ -29,20 +33,25 @@ class SettingsMainSection extends StatelessWidget {
               topRight: Radius.circular(12),
             ),
           ),
-          child: const ImageIcon(AssetImage(AppIcons.profile)),
+          child: ImageIcon(
+            const AssetImage(AppIcons.profile),
+            color: iconsColor,
+          ),
         ),
         const Divider(height: 0),
         SettingsTile(
           title: S.of(context).notifications,
           subtitle: S.of(context).setUpNotifications,
-          child: const ImageIcon(AssetImage(AppIcons.notification)),
+          child: ImageIcon(const AssetImage(AppIcons.notification),
+              color: iconsColor),
           onTap: () => navigateTo(context, const NotificationScreen()),
         ),
         const Divider(height: 0),
         SettingsTile(
           title: S.of(context).language,
           subtitle: S.of(context).customizeLanguage,
-          child: const ImageIcon(AssetImage(AppIcons.language)),
+          child:
+              ImageIcon(const AssetImage(AppIcons.language), color: iconsColor),
           onTap: () => navigateTo(context, const LanguageScreen()),
         ),
         const Divider(height: 0),
@@ -56,7 +65,10 @@ class SettingsMainSection extends StatelessWidget {
               bottomRight: Radius.circular(12),
             ),
           ),
-          child: const ImageIcon(AssetImage(AppIcons.lightTheme)),
+          child: ImageIcon(
+            const AssetImage(AppIcons.lightTheme),
+            color: iconsColor,
+          ),
         ),
       ],
     );

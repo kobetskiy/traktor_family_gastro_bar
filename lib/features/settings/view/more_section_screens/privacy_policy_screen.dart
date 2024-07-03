@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:traktor_family_gastro_bar/core/ui/font_constants.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/app_bar_widget.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
@@ -70,10 +69,10 @@ class Point extends StatelessWidget {
       children: [
         Text(
           title,
-          style: AppTextStyles.titleLarge.copyWith(fontSize: 22),
+          style: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 22),
         ),
         const SizedBox(height: 20),
-        Text(content, style: AppTextStyles.subtitle),
+        Text(content, style: Theme.of(context).textTheme.bodySmall),
       ],
     );
   }

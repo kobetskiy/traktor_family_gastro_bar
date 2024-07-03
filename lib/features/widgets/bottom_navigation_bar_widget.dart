@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:traktor_family_gastro_bar/core/ui/colors_constants.dart';
 import 'package:traktor_family_gastro_bar/core/ui/icons_constants.dart';
 
 class BottomNavigationBarWidget extends StatefulWidget {
@@ -21,12 +20,11 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      backgroundColor: Colors.transparent,
       elevation: 0,
+      backgroundColor: Colors.transparent,
       type: BottomNavigationBarType.fixed,
-      unselectedItemColor: AppColors.subtitleColor,
-      selectedItemColor: AppColors.primaryColor,
-      selectedLabelStyle: const TextStyle(fontSize: 12),
+      unselectedItemColor: Colors.grey[600],
+      selectedItemColor: const Color(0xFFFFA11B),
       showSelectedLabels: false,
       showUnselectedLabels: false,
       items: const [

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:traktor_family_gastro_bar/core/ui/ui_constants.dart';
 import 'package:traktor_family_gastro_bar/features/data/database/database_constants.dart';
 import 'package:traktor_family_gastro_bar/features/home/widgets/bottom_sheet_buttons/index.dart';
 import 'package:traktor_family_gastro_bar/features/home/widgets/index.dart';
-import 'package:traktor_family_gastro_bar/features/meals_list/view/tabs_screens/tab_service.dart';
+import 'package:traktor_family_gastro_bar/features/meals_list/services/tab_service.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/widgets.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
@@ -45,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 Padding(
                   padding: const EdgeInsets.only(left: 30),
                   child: Text(S.of(context).popular,
-                      style: AppTextStyles.titleSmall),
+                      style: Theme.of(context).textTheme.titleSmall),
                 ),
                 const SizedBox(height: 10),
                 const HomeMealsPresentation(
@@ -56,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   padding: const EdgeInsets.only(left: 30),
                   child: Text(
                     S.of(context).novelty,
-                    style: AppTextStyles.titleSmall,
+                    style: Theme.of(context).textTheme.titleSmall,
                   ),
                 ),
                 const SizedBox(height: 10),
@@ -94,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               height: 3,
               child: DecoratedBox(
                 decoration: BoxDecoration(
-                  color: AppColors.subtitleColor,
+                  color: Colors.grey[600],
                   borderRadius: const BorderRadius.all(Radius.circular(50)),
                 ),
               ),
@@ -103,7 +102,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 25),
               child: Text(
                 S.of(context).contactUs,
-                style: AppTextStyles.titleLarge.copyWith(fontSize: 18),
+                style: Theme.of(context)
+                    .textTheme
+                    .titleLarge!
+                    .copyWith(fontSize: 18),
               ),
             ),
             const InstagramButtonLink(),

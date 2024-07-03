@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:traktor_family_gastro_bar/core/ui/font_constants.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   const AppBarWidget({
@@ -19,7 +18,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: Colors.transparent,
       floating: true,
       centerTitle: true,
-      title: Text(title, style: AppTextStyles.titleLarge),
+      title: Text(title, style: Theme.of(context).textTheme.titleLarge),
       leading: leading,
       actions: actions,
     );

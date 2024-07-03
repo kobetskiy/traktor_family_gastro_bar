@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:traktor_family_gastro_bar/bottom_navigation_bar_service.dart';
 import 'package:traktor_family_gastro_bar/core/ui/icons_constants.dart';
-import 'package:traktor_family_gastro_bar/features/meals_list/view/tabs_screens/tab_service.dart';
+import 'package:traktor_family_gastro_bar/features/meals_list/services/tab_service.dart';
 
 final _tabService = TabService();
 

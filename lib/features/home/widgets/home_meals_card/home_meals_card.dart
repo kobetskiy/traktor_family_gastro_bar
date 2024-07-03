@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:traktor_family_gastro_bar/core/ui/ui_constants.dart';
 import 'package:traktor_family_gastro_bar/features/data/models/meal_model.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/meal_details_screen.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
@@ -14,6 +13,9 @@ class HomeMealsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 6,
+      color: Theme.of(context).brightness == Brightness.light
+          ? const Color(0xFFE1E1E1)
+          : const Color(0xFF1E1E1E),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15),
       ),
@@ -24,17 +26,14 @@ class HomeMealsCard extends StatelessWidget {
         ),
         child: SizedBox(
           width: 155,
-          child: DecoratedBox(
-            decoration: BoxDecoration(
-              borderRadius: const BorderRadius.all(Radius.circular(15)),
-              color: AppColors.formColor,
-            ),
+          child: ClipRRect(
+            borderRadius: const BorderRadius.all(Radius.circular(15)),
             child: Column(
               children: [
                 _HomeMealsCardImage(imageURL: mealModel.imageURL),
-                const SizedBox(height: 6),
+                const SizedBox(height: 7),
                 _HomeMealsCardTitle(title: mealModel.title),
-                const SizedBox(height: 3),
+                const SizedBox(height: 2),
                 _HomeMealsCardCost(cost: mealModel.cost)
               ],
             ),
@@ -61,7 +60,8 @@ class _HomeMealsCardCost extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Text(
         '$cost ${S.current.uah}',
-        style: AppTextStyles.titleSmall.copyWith(color: AppColors.primaryColor),
+        style: Theme.of(context).textTheme.titleMedium!.copyWith(
+            color: Theme.of(context).primaryColor, fontWeight: FontWeight.w600),
       ),
     );
   }
@@ -78,7 +78,7 @@ class _HomeMealsCardTitle extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Text(
         title,
-        style: AppTextStyles.titleSmall,
+        style: Theme.of(context).textTheme.titleSmall,
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
       ),
@@ -128,11 +128,9 @@ class _HomeMealsCardImage extends StatelessWidget {
           right: 10,
           child: GestureDetector(
             onTap: () {},
-            child: Icon(
+            child: const Icon(
+              color: Colors.white,
               Icons.favorite_border_rounded,
-              color: Theme.of(context).brightness == Brightness.light
-                  ? Colors.white
-                  : null,
               size: 28,
             ),
           ),

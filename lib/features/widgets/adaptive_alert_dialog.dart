@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:traktor_family_gastro_bar/core/ui/colors_constants.dart';
 
 class AdaptiveAlertDialog extends StatelessWidget {
   const AdaptiveAlertDialog({
@@ -34,10 +33,12 @@ class _CupertinoAlertDialogWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoAlertDialog(
-      title: title != null ? Text(
-        title!,
-        style: const TextStyle(fontWeight: FontWeight.w500),
-      ): null,
+      title: title != null
+          ? Text(
+              title!,
+              style: const TextStyle(fontWeight: FontWeight.w500),
+            )
+          : null,
       content: content != null
           ? Text(content!, style: const TextStyle(fontSize: 16))
           : null,
@@ -56,17 +57,26 @@ class _MaterialAlertDialogWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: title != null ? Text(
-        title!,
-        style: TextStyle(
-          fontWeight: FontWeight.w500,
-          color: AppColors.titleColor,
-        ),
-      ) : null,
+      title: title != null
+          ? Text(
+              title!,
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                color: Theme.of(context).brightness == Brightness.light
+                    ? Colors.black87
+                    : Colors.white,
+              ),
+            )
+          : null,
       content: content != null
           ? Text(
               content!,
-              style: TextStyle(fontSize: 16, color: AppColors.titleColor),
+              style: TextStyle(
+                fontSize: 16,
+                color: Theme.of(context).brightness == Brightness.light
+                    ? Colors.black87
+                    : Colors.white,
+              ),
             )
           : null,
       actions: actions,

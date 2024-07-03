@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:traktor_family_gastro_bar/core/ui/font_constants.dart';
 import 'package:traktor_family_gastro_bar/features/settings/data/services/text_field_validator.dart';
 import 'package:traktor_family_gastro_bar/features/settings/widgets/settings_text_field.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/app_bar_widget.dart';
@@ -38,7 +37,8 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(height: MediaQuery.sizeOf(context).height * 0.05),
-                    Text(S.of(context).name, style: AppTextStyles.titleLarge),
+                    Text(S.of(context).name,
+                        style: Theme.of(context).textTheme.titleLarge),
                     const SizedBox(height: 5),
                     SettingsTextField.form(
                       controller: nameControler,
@@ -48,7 +48,8 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen> {
                       validator: TextFieldValidator.validateName,
                     ),
                     const SizedBox(height: 15),
-                    Text(S.of(context).email, style: AppTextStyles.titleLarge),
+                    Text(S.of(context).email,
+                        style: Theme.of(context).textTheme.titleLarge),
                     const SizedBox(height: 5),
                     SettingsTextField.form(
                       controller: emailControler,
@@ -59,7 +60,7 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen> {
                     ),
                     const SizedBox(height: 15),
                     Text(S.of(context).phoneNumber,
-                        style: AppTextStyles.titleLarge),
+                        style: Theme.of(context).textTheme.titleLarge),
                     const SizedBox(height: 5),
                     SettingsTextField.form(
                       controller: phoneControler,

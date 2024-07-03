@@ -1,6 +1,5 @@
 // ignore_for_file: must_be_immutable
 import 'package:flutter/material.dart';
-import 'package:traktor_family_gastro_bar/core/ui/ui_constants.dart';
 import 'package:traktor_family_gastro_bar/features/settings/data/services/review_service.dart';
 import 'package:traktor_family_gastro_bar/features/settings/widgets/rating_bar.dart';
 import 'package:traktor_family_gastro_bar/features/settings/widgets/sending_result_screen.dart';
@@ -76,7 +75,10 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
                 SizedBox(height: MediaQuery.sizeOf(context).height * 0.05),
                 Text(
                   S.of(context).rateOurService,
-                  style: AppTextStyles.titleLarge.copyWith(fontSize: 22),
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleLarge!
+                      .copyWith(fontSize: 22),
                 ),
                 const SizedBox(height: 20),
                 RatingBar.builder(
@@ -84,7 +86,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
                   itemCount: 5,
                   itemBuilder: (context, index) => Icon(
                     Icons.star_rate_rounded,
-                    color: AppColors.primaryColor,
+                    color: Theme.of(context).primaryColor,
                   ),
                   onRatingUpdate: (value) => rating = value,
                 ),

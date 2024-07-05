@@ -44,7 +44,7 @@ class NotificationScreen extends StatelessWidget {
               const SizedBox(height: 10),
               _SwitchTileWidget(
                 title: S.of(context).deliveryNotification,
-                value: true,
+                value: false,
                 onChanged: (bool value) {},
               ),
               const SizedBox(height: 10),

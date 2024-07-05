@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:traktor_family_gastro_bar/features/settings/bloc/theme_bloc/theme_bloc.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/app_bar_widget.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
@@ -9,13 +11,11 @@ class ThemeScreen extends StatefulWidget {
   State<ThemeScreen> createState() => _ThemeScreenState();
 }
 
-enum ThemeValues { dark, light, auto }
-
 class _ThemeScreenState extends State<ThemeScreen> {
-  ThemeValues? _currentValue = ThemeValues.dark;
-
   @override
   Widget build(BuildContext context) {
+
+  ThemeMode? currentValue = BlocProvider.of<ThemeBloc>(context).state.themeMode;
     return Scaffold(
       body: SafeArea(
         child: NestedScrollView(
@@ -26,34 +26,40 @@ class _ThemeScreenState extends State<ThemeScreen> {
           body: Column(
             children: [
               SizedBox(height: MediaQuery.sizeOf(context).height * 0.05),
-              RadioListTile<ThemeValues>(
-                title: Text('Темна',
+              RadioListTile<ThemeMode>(
+                title: Text(S.of(context).dark,
                     style: Theme.of(context).textTheme.titleSmall),
-                value: ThemeValues.dark,
-                groupValue: _currentValue,
-                onChanged: (ThemeValues? value) {
-                  _currentValue = value;
+                value: ThemeMode.dark,
+                groupValue: currentValue,
+                onChanged: (ThemeMode? value) {
+                  currentValue = value;
                   setState(() {});
+                  BlocProvider.of<ThemeBloc>(context)
+                      .add(const ChangeTheme(themeMode: ThemeMode.dark));
                 },
               ),
-              RadioListTile<ThemeValues>(
-                title: Text('Світла',
+              RadioListTile<ThemeMode>(
+                title: Text(S.of(context).light,
                     style: Theme.of(context).textTheme.titleSmall),
-                value: ThemeValues.light,
-                groupValue: _currentValue,
-                onChanged: (ThemeValues? value) {
-                  _currentValue = value;
+                value: ThemeMode.light,
+                groupValue: currentValue,
+                onChanged: (ThemeMode? value) {
+                  currentValue = value;
                   setState(() {});
+                  BlocProvider.of<ThemeBloc>(context)
+                      .add(const ChangeTheme(themeMode: ThemeMode.light));
                 },
               ),
-              RadioListTile<ThemeValues>(
-                title: Text('Авто.',
+              RadioListTile<ThemeMode>(
+                title: Text(S.of(context).auto,
                     style: Theme.of(context).textTheme.titleSmall),
-                value: ThemeValues.auto,
-                groupValue: _currentValue,
-                onChanged: (ThemeValues? value) {
-                  _currentValue = value;
+                value: ThemeMode.system,
+                groupValue: currentValue,
+                onChanged: (ThemeMode? value) {
+                  currentValue = value;
                   setState(() {});
+                  BlocProvider.of<ThemeBloc>(context)
+                      .add(const ChangeTheme(themeMode: ThemeMode.system));
                 },
               ),
             ],

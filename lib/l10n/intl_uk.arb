@@ -93,5 +93,8 @@
   "tellMeWhatProblemYouFound": "Pозкажіть яку проблему ви знайшли",
   "goBack": "Повернутися назад",
   "thankYouForYourFeedback": "Дякуємо за ваш відгук",
-  "weTryToImproveOurServiceEveryDay": "Ми намагаємося покращувати наш сервіс кожен день, щоб бачити вас частіше у нашому ресторані"
+  "weTryToImproveOurServiceEveryDay": "Ми намагаємося покращувати наш сервіс кожен день, щоб бачити вас частіше у нашому ресторані",
+  "dark": "Темна",
+  "light": "Світла",
+  "auto": "Авто."
 }

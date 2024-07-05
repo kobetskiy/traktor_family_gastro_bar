@@ -23,6 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static _notInlinedMessages(_) => <String, Function> {
     "addAPhoto" : MessageLookupByLibrary.simpleMessage("Додайте фото"),
     "apply" : MessageLookupByLibrary.simpleMessage("Застосувати"),
+    "auto" : MessageLookupByLibrary.simpleMessage("Авто."),
     "bar" : MessageLookupByLibrary.simpleMessage("Бар"),
     "barbecueMenu" : MessageLookupByLibrary.simpleMessage("Мангал меню"),
     "categories" : MessageLookupByLibrary.simpleMessage("Категорії"),
@@ -31,6 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "checkTheRequest" : MessageLookupByLibrary.simpleMessage("Перевірте правильність запиту та спробуйте ще раз"),
     "contactUs" : MessageLookupByLibrary.simpleMessage("Зв\'язатися з нами"),
     "customizeLanguage" : MessageLookupByLibrary.simpleMessage("Обрати мову застосунку"),
+    "dark" : MessageLookupByLibrary.simpleMessage("Темна"),
     "deliveryNotification" : MessageLookupByLibrary.simpleMessage("Сповіщення про доставку"),
     "describeTheProblem" : MessageLookupByLibrary.simpleMessage("Опишіть проблему"),
     "email" : MessageLookupByLibrary.simpleMessage("Ел. пошта"),
@@ -56,6 +58,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "inCaseOfAnyQuestionsPleaseCall" : MessageLookupByLibrary.simpleMessage("У разі виникнення будь яких питань будь ласка просимо звертатися за телефоном 073-133-61-87."),
     "japaneseCuisine" : MessageLookupByLibrary.simpleMessage("Японська кухня"),
     "language" : MessageLookupByLibrary.simpleMessage("Мова"),
+    "light" : MessageLookupByLibrary.simpleMessage("Світла"),
     "logIn" : MessageLookupByLibrary.simpleMessage("Авторизуватись"),
     "more" : MessageLookupByLibrary.simpleMessage("Інше"),
     "name" : MessageLookupByLibrary.simpleMessage("Ім\'я"),

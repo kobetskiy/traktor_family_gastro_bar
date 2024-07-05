@@ -7,12 +7,12 @@ sealed class LocalizationEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class LoadLocalization extends LocalizationEvent {
+class ChangeLocalization extends LocalizationEvent {
   final Locale locale;
-  const LoadLocalization(this.locale);
+  const ChangeLocalization(this.locale);
 
   @override
   List<Object> get props => [locale];
 }
 
-class LoadSavedLocalization extends LocalizationEvent {}
+class LoadLocalization extends LocalizationEvent {}

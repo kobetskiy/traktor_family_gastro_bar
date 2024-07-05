@@ -23,6 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static _notInlinedMessages(_) => <String, Function> {
     "addAPhoto" : MessageLookupByLibrary.simpleMessage("Add a photo"),
     "apply" : MessageLookupByLibrary.simpleMessage("Apply"),
+    "auto" : MessageLookupByLibrary.simpleMessage("Auto"),
     "bar" : MessageLookupByLibrary.simpleMessage("Bar"),
     "barbecueMenu" : MessageLookupByLibrary.simpleMessage("Barbecue menu"),
     "categories" : MessageLookupByLibrary.simpleMessage("Categories"),
@@ -31,6 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "checkTheRequest" : MessageLookupByLibrary.simpleMessage("Check the request is correct and try again"),
     "contactUs" : MessageLookupByLibrary.simpleMessage("Contact us"),
     "customizeLanguage" : MessageLookupByLibrary.simpleMessage("Customize language"),
+    "dark" : MessageLookupByLibrary.simpleMessage("Dark"),
     "deliveryNotification" : MessageLookupByLibrary.simpleMessage("Delivery notification"),
     "describeTheProblem" : MessageLookupByLibrary.simpleMessage("Describe the problem"),
     "email" : MessageLookupByLibrary.simpleMessage("Email"),
@@ -56,6 +58,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "inCaseOfAnyQuestionsPleaseCall" : MessageLookupByLibrary.simpleMessage("In case of any questions, please call 073-133-61-87."),
     "japaneseCuisine" : MessageLookupByLibrary.simpleMessage("Japanese cuisine"),
     "language" : MessageLookupByLibrary.simpleMessage("Language"),
+    "light" : MessageLookupByLibrary.simpleMessage("Light"),
     "logIn" : MessageLookupByLibrary.simpleMessage("Log in"),
     "more" : MessageLookupByLibrary.simpleMessage("More"),
     "name" : MessageLookupByLibrary.simpleMessage("Name"),

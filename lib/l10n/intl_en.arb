@@ -93,5 +93,8 @@
   "tellMeWhatProblemYouFound": "Tell us what problem you found",
   "goBack": "Go back",
   "thankYouForYourFeedback": "Thank you for your feedback",
-  "weTryToImproveOurServiceEveryDay": "We try to improve our service every day to see you more often in our restaurant"
+  "weTryToImproveOurServiceEveryDay": "We try to improve our service every day to see you more often in our restaurant",
+  "dark": "Dark",
+  "light": "Light",
+  "auto": "Auto"
 }

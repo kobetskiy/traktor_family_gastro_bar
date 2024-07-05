@@ -44,7 +44,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
                           groupValue: groupValue,
                           onChanged: (String? value) {
                             BlocProvider.of<LocalizationBloc>(context).add(
-                              LoadLocalization(Locale(item.languageCode)),
+                              ChangeLocalization(Locale(item.languageCode)),
                             );
                           },
                         );

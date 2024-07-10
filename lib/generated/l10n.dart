@@ -1026,6 +1026,76 @@ class S {
       args: [],
     );
   }
+
+  /// `Discover our world of tastes!`
+  String get discoverOurWorldOfTastes {
+    return Intl.message(
+      'Discover our world of tastes!',
+      name: 'discoverOurWorldOfTastes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Experience unique dishes prepared with love by our chefs. From traditional cuisine to gourmet gastronomic delights.`
+  String get experienceUniqueDishes {
+    return Intl.message(
+      'Experience unique dishes prepared with love by our chefs. From traditional cuisine to gourmet gastronomic delights.',
+      name: 'experienceUniqueDishes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Convenient table reservations`
+  String get convenientTableReservations {
+    return Intl.message(
+      'Convenient table reservations',
+      name: 'convenientTableReservations',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Easily find your favorite dishes in our interactive menu. Just choose what you want and place your order in a few clicks.`
+  String get easilyFindYourFavoriteDishes {
+    return Intl.message(
+      'Easily find your favorite dishes in our interactive menu. Just choose what you want and place your order in a few clicks.',
+      name: 'easilyFindYourFavoriteDishes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fast delivery to your home`
+  String get fastDeliveryToYourHome {
+    return Intl.message(
+      'Fast delivery to your home',
+      name: 'fastDeliveryToYourHome',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you hungry? No problem! Our couriers will deliver your order as quickly as possible and with care for quality.`
+  String get areYouHungry {
+    return Intl.message(
+      'Are you hungry? No problem! Our couriers will deliver your order as quickly as possible and with care for quality.',
+      name: 'areYouHungry',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create Account`
+  String get createAccount {
+    return Intl.message(
+      'Create Account',
+      name: 'createAccount',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

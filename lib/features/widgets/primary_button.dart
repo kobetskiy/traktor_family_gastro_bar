@@ -5,22 +5,22 @@ class PrimaryButton extends StatelessWidget {
     super.key,
     required this.child,
     this.onPressed,
-    this.width = 300,
-    this.height = 70,
+    this.width,
+    this.height,
   }) : isOutlined = false;
 
   const PrimaryButton.outlined({
     super.key,
     required this.child,
     this.onPressed,
-    this.width = 300,
-    this.height = 70,
+    this.width,
+    this.height,
   }) : isOutlined = true;
 
   final Widget? child;
   final void Function()? onPressed;
-  final double width;
-  final double height;
+  final double? width;
+  final double? height;
   final bool isOutlined;
 
   @override
@@ -39,8 +39,8 @@ class PrimaryButton extends StatelessWidget {
     );
 
     return SizedBox(
-      width: width,
-      height: height,
+      width: width ?? 300,
+      height: height ?? 60,
       child: isOutlined
           ? OutlinedButton(onPressed: onPressed, style: style, child: child)
           : ElevatedButton(onPressed: onPressed, style: style, child: child),

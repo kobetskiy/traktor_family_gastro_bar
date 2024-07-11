@@ -3,6 +3,8 @@ import 'package:traktor_family_gastro_bar/core/ui/ui_constants.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/widgets.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
+import 'auth_screens.dart';
+
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});
 
@@ -59,17 +61,18 @@ class _OnBoardingScreenState extends State<OnBoardingScreen>
             const SizedBox(height: 55),
             PrimaryButton(
               child: Text(S.of(context).createAccount),
-              onPressed: () {
-                pageController.nextPage(
-                  duration: const Duration(milliseconds: 300),
-                  curve: Curves.easeInOut,
-                );
-              },
+              onPressed: () => Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const SignUpScreen()),
+              ),
             ),
             const SizedBox(height: 10),
             PrimaryButton.outlined(
               child: Text(S.of(context).logIn),
-              onPressed: () {},
+              onPressed: () => Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const LogInScreen()),
+              ),
             ),
             const SizedBox(height: 20),
           ],

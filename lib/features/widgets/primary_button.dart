@@ -7,6 +7,7 @@ class PrimaryButton extends StatelessWidget {
     this.onPressed,
     this.width,
     this.height,
+    this.borderRadius, this.padding,
   }) : isOutlined = false;
 
   const PrimaryButton.outlined({
@@ -15,6 +16,7 @@ class PrimaryButton extends StatelessWidget {
     this.onPressed,
     this.width,
     this.height,
+    this.borderRadius, this.padding,
   }) : isOutlined = true;
 
   final Widget? child;
@@ -22,11 +24,13 @@ class PrimaryButton extends StatelessWidget {
   final double? width;
   final double? height;
   final bool isOutlined;
+  final double? borderRadius;
+  final EdgeInsetsGeometry? padding;
 
   @override
   Widget build(BuildContext context) {
     ButtonStyle style = OutlinedButton.styleFrom(
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+      padding: padding ?? const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
       textStyle: Theme.of(context).textTheme.titleSmall,
       backgroundColor: !isOutlined ? Theme.of(context).primaryColor : null,
       disabledBackgroundColor: !isOutlined ? Colors.grey[800] : null,
@@ -35,7 +39,9 @@ class PrimaryButton extends StatelessWidget {
               ? Colors.black87
               : Colors.white,
       disabledForegroundColor: !isOutlined ? Colors.white : Colors.grey[600],
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(borderRadius ?? 12),
+      ),
     );
 
     return SizedBox(

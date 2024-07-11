@@ -36,4 +36,8 @@ abstract class AppIcons {
   static const String profile = 'assets/icons/profile.png';
   static const String review = 'assets/icons/review.png';
   static const String trash = 'assets/icons/trash.png';
+  static const String google = 'assets/icons/google.png';
+  static const String facebookLetter = 'assets/icons/facebook_letter.png';
+  static const String appleDark = 'assets/icons/apple_dark.png';
+  static const String appleLight = 'assets/icons/apple_light.png';
 }

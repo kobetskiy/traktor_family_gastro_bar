@@ -2,10 +2,10 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-import 'package:traktor_family_gastro_bar/app_screen.dart';
 import 'package:traktor_family_gastro_bar/bottom_navigation_bar_service.dart';
 import 'package:traktor_family_gastro_bar/core/localization/app_localization.dart';
 import 'package:traktor_family_gastro_bar/core/ui/theme.dart';
+import 'package:traktor_family_gastro_bar/features/auth/view/on_boarding_screen.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/bloc/meals_list_bloc.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/services/tab_service.dart';
 import 'package:traktor_family_gastro_bar/features/settings/bloc/localization_bloc/localization_bloc.dart';
@@ -60,7 +60,7 @@ class App extends StatelessWidget {
                       late final Widget page;
                       switch (state.type) {
                         case InternetTypes.connected:
-                          page = const AppScreen();
+                          page = const OnBoardingScreen();
                           break;
                         case InternetTypes.offline:
                           page = const NoInternetScreen();
@@ -68,11 +68,8 @@ class App extends StatelessWidget {
                         default:
                           page = const LoadingScreen();
                       }
-                      kNavigatorKey.currentState!.pushAndRemoveUntil(
-                        MaterialPageRoute(
-                          builder: (_) => page,
-                        ),
-                        (route) => false,
+                      kNavigatorKey.currentState!.pushReplacement(
+                        MaterialPageRoute(builder: (_) => page),
                       );
                     },
                     child: child,

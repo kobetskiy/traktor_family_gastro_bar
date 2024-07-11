@@ -48,10 +48,9 @@ class SendingResultScreen extends StatelessWidget {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: PrimaryButton(
-        onPressed: () => Navigator.pushAndRemoveUntil(
+        onPressed: () => Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => const AppScreen()),
-          (route) => false,
         ),
         child: Text(S.of(context).goBack),
       ),

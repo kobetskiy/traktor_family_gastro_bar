@@ -1,4 +1,4 @@
-class TextFieldValidator {
+abstract class TextFieldValidator {
   static String? validateName(String? value) {
     final nameRegExp = RegExp(r"^[a-zA-Zа-яА-ЯёЁ]+([ \'-][a-zA-Zа-яА-ЯёЁ]+)*$");
     if (value!.trim().isEmpty) {
@@ -26,6 +26,16 @@ class TextFieldValidator {
       return "Enter your phone";
     } else if (!phoneRegExp.hasMatch(value.trim())) {
       return "Enter a valid phone";
+    }
+    return null;
+  }
+
+    static String? validatePassword(String? value) {
+    final passwordRegExp = RegExp(r'^.{8,}$');
+    if (value!.trim().isEmpty) {
+      return "Enter password";
+    } else if (!passwordRegExp.hasMatch(value.trim())) {
+      return "Password must be at least 8 characters";
     }
     return null;
   }

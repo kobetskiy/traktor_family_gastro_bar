@@ -40,4 +40,6 @@ abstract class AppIcons {
   static const String facebookLetter = 'assets/icons/facebook_letter.png';
   static const String appleDark = 'assets/icons/apple_dark.png';
   static const String appleLight = 'assets/icons/apple_light.png';
+  static const String eyeClosed = 'assets/icons/eye_closed.png';
+  static const String eyeOpen = 'assets/icons/eye_open.png';
 }

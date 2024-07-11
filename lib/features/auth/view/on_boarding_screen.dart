@@ -21,10 +21,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen>
   @override
   void initState() {
     super.initState();
-    selectorController = TabController(
-      length: 3,
-      vsync: this,
-    );
+    selectorController = TabController(length: 3, vsync: this);
   }
 
   @override
@@ -61,7 +58,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen>
             const SizedBox(height: 55),
             PrimaryButton(
               child: Text(S.of(context).createAccount),
-              onPressed: () => Navigator.pushReplacement(
+              onPressed: () => Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const SignUpScreen()),
               ),
@@ -69,7 +66,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen>
             const SizedBox(height: 10),
             PrimaryButton.outlined(
               child: Text(S.of(context).logIn),
-              onPressed: () => Navigator.pushReplacement(
+              onPressed: () => Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const LogInScreen()),
               ),

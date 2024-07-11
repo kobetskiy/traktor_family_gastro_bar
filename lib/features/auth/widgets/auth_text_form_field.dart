@@ -7,12 +7,16 @@ class AuthTextFormField extends StatelessWidget {
     required this.label,
     required this.keyboardType,
     this.isObscureText,
+    this.suffixIcon,
+    this.validator,
   });
 
   final String label;
   final TextEditingController controller;
   final bool? isObscureText;
   final TextInputType keyboardType;
+  final Widget? suffixIcon;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +24,11 @@ class AuthTextFormField extends StatelessWidget {
     return TextFormField(
       controller: controller,
       keyboardType: keyboardType,
+      style: Theme.of(context).textTheme.bodySmall!.copyWith(fontSize: 15),
       obscureText: isObscureText ?? false,
+      validator: validator,
       decoration: InputDecoration(
-        label: Text(label, style: textTheme.bodySmall),
+        labelText: label,
         labelStyle: textTheme.titleSmall!.copyWith(color: Colors.grey[600]),
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -37,11 +43,7 @@ class AuthTextFormField extends StatelessWidget {
           ),
           borderRadius: const BorderRadius.all(Radius.circular(8)),
         ),
-        suffixIcon: IconButton(
-          icon: const Icon(Icons.clear_rounded),
-          color: Colors.grey[600],
-          onPressed: () {},
-        ),
+        suffixIcon: suffixIcon,
       ),
     );
   }

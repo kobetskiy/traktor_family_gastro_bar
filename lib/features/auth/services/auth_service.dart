@@ -25,14 +25,16 @@ abstract class AuthService {
 
   static Future<void> signUp({
     required BuildContext context,
+    required String name,
     required String email,
     required String password,
   }) async {
     try {
-      await _auth.createUserWithEmailAndPassword(
+      final userCredential = await _auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
+      await userCredential.user?.updateDisplayName(name);
       if (!context.mounted) return;
       Navigator.pushAndRemoveUntil(
         context,

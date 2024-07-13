@@ -24,6 +24,7 @@ class _SignUpScreenState extends State<SignUpScreen> with OverlayLoader {
       startLoading();
       await AuthService.signUp(
         context: context,
+        name: nameController.text.trim(),
         email: emailController.text.trim(),
         password: passwordController.text.trim(),
       );

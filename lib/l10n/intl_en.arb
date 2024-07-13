@@ -43,7 +43,6 @@
   "privacy_policy_6_content": "6.1. This Policy may be changed by the Seller unilaterally without prior notice to the User. The new version of the Policy enters into force from the moment of its posting on the Seller's Website, unless otherwise provided by the new version of the Policy.",
   "more": "More",
   "personalInformation": "Personal information",
-  "changeAccountInformation": "Change account information",
   "notifications": "Notifications",
   "setUpNotifications": "Set up notifications",
   "language": "Language",
@@ -103,5 +102,6 @@
   "easilyFindYourFavoriteDishes": "Easily find your favorite dishes in our interactive menu. Just choose what you want and place your order in a few clicks.",
   "fastDeliveryToYourHome": "Fast delivery to your home",
   "areYouHungry": "Are you hungry? No problem! Our couriers will deliver your order as quickly as possible and with care for quality.",
-  "createAccount": "Create Account"
+  "createAccount": "Create Account",
+  "logOut": "Log Out"
 }

@@ -61,7 +61,7 @@ class App extends StatelessWidget {
                       late final Widget page;
                       switch (state.type) {
                         case InternetTypes.connected:
-                          page = const AppScreen();
+                          page = const OnBoardingScreen();
                           break;
                         case InternetTypes.offline:
                           page = const NoInternetScreen();

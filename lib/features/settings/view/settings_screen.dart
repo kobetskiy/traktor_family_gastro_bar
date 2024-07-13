@@ -3,6 +3,7 @@ import 'package:traktor_family_gastro_bar/features/widgets/widgets.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
 import '../widgets/widgets.dart';
+import 'personal_information_section/personal_information_section.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -29,6 +30,9 @@ class _SettingsScreenState extends State<SettingsScreen>
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  const SizedBox(height: 20),
+                  const PersonalInformationSection(),
+                  const SizedBox(height: 20),
                   Text(
                     S.of(context).general,
                     style: Theme.of(context)

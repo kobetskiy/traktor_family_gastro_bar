@@ -487,16 +487,6 @@ class S {
     );
   }
 
-  /// `Change account information`
-  String get changeAccountInformation {
-    return Intl.message(
-      'Change account information',
-      name: 'changeAccountInformation',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Notifications`
   String get notifications {
     return Intl.message(
@@ -1092,6 +1082,16 @@ class S {
     return Intl.message(
       'Create Account',
       name: 'createAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Log Out`
+  String get logOut {
+    return Intl.message(
+      'Log Out',
+      name: 'logOut',
       desc: '',
       args: [],
     );

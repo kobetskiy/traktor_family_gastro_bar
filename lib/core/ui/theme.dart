@@ -6,7 +6,7 @@ abstract class _AppColors {
   static const darkSurface = Color(0xFF111111);
   static const lightSecondary = Color.fromRGBO(183, 124, 41, 1);
   static const lightSurface = Color(0xFFEEEEEE);
-  static const error = Color(0xFFFF3D3D);
+  static const error = Color(0xFFFF5B4F);
 }
 
 abstract class AppTheme {

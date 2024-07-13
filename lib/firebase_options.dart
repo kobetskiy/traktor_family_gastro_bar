@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -33,10 +30,7 @@ class DefaultFirebaseOptions {
           'you can reconfigure this by running the FlutterFire CLI again.',
         );
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -54,6 +48,7 @@ class DefaultFirebaseOptions {
     appId: '1:907812321603:android:1f28bb445a7ee70e8197f6',
     messagingSenderId: '907812321603',
     projectId: 'traktor-family-gastro-bar',
+    databaseURL: 'https://traktor-family-gastro-bar-default-rtdb.firebaseio.com',
     storageBucket: 'traktor-family-gastro-bar.appspot.com',
   );
 
@@ -62,7 +57,31 @@ class DefaultFirebaseOptions {
     appId: '1:907812321603:ios:9502620570cefef48197f6',
     messagingSenderId: '907812321603',
     projectId: 'traktor-family-gastro-bar',
+    databaseURL: 'https://traktor-family-gastro-bar-default-rtdb.firebaseio.com',
     storageBucket: 'traktor-family-gastro-bar.appspot.com',
     iosBundleId: 'com.example.traktorFamilyGastroBar',
   );
+
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyA8MUrPiS-kPbqMAHwgDI_3q22At578oNI',
+    appId: '1:907812321603:web:9cdea74d1e2eaa0f8197f6',
+    messagingSenderId: '907812321603',
+    projectId: 'traktor-family-gastro-bar',
+    authDomain: 'traktor-family-gastro-bar.firebaseapp.com',
+    databaseURL: 'https://traktor-family-gastro-bar-default-rtdb.firebaseio.com',
+    storageBucket: 'traktor-family-gastro-bar.appspot.com',
+    measurementId: 'G-S1RTN99YKL',
+  );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyA8MUrPiS-kPbqMAHwgDI_3q22At578oNI',
+    appId: '1:907812321603:web:07ef12a0961fe1f88197f6',
+    messagingSenderId: '907812321603',
+    projectId: 'traktor-family-gastro-bar',
+    authDomain: 'traktor-family-gastro-bar.firebaseapp.com',
+    databaseURL: 'https://traktor-family-gastro-bar-default-rtdb.firebaseio.com',
+    storageBucket: 'traktor-family-gastro-bar.appspot.com',
+    measurementId: 'G-HB7MCFVGHS',
+  );
+
 }

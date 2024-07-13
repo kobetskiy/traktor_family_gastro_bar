@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "907812321603",
+    "firebase_url": "https://traktor-family-gastro-bar-default-rtdb.firebaseio.com",
     "project_id": "traktor-family-gastro-bar",
     "storage_bucket": "traktor-family-gastro-bar.appspot.com"
   },
@@ -10,6 +11,25 @@
         "mobilesdk_app_id": "1:907812321603:android:1f28bb445a7ee70e8197f6",
         "android_client_info": {
           "package_name": "com.example.traktor_family_gastro_bar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzlVWAXUTnDIhENFrTAJspYOw-pOiXBnM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:907812321603:android:042d37744c42413f8197f6",
+        "android_client_info": {
+          "package_name": "com.example.traktor_family_gastro_bar_admin_panel"
         }
       },
       "oauth_client": [],

@@ -24,22 +24,6 @@ class SettingsMainSection extends StatelessWidget {
     return SettingsSection(
       children: [
         SettingsTile(
-          title: S.of(context).personalInformation,
-          subtitle: S.of(context).changeAccountInformation,
-          onTap: () => navigateTo(context, const PersonalInformationScreen()),
-          customBorder: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(12),
-              topRight: Radius.circular(12),
-            ),
-          ),
-          child: ImageIcon(
-            const AssetImage(AppIcons.profile),
-            color: iconsColor,
-          ),
-        ),
-        const Divider(height: 0),
-        SettingsTile(
           title: S.of(context).notifications,
           subtitle: S.of(context).setUpNotifications,
           child: ImageIcon(const AssetImage(AppIcons.notification),

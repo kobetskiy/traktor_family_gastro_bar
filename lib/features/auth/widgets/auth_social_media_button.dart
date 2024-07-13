@@ -16,7 +16,7 @@ class AuthSocialMediaButton extends StatelessWidget {
     return PrimaryButton.outlined(
       width: 70,
       height: 70,
-      padding: const EdgeInsets.all(15),
+      contentPadding: const EdgeInsets.all(15),
       borderRadius: 50,
       onPressed: onPressed,
       child: Image.asset(icon),

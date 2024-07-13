@@ -1,11 +1,19 @@
 // ignore_for_file: unused_element
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/app_bar_widget.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
-class NotificationScreen extends StatelessWidget {
+class NotificationScreen extends StatefulWidget {
   const NotificationScreen({super.key});
+
+  @override
+  State<NotificationScreen> createState() => _NotificationScreenState();
+}
+
+class _NotificationScreenState extends State<NotificationScreen> {
+  final isLoggedIn = FirebaseAuth.instance.currentUser != null;
 
   @override
   Widget build(BuildContext context) {
@@ -22,25 +30,27 @@ class NotificationScreen extends StatelessWidget {
               _SwitchTileWidget(
                 title: S.of(context).emailNotification,
                 value: false,
-                onChanged: null,
+                onChanged: isLoggedIn ? (bool value) {} : null,
               ),
-              const SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Column(
-                  children: [
-                    Text(
-                      S.of(context).youAreNotAuthorizedNotifications,
-                      style: TextStyle(color: Colors.red[400]),
-                      textAlign: TextAlign.center,
-                    ),
-                    TextButton(
-                      onPressed: () {},
-                      child: Text(S.of(context).logIn),
-                    ),
-                  ],
-                ),
-              ),
+              !isLoggedIn
+                  ? Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Column(
+                        children: [
+                          const SizedBox(height: 20),
+                          Text(
+                            S.of(context).youAreNotAuthorizedNotifications,
+                            style: TextStyle(color: Colors.red[400]),
+                            textAlign: TextAlign.center,
+                          ),
+                          TextButton(
+                            onPressed: () {},
+                            child: Text(S.of(context).logIn),
+                          ),
+                        ],
+                      ),
+                    )
+                  : const SizedBox.shrink(),
               const SizedBox(height: 10),
               _SwitchTileWidget(
                 title: S.of(context).deliveryNotification,

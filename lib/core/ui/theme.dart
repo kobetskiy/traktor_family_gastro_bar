@@ -4,8 +4,9 @@ abstract class _AppColors {
   static const primary = Color(0xFFFFA11B);
   static const darkSecondary = Color(0xFFF3BF77);
   static const darkSurface = Color(0xFF111111);
-  static const lightSecondary = Color(0xFFB77C29);
+  static const lightSecondary = Color.fromRGBO(183, 124, 41, 1);
   static const lightSurface = Color(0xFFEEEEEE);
+  static const error = Color(0xFFFF3D3D);
 }
 
 abstract class AppTheme {
@@ -16,6 +17,7 @@ abstract class AppTheme {
       primary: _AppColors.primary,
       secondary: _AppColors.darkSecondary,
       surface: _AppColors.darkSurface,
+      error: _AppColors.error,
     ),
     primaryColor: _AppColors.primary,
     useMaterial3: true,
@@ -25,6 +27,18 @@ abstract class AppTheme {
     iconButtonTheme: __iconButtonThemeData,
     tabBarTheme: const TabBarTheme(dividerColor: Colors.transparent),
     dividerTheme: const DividerThemeData(indent: 0, thickness: 1),
+    snackBarTheme: SnackBarThemeData(
+      backgroundColor: Colors.grey[850],
+      contentTextStyle: const TextStyle(
+        color: Color(0xFFEDEDED),
+        fontSize: 15,
+        fontWeight: FontWeight.w400,
+      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      dismissDirection: DismissDirection.down,
+      behavior: SnackBarBehavior.floating,
+      elevation: 7,
+    ),
     textTheme: const TextTheme(
       titleLarge: TextStyle(
         color: Color(0xFFFFFFFF),
@@ -51,6 +65,7 @@ abstract class AppTheme {
       primary: _AppColors.primary,
       secondary: _AppColors.lightSecondary,
       surface: _AppColors.lightSurface,
+      error: _AppColors.error,
     ),
     primaryColor: _AppColors.primary,
     useMaterial3: true,
@@ -60,6 +75,17 @@ abstract class AppTheme {
     iconButtonTheme: __iconButtonThemeData,
     tabBarTheme: const TabBarTheme(dividerColor: Colors.transparent),
     dividerTheme: const DividerThemeData(indent: 0, thickness: 1),
+    snackBarTheme: SnackBarThemeData(
+      backgroundColor: Colors.grey[350],
+      contentTextStyle: const TextStyle(
+        color: Color(0xFF0E0E0E),
+        fontSize: 15,
+        fontWeight: FontWeight.w400,
+      ),
+      dismissDirection: DismissDirection.down,
+      behavior: SnackBarBehavior.floating,
+      elevation: 7,
+    ),
     cardColor: const Color(0xFFBCBCBC),
     textTheme: const TextTheme(
       titleLarge: TextStyle(

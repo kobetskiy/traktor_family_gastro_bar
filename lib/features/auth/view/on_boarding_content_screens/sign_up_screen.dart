@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/core/ui/icons_constants.dart';
+import 'package:traktor_family_gastro_bar/features/auth/services/auth_service.dart';
 import 'package:traktor_family_gastro_bar/features/auth/view/auth_screens.dart';
 import 'package:traktor_family_gastro_bar/features/auth/widgets/widgets.dart';
 import 'package:traktor_family_gastro_bar/features/data/services/text_field_validator.dart';
@@ -12,11 +13,23 @@ class SignUpScreen extends StatefulWidget {
   State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
+class _SignUpScreenState extends State<SignUpScreen> with OverlayLoader {
   final nameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
+
+  Future<void> signUp() async {
+    if (formKey.currentState!.validate()) {
+      startLoading();
+      await AuthService.signUp(
+        context: context,
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
+      );
+      stopLoading();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,9 +73,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 const SizedBox(height: 30),
                 PrimaryButton(
                   child: const Text("Sign Up"),
-                  onPressed: () {
-                    formKey.currentState!.validate();
-                  },
+                  onPressed: signUp,
                 ),
                 SizedBox(height: MediaQuery.sizeOf(context).height * 0.05),
                 Text(

@@ -61,21 +61,20 @@ class _ReportBugScreenState extends State<ReportBugScreen> with OverlayLoader {
         image: image,
       );
       stopLoading();
-      if (mounted) {
-        errorService.navigateTo(
-          context,
-          SendingResultScreen.success(
-            title: S.of(context).thankYou,
-            subtitle: S.of(context).weWillFixThisErrorAsSoonAsPossible,
-          ),
-        );
-      }
+      if (!mounted) return;
+      errorService.navigateTo(
+        context,
+        SendingResultScreen.success(
+          title: S.of(context).thankYou,
+          subtitle: S.of(context).weWillFixThisErrorAsSoonAsPossible,
+        ),
+      );
       errorController.clear();
       image = null;
       setState(() {});
     } catch (e) {
       stopLoading();
-      if (mounted) {
+      if (!mounted) return; 
         errorService.navigateTo(
           context,
           SendingResultScreen.failure(
@@ -84,7 +83,6 @@ class _ReportBugScreenState extends State<ReportBugScreen> with OverlayLoader {
                 S.of(context).weAreAlreadyFixingThisBugPleaseTryAgainLater,
           ),
         );
-      }
     }
   }
 

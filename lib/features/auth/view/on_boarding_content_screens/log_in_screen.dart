@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/core/ui/icons_constants.dart';
+import 'package:traktor_family_gastro_bar/features/auth/services/auth_service.dart';
 import 'package:traktor_family_gastro_bar/features/auth/widgets/auth_social_media_button.dart';
 import 'package:traktor_family_gastro_bar/features/auth/widgets/auth_text_form_field.dart';
 import 'package:traktor_family_gastro_bar/features/data/services/text_field_validator.dart';
+import 'package:traktor_family_gastro_bar/features/widgets/overlay_loader.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/primary_button.dart';
 
 import 'sign_up_screen.dart';
@@ -14,10 +16,22 @@ class LogInScreen extends StatefulWidget {
   State<LogInScreen> createState() => _LogInScreenState();
 }
 
-class _LogInScreenState extends State<LogInScreen> {
+class _LogInScreenState extends State<LogInScreen> with OverlayLoader {
   final passwordController = TextEditingController();
   final emailController = TextEditingController();
   final formKey = GlobalKey<FormState>();
+
+  Future<void> logIn() async {
+    if (formKey.currentState!.validate()) {
+      startLoading();
+      await AuthService.logIn(
+        context: context,
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
+      );
+      stopLoading();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,10 +86,8 @@ class _LogInScreenState extends State<LogInScreen> {
                 const _SwitchToSignUp(),
                 const SizedBox(height: 30),
                 PrimaryButton(
+                  onPressed: logIn,
                   child: const Text("Log In"),
-                  onPressed: () {
-                    formKey.currentState!.validate();
-                  },
                 ),
                 SizedBox(height: MediaQuery.sizeOf(context).height * 0.05),
                 Text(

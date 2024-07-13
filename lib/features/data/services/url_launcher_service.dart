@@ -8,20 +8,19 @@ class UrlLauncherService {
     if (await canLaunchUrl(uri)) {
       launchUrl(uri);
     } else {
-      if (context.mounted) {
-        showAdaptiveDialog(
-          context: context,
-          builder: (context) => AdaptiveAlertDialog(
-            content: S.of(context).wrongLinkDialogText,
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: const Text('OK'),
-              ),
-            ],
-          ),
-        );
-      }
+      if (!context.mounted) return;
+      showAdaptiveDialog(
+        context: context,
+        builder: (context) => AdaptiveAlertDialog(
+          content: S.of(context).wrongLinkDialogText,
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('OK'),
+            ),
+          ],
+        ),
+      );
     }
   }
 

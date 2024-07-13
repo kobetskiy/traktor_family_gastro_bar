@@ -30,30 +30,27 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
         rating: rating,
       );
       stopLoading();
-      if (mounted) {
-        reviewService.navigateTo(
-          context,
-          SendingResultScreen.success(
-            title: S.of(context).thankYouForYourFeedback,
-            subtitle: S.of(context).weTryToImproveOurServiceEveryDay,
-          ),
-        );
-      }
+      if (!mounted) return;
+      reviewService.navigateTo(
+        context,
+        SendingResultScreen.success(
+          title: S.of(context).thankYouForYourFeedback,
+          subtitle: S.of(context).weTryToImproveOurServiceEveryDay,
+        ),
+      );
       reviewController.clear();
       rating = 0;
       setState(() {});
     } catch (e) {
       stopLoading();
-      if (mounted) {
-        reviewService.navigateTo(
-          context,
-          SendingResultScreen.failure(
-            title: S.of(context).oopsSomethingWentWrong,
-            subtitle:
-                S.of(context).weAreAlreadyFixingThisBugPleaseTryAgainLater,
-          ),
-        );
-      }
+      if (!mounted) return;
+      reviewService.navigateTo(
+        context,
+        SendingResultScreen.failure(
+          title: S.of(context).oopsSomethingWentWrong,
+          subtitle: S.of(context).weAreAlreadyFixingThisBugPleaseTryAgainLater,
+        ),
+      );
     }
   }
 

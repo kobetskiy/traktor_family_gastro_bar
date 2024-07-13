@@ -2,6 +2,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
+import 'package:traktor_family_gastro_bar/app_screen.dart';
 import 'package:traktor_family_gastro_bar/bottom_navigation_bar_service.dart';
 import 'package:traktor_family_gastro_bar/core/localization/app_localization.dart';
 import 'package:traktor_family_gastro_bar/core/ui/theme.dart';
@@ -60,7 +61,7 @@ class App extends StatelessWidget {
                       late final Widget page;
                       switch (state.type) {
                         case InternetTypes.connected:
-                          page = const OnBoardingScreen();
+                          page = const AppScreen();
                           break;
                         case InternetTypes.offline:
                           page = const NoInternetScreen();

@@ -7,6 +7,7 @@ abstract class _AppColors {
   static const lightSecondary = Color.fromRGBO(183, 124, 41, 1);
   static const lightSurface = Color(0xFFEEEEEE);
   static const error = Color(0xFFFF5B4F);
+  static const sucess = Color(0xFF27AE60);
 }
 
 abstract class AppTheme {
@@ -27,6 +28,28 @@ abstract class AppTheme {
     iconButtonTheme: __iconButtonThemeData,
     tabBarTheme: const TabBarTheme(dividerColor: Colors.transparent),
     dividerTheme: const DividerThemeData(indent: 0, thickness: 1),
+    inputDecorationTheme: InputDecorationTheme(
+      hintStyle: TextStyle(
+        color: Colors.grey[600],
+        fontSize: 15,
+        fontWeight: FontWeight.w600,
+      ),
+      labelStyle: TextStyle(
+        color: Colors.grey[600],
+        fontSize: 15,
+        fontWeight: FontWeight.w600,
+      ),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      border: const OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(8)),
+      ),
+      enabledBorder: const OutlineInputBorder(
+        borderSide: BorderSide(
+          color: Colors.white,
+        ),
+        borderRadius: BorderRadius.all(Radius.circular(8)),
+      ),
+    ),
     snackBarTheme: SnackBarThemeData(
       backgroundColor: Colors.grey[850],
       contentTextStyle: const TextStyle(
@@ -75,6 +98,28 @@ abstract class AppTheme {
     iconButtonTheme: __iconButtonThemeData,
     tabBarTheme: const TabBarTheme(dividerColor: Colors.transparent),
     dividerTheme: const DividerThemeData(indent: 0, thickness: 1),
+    inputDecorationTheme: InputDecorationTheme(
+      hintStyle: TextStyle(
+        color: Colors.grey[600],
+        fontSize: 15,
+        fontWeight: FontWeight.w600,
+      ),
+      labelStyle: TextStyle(
+        color: Colors.grey[600],
+        fontSize: 15,
+        fontWeight: FontWeight.w600,
+      ),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      border: const OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(8)),
+      ),
+      enabledBorder: const OutlineInputBorder(
+        borderSide: BorderSide(
+          color: Colors.black,
+        ),
+        borderRadius: BorderRadius.all(Radius.circular(8)),
+      ),
+    ),
     snackBarTheme: SnackBarThemeData(
       backgroundColor: Colors.grey[350],
       contentTextStyle: const TextStyle(
@@ -121,4 +166,8 @@ BottomSheetThemeData bottomSheetTheme(Color backgroundColor) {
       ),
     ),
   );
+}
+
+extension ColorSchemeExtension on ColorScheme {
+  Color get success => _AppColors.sucess;
 }

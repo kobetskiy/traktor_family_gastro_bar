@@ -1096,6 +1096,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Want to log out?`
+  String get wantToLogOut {
+    return Intl.message(
+      'Want to log out?',
+      name: 'wantToLogOut',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to log out of your account?`
+  String get areYouSureYouWantToLog {
+    return Intl.message(
+      'Are you sure you want to log out of your account?',
+      name: 'areYouSureYouWantToLog',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reset password`
+  String get resetPassword {
+    return Intl.message(
+      'Reset password',
+      name: 'resetPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email was sent successfully`
+  String get emailWasSentSuccessfully {
+    return Intl.message(
+      'Email was sent successfully',
+      name: 'emailWasSentSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

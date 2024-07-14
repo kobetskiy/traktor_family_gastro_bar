@@ -29,21 +29,6 @@ class _SearchTextFieldWidgetState extends State<SearchTextFieldWidget> {
         style: Theme.of(context).textTheme.titleSmall,
         decoration: InputDecoration(
           hintText: S.of(context).search,
-          hintStyle: Theme.of(context)
-              .textTheme
-              .titleSmall!
-              .copyWith(color: Colors.grey[600]),
-          contentPadding: const EdgeInsets.symmetric(horizontal: 20),
-          border: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(8)),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Theme.of(context).brightness == Brightness.light
-                  ? Colors.black87
-                  : Colors.white,
-            ),
-            borderRadius: const BorderRadius.all(Radius.circular(8)),
-          ),
           suffixIcon: IconButton(
             onPressed: () {
               widget.controller.clear();

@@ -1,20 +1,28 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/app_screen.dart';
+import 'package:traktor_family_gastro_bar/core/ui/theme.dart';
 import 'package:traktor_family_gastro_bar/features/auth/view/auth_screens.dart';
+import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
 abstract class AuthService {
   static final _auth = FirebaseAuth.instance;
+  static Icon _failureIcon(BuildContext context) => Icon(
+        Icons.error_outline_rounded,
+        color: Theme.of(context).colorScheme.error,
+      );
 
-  static showSnackBar(BuildContext context, String text) {
+  static Icon _successIcon(BuildContext context) => Icon(
+        Icons.check_circle_outline_rounded,
+        color: Theme.of(context).colorScheme.success,
+      );
+
+  static _showAuthSnackBar(BuildContext context, String text, Icon icon) {
     final snackBar = SnackBar(
       margin: const EdgeInsets.fromLTRB(20, 0, 20, 20),
       content: Row(
         children: [
-          Icon(
-            Icons.error_outline_rounded,
-            color: Theme.of(context).colorScheme.error,
-          ),
+          icon,
           const SizedBox(width: 10),
           Text(text),
         ],
@@ -30,11 +38,11 @@ abstract class AuthService {
     required String password,
   }) async {
     try {
-      final userCredential = await _auth.createUserWithEmailAndPassword(
+      await _auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
-      await userCredential.user?.updateDisplayName(name);
+      updateName(_auth.currentUser!, name);
       if (!context.mounted) return;
       Navigator.pushAndRemoveUntil(
         context,
@@ -52,7 +60,7 @@ abstract class AuthService {
       } else {
         message = 'Some error occurred';
       }
-      showSnackBar(context, message);
+      _showAuthSnackBar(context, message, _failureIcon(context));
     }
   }
 
@@ -79,7 +87,7 @@ abstract class AuthService {
       } else {
         message = "Wrong email or password";
       }
-      showSnackBar(context, message);
+      _showAuthSnackBar(context, message, _failureIcon(context));
     }
   }
 
@@ -91,5 +99,26 @@ abstract class AuthService {
       MaterialPageRoute(builder: (BuildContext context) => const LogInScreen()),
       (route) => false,
     );
+  }
+
+  static Future<void> updateName(User user, String name) async {
+    await user.updateDisplayName(name);
+  }
+
+  static Future<void> resetPassword(BuildContext context, String email) async {
+    String message = '';
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
+      if (!context.mounted) return;
+      message = S.of(context).emailWasSentSuccessfully;
+      _showAuthSnackBar(context, message, _successIcon(context));
+      Navigator.pop(context);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        message = "User not found";
+      } else {
+        message = 'Some error occurred';
+      }
+    }
   }
 }

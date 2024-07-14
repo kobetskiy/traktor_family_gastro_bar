@@ -103,5 +103,9 @@
   "fastDeliveryToYourHome": "Fast delivery to your home",
   "areYouHungry": "Are you hungry? No problem! Our couriers will deliver your order as quickly as possible and with care for quality.",
   "createAccount": "Create Account",
-  "logOut": "Log Out"
+  "logOut": "Log Out",
+  "wantToLogOut": "Want to log out?",
+  "areYouSureYouWantToLog": "Are you sure you want to log out of your account?",
+  "resetPassword": "Reset password",
+  "emailWasSentSuccessfully": "Email was sent successfully"
 }

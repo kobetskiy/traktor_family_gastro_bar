@@ -103,5 +103,9 @@
   "fastDeliveryToYourHome": "Швидка доставка до дому",
   "areYouHungry": "Ви голодні? Не біда! Наші кур’єри доставлять ваше замовлення максимально швидко та якісно.",
   "createAccount": "Створити акаунт",
-  "logOut": "Вийти"
+  "logOut": "Вийти",
+  "wantToLogOut": "Вийти з акаунту?",
+  "areYouSureYouWantToLog": "Ви впевнені, що хочете вийти зі свого акаунту?",
+  "resetPassword": "Відновити пароль",
+  "emailWasSentSuccessfully": "Лист успішно відправлено"
 }

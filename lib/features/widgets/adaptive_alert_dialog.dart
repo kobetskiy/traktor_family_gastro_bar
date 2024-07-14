@@ -9,7 +9,7 @@ class AdaptiveAlertDialog extends StatelessWidget {
     required this.actions,
     this.title,
     this.content,
-  }) : assert(title != null, content != null);
+  });
 
   final String? title;
   final String? content;

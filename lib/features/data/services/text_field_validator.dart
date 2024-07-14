@@ -22,15 +22,14 @@ abstract class TextFieldValidator {
 
   static String? validatePhone(String? value) {
     final phoneRegExp = RegExp(r'^\d{9}$');
-    if (value!.trim().isEmpty) {
-      return "Enter your phone";
-    } else if (!phoneRegExp.hasMatch(value.trim())) {
+    if (value == null || value.trim().isEmpty) return null;
+    if (!phoneRegExp.hasMatch(value.trim())) {
       return "Enter a valid phone";
     }
     return null;
   }
 
-    static String? validatePassword(String? value) {
+  static String? validatePassword(String? value) {
     final passwordRegExp = RegExp(r'^.{8,}$');
     if (value!.trim().isEmpty) {
       return "Enter password";

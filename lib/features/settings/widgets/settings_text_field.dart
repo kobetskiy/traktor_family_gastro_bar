@@ -40,24 +40,6 @@ class SettingsTextField extends StatelessWidget {
             )
           : null,
       hintText: hintText,
-      hintStyle: Theme.of(context).textTheme.titleSmall!.copyWith(
-            color: Colors.grey[600],
-          ),
-      contentPadding: const EdgeInsets.symmetric(
-        horizontal: 20,
-        vertical: 10,
-      ),
-      border: const OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(8)),
-      ),
-      enabledBorder: OutlineInputBorder(
-        borderSide: BorderSide(
-          color: Theme.of(context).brightness == Brightness.light
-              ? Colors.black
-              : Colors.white,
-        ),
-        borderRadius: const BorderRadius.all(Radius.circular(8)),
-      ),
       suffixIcon: IconButton(
         icon: const Icon(Icons.clear_rounded),
         color: Colors.grey[600],

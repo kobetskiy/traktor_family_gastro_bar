@@ -7,6 +7,7 @@ import 'package:traktor_family_gastro_bar/features/data/services/text_field_vali
 import 'package:traktor_family_gastro_bar/features/widgets/overlay_loader.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/primary_button.dart';
 
+import 'reset_password_screen.dart';
 import 'sign_up_screen.dart';
 
 class LogInScreen extends StatefulWidget {
@@ -70,10 +71,14 @@ class _LogInScreenState extends State<LogInScreen> with OverlayLoader {
                   passwordController: passwordController,
                 ),
                 const SizedBox(height: 5),
-                Align(
-                  alignment: Alignment.topRight,
-                  child: GestureDetector(
-                    onTap: () {},
+                GestureDetector(
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ResetPasswordScreen()),
+                  ),
+                  child: Align(
+                    alignment: Alignment.topRight,
                     child: Text(
                       'Forgot password?',
                       style: textTheme.titleSmall!.copyWith(

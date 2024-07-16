@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:traktor_family_gastro_bar/core/ui/ui_constants.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/widgets.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
@@ -15,8 +16,26 @@ class OnBoardingScreen extends StatefulWidget {
 class _OnBoardingScreenState extends State<OnBoardingScreen>
     with TickerProviderStateMixin {
   final pageController = PageController();
-
   late TabController selectorController;
+
+  void navigateTo(Widget page) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => page),
+    );
+  }
+
+  Future<void> logIn() async {
+    navigateTo(const LogInScreen());
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setBool('hasOnBoardingShown', true);
+  }
+
+  Future<void> signUp() async {
+    navigateTo(const SignUpScreen());
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setBool('hasOnBoardingShown', true);
+  }
 
   @override
   void initState() {
@@ -57,19 +76,13 @@ class _OnBoardingScreenState extends State<OnBoardingScreen>
             _OnBoardingPageSelectors(controller: selectorController),
             const SizedBox(height: 55),
             PrimaryButton(
+              onPressed: signUp,
               child: Text(S.of(context).createAccount),
-              onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const SignUpScreen()),
-              ),
             ),
             const SizedBox(height: 10),
             PrimaryButton.outlined(
+              onPressed: logIn,
               child: Text(S.of(context).logIn),
-              onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const LogInScreen()),
-              ),
             ),
             const SizedBox(height: 20),
           ],

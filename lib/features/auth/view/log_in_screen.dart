@@ -151,7 +151,7 @@ class _AuthSocialMediaButtonRow extends StatelessWidget {
       children: [
         AuthSocialMediaButton(
           icon: AppIcons.google,
-          onPressed: () {},
+          onPressed: () => AuthService.signInWithGoogle(context),
         ),
         const SizedBox(width: 25),
         AuthSocialMediaButton(

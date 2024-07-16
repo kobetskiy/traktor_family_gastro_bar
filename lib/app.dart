@@ -11,14 +11,15 @@ import 'package:traktor_family_gastro_bar/features/meals_list/bloc/meals_list_bl
 import 'package:traktor_family_gastro_bar/features/meals_list/services/tab_service.dart';
 import 'package:traktor_family_gastro_bar/features/settings/bloc/localization_bloc/localization_bloc.dart';
 import 'package:traktor_family_gastro_bar/features/settings/bloc/theme_bloc/theme_bloc.dart';
-
 import 'internet_connection/index.dart';
 
 final Connectivity connectivity = Connectivity();
 final GlobalKey<NavigatorState> kNavigatorKey = GlobalKey<NavigatorState>();
 
 class App extends StatelessWidget {
-  const App({super.key});
+  const App({super.key, required this.hasOnBoardingShown});
+
+  final bool hasOnBoardingShown;
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +62,9 @@ class App extends StatelessWidget {
                       late final Widget page;
                       switch (state.type) {
                         case InternetTypes.connected:
-                          page = const OnBoardingScreen();
+                          page = hasOnBoardingShown
+                              ? const AppScreen()
+                              : const OnBoardingScreen();
                           break;
                         case InternetTypes.offline:
                           page = const NoInternetScreen();

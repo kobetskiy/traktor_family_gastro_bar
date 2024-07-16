@@ -73,8 +73,8 @@ class _SignUpScreenState extends State<SignUpScreen> with OverlayLoader {
                 const _SwitchToLogIn(),
                 const SizedBox(height: 30),
                 PrimaryButton(
-                  child: const Text("Sign Up"),
                   onPressed: signUp,
+                  child: const Text("Sign Up"),
                 ),
                 SizedBox(height: MediaQuery.sizeOf(context).height * 0.05),
                 Text(
@@ -133,7 +133,7 @@ class _AuthSocialMediaButtonRow extends StatelessWidget {
       children: [
         AuthSocialMediaButton(
           icon: AppIcons.google,
-          onPressed: () {},
+          onPressed: () => AuthService.signInWithGoogle(context),
         ),
         const SizedBox(width: 25),
         AuthSocialMediaButton(

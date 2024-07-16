@@ -28,6 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "auto" : MessageLookupByLibrary.simpleMessage("Авто."),
     "bar" : MessageLookupByLibrary.simpleMessage("Бар"),
     "barbecueMenu" : MessageLookupByLibrary.simpleMessage("Мангал меню"),
+    "cancel" : MessageLookupByLibrary.simpleMessage("Скасувати"),
     "categories" : MessageLookupByLibrary.simpleMessage("Категорії"),
     "chechYourConnection" : MessageLookupByLibrary.simpleMessage("Немає підключення до Інтернету.\nПеревірте підключення до Wi-Fi або мобільного інтернету."),
     "checkTheRequest" : MessageLookupByLibrary.simpleMessage("Перевірте правильність запиту та спробуйте ще раз"),
@@ -128,6 +129,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "writeOnInstagram" : MessageLookupByLibrary.simpleMessage("Написати в Instagram"),
     "writeToUsIfYouFindABug" : MessageLookupByLibrary.simpleMessage("Напишіть нам, якщо знайшли помилку"),
     "wrongLinkDialogText" : MessageLookupByLibrary.simpleMessage("Схоже, що посилання застаріло. Ми вже виправляємо цю помилку"),
+    "yes" : MessageLookupByLibrary.simpleMessage("Так"),
     "youAreNotAuthorized" : MessageLookupByLibrary.simpleMessage("Ви не авторизовані, тому ви не можете змінювати особисті дані"),
     "youAreNotAuthorizedNotifications" : MessageLookupByLibrary.simpleMessage("Ви не авторизовані, тому ви не можете увімкнути сповіщення на електронну пошту")
   };

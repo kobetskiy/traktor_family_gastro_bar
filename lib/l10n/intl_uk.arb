@@ -107,5 +107,7 @@
   "wantToLogOut": "Вийти з акаунту?",
   "areYouSureYouWantToLog": "Ви впевнені, що хочете вийти зі свого акаунту?",
   "resetPassword": "Відновити пароль",
-  "emailWasSentSuccessfully": "Лист успішно відправлено"
+  "emailWasSentSuccessfully": "Лист успішно відправлено",
+  "cancel": "Скасувати",
+  "yes": "Так"
 }

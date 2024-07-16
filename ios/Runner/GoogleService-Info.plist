@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CLIENT_ID</key>
+	<string>907812321603-sgpvin4g67arke9sv41a7rllvjal69p4.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.907812321603-sgpvin4g67arke9sv41a7rllvjal69p4</string>
 	<key>API_KEY</key>
 	<string>AIzaSyBN-c8p82R7JBJFddrBPzY_XeeMncPP948</string>
 	<key>GCM_SENDER_ID</key>
@@ -26,5 +30,7 @@
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:907812321603:ios:9502620570cefef48197f6</string>
+	<key>DATABASE_URL</key>
+	<string>https://traktor-family-gastro-bar-default-rtdb.firebaseio.com</string>
 </dict>
 </plist>

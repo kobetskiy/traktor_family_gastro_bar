@@ -13,7 +13,20 @@
           "package_name": "com.example.traktor_family_gastro_bar"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "907812321603-bmsmse700p38fbcsk173717m8b2ef8hb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.traktor_family_gastro_bar",
+            "certificate_hash": "de237166092201b67501a8a69c079ca5b881de0a"
+          }
+        },
+        {
+          "client_id": "907812321603-fp7lcka50j3872k9jncue04lr0k1k85d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAzlVWAXUTnDIhENFrTAJspYOw-pOiXBnM"
@@ -21,7 +34,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "907812321603-fp7lcka50j3872k9jncue04lr0k1k85d.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "907812321603-dhuplogp88dq87ipo4oqfmcb6ajbqf7a.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.traktorFamilyGastroBarAdminPanel"
+              }
+            }
+          ]
         }
       }
     },
@@ -32,7 +57,12 @@
           "package_name": "com.example.traktor_family_gastro_bar_admin_panel"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "907812321603-fp7lcka50j3872k9jncue04lr0k1k85d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAzlVWAXUTnDIhENFrTAJspYOw-pOiXBnM"
@@ -40,7 +70,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "907812321603-fp7lcka50j3872k9jncue04lr0k1k85d.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "907812321603-dhuplogp88dq87ipo4oqfmcb6ajbqf7a.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.traktorFamilyGastroBarAdminPanel"
+              }
+            }
+          ]
         }
       }
     }

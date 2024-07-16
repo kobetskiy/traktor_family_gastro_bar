@@ -34,7 +34,7 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen>
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel'),
+            child: Text(S.of(context).cancel),
           ),
           TextButton(
             onPressed: () async {
@@ -42,7 +42,7 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen>
               await AuthService.logOut(context: context);
               stopLoading();
             },
-            child: const Text('Yes'),
+            child: Text(S.of(context).yes),
           ),
         ],
       ),

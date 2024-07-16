@@ -30,11 +30,11 @@ abstract class TextFieldValidator {
   }
 
   static String? validatePassword(String? value) {
-    final passwordRegExp = RegExp(r'^.{8,}$');
+    final passwordRegExp = RegExp(r'^.{6,}$');
     if (value!.trim().isEmpty) {
       return "Enter password";
     } else if (!passwordRegExp.hasMatch(value.trim())) {
-      return "Password must be at least 8 characters";
+      return "Password must be at least 6 characters";
     }
     return null;
   }

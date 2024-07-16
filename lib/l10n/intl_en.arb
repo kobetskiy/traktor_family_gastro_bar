@@ -107,5 +107,7 @@
   "wantToLogOut": "Want to log out?",
   "areYouSureYouWantToLog": "Are you sure you want to log out of your account?",
   "resetPassword": "Reset password",
-  "emailWasSentSuccessfully": "Email was sent successfully"
+  "emailWasSentSuccessfully": "Email was sent successfully",
+  "cancel": "Cancel",
+  "yes": "Yes"
 }

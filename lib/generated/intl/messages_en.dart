@@ -28,6 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "auto" : MessageLookupByLibrary.simpleMessage("Auto"),
     "bar" : MessageLookupByLibrary.simpleMessage("Bar"),
     "barbecueMenu" : MessageLookupByLibrary.simpleMessage("Barbecue menu"),
+    "cancel" : MessageLookupByLibrary.simpleMessage("Cancel"),
     "categories" : MessageLookupByLibrary.simpleMessage("Categories"),
     "chechYourConnection" : MessageLookupByLibrary.simpleMessage("No internet connection found.\nCheck your connection to Wi-Fi or mobile network."),
     "checkTheRequest" : MessageLookupByLibrary.simpleMessage("Check the request is correct and try again"),
@@ -128,6 +129,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "writeOnInstagram" : MessageLookupByLibrary.simpleMessage("Write on Instagram"),
     "writeToUsIfYouFindABug" : MessageLookupByLibrary.simpleMessage("Write to us if you find a bug"),
     "wrongLinkDialogText" : MessageLookupByLibrary.simpleMessage("It looks like the link is out of date. We are already fixing it"),
+    "yes" : MessageLookupByLibrary.simpleMessage("Yes"),
     "youAreNotAuthorized" : MessageLookupByLibrary.simpleMessage("You are not authorized, so you cannot change personal data"),
     "youAreNotAuthorizedNotifications" : MessageLookupByLibrary.simpleMessage("You are not authorized, so you cannot enable email notifications")
   };

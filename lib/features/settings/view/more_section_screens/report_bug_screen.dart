@@ -54,36 +54,23 @@ class _ReportBugScreenState extends State<ReportBugScreen> with OverlayLoader {
   }
 
   Future<void> sendErrorToFirebase() async {
-    try {
+    if (formKey.currentState!.validate()) {
       startLoading();
-      await errorService.sendError(
-        text: errorController.text,
+      await errorService.sendErrorToFirebase(
+        context: context,
+        text: errorController.text.trim(),
         image: image,
       );
-      stopLoading();
-      if (!mounted) return;
-      errorService.navigateTo(
-        context,
-        SendingResultScreen.success(
-          title: S.of(context).thankYou,
-          subtitle: S.of(context).weWillFixThisErrorAsSoonAsPossible,
-        ),
-      );
       errorController.clear();
-      image = null;
       setState(() {});
-    } catch (e) {
       stopLoading();
-      if (!mounted) return; 
-        errorService.navigateTo(
-          context,
-          SendingResultScreen.failure(
-            title: S.of(context).oopsSomethingWentWrong,
-            subtitle:
-                S.of(context).weAreAlreadyFixingThisBugPleaseTryAgainLater,
-          ),
-        );
     }
+  }
+
+  @override
+  void dispose() {
+    errorController.dispose();
+    super.dispose();
   }
 
   @override
@@ -122,7 +109,7 @@ class _ReportBugScreenState extends State<ReportBugScreen> with OverlayLoader {
                   const SizedBox(height: 25),
                   Form(
                     key: formKey,
-                    child: SettingsTextField.form(
+                    child: SettingsTextField.formMultiline(
                       controller: errorController,
                       hintText: S.of(context).describeTheProblem,
                       validator: (String? value) {
@@ -148,12 +135,7 @@ class _ReportBugScreenState extends State<ReportBugScreen> with OverlayLoader {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: PrimaryButton(
-        onPressed: () async {
-          formKey.currentState!.validate();
-          if (errorController.text != '') {
-            await sendErrorToFirebase();
-          }
-        },
+        onPressed: () async => await sendErrorToFirebase(),
         child: Text(S.of(context).submit),
       ),
     );

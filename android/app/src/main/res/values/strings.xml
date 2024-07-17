@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Traktor Family Gastro Bar</string>
+    <string name="facebook_app_id">501018855767206</string>
+    <string name="fb_login_protocol_scheme">fb1234</string>
+    <string name="facebook_client_token">327b7a2ab0fb70ea2b2384429cc0d5ef</string>
+</resources>

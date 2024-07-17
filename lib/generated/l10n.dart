@@ -1156,6 +1156,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Please write remarks or wishes`
+  String get pleaseWriteRemarksOrWishes {
+    return Intl.message(
+      'Please write remarks or wishes',
+      name: 'pleaseWriteRemarksOrWishes',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

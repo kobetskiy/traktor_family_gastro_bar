@@ -16,8 +16,9 @@ class _BannerShimmerLoadingState extends State<BannerShimmerLoading> {
         isLoading: true,
         child: Column(
           children: [
+            SizedBox(height: 10),
             _ShimmeredBanner(),
-            SizedBox(height: 20),
+            SizedBox(height: 35),
           ],
         ),
       ),
@@ -32,7 +33,7 @@ class _ShimmeredBanner extends StatelessWidget {
     return ConstrainedBox(
       constraints: const BoxConstraints(maxHeight: 300),
       child: AspectRatio(
-        aspectRatio: 2.13 / 1,
+        aspectRatio: 2.11 / 1,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: DecoratedBox(

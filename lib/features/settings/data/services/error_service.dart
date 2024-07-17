@@ -1,9 +1,11 @@
 import 'dart:typed_data';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:traktor_family_gastro_bar/features/data/database/database_constants.dart';
+import 'package:traktor_family_gastro_bar/features/settings/widgets/sending_result_screen.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
 class ErrorService {
@@ -17,9 +19,9 @@ class ErrorService {
     return downloadedURL;
   }
 
-  Future<void> sendError({
+  Future<void> _sendError({
     required String text,
-    required Uint8List? image
+    required Uint8List? image,
   }) async {
     String? imageURL = image != null
         ? await _uploadImageToStorage('error/${image.hashCode}', image)
@@ -28,6 +30,34 @@ class ErrorService {
       'text': text,
       'imageURL': imageURL,
     });
+  }
+
+  Future<void> sendErrorToFirebase({
+    required BuildContext context,
+    required String text,
+    required Uint8List? image,
+  }) async {
+    try {
+      await _sendError(text: text, image: image);
+      if (!context.mounted) return;
+      navigateTo(
+        context,
+        SendingResultScreen.success(
+          title: S.of(context).thankYou,
+          subtitle: S.of(context).weWillFixThisErrorAsSoonAsPossible,
+        ),
+      );
+      image = null;
+    } catch (e) {
+      if (!context.mounted) return;
+      navigateTo(
+        context,
+        SendingResultScreen.failure(
+          title: S.of(context).oopsSomethingWentWrong,
+          subtitle: S.of(context).weAreAlreadyFixingThisBugPleaseTryAgainLater,
+        ),
+      );
+    }
   }
 
   Future<Uint8List?> pickImage() async {
@@ -39,7 +69,7 @@ class ErrorService {
     return null;
   }
 
-    String? validate(BuildContext context, String? value) {
+  String? validate(BuildContext context, String? value) {
     return value!.trim().isEmpty
         ? S.of(context).tellMeWhatProblemYouFound
         : null;

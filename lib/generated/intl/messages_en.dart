@@ -82,6 +82,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "personalInformation" : MessageLookupByLibrary.simpleMessage("Personal information"),
     "phoneNumber" : MessageLookupByLibrary.simpleMessage("Phone number"),
     "pleaseTryAgainLater" : MessageLookupByLibrary.simpleMessage("Please try again later"),
+    "pleaseWriteRemarksOrWishes" : MessageLookupByLibrary.simpleMessage("Please write remarks or wishes"),
     "popular" : MessageLookupByLibrary.simpleMessage("Popular"),
     "privacyPolicy" : MessageLookupByLibrary.simpleMessage("Privacy policy"),
     "privacy_policy_1" : MessageLookupByLibrary.simpleMessage("1. General provisions"),

@@ -1,16 +1,22 @@
 import 'dart:developer';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:traktor_family_gastro_bar/app_screen.dart';
 import 'package:traktor_family_gastro_bar/core/ui/theme.dart';
 import 'package:traktor_family_gastro_bar/features/auth/view/auth_screens.dart';
+import 'package:traktor_family_gastro_bar/features/data/database/database_constants.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
 abstract class AuthService {
   static final _auth = FirebaseAuth.instance;
+  static final _firestore = FirebaseFirestore.instance;
+  static final _facebookAuth = FacebookAuth.instance;
   static final _googleAuth = GoogleSignIn();
+
   static Icon _failureIcon(BuildContext context) => Icon(
         Icons.error_outline_rounded,
         color: Theme.of(context).colorScheme.error,
@@ -54,9 +60,15 @@ abstract class AuthService {
         email: email,
         password: password,
       );
-      updateName(_auth.currentUser!, name);
+      await updateName(_auth.currentUser!, name);
       if (!context.mounted) return;
       _navigateTo(context, const AppScreen());
+      await _firestore.collection(DatabaseCollections.usersCollection).add({
+        "uid": _auth.currentUser!.uid,
+        "name": _auth.currentUser!.displayName,
+        "email": _auth.currentUser!.email,
+        "phoneNumber": _auth.currentUser!.phoneNumber,
+      });
     } on FirebaseAuthException catch (e) {
       String message = '';
       if (e.code == 'email-already-in-use') {
@@ -136,7 +148,7 @@ abstract class AuthService {
         accessToken: googleAuth?.accessToken,
         idToken: googleAuth?.idToken,
       );
-      
+
       if (!context.mounted) return null;
       _navigateTo(context, const AppScreen());
 
@@ -147,7 +159,24 @@ abstract class AuthService {
     return null;
   }
 
-  static Future<void> signUpWithFacebook() async {}
+  static Future<UserCredential?> signInWithFacebook(
+    BuildContext context,
+  ) async {
+    try {
+      final result = await _facebookAuth.login();
+      final credential = FacebookAuthProvider.credential(
+        result.accessToken!.tokenString,
+      );
+
+      if (!context.mounted) return null;
+      _navigateTo(context, const AppScreen());
+
+      return _auth.signInWithCredential(credential);
+    } catch (e) {
+      log(e.toString());
+    }
+    return null;
+  }
 
   static Future<void> signUpWithApple() async {}
 }

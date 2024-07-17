@@ -33,6 +33,14 @@ class _SignUpScreenState extends State<SignUpScreen> with OverlayLoader {
   }
 
   @override
+  void dispose() {
+    nameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     return Scaffold(
@@ -138,7 +146,7 @@ class _AuthSocialMediaButtonRow extends StatelessWidget {
         const SizedBox(width: 25),
         AuthSocialMediaButton(
           icon: AppIcons.facebookLetter,
-          onPressed: () {},
+          onPressed: () => AuthService.signInWithFacebook(context),
         ),
         const SizedBox(width: 25),
         AuthSocialMediaButton(

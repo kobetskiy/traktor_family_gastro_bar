@@ -82,6 +82,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "personalInformation" : MessageLookupByLibrary.simpleMessage("Особиста інформація"),
     "phoneNumber" : MessageLookupByLibrary.simpleMessage("Номер телефону"),
     "pleaseTryAgainLater" : MessageLookupByLibrary.simpleMessage("Спробуйте будь ласка пізніше"),
+    "pleaseWriteRemarksOrWishes" : MessageLookupByLibrary.simpleMessage("Напишіть зауваження або побажання"),
     "popular" : MessageLookupByLibrary.simpleMessage("Популярні"),
     "privacyPolicy" : MessageLookupByLibrary.simpleMessage("Політика конфіденційності"),
     "privacy_policy_1" : MessageLookupByLibrary.simpleMessage("1. Загальні положення"),

@@ -109,5 +109,6 @@
   "resetPassword": "Reset password",
   "emailWasSentSuccessfully": "Email was sent successfully",
   "cancel": "Cancel",
-  "yes": "Yes"
+  "yes": "Yes",
+  "pleaseWriteRemarksOrWishes": "Please write remarks or wishes"
 }

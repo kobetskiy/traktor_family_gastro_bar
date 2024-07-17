@@ -25,6 +25,14 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen>
   final auth = FirebaseAuth.instance;
   final isLoggedIn = FirebaseAuth.instance.currentUser != null;
 
+  @override
+  void dispose() {
+    nameController.dispose();
+    emailController.dispose();
+    phoneController.dispose();
+    super.dispose();
+  }
+
   Future<void> logOut() async {
     showAdaptiveDialog(
       context: context,

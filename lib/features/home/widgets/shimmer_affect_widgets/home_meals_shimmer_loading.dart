@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/shimmer.dart';
 
-
 class HomeMealsShimmerLoading extends StatefulWidget {
   const HomeMealsShimmerLoading({super.key});
 
@@ -17,7 +16,7 @@ class _HomeMealsShimmerLoadingState extends State<HomeMealsShimmerLoading> {
       child: ShimmerLoading(
         isLoading: true,
         child: SizedBox(
-          height: 185,
+          height: 180,
           child: ListView.separated(
             itemCount: 7,
             padding: const EdgeInsets.symmetric(horizontal: 20),

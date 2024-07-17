@@ -3,6 +3,7 @@ abstract class DatabaseCollections {
   static const String bannersCollection = 'banners';
   static const String errorsCollection = 'errors';
   static const String reviewsCollection = 'reviews';
+  static const String usersCollection = 'users';
 }
 
 abstract class DatabaseMealCategories {

@@ -1,8 +1,6 @@
-// ignore_for_file: must_be_immutable
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/features/settings/data/services/review_service.dart';
 import 'package:traktor_family_gastro_bar/features/settings/widgets/rating_bar.dart';
-import 'package:traktor_family_gastro_bar/features/settings/widgets/sending_result_screen.dart';
 import 'package:traktor_family_gastro_bar/features/settings/widgets/settings_text_field.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/app_bar_widget.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/overlay_loader.dart';
@@ -20,37 +18,20 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
     with OverlayLoader {
   final reviewController = TextEditingController();
   final reviewService = ReviewService();
+  final _formKey = GlobalKey<FormState>();
   double rating = 0;
 
   Future<void> sendReviewToFirebase() async {
-    try {
+    if (_formKey.currentState!.validate()) {
       startLoading();
-      await reviewService.sendReview(
-        text: reviewController.text,
+      await reviewService.sendReviewToFirebase(
+        context: context,
         rating: rating,
-      );
-      stopLoading();
-      if (!mounted) return;
-      reviewService.navigateTo(
-        context,
-        SendingResultScreen.success(
-          title: S.of(context).thankYouForYourFeedback,
-          subtitle: S.of(context).weTryToImproveOurServiceEveryDay,
-        ),
+        text: reviewController.text.trim(),
       );
       reviewController.clear();
-      rating = 0;
       setState(() {});
-    } catch (e) {
       stopLoading();
-      if (!mounted) return;
-      reviewService.navigateTo(
-        context,
-        SendingResultScreen.failure(
-          title: S.of(context).oopsSomethingWentWrong,
-          subtitle: S.of(context).weAreAlreadyFixingThisBugPleaseTryAgainLater,
-        ),
-      );
     }
   }
 
@@ -88,9 +69,16 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
                   onRatingUpdate: (value) => rating = value,
                 ),
                 const SizedBox(height: 30),
-                SettingsTextField(
-                  controller: reviewController,
-                  hintText: S.of(context).remarksOrWishes,
+                Form(
+                  key: _formKey,
+                  child: SettingsTextField.formMultiline(
+                    controller: reviewController,
+                    hintText: S.of(context).remarksOrWishes,
+                    validator: (String? value) =>
+                        value == null || value.trim().isEmpty
+                            ? S.of(context).pleaseWriteRemarksOrWishes
+                            : null,
+                  ),
                 ),
               ],
             ),
@@ -99,9 +87,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: PrimaryButton(
-        onPressed: () async {
-          await sendReviewToFirebase();
-        },
+        onPressed: () async => await sendReviewToFirebase(),
         child: Text(S.of(context).submit),
       ),
     );

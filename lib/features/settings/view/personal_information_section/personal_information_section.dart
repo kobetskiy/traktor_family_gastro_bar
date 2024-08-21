@@ -2,19 +2,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/core/ui/icons_constants.dart';
 import 'package:traktor_family_gastro_bar/features/auth/view/auth_screens.dart';
+import 'package:traktor_family_gastro_bar/features/data/services/constants.dart';
 import 'package:traktor_family_gastro_bar/features/settings/view/personal_information_section/personal_information_screen.dart';
 import 'package:traktor_family_gastro_bar/features/settings/widgets/settings_sections/settings_section.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
 class PersonalInformationSection extends StatelessWidget {
   const PersonalInformationSection({super.key});
-
-  void navigateTo(BuildContext context, Widget screen) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => screen),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +24,7 @@ class PersonalInformationSection extends StatelessWidget {
           customBorder: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
-          onTap: () => navigateTo(
+          onTap: () => Constants.navigateTo(
               context,
               auth.currentUser != null
                   ? const PersonalInformationScreen()

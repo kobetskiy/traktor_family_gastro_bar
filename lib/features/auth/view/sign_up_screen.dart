@@ -5,6 +5,7 @@ import 'package:traktor_family_gastro_bar/features/auth/view/auth_screens.dart';
 import 'package:traktor_family_gastro_bar/features/auth/widgets/widgets.dart';
 import 'package:traktor_family_gastro_bar/features/data/services/text_field_validator.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/widgets.dart';
+import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -54,7 +55,7 @@ class _SignUpScreenState extends State<SignUpScreen> with OverlayLoader {
                 Align(
                   alignment: Alignment.topLeft,
                   child: Text(
-                    'Hello,',
+                    S.of(context).hello,
                     style: textTheme.titleLarge!.copyWith(
                       color: Theme.of(context).colorScheme.primary,
                     ),
@@ -63,7 +64,7 @@ class _SignUpScreenState extends State<SignUpScreen> with OverlayLoader {
                 Align(
                   alignment: Alignment.topLeft,
                   child: Text(
-                    'Sign Up!',
+                    S.of(context).signUp_authScreen,
                     style: textTheme.titleLarge!.copyWith(
                       fontSize: 32,
                       color: Theme.of(context).colorScheme.primary,
@@ -82,11 +83,11 @@ class _SignUpScreenState extends State<SignUpScreen> with OverlayLoader {
                 const SizedBox(height: 30),
                 PrimaryButton(
                   onPressed: signUp,
-                  child: const Text("Sign Up"),
+                  child: Text(S.of(context).signUp),
                 ),
                 SizedBox(height: MediaQuery.sizeOf(context).height * 0.05),
                 Text(
-                  "Or sign up with",
+                  S.of(context).orSignUpWith,
                   style: textTheme.titleSmall,
                 ),
                 const SizedBox(height: 20),
@@ -110,7 +111,7 @@ class _SwitchToLogIn extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          "Already have an account?",
+          S.of(context).alreadyHaveAnAccount,
           style: textTheme.titleSmall,
         ),
         const SizedBox(width: 4),
@@ -120,7 +121,7 @@ class _SwitchToLogIn extends StatelessWidget {
             MaterialPageRoute(builder: (context) => const LogInScreen()),
           ),
           child: Text(
-            "Log In",
+            S.of(context).logIn_authScreen,
             style: textTheme.titleSmall!.copyWith(
               color: Theme.of(context).colorScheme.primary,
             ),
@@ -188,21 +189,21 @@ class _SignUpFormState extends State<_SignUpForm> {
         children: [
           AuthTextFormField(
             controller: widget.nameController,
-            label: 'Name',
+            label: S.of(context).name,
             keyboardType: TextInputType.name,
             validator: TextFieldValidator.validateName,
           ),
           const SizedBox(height: 20),
           AuthTextFormField(
             controller: widget.emailController,
-            label: 'Email',
+            label: S.of(context).email,
             keyboardType: TextInputType.emailAddress,
             validator: TextFieldValidator.validateEmail,
           ),
           const SizedBox(height: 20),
           AuthTextFormField(
             controller: widget.passwordController,
-            label: 'Password',
+            label: S.of(context).password,
             keyboardType: TextInputType.visiblePassword,
             validator: TextFieldValidator.validatePassword,
             isObscureText: isObscured,

@@ -5,6 +5,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:traktor_family_gastro_bar/features/data/database/database_constants.dart';
+import 'package:traktor_family_gastro_bar/features/data/services/constants.dart';
 import 'package:traktor_family_gastro_bar/features/settings/widgets/sending_result_screen.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
@@ -40,7 +41,7 @@ class ErrorService {
     try {
       await _sendError(text: text, image: image);
       if (!context.mounted) return;
-      navigateTo(
+      Constants.navigateTo(
         context,
         SendingResultScreen.success(
           title: S.of(context).thankYou,
@@ -50,7 +51,7 @@ class ErrorService {
       image = null;
     } catch (e) {
       if (!context.mounted) return;
-      navigateTo(
+      Constants.navigateTo(
         context,
         SendingResultScreen.failure(
           title: S.of(context).oopsSomethingWentWrong,
@@ -73,12 +74,5 @@ class ErrorService {
     return value!.trim().isEmpty
         ? S.of(context).tellMeWhatProblemYouFound
         : null;
-  }
-
-  void navigateTo(BuildContext context, Widget page) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => page),
-    );
   }
 }

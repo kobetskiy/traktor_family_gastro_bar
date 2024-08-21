@@ -34,11 +34,19 @@ abstract class AuthService {
         children: [
           icon,
           const SizedBox(width: 10),
-          Text(text),
+          Flexible(child: Text(text)),
         ],
       ),
     );
     return ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
+  static Future<bool> _isUserExist(String? email) async {
+    final querySnapshot = await _firestore
+        .collection(DatabaseCollections.usersCollection)
+        .where("email", isEqualTo: email)
+        .get();
+    return querySnapshot.docs.isEmpty;
   }
 
   static void _navigateTo(BuildContext context, Widget page) {
@@ -47,6 +55,23 @@ abstract class AuthService {
       MaterialPageRoute(builder: (BuildContext context) => page),
       (route) => false,
     );
+  }
+
+  static Future<void> updateName(User user, String name) async {
+    await user.updateDisplayName(name);
+    final userCollection = _firestore.collection(
+      DatabaseCollections.usersCollection,
+    );
+    final querySnapshot =
+        await userCollection.where('email', isEqualTo: user.email).get();
+
+    if (querySnapshot.docs.isNotEmpty) {
+      final docId = querySnapshot.docs.first.id;
+
+      await userCollection.doc(docId).update({'name': name});
+    } else {
+      log("User document not found for uid: ${user.uid}");
+    }
   }
 
   static Future<void> signUp({
@@ -63,23 +88,27 @@ abstract class AuthService {
       await updateName(_auth.currentUser!, name);
       if (!context.mounted) return;
       _navigateTo(context, const AppScreen());
-      await _firestore.collection(DatabaseCollections.usersCollection).add({
-        "uid": _auth.currentUser!.uid,
-        "name": _auth.currentUser!.displayName,
-        "email": _auth.currentUser!.email,
-        "phoneNumber": _auth.currentUser!.phoneNumber,
-      });
+      if (await _isUserExist(_auth.currentUser!.email)) {
+        await _firestore.collection(DatabaseCollections.usersCollection).add({
+          "id": _auth.currentUser!.uid,
+          "name": _auth.currentUser!.displayName,
+          "email": _auth.currentUser!.email,
+          "phoneNumber": _auth.currentUser!.phoneNumber,
+        });
+      }
     } on FirebaseAuthException catch (e) {
       String message = '';
+      if (!context.mounted) return;
       if (e.code == 'email-already-in-use') {
-        message = 'This email is already taken';
+        message = S.of(context).emailAlreadyInUse;
       } else if (e.code == 'invalid-email') {
-        message = 'Enter valid email';
+        message = S.of(context).enterAValidEmail;
       } else if (e.code == 'weak-password') {
-        message = 'Password is not strong enough';
+        message = S.of(context).passwordIsNotStrongEnough;
       } else {
-        message = 'Some error occurred';
+        message = S.of(context).someErrorOccurred;
       }
+      if (!context.mounted) return;
       _showAuthSnackBar(context, message, _failureIcon(context));
     }
   }
@@ -99,11 +128,11 @@ abstract class AuthService {
     } on FirebaseAuthException catch (e) {
       String message = '';
       if (e.code == 'user-not-found') {
-        message = 'User not found';
+        message = S.of(context).userNotFound;
       } else if (e.code == "email-already-in-use") {
-        message = "Email already in use";
+        message = S.of(context).emailAlreadyInUse;
       } else {
-        message = "Wrong email or password";
+        message = S.of(context).wrongEmailOrPassword;
       }
       _showAuthSnackBar(context, message, _failureIcon(context));
     }
@@ -116,10 +145,6 @@ abstract class AuthService {
     _navigateTo(context, const LogInScreen());
   }
 
-  static Future<void> updateName(User user, String name) async {
-    await user.updateDisplayName(name);
-  }
-
   static Future<void> resetPassword(BuildContext context, String email) async {
     String message = '';
     try {
@@ -130,11 +155,11 @@ abstract class AuthService {
       _showAuthSnackBar(context, message, _successIcon(context));
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        message = "User not found";
+        message = S.of(context).userNotFound;
       } else if (e.code == "email-already-in-use") {
-        message = "Email already in use";
+        message = S.of(context).emailAlreadyInUse;
       } else {
-        message = 'Some error occurred';
+        message = S.of(context).someErrorOccurred;
       }
       _showAuthSnackBar(context, message, _failureIcon(context));
     }
@@ -148,6 +173,15 @@ abstract class AuthService {
         accessToken: googleAuth?.accessToken,
         idToken: googleAuth?.idToken,
       );
+
+      if (await _isUserExist(googleUser!.email)) {
+        await _firestore.collection(DatabaseCollections.usersCollection).add({
+          "id": googleUser.id,
+          "name": googleUser.displayName,
+          "email": googleUser.email,
+          "phoneNumber": null,
+        });
+      }
 
       if (!context.mounted) return null;
       _navigateTo(context, const AppScreen());
@@ -167,6 +201,16 @@ abstract class AuthService {
       final credential = FacebookAuthProvider.credential(
         result.accessToken!.tokenString,
       );
+      final userData = await _facebookAuth.getUserData();
+
+      if (await _isUserExist(userData['email'])) {
+        await _firestore.collection(DatabaseCollections.usersCollection).add({
+          "id": userData['id'],
+          "name": userData['name'],
+          "email": userData['email'],
+          "phoneNumber": null,
+        });
+      }
 
       if (!context.mounted) return null;
       _navigateTo(context, const AppScreen());

@@ -75,12 +75,9 @@ class NotificationService {
   static Future<void> init() async {
     await _messaging.requestPermission();
     final token = await _messaging.getToken();
-    print(token);
   }
 
   static Future<void> firebaseBackgroundMessage(RemoteMessage message) async {
-    if (message.notification != null) {
-      print("notification recieved!");
-    }
+    if (message.notification != null) {}
   }
 }

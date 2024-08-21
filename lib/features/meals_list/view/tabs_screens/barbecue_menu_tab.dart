@@ -18,8 +18,9 @@ class _BarbecueMenuTabState extends State<BarbecueMenuTab> {
   @override
   void initState() {
     super.initState();
-    _bloc
-        .add(LoadAllMealsList(collection: DatabaseMealCategories.barbecueMenu));
+    _bloc.add(
+      LoadAllMealsList(collection: DatabaseMealCategories.barbecueMenu),
+    );
   }
 
   @override

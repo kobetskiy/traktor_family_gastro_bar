@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:traktor_family_gastro_bar/features/home/bloc/banner_bloc/banner_bloc.dart';
 import 'package:traktor_family_gastro_bar/features/home/widgets/index.dart';
 import 'package:traktor_family_gastro_bar/features/home/widgets/shimmer_affect_widgets/banner_shimmer_loading.dart';
-import 'package:traktor_family_gastro_bar/features/meals_list/widgets/server_error_widget.dart';
 
 class TopBanners extends StatefulWidget {
   const TopBanners({super.key});
@@ -30,7 +29,7 @@ class _JapaneseCuisineTabState extends State<TopBanners> {
           return BannersPageView(state: state);
         }
         if (state is BannerFailure) {
-          return const ServerErrorWidget();
+          return const SizedBox.shrink();
         }
         return const BannerShimmerLoading();
       },

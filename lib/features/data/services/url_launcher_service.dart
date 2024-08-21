@@ -1,25 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:traktor_family_gastro_bar/features/widgets/adaptive_alert_dialog.dart';
+import 'package:traktor_family_gastro_bar/features/data/services/constants.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class UrlLauncherService {
-  void openLink(BuildContext context, Uri uri) async {
+  Future<void> openLink(BuildContext context, Uri uri) async {
     if (await canLaunchUrl(uri)) {
       launchUrl(uri);
     } else {
       if (!context.mounted) return;
-      showAdaptiveDialog(
+      Constants.showAlertDialog(
         context: context,
-        builder: (context) => AdaptiveAlertDialog(
-          content: S.of(context).wrongLinkDialogText,
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text('OK'),
-            ),
-          ],
-        ),
+        content: S.of(context).wrongLinkDialogText,
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('OK'),
+          ),
+        ],
       );
     }
   }

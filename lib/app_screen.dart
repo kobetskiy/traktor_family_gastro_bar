@@ -17,19 +17,20 @@ class _AppScreenState extends State<AppScreen> {
   @override
   Widget build(BuildContext context) {
     return Consumer<BottomNavigationBarService>(
-        builder: (context, bottomNavBarService, child) {
-      return Scaffold(
-        body: bottomNavBarService.widgetOptions.elementAt(
-          bottomNavBarService.selectedIndex,
-        ),
-        bottomNavigationBar: Theme(
-          data: ThemeData(splashColor: Colors.transparent),
-          child: BottomNavigationBarWidget(
-            tabIndex: bottomNavBarService.selectedIndex,
-            onTap: bottomNavBarService.onTap,
+      builder: (context, bottomNavBarService, child) {
+        return Scaffold(
+          body: bottomNavBarService.widgetOptions.elementAt(
+            bottomNavBarService.selectedIndex,
           ),
-        ),
-      );
-    });
+          bottomNavigationBar: Theme(
+            data: ThemeData(splashColor: Colors.transparent),
+            child: BottomNavigationBarWidget(
+              tabIndex: bottomNavBarService.selectedIndex,
+              onTap: bottomNavBarService.onTap,
+            ),
+          ),
+        );
+      },
+    );
   }
 }

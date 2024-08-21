@@ -1,10 +1,12 @@
+import 'package:traktor_family_gastro_bar/generated/l10n.dart';
+
 abstract class TextFieldValidator {
   static String? validateName(String? value) {
     final nameRegExp = RegExp(r"^[a-zA-Zа-яА-ЯёЁ]+([ \'-][a-zA-Zа-яА-ЯёЁ]+)*$");
     if (value!.trim().isEmpty) {
-      return "Enter your name";
+      return S.current.enterYourName;
     } else if (!nameRegExp.hasMatch(value.trim())) {
-      return "Enter a valid name";
+      return S.current.enterAValidName;
     }
     return null;
   }
@@ -13,9 +15,9 @@ abstract class TextFieldValidator {
     final nameRegExp = RegExp(
         r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
     if (value!.trim().isEmpty) {
-      return "Enter your email";
+      return S.current.enterYourEmail;
     } else if (!nameRegExp.hasMatch(value.trim())) {
-      return "Enter a valid email";
+      return S.current.enterAValidEmail;
     }
     return null;
   }
@@ -24,7 +26,7 @@ abstract class TextFieldValidator {
     final phoneRegExp = RegExp(r'^\d{9}$');
     if (value == null || value.trim().isEmpty) return null;
     if (!phoneRegExp.hasMatch(value.trim())) {
-      return "Enter a valid phone";
+      return S.current.enterAValidPhoneNumber;
     }
     return null;
   }
@@ -32,9 +34,9 @@ abstract class TextFieldValidator {
   static String? validatePassword(String? value) {
     final passwordRegExp = RegExp(r'^.{6,}$');
     if (value!.trim().isEmpty) {
-      return "Enter password";
+      return S.current.enterPassword;
     } else if (!passwordRegExp.hasMatch(value.trim())) {
-      return "Password must be at least 6 characters";
+      return S.current.passwordMustBeAtLeast6Characters;
     }
     return null;
   }

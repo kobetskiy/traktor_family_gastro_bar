@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:traktor_family_gastro_bar/bottom_navigation_bar_service.dart';
 import 'package:traktor_family_gastro_bar/core/ui/icons_constants.dart';
 import 'package:traktor_family_gastro_bar/features/auth/services/auth_service.dart';
 import 'package:traktor_family_gastro_bar/features/auth/widgets/auth_social_media_button.dart';
@@ -6,6 +8,7 @@ import 'package:traktor_family_gastro_bar/features/auth/widgets/auth_text_form_f
 import 'package:traktor_family_gastro_bar/features/data/services/text_field_validator.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/overlay_loader.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/primary_button.dart';
+import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
 import 'reset_password_screen.dart';
 import 'sign_up_screen.dart';
@@ -55,7 +58,7 @@ class _LogInScreenState extends State<LogInScreen> with OverlayLoader {
                 Align(
                   alignment: Alignment.topLeft,
                   child: Text(
-                    'Welcome back,',
+                    S.of(context).welcomeBack,
                     style: textTheme.titleLarge!.copyWith(
                       color: Theme.of(context).colorScheme.primary,
                     ),
@@ -64,7 +67,7 @@ class _LogInScreenState extends State<LogInScreen> with OverlayLoader {
                 Align(
                   alignment: Alignment.topLeft,
                   child: Text(
-                    'Log In!',
+                    S.of(context).logIn_authScreen,
                     style: textTheme.titleLarge!.copyWith(
                       fontSize: 32,
                       color: Theme.of(context).colorScheme.primary,
@@ -87,7 +90,7 @@ class _LogInScreenState extends State<LogInScreen> with OverlayLoader {
                   child: Align(
                     alignment: Alignment.topRight,
                     child: Text(
-                      'Forgot password?',
+                      S.of(context).forgotPassword,
                       style: textTheme.titleSmall!.copyWith(
                         color: Colors.grey[600],
                       ),
@@ -97,13 +100,20 @@ class _LogInScreenState extends State<LogInScreen> with OverlayLoader {
                 SizedBox(height: MediaQuery.sizeOf(context).height * 0.046),
                 const _SwitchToSignUp(),
                 const SizedBox(height: 30),
-                PrimaryButton(
-                  onPressed: logIn,
-                  child: const Text("Log In"),
+                Consumer<BottomNavigationBarService>(
+                  builder: (context, bottomNavBarService, child) {
+                    return PrimaryButton(
+                      onPressed: () {
+                        bottomNavBarService.onTap(0);
+                        logIn();
+                      },
+                      child: Text(S.of(context).logIn),
+                    );
+                  },
                 ),
                 SizedBox(height: MediaQuery.sizeOf(context).height * 0.05),
                 Text(
-                  "Or log in with",
+                  S.of(context).orLogInWith,
                   style: textTheme.titleSmall,
                 ),
                 const SizedBox(height: 20),
@@ -127,7 +137,7 @@ class _SwitchToSignUp extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          "New member?",
+          S.of(context).newMember,
           style: textTheme.titleSmall,
         ),
         const SizedBox(width: 4),
@@ -137,7 +147,7 @@ class _SwitchToSignUp extends StatelessWidget {
             MaterialPageRoute(builder: (context) => const SignUpScreen()),
           ),
           child: Text(
-            "Sign Up",
+            S.of(context).signUp_authScreen,
             style: textTheme.titleSmall!.copyWith(
               color: Theme.of(context).colorScheme.primary,
             ),
@@ -153,27 +163,38 @@ class _AuthSocialMediaButtonRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        AuthSocialMediaButton(
-          icon: AppIcons.google,
-          onPressed: () => AuthService.signInWithGoogle(context),
-        ),
-        const SizedBox(width: 25),
-        AuthSocialMediaButton(
-          icon: AppIcons.facebookLetter,
-          onPressed: () => AuthService.signInWithFacebook(context),
-        ),
-        const SizedBox(width: 25),
-        AuthSocialMediaButton(
-          icon: Theme.of(context).brightness == Brightness.dark
-              ? AppIcons.appleLight
-              : AppIcons.appleDark,
-          onPressed: () {},
-        ),
-      ],
-    );
+    return Consumer<BottomNavigationBarService>(
+        builder: (context, bottomNavBarService, child) {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          AuthSocialMediaButton(
+            icon: AppIcons.google,
+            onPressed: () {
+              bottomNavBarService.onTap(0);
+              AuthService.signInWithGoogle(context);
+            },
+          ),
+          const SizedBox(width: 25),
+          AuthSocialMediaButton(
+            icon: AppIcons.facebookLetter,
+            onPressed: () {
+              bottomNavBarService.onTap(0);
+              AuthService.signInWithFacebook(context);
+            },
+          ),
+          const SizedBox(width: 25),
+          AuthSocialMediaButton(
+            icon: Theme.of(context).brightness == Brightness.dark
+                ? AppIcons.appleLight
+                : AppIcons.appleDark,
+            onPressed: () {
+              bottomNavBarService.onTap(0);
+            },
+          ),
+        ],
+      );
+    });
   }
 }
 
@@ -203,14 +224,14 @@ class _LogInFormState extends State<_LogInForm> {
         children: [
           AuthTextFormField(
             controller: widget.emailController,
-            label: 'Email',
+            label: S.of(context).email,
             keyboardType: TextInputType.emailAddress,
             validator: TextFieldValidator.validateEmail,
           ),
           const SizedBox(height: 25),
           AuthTextFormField(
             controller: widget.passwordController,
-            label: 'Password',
+            label: S.of(context).password,
             keyboardType: TextInputType.visiblePassword,
             validator: TextFieldValidator.validatePassword,
             isObscureText: isObscured,

@@ -15,7 +15,6 @@ class _CategoriesMealsShimmerLoadingState
   Widget build(BuildContext context) {
     return Shimmer(
       child: ShimmerLoading(
-        isLoading: true,
         child: ListView.separated(
           itemCount: 10,
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),

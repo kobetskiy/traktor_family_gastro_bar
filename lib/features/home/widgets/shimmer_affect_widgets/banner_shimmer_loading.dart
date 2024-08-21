@@ -13,7 +13,6 @@ class _BannerShimmerLoadingState extends State<BannerShimmerLoading> {
   Widget build(BuildContext context) {
     return const Shimmer(
       child: ShimmerLoading(
-        isLoading: true,
         child: Column(
           children: [
             SizedBox(height: 10),

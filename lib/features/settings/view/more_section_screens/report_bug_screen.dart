@@ -2,10 +2,9 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/core/ui/ui_constants.dart';
+import 'package:traktor_family_gastro_bar/features/data/services/constants.dart';
 import 'package:traktor_family_gastro_bar/features/settings/data/services/error_service.dart';
-import 'package:traktor_family_gastro_bar/features/settings/widgets/sending_result_screen.dart';
 import 'package:traktor_family_gastro_bar/features/settings/widgets/settings_text_field.dart';
-import 'package:traktor_family_gastro_bar/features/widgets/adaptive_alert_dialog.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/app_bar_widget.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/overlay_loader.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/primary_button.dart';
@@ -25,26 +24,24 @@ class _ReportBugScreenState extends State<ReportBugScreen> with OverlayLoader {
   Uint8List? image;
 
   void removeImage() {
-    showAdaptiveDialog(
+    Constants.showAlertDialog(
       context: context,
-      builder: (context) => AdaptiveAlertDialog(
-        title: 'Are you sure?',
-        content: "This photo will be removed",
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel'),
-          ),
-          TextButton(
-            onPressed: () {
-              image = null;
-              Navigator.pop(context);
-              setState(() {});
-            },
-            child: const Text('Yes'),
-          ),
-        ],
-      ),
+      title: S.of(context).areYouSure,
+      content: S.of(context).thisPhotoWillBeRemoved,
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.pop(context),
+          child: Text(S.of(context).cancel),
+        ),
+        TextButton(
+          onPressed: () {
+            image = null;
+            Navigator.pop(context);
+            setState(() {});
+          },
+          child: Text(S.of(context).yes),
+        ),
+      ],
     );
   }
 

@@ -1,8 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:traktor_family_gastro_bar/features/data/services/constants.dart';
 import 'package:traktor_family_gastro_bar/features/home/bloc/banner_bloc/banner_bloc.dart';
 import 'package:traktor_family_gastro_bar/features/home/data/models/banner_model.dart';
-import 'package:traktor_family_gastro_bar/features/home/data/service/banner_service.dart';
+import 'package:traktor_family_gastro_bar/features/home/view/banner_screen.dart';
 
 class BannersPageView extends StatefulWidget {
   const BannersPageView({super.key, required this.state});
@@ -46,7 +47,6 @@ class _BannersList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bannerService = BannerService();
     return Center(
       child: ConstrainedBox(
         constraints: const BoxConstraints(maxHeight: 300),
@@ -75,11 +75,13 @@ class _BannersList extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15),
                     child: Material(
                       child: InkWell(
-                        onTap: () => bannerService.navigateTo(
-                          context: context,
-                          bannerTitle: bannerModel.title,
-                          bannerContent: bannerModel.content,
-                          bannerAppBarTitle: bannerModel.appBarTitle,
+                        onTap: () => Constants.navigateTo(
+                          context,
+                          BannerScreen(
+                            title: bannerModel.title,
+                            content: bannerModel.content,
+                            appBarTitle: bannerModel.appBarTitle,
+                          ),
                         ),
                         customBorder: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15),

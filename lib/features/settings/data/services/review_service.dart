@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/features/data/database/database_constants.dart';
+import 'package:traktor_family_gastro_bar/features/data/services/constants.dart';
 import 'package:traktor_family_gastro_bar/features/settings/widgets/sending_result_screen.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
@@ -23,7 +24,7 @@ class ReviewService {
     try {
       await _sendReview(text: text, rating: rating);
       if (!context.mounted) return;
-      navigateTo(
+      Constants.navigateTo(
         context,
         SendingResultScreen.success(
           title: S.of(context).thankYouForYourFeedback,
@@ -33,7 +34,7 @@ class ReviewService {
       rating = 0;
     } catch (e) {
       if (!context.mounted) return;
-      navigateTo(
+      Constants.navigateTo(
         context,
         SendingResultScreen.failure(
           title: S.of(context).oopsSomethingWentWrong,
@@ -41,12 +42,5 @@ class ReviewService {
         ),
       );
     }
-  }
-
-  void navigateTo(BuildContext context, Widget page) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => page),
-    );
   }
 }

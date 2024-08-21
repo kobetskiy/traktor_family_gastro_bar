@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:traktor_family_gastro_bar/core/ui/ui_constants.dart';
+import 'package:traktor_family_gastro_bar/features/data/services/constants.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/widgets.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
@@ -18,21 +19,14 @@ class _OnBoardingScreenState extends State<OnBoardingScreen>
   final pageController = PageController();
   late TabController selectorController;
 
-  void navigateTo(Widget page) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => page),
-    );
-  }
-
   Future<void> logIn() async {
-    navigateTo(const LogInScreen());
+    Constants.navigateTo(context, const LogInScreen());
     final prefs = await SharedPreferences.getInstance();
     prefs.setBool('hasOnBoardingShown', true);
   }
 
   Future<void> signUp() async {
-    navigateTo(const SignUpScreen());
+    Constants.navigateTo(context, const SignUpScreen());
     final prefs = await SharedPreferences.getInstance();
     prefs.setBool('hasOnBoardingShown', true);
   }

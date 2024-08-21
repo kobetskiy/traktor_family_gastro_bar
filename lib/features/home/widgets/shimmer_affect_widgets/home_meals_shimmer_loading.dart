@@ -14,7 +14,6 @@ class _HomeMealsShimmerLoadingState extends State<HomeMealsShimmerLoading> {
   Widget build(BuildContext context) {
     return Shimmer(
       child: ShimmerLoading(
-        isLoading: true,
         child: SizedBox(
           height: 180,
           child: ListView.separated(

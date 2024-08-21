@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/app_screen.dart';
 import 'package:traktor_family_gastro_bar/features/auth/services/auth_service.dart';
+import 'package:traktor_family_gastro_bar/features/data/services/constants.dart';
 import 'package:traktor_family_gastro_bar/features/data/services/text_field_validator.dart';
 import 'package:traktor_family_gastro_bar/features/settings/widgets/settings_text_field.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/widgets.dart';
@@ -33,28 +34,52 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen>
     super.dispose();
   }
 
-  Future<void> logOut() async {
-    showAdaptiveDialog(
+  void logOutAlertDialog() {
+    Constants.showAlertDialog(
       context: context,
-      builder: (context) => AdaptiveAlertDialog(
-        title: S.of(context).wantToLogOut,
-        content: S.of(context).areYouSureYouWantToLog,
+      title: S.of(context).wantToLogOut,
+      content: S.of(context).areYouSureYouWantToLog,
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.pop(context),
+          child: Text(S.of(context).cancel),
+        ),
+        TextButton(
+          onPressed: () async {
+            startLoading();
+            await AuthService.logOut(context: context);
+            stopLoading();
+          },
+          child: Text(S.of(context).yes),
+        ),
+      ],
+    );
+  }
+
+  void unsavedDataAlertDialog() {
+    if (nameController.text.trim() != auth.currentUser?.displayName ||
+        phoneController.text.trim() != auth.currentUser?.phoneNumber) {
+      Constants.showAlertDialog(
+        context: context,
+        title: 'S.of(context).unsavedChanges',
+        content: 'S.of(context).unsavedChangesContent',
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
             child: Text(S.of(context).cancel),
           ),
           TextButton(
-            onPressed: () async {
-              startLoading();
-              await AuthService.logOut(context: context);
-              stopLoading();
+            onPressed: () {
+              Navigator.pop(context);
+              Navigator.pop(context); // ! change to popUntil
             },
             child: Text(S.of(context).yes),
           ),
         ],
-      ),
-    );
+      );
+    } else {
+      Navigator.pop(context);
+    }
   }
 
   Future<void> updatePersonalInformation() async {
@@ -93,6 +118,9 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen>
           headerSliverBuilder: (context, innerBoxIsScrolled) => [
             AppBarWidget(
               title: S.of(context).personalInformation,
+              leading: BackButton(
+                onPressed: unsavedDataAlertDialog,
+              ),
               actions: [
                 IconButton(
                   onPressed: updatePersonalInformation,
@@ -110,17 +138,6 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen>
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(height: MediaQuery.sizeOf(context).height * 0.05),
-                    Text(S.of(context).name,
-                        style: Theme.of(context).textTheme.titleLarge),
-                    const SizedBox(height: 5),
-                    SettingsTextField.form(
-                      controller: nameController,
-                      enabled: isLoggedIn,
-                      hintText: S.of(context).enterYourName,
-                      keyboardType: TextInputType.name,
-                      validator: TextFieldValidator.validateName,
-                    ),
-                    const SizedBox(height: 20),
                     Text(S.of(context).email,
                         style: Theme.of(context).textTheme.titleLarge),
                     const SizedBox(height: 5),
@@ -130,6 +147,17 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen>
                       hintText: "example@gmail.com",
                       keyboardType: TextInputType.emailAddress,
                       validator: TextFieldValidator.validateEmail,
+                    ),
+                    const SizedBox(height: 20),
+                    Text(S.of(context).name,
+                        style: Theme.of(context).textTheme.titleLarge),
+                    const SizedBox(height: 5),
+                    SettingsTextField.form(
+                      controller: nameController,
+                      enabled: isLoggedIn,
+                      hintText: S.of(context).enterYourName,
+                      keyboardType: TextInputType.name,
+                      validator: TextFieldValidator.validateName,
                     ),
                     const SizedBox(height: 20),
                     Text(S.of(context).phoneNumber,
@@ -173,7 +201,7 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen>
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: PrimaryButton(
         backgroundColor: Theme.of(context).colorScheme.error,
-        onPressed: logOut,
+        onPressed: logOutAlertDialog,
         child: Text(S.of(context).logOut),
       ),
     );

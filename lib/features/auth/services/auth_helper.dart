@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +36,7 @@ mixin AuthHelper {
         .collection(DatabaseCollections.usersCollection)
         .where("email", isEqualTo: email)
         .get();
-    return querySnapshot.docs.isEmpty;
+    return querySnapshot.docs.isNotEmpty;
   }
 
   static void navigateTo(BuildContext context, Widget page) {

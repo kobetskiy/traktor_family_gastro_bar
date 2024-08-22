@@ -96,7 +96,8 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen>
           nameController.text.trim(),
         );
       }
-      if (phoneController.text.trim() != '') {
+      final userData = await AuthService.getUserData();
+      if (phoneController.text.trim() != userData?.phoneNumber) {
         await AuthService.updatePhoneNumber(
           auth.currentUser!,
           phoneController.text.trim(),

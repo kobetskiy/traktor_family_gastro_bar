@@ -29,21 +29,21 @@ abstract class AuthService with AuthHelper {
 
   static Future<UserModel?> getUserData() async {
     try {
-      final documentSnapshot = await _firestore
-          .collection(DatabaseCollections.usersCollection)
-          .doc(_auth.currentUser?.email)
-          .get();
-      if (documentSnapshot.exists) {
-        return UserModel(
-          email: documentSnapshot.get('email'),
-          id: documentSnapshot.get('id'),
-          name: documentSnapshot.get('name'),
-          phoneNumber: documentSnapshot.get('phoneNumber'),
-        );
-      } else {
-        log('Document does not exist');
-        return null;
-      }
+    final documentSnapshot = await _firestore
+        .collection(DatabaseCollections.usersCollection)
+        .doc(_auth.currentUser?.email)
+        .get();
+    if (documentSnapshot.exists) {
+      return UserModel(
+        email: documentSnapshot.get('email'),
+        id: documentSnapshot.get('id'),
+        name: documentSnapshot.get('name'),
+        phoneNumber: documentSnapshot.get('phoneNumber') ,
+      );
+    } else {
+      log('Document does not exist');
+      return null;
+    }
     } catch (e) {
       log('Error getting user name: $e');
       return null;
@@ -164,7 +164,7 @@ abstract class AuthService with AuthHelper {
         idToken: googleAuth?.idToken,
       );
 
-      if (await AuthHelper.isUserExist(googleUser!.email)) {
+      if (!await AuthHelper.isUserExist(googleUser!.email)) {
         await _firestore
             .collection(DatabaseCollections.usersCollection)
             .doc(googleUser.email)

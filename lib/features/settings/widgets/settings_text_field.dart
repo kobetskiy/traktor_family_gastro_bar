@@ -6,7 +6,7 @@ class SettingsTextField extends StatelessWidget {
   const SettingsTextField({
     super.key,
     required this.controller,
-    required this.hintText,
+    this.hintText,
     this.prefix,
     this.keyboardType,
   })  : validator = null,
@@ -16,7 +16,7 @@ class SettingsTextField extends StatelessWidget {
   const SettingsTextField.form({
     super.key,
     required this.controller,
-    required this.hintText,
+    this.hintText,
     this.prefix,
     this.keyboardType,
     this.validator,
@@ -26,7 +26,7 @@ class SettingsTextField extends StatelessWidget {
   const SettingsTextField.formMultiline({
     super.key,
     required this.controller,
-    required this.hintText,
+    this.hintText,
     this.prefix,
     this.keyboardType,
     this.validator,
@@ -34,7 +34,7 @@ class SettingsTextField extends StatelessWidget {
   }) : settingsTextFieldType = SettingsTextFieldType.textFormFieldMultiline;
 
   final TextEditingController controller;
-  final String hintText;
+  final String? hintText;
   final String? prefix;
   final TextInputType? keyboardType;
   final String? Function(String?)? validator;
@@ -46,7 +46,7 @@ class SettingsTextField extends StatelessWidget {
     InputDecoration decoration = InputDecoration(
       prefixIcon: prefix != null
           ? Padding(
-              padding: const EdgeInsets.only(left: 20, top: 12.5),
+              padding: const EdgeInsets.only(left: 20, top: 13.5),
               child:
                   Text(prefix!, style: Theme.of(context).textTheme.titleSmall),
             )

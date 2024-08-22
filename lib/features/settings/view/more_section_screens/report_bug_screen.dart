@@ -23,8 +23,8 @@ class _ReportBugScreenState extends State<ReportBugScreen> with OverlayLoader {
   final formKey = GlobalKey<FormState>();
   Uint8List? image;
 
-  void removeImage() {
-    Constants.showAlertDialog(
+  Future<void> removeImage() async {
+    await Constants.showAlertDialog(
       context: context,
       title: S.of(context).areYouSure,
       content: S.of(context).thisPhotoWillBeRemoved,
@@ -118,7 +118,7 @@ class _ReportBugScreenState extends State<ReportBugScreen> with OverlayLoader {
                   image != null
                       ? _PickedImageWidget(
                           image: image,
-                          onDeleteButtonPressed: removeImage,
+                          onDeleteButtonPressed: () async => await removeImage(),
                         )
                       : PrimaryButton.outlined(
                           onPressed: pickImage,

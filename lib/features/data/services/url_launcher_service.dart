@@ -9,7 +9,7 @@ class UrlLauncherService {
       launchUrl(uri);
     } else {
       if (!context.mounted) return;
-      Constants.showAlertDialog(
+      await Constants.showAlertDialog(
         context: context,
         content: S.of(context).wrongLinkDialogText,
         actions: [

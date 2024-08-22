@@ -135,5 +135,8 @@
   "emailAlreadyInUse": "Ця ел. пошта вже використовується",
   "wrongEmailOrPassword": "Неправильна ел. адреса або пароль",
   "someErrorOccurred": "Сталася якась помилка",
-  "passwordIsNotStrongEnough": "Пароль недостатньо надійний"
+  "passwordIsNotStrongEnough": "Пароль недостатньо надійний",
+  "noDataSaved": "Дані не збережено",
+  "areYouSureYouWantToLeaveThisPageWithout": "Ви впевнені, що хочете покинути цю сторінку, не зберігши дані?",
+  "phoneVerification": "Верифікація телефону"
 }

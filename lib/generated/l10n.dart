@@ -1416,6 +1416,36 @@ class S {
       args: [],
     );
   }
+
+  /// `No data saved`
+  String get noDataSaved {
+    return Intl.message(
+      'No data saved',
+      name: 'noDataSaved',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to leave this page without saving your data?`
+  String get areYouSureYouWantToLeaveThisPageWithout {
+    return Intl.message(
+      'Are you sure you want to leave this page without saving your data?',
+      name: 'areYouSureYouWantToLeaveThisPageWithout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone verification`
+  String get phoneVerification {
+    return Intl.message(
+      'Phone verification',
+      name: 'phoneVerification',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

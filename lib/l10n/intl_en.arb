@@ -135,5 +135,8 @@
   "emailAlreadyInUse": "Email already in use",
   "wrongEmailOrPassword": "Wrong email or password",
   "someErrorOccurred": "Some error occurred",
-  "passwordIsNotStrongEnough": "Password is not strong enough"
+  "passwordIsNotStrongEnough": "Password is not strong enough",
+  "noDataSaved": "No data saved",
+  "areYouSureYouWantToLeaveThisPageWithout": "Are you sure you want to leave this page without saving your data?",
+  "phoneVerification": "Phone verification"
 }

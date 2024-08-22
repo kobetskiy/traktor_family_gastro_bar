@@ -34,8 +34,8 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen>
     super.dispose();
   }
 
-  void logOutAlertDialog() {
-    Constants.showAlertDialog(
+  Future<void> logOutAlertDialog() async {
+    await Constants.showAlertDialog(
       context: context,
       title: S.of(context).wantToLogOut,
       content: S.of(context).areYouSureYouWantToLog,
@@ -56,13 +56,18 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen>
     );
   }
 
-  void unsavedDataAlertDialog() {
-    if (nameController.text.trim() != auth.currentUser?.displayName ||
-        phoneController.text.trim() != auth.currentUser?.phoneNumber) {
-      Constants.showAlertDialog(
+  Future<void> unsavedDataAlertDialog() async {
+    final currentName = auth.currentUser?.displayName ?? '';
+    final userData = await AuthService.getUserData();
+    final currentPhone = userData!.phoneNumber;
+
+    if (!mounted) return;
+    if (nameController.text.trim() != currentName ||
+        '+380${phoneController.text.trim()}' != currentPhone) {
+      await Constants.showAlertDialog(
         context: context,
-        title: 'S.of(context).unsavedChanges',
-        content: 'S.of(context).unsavedChangesContent',
+        title: S.of(context).noDataSaved,
+        content: S.of(context).areYouSureYouWantToLeaveThisPageWithout,
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
@@ -91,6 +96,12 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen>
           nameController.text.trim(),
         );
       }
+      if (phoneController.text.trim() != '') {
+        await AuthService.updatePhoneNumber(
+          auth.currentUser!,
+          phoneController.text.trim(),
+        );
+      }
       stopLoading();
       if (!mounted) return;
       Navigator.pushReplacement(
@@ -103,9 +114,18 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen>
   @override
   void initState() {
     super.initState();
-    nameController.text = auth.currentUser!.displayName!;
-    emailController.text = auth.currentUser!.email!;
-    phoneController.text = auth.currentUser!.phoneNumber ?? '';
+    _loadUserData();
+  }
+
+  Future<void> _loadUserData() async {
+    if (auth.currentUser != null) {
+      final userData = await AuthService.getUserData();
+      if (userData != null) {
+        nameController.text = userData.name;
+        emailController.text = userData.email;
+        phoneController.text = userData.phoneNumber?.substring(4) ?? '';
+      }
+    }
   }
 
   @override
@@ -119,7 +139,7 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen>
             AppBarWidget(
               title: S.of(context).personalInformation,
               leading: BackButton(
-                onPressed: unsavedDataAlertDialog,
+                onPressed: () async => await unsavedDataAlertDialog(),
               ),
               actions: [
                 IconButton(
@@ -201,7 +221,7 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen>
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: PrimaryButton(
         backgroundColor: Theme.of(context).colorScheme.error,
-        onPressed: logOutAlertDialog,
+        onPressed: () async => await logOutAlertDialog(),
         child: Text(S.of(context).logOut),
       ),
     );

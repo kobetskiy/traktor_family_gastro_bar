@@ -1,4 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:traktor_family_gastro_bar/core/router/router.dart';
 import 'package:traktor_family_gastro_bar/core/ui/icons_constants.dart';
 import 'package:traktor_family_gastro_bar/features/data/services/constants.dart';
 import 'package:traktor_family_gastro_bar/features/settings/view/main_section_screens/main_section_screens.dart';
@@ -22,7 +24,7 @@ class SettingsMainSection extends StatelessWidget {
           subtitle: S.of(context).setUpNotifications,
           child: ImageIcon(const AssetImage(AppIcons.notification),
               color: iconsColor),
-          onTap: () => Constants.navigateTo(context, const NotificationScreen()),
+          onTap: () => context.router.push(const NotificationRoute()),
         ),
         const Divider(height: 0),
         SettingsTile(
@@ -30,13 +32,13 @@ class SettingsMainSection extends StatelessWidget {
           subtitle: S.of(context).customizeLanguage,
           child:
               ImageIcon(const AssetImage(AppIcons.language), color: iconsColor),
-          onTap: () => Constants.navigateTo(context, const LanguageScreen()),
+          onTap: () => context.router.push(const LanguageRoute()),
         ),
         const Divider(height: 0),
         SettingsTile(
           title: S.of(context).theme,
           subtitle: S.of(context).selectTheApplicationTheme,
-          onTap: () => Constants.navigateTo(context, const ThemeScreen()),
+          onTap: () => context.router.push(const ThemeRoute()),
           customBorder: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(12),

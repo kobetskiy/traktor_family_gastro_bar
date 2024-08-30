@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:traktor_family_gastro_bar/core/router/router.dart';
 import 'package:traktor_family_gastro_bar/features/data/services/constants.dart';
 import 'package:traktor_family_gastro_bar/features/home/bloc/banner_bloc/banner_bloc.dart';
 import 'package:traktor_family_gastro_bar/features/home/data/models/banner_model.dart';
@@ -75,9 +77,8 @@ class _BannersList extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15),
                     child: Material(
                       child: InkWell(
-                        onTap: () => Constants.navigateTo(
-                          context,
-                          BannerScreen(
+                        onTap: () => context.router.push(
+                          BannerRoute(
                             title: bannerModel.title,
                             content: bannerModel.content,
                             appBarTitle: bannerModel.appBarTitle,

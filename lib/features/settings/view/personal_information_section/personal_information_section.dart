@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:traktor_family_gastro_bar/core/router/router.dart';
 import 'package:traktor_family_gastro_bar/core/ui/icons_constants.dart';
 import 'package:traktor_family_gastro_bar/features/auth/services/auth_service.dart';
 import 'package:traktor_family_gastro_bar/features/auth/view/auth_screens.dart';
@@ -25,11 +27,10 @@ class PersonalInformationSection extends StatelessWidget {
           customBorder: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
-          onTap: () => Constants.navigateTo(
-              context,
+          onTap: () => context.router.push(
               auth.currentUser != null
-                  ? const PersonalInformationScreen()
-                  : const LogInScreen()),
+                  ? const PersonalInformationRoute()
+                  : const ThemeRoute()), // TODO
           child: Padding(
             padding: const EdgeInsets.all(18),
             child: Row(

@@ -1,10 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/app_bar_widget.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/watermark_widget.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
-
 import 'favorite_meal_card/favorite_meal_card.dart';
 
+@RoutePage()
 class FavoriteScreen extends StatelessWidget {
   const FavoriteScreen({super.key});
 

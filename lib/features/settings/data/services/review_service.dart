@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:traktor_family_gastro_bar/core/router/router.dart';
 import 'package:traktor_family_gastro_bar/features/data/database/database_constants.dart';
 import 'package:traktor_family_gastro_bar/features/data/services/constants.dart';
 import 'package:traktor_family_gastro_bar/features/settings/widgets/sending_result_screen.dart';
@@ -24,9 +26,8 @@ class ReviewService {
     try {
       await _sendReview(text: text, rating: rating);
       if (!context.mounted) return;
-      Constants.navigateTo(
-        context,
-        SendingResultScreen.success(
+      context.router.push(
+        SendingResultRoute(
           title: S.of(context).thankYouForYourFeedback,
           subtitle: S.of(context).weTryToImproveOurServiceEveryDay,
         ),
@@ -34,11 +35,11 @@ class ReviewService {
       rating = 0;
     } catch (e) {
       if (!context.mounted) return;
-      Constants.navigateTo(
-        context,
-        SendingResultScreen.failure(
+      context.router.push(
+        SendingResultRoute(
           title: S.of(context).oopsSomethingWentWrong,
           subtitle: S.of(context).weAreAlreadyFixingThisBugPleaseTryAgainLater,
+          isSuccess: false,
         ),
       );
     }

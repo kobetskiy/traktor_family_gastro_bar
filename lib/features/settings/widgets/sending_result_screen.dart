@@ -1,21 +1,18 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/app_screen.dart';
 import 'package:traktor_family_gastro_bar/core/ui/images_constants.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/primary_button.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
+@RoutePage()
 class SendingResultScreen extends StatelessWidget {
-  const SendingResultScreen.success({
+  const SendingResultScreen({
     super.key,
     required this.title,
     required this.subtitle,
-  }) : isSuccess = true;
-
-  const SendingResultScreen.failure({
-    super.key,
-    required this.title,
-    required this.subtitle,
-  }) : isSuccess = false;
+    this.isSuccess = true,
+  });
 
   final String title;
   final String subtitle;
@@ -48,10 +45,7 @@ class SendingResultScreen extends StatelessWidget {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: PrimaryButton(
-        onPressed: () => Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => const AppScreen()),
-        ),
+        onPressed: () => context.router.popUntilRouteWithPath('/'),
         child: Text(S.of(context).goBack),
       ),
     );

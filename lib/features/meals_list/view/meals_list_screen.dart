@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/bloc/meals_list_bloc.dart';
@@ -6,6 +7,7 @@ import 'package:traktor_family_gastro_bar/features/meals_list/widgets/index.dart
 import 'package:traktor_family_gastro_bar/features/widgets/widgets.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
+@RoutePage()
 class MealsListScreen extends StatefulWidget {
   const MealsListScreen({super.key});
 

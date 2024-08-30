@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/features/settings/data/services/review_service.dart';
 import 'package:traktor_family_gastro_bar/features/settings/widgets/rating_bar.dart';
@@ -7,6 +8,7 @@ import 'package:traktor_family_gastro_bar/features/widgets/overlay_loader.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/primary_button.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
+@RoutePage()
 class WriteReviewScreen extends StatefulWidget {
   const WriteReviewScreen({super.key});
 

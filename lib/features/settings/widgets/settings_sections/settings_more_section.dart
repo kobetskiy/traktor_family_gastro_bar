@@ -1,4 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:traktor_family_gastro_bar/core/router/router.dart';
 import 'package:traktor_family_gastro_bar/core/ui/icons_constants.dart';
 import 'package:traktor_family_gastro_bar/features/settings/view/more_section_screens/more_section_screens.dart';
 import 'package:traktor_family_gastro_bar/features/settings/widgets/settings_tile.dart';
@@ -8,13 +10,6 @@ import 'settings_section.dart';
 
 class SettingsMoreSection extends StatelessWidget {
   const SettingsMoreSection({super.key});
-
-  void pushTo(BuildContext context, Widget screen) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => screen),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +22,7 @@ class SettingsMoreSection extends StatelessWidget {
         SettingsTile(
           title: S.of(context).reportABug,
           subtitle: S.of(context).writeToUsIfYouFindABug,
-          onTap: () => pushTo(context, const ReportBugScreen()),
+          onTap: () => context.router.push(const ReportBugRoute()),
           customBorder: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(12),
@@ -47,7 +42,7 @@ class SettingsMoreSection extends StatelessWidget {
             const AssetImage(AppIcons.review),
             color: iconsColor,
           ),
-          onTap: () => pushTo(context, const WriteReviewScreen()),
+          onTap: () => context.router.push(const WriteReviewRoute()),
         ),
         const Divider(height: 0),
         SettingsTile(
@@ -57,13 +52,13 @@ class SettingsMoreSection extends StatelessWidget {
             const AssetImage(AppIcons.privacy),
             color: iconsColor,
           ),
-          onTap: () => pushTo(context, const PrivacyPolicyScreen()),
+          onTap: () => context.router.push(const PrivacyPolicyRoute()),
         ),
         const Divider(height: 0),
         SettingsTile(
           title: S.of(context).faq,
           subtitle: S.of(context).frequentlyAskedQuestion,
-          onTap: () => pushTo(context, const FAQScreen()),
+          onTap: () => context.router.push(const FAQRoute()),
           customBorder: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(12),

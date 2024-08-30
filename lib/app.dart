@@ -2,11 +2,10 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-import 'package:traktor_family_gastro_bar/app_screen.dart';
 import 'package:traktor_family_gastro_bar/bottom_navigation_bar_service.dart';
 import 'package:traktor_family_gastro_bar/core/localization/app_localization.dart';
+import 'package:traktor_family_gastro_bar/core/router/router.dart';
 import 'package:traktor_family_gastro_bar/core/ui/theme.dart';
-import 'package:traktor_family_gastro_bar/features/auth/view/on_boarding_screen.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/bloc/meals_list_bloc.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/services/tab_service.dart';
 import 'package:traktor_family_gastro_bar/features/settings/bloc/localization_bloc/localization_bloc.dart';
@@ -14,13 +13,18 @@ import 'package:traktor_family_gastro_bar/features/settings/bloc/theme_bloc/them
 import 'internet_connection/index.dart';
 
 final Connectivity connectivity = Connectivity();
-final GlobalKey<NavigatorState> kNavigatorKey = GlobalKey<NavigatorState>();
 
-class App extends StatelessWidget {
+class App extends StatefulWidget {
   const App({super.key, required this.hasOnBoardingShown});
 
   final bool hasOnBoardingShown;
 
+  @override
+  State<App> createState() => _AppState();
+}
+
+class _AppState extends State<App> {
+  final _router = AppRouter();
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -43,42 +47,41 @@ class App extends StatelessWidget {
         builder: (context, themeState) {
           return BlocBuilder<LocalizationBloc, LocalizationState>(
             builder: (context, localizationState) {
-              return MaterialApp(
+              return MaterialApp.router(
                 title: "Traktor Bar",
                 debugShowCheckedModeBanner: false,
                 theme: AppTheme.lightTheme,
                 darkTheme: AppTheme.darkTheme,
                 themeMode: themeState.themeMode,
-                navigatorKey: kNavigatorKey,
                 locale: localizationState.locale,
                 localizationsDelegates: AppLocalization.localizationsDelegates,
                 supportedLocales: AppLocalization.supportedLocales,
-                home: const LoadingScreen(),
-                builder: (context, child) => MediaQuery(
-                  data: MediaQuery.of(context)
-                      .copyWith(textScaler: const TextScaler.linear(1)),
-                  child: BlocListener<InternetCubit, InternetState>(
-                    listener: (context, state) {
-                      late final Widget page;
-                      switch (state.type) {
-                        case InternetTypes.connected:
-                          page = hasOnBoardingShown
-                              ? const AppScreen()
-                              : const OnBoardingScreen();
-                          break;
-                        case InternetTypes.offline:
-                          page = const NoInternetScreen();
-                          break;
-                        default:
-                          page = const LoadingScreen();
-                      }
-                      kNavigatorKey.currentState!.pushReplacement(
-                        MaterialPageRoute(builder: (_) => page),
-                      );
-                    },
-                    child: child,
-                  ),
-                ),
+                routerConfig: _router.config(),
+                // builder: (context, child) => MediaQuery(
+                //   data: MediaQuery.of(context)
+                //       .copyWith(textScaler: const TextScaler.linear(1)),
+                //   child: BlocListener<InternetCubit, InternetState>(
+                //     listener: (context, state) {
+                //       late final Widget page;
+                //       switch (state.type) {
+                //         case InternetTypes.connected:
+                //           page = hasOnBoardingShown
+                //               ? const AppScreen()
+                //               : const OnBoardingScreen();
+                //           break;
+                //         case InternetTypes.offline:
+                //           page = const NoInternetScreen();
+                //           break;
+                //         default:
+                //           page = const LoadingScreen();
+                //       }
+                //       kNavigatorKey.currentState!.pushReplacement(
+                //         MaterialPageRoute(builder: (_) => page),
+                //       );
+                //     },
+                //     child: child,
+                //   ),
+                // ),
               );
             },
           );

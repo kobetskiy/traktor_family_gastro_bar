@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:traktor_family_gastro_bar/app_screen.dart';
+import 'package:traktor_family_gastro_bar/core/router/router.dart';
 import 'package:traktor_family_gastro_bar/features/auth/services/auth_service.dart';
 import 'package:traktor_family_gastro_bar/features/data/services/constants.dart';
 import 'package:traktor_family_gastro_bar/features/data/services/text_field_validator.dart';
@@ -43,7 +43,7 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen>
       content: S.of(context).areYouSureYouWantToLog,
       actions: [
         TextButton(
-          onPressed: () => Navigator.pop(context),
+          onPressed: context.router.maybePop,
           child: Text(S.of(context).cancel),
         ),
         TextButton(
@@ -59,9 +59,9 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen>
   }
 
   Future<void> unsavedDataAlertDialog() async {
-    final currentName = auth.currentUser?.displayName ?? '';
     final userData = await AuthService.getUserData();
-    final currentPhone = userData!.phoneNumber;
+    final currentName = userData!.name;
+    final currentPhone = userData.phoneNumber;
 
     if (!mounted) return;
     if (nameController.text.trim() != currentName ||
@@ -72,20 +72,19 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen>
         content: S.of(context).areYouSureYouWantToLeaveThisPageWithout,
         actions: [
           TextButton(
-            onPressed: () => Navigator.pop(context),
+            onPressed: context.router.maybePop,
             child: Text(S.of(context).cancel),
           ),
           TextButton(
             onPressed: () {
-              Navigator.pop(context);
-              Navigator.pop(context); // ! change to popUntil
+              context.router.popUntilRouteWithPath('/');
             },
             child: Text(S.of(context).yes),
           ),
         ],
       );
     } else {
-      Navigator.pop(context);
+      context.router.maybePop();
     }
   }
 
@@ -107,10 +106,7 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen>
       }
       stopLoading();
       if (!mounted) return;
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const AppScreen()),
-      );
+      context.router.replaceAll([const AppRoute()]);
     }
   }
 

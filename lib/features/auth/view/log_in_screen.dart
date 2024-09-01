@@ -1,6 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:traktor_family_gastro_bar/bottom_navigation_bar_service.dart';
+import 'package:traktor_family_gastro_bar/core/router/router.dart';
 import 'package:traktor_family_gastro_bar/core/ui/icons_constants.dart';
 import 'package:traktor_family_gastro_bar/features/auth/services/auth_service.dart';
 import 'package:traktor_family_gastro_bar/features/auth/widgets/auth_social_media_button.dart';
@@ -10,9 +12,7 @@ import 'package:traktor_family_gastro_bar/features/widgets/overlay_loader.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/primary_button.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
-import 'reset_password_screen.dart';
-import 'sign_up_screen.dart';
-
+@RoutePage()
 class LogInScreen extends StatefulWidget {
   const LogInScreen({super.key});
 
@@ -82,11 +82,7 @@ class _LogInScreenState extends State<LogInScreen> with OverlayLoader {
                 ),
                 const SizedBox(height: 5),
                 GestureDetector(
-                  onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const ResetPasswordScreen()),
-                  ),
+                  onTap: () => context.router.push(const ResetPasswordRoute()),
                   child: Align(
                     alignment: Alignment.topRight,
                     child: Text(
@@ -142,10 +138,7 @@ class _SwitchToSignUp extends StatelessWidget {
         ),
         const SizedBox(width: 4),
         GestureDetector(
-          onTap: () => Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(builder: (context) => const SignUpScreen()),
-          ),
+          onTap: () => context.router.replace(const SignUpRoute()),
           child: Text(
             S.of(context).signUp_authScreen,
             style: textTheme.titleSmall!.copyWith(

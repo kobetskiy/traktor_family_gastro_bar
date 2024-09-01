@@ -163,6 +163,25 @@ class LanguageRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [LogInScreen]
+class LogInRoute extends PageRouteInfo<void> {
+  const LogInRoute({List<PageRouteInfo>? children})
+      : super(
+          LogInRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'LogInRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const LogInScreen();
+    },
+  );
+}
+
+/// generated route for
 /// [MealsListScreen]
 class MealsListRoute extends PageRouteInfo<void> {
   const MealsListRoute({List<PageRouteInfo>? children})
@@ -196,6 +215,25 @@ class NotificationRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return const NotificationScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [OnBoardingScreen]
+class OnBoardingRoute extends PageRouteInfo<void> {
+  const OnBoardingRoute({List<PageRouteInfo>? children})
+      : super(
+          OnBoardingRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'OnBoardingRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const OnBoardingScreen();
     },
   );
 }
@@ -253,6 +291,25 @@ class ReportBugRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return const ReportBugScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [ResetPasswordScreen]
+class ResetPasswordRoute extends PageRouteInfo<void> {
+  const ResetPasswordRoute({List<PageRouteInfo>? children})
+      : super(
+          ResetPasswordRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ResetPasswordRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const ResetPasswordScreen();
     },
   );
 }
@@ -330,6 +387,25 @@ class SettingsRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return const SettingsScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [SignUpScreen]
+class SignUpRoute extends PageRouteInfo<void> {
+  const SignUpRoute({List<PageRouteInfo>? children})
+      : super(
+          SignUpRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SignUpRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const SignUpScreen();
     },
   );
 }

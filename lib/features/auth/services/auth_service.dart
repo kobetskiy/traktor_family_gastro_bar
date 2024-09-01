@@ -1,13 +1,13 @@
 import 'dart:developer';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:traktor_family_gastro_bar/app_screen.dart';
+import 'package:traktor_family_gastro_bar/core/router/router.dart';
 import 'package:traktor_family_gastro_bar/features/auth/services/auth_helper.dart';
-import 'package:traktor_family_gastro_bar/features/auth/view/auth_screens.dart';
 import 'package:traktor_family_gastro_bar/features/data/database/database_constants.dart';
 import 'package:traktor_family_gastro_bar/features/settings/data/models/user_model.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
@@ -29,21 +29,21 @@ abstract class AuthService with AuthHelper {
 
   static Future<UserModel?> getUserData() async {
     try {
-    final documentSnapshot = await _firestore
-        .collection(DatabaseCollections.usersCollection)
-        .doc(_auth.currentUser?.email)
-        .get();
-    if (documentSnapshot.exists) {
-      return UserModel(
-        email: documentSnapshot.get('email'),
-        id: documentSnapshot.get('id'),
-        name: documentSnapshot.get('name'),
-        phoneNumber: documentSnapshot.get('phoneNumber') ,
-      );
-    } else {
-      log('Document does not exist');
-      return null;
-    }
+      final documentSnapshot = await _firestore
+          .collection(DatabaseCollections.usersCollection)
+          .doc(_auth.currentUser?.email)
+          .get();
+      if (documentSnapshot.exists) {
+        return UserModel(
+          email: documentSnapshot.get('email'),
+          id: documentSnapshot.get('id'),
+          name: documentSnapshot.get('name'),
+          phoneNumber: documentSnapshot.get('phoneNumber'),
+        );
+      } else {
+        log('Document does not exist');
+        return null;
+      }
     } catch (e) {
       log('Error getting user name: $e');
       return null;
@@ -63,18 +63,14 @@ abstract class AuthService with AuthHelper {
       );
       await updateName(_auth.currentUser!, name);
       if (!context.mounted) return;
-      AuthHelper.navigateTo(context, const AppScreen());
-      if (await AuthHelper.isUserExist(_auth.currentUser!.email)) {
-        await _firestore
-            .collection(DatabaseCollections.usersCollection)
-            .doc(_auth.currentUser!.email)
-            .set({
-          "id": _auth.currentUser!.uid,
-          "name": _auth.currentUser!.displayName,
-          "email": _auth.currentUser!.email,
-          "phoneNumber": _auth.currentUser!.phoneNumber,
-        });
-      }
+      context.router.replaceAll([const AppRoute()]);
+
+      AuthHelper.addUserDataToFirestore(
+        id: _auth.currentUser!.uid,
+        name: _auth.currentUser!.displayName,
+        email: _auth.currentUser!.email,
+        phoneNumber: _auth.currentUser!.phoneNumber,
+      );
     } on FirebaseAuthException catch (e) {
       String message = '';
       if (!context.mounted) return;
@@ -107,7 +103,7 @@ abstract class AuthService with AuthHelper {
         password: password,
       );
       if (!context.mounted) return;
-      AuthHelper.navigateTo(context, const AppScreen());
+      context.router.replaceAll([const AppRoute()]);
     } on FirebaseAuthException catch (e) {
       String message = '';
       if (e.code == 'user-not-found') {
@@ -120,7 +116,7 @@ abstract class AuthService with AuthHelper {
       AuthHelper.showAuthSnackBar(
         context,
         message,
-        AuthHelper.failureIcon(context),
+        AuthHelper.failureIcon(context)
       );
     }
   }
@@ -130,7 +126,7 @@ abstract class AuthService with AuthHelper {
     await _googleAuth.signOut();
     await _facebookAuth.logOut();
     if (!context.mounted) return;
-    AuthHelper.navigateTo(context, const LogInScreen());
+    context.router.replaceAll([const LogInRoute()]);
   }
 
   static Future<void> resetPassword(BuildContext context, String email) async {
@@ -139,7 +135,7 @@ abstract class AuthService with AuthHelper {
       await _auth.sendPasswordResetEmail(email: email);
       if (!context.mounted) return;
       message = S.of(context).emailWasSentSuccessfully;
-      Navigator.pop(context);
+      context.router.maybePop();
       AuthHelper.showAuthSnackBar(
           context, message, AuthHelper.successIcon(context));
     } on FirebaseAuthException catch (e) {
@@ -164,22 +160,18 @@ abstract class AuthService with AuthHelper {
         idToken: googleAuth?.idToken,
       );
 
-      if (!await AuthHelper.isUserExist(googleUser!.email)) {
-        await _firestore
-            .collection(DatabaseCollections.usersCollection)
-            .doc(googleUser.email)
-            .set({
-          "id": googleUser.id,
-          "name": googleUser.displayName,
-          "email": googleUser.email,
-          "phoneNumber": null,
-        });
-      }
+      AuthHelper.addUserDataToFirestore(
+        id: googleUser!.id,
+        name: googleUser.displayName,
+        email: googleUser.email,
+        phoneNumber: null,
+      );
+      final userCredential = await _auth.signInWithCredential(credential);
 
       if (!context.mounted) return null;
-      AuthHelper.navigateTo(context, const AppScreen());
+      context.router.replaceAll([const AppRoute()]);
 
-      return await _auth.signInWithCredential(credential);
+      return userCredential;
     } catch (e) {
       log(e.toString());
     }
@@ -196,22 +188,18 @@ abstract class AuthService with AuthHelper {
       );
       final userData = await _facebookAuth.getUserData();
 
-      if (await AuthHelper.isUserExist(userData['email'])) {
-        await _firestore
-            .collection(DatabaseCollections.usersCollection)
-            .doc(userData['email'])
-            .set({
-          "id": userData['id'],
-          "name": userData['name'],
-          "email": userData['email'],
-          "phoneNumber": null,
-        });
-      }
+      AuthHelper.addUserDataToFirestore(
+        id: userData['id'],
+        name: userData['name'],
+        email: userData['email'],
+        phoneNumber: null,
+      );
+      final userCredential = _auth.signInWithCredential(credential);
 
       if (!context.mounted) return null;
-      AuthHelper.navigateTo(context, const AppScreen());
+      context.router.replaceAll([const AppRoute()]);
 
-      return _auth.signInWithCredential(credential);
+      return userCredential;
     } catch (e) {
       log(e.toString());
     }

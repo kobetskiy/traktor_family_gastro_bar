@@ -31,13 +31,13 @@ class _ReportBugScreenState extends State<ReportBugScreen> with OverlayLoader {
       content: S.of(context).thisPhotoWillBeRemoved,
       actions: [
         TextButton(
-          onPressed: () => Navigator.pop(context),
+          onPressed: context.router.maybePop,
           child: Text(S.of(context).cancel),
         ),
         TextButton(
           onPressed: () {
             image = null;
-            Navigator.pop(context);
+            context.router.maybePop();
             setState(() {});
           },
           child: Text(S.of(context).yes),
@@ -119,7 +119,8 @@ class _ReportBugScreenState extends State<ReportBugScreen> with OverlayLoader {
                   image != null
                       ? _PickedImageWidget(
                           image: image,
-                          onDeleteButtonPressed: () async => await removeImage(),
+                          onDeleteButtonPressed: () async =>
+                              await removeImage(),
                         )
                       : PrimaryButton.outlined(
                           onPressed: pickImage,

@@ -1,12 +1,14 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:traktor_family_gastro_bar/core/router/router.dart';
 import 'package:traktor_family_gastro_bar/core/ui/icons_constants.dart';
 import 'package:traktor_family_gastro_bar/features/auth/services/auth_service.dart';
-import 'package:traktor_family_gastro_bar/features/auth/view/auth_screens.dart';
 import 'package:traktor_family_gastro_bar/features/auth/widgets/widgets.dart';
 import 'package:traktor_family_gastro_bar/features/data/services/text_field_validator.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/widgets.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
+@RoutePage()
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
 
@@ -116,10 +118,7 @@ class _SwitchToLogIn extends StatelessWidget {
         ),
         const SizedBox(width: 4),
         GestureDetector(
-          onTap: () => Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(builder: (context) => const LogInScreen()),
-          ),
+          onTap: () => context.router.replace(const LogInRoute()),
           child: Text(
             S.of(context).logIn_authScreen,
             style: textTheme.titleSmall!.copyWith(

@@ -4,9 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/core/router/router.dart';
 import 'package:traktor_family_gastro_bar/core/ui/icons_constants.dart';
 import 'package:traktor_family_gastro_bar/features/auth/services/auth_service.dart';
-import 'package:traktor_family_gastro_bar/features/auth/view/auth_screens.dart';
-import 'package:traktor_family_gastro_bar/features/data/services/constants.dart';
-import 'package:traktor_family_gastro_bar/features/settings/view/personal_information_section/personal_information_screen.dart';
 import 'package:traktor_family_gastro_bar/features/settings/widgets/settings_sections/settings_section.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
@@ -30,7 +27,7 @@ class PersonalInformationSection extends StatelessWidget {
           onTap: () => context.router.push(
               auth.currentUser != null
                   ? const PersonalInformationRoute()
-                  : const ThemeRoute()), // TODO
+                  : const LogInRoute()),
           child: Padding(
             padding: const EdgeInsets.all(18),
             child: Row(
@@ -59,7 +56,7 @@ class PersonalInformationSection extends StatelessWidget {
                           width: MediaQuery.sizeOf(context).width - 170,
                           child: Text(
                             auth.currentUser != null
-                                ? snapshot.data?.name ?? '...'
+                                ? snapshot.data?.name ?? '...' // TODO: fix name display
                                 : S.of(context).logIn,
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,

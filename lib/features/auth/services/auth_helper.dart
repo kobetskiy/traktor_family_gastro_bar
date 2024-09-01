@@ -39,14 +39,6 @@ mixin AuthHelper {
     return querySnapshot.docs.isNotEmpty;
   }
 
-  static void navigateTo(BuildContext context, Widget page) {
-    Navigator.pushAndRemoveUntil(
-      context,
-      MaterialPageRoute(builder: (BuildContext context) => page),
-      (route) => false,
-    );
-  }
-
   static Future<void> updateUserField(
       User user, String fieldName, String fieldValue) async {
     final userCollection = _firestore.collection(
@@ -58,6 +50,25 @@ mixin AuthHelper {
     if (querySnapshot.docs.isNotEmpty) {
       final docId = querySnapshot.docs.first.id;
       await userCollection.doc(docId).update({fieldName: fieldValue});
+    }
+  }
+
+  static Future<void> addUserDataToFirestore({
+    required String id,
+    required String? name,
+    required String? email,
+    String? phoneNumber,
+  }) async {
+    if (!await AuthHelper.isUserExist(email)) {
+      await _firestore
+          .collection(DatabaseCollections.usersCollection)
+          .doc(email)
+          .set({
+        "id": id,
+        "name": name,
+        "email": email,
+        "phoneNumber": phoneNumber,
+      });
     }
   }
 }

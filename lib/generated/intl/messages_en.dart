@@ -132,6 +132,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "settings" : MessageLookupByLibrary.simpleMessage("Settings"),
     "signUp" : MessageLookupByLibrary.simpleMessage("Sign Up!"),
     "signUp_authScreen" : MessageLookupByLibrary.simpleMessage("Sign Up"),
+    "skip" : MessageLookupByLibrary.simpleMessage("Skip"),
     "someErrorOccurred" : MessageLookupByLibrary.simpleMessage("Some error occurred"),
     "submit" : MessageLookupByLibrary.simpleMessage("Submit"),
     "tellMeWhatProblemYouFound" : MessageLookupByLibrary.simpleMessage("Tell us what problem you found"),

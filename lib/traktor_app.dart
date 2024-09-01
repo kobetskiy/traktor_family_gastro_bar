@@ -10,20 +10,19 @@ import 'package:traktor_family_gastro_bar/features/meals_list/bloc/meals_list_bl
 import 'package:traktor_family_gastro_bar/features/meals_list/services/tab_service.dart';
 import 'package:traktor_family_gastro_bar/features/settings/bloc/localization_bloc/localization_bloc.dart';
 import 'package:traktor_family_gastro_bar/features/settings/bloc/theme_bloc/theme_bloc.dart';
+
 import 'internet_connection/index.dart';
 
 final Connectivity connectivity = Connectivity();
 
-class App extends StatefulWidget {
-  const App({super.key, required this.hasOnBoardingShown});
-
-  final bool hasOnBoardingShown;
+class TraktorApp extends StatefulWidget {
+  const TraktorApp({super.key});
 
   @override
-  State<App> createState() => _AppState();
+  State<TraktorApp> createState() => _TraktorAppState();
 }
 
-class _AppState extends State<App> {
+class _TraktorAppState extends State<TraktorApp> {
   final _router = AppRouter();
   @override
   Widget build(BuildContext context) {

@@ -138,5 +138,6 @@
   "passwordIsNotStrongEnough": "Password is not strong enough",
   "noDataSaved": "No data saved",
   "areYouSureYouWantToLeaveThisPageWithout": "Are you sure you want to leave this page without saving your data?",
-  "phoneVerification": "Phone verification"
+  "phoneVerification": "Phone verification",
+  "skip": "Skip"
 }

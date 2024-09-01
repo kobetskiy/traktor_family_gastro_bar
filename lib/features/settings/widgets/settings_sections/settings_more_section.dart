@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/core/router/router.dart';
 import 'package:traktor_family_gastro_bar/core/ui/icons_constants.dart';
-import 'package:traktor_family_gastro_bar/features/settings/view/more_section_screens/more_section_screens.dart';
 import 'package:traktor_family_gastro_bar/features/settings/widgets/settings_tile.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 

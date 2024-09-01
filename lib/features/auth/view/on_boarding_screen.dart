@@ -1,12 +1,13 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:traktor_family_gastro_bar/core/router/router.dart';
 import 'package:traktor_family_gastro_bar/core/ui/ui_constants.dart';
-import 'package:traktor_family_gastro_bar/features/data/services/constants.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/widgets.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
-import 'auth_screens.dart';
-
+@RoutePage()
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});
 
@@ -20,13 +21,13 @@ class _OnBoardingScreenState extends State<OnBoardingScreen>
   late TabController selectorController;
 
   Future<void> logIn() async {
-    Constants.navigateTo(context, const LogInScreen());
+    context.router.push(const LogInRoute());
     final prefs = await SharedPreferences.getInstance();
     prefs.setBool('hasOnBoardingShown', true);
   }
 
   Future<void> signUp() async {
-    Constants.navigateTo(context, const SignUpScreen());
+    context.router.push(const SignUpRoute());
     final prefs = await SharedPreferences.getInstance();
     prefs.setBool('hasOnBoardingShown', true);
   }
@@ -41,44 +42,60 @@ class _OnBoardingScreenState extends State<OnBoardingScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+        child: Stack(
           children: [
-            Expanded(
-              child: PageView(
-                onPageChanged: (index) => selectorController.index = index,
-                controller: pageController,
-                children: [
-                  _OnBoardingContent(
-                    title: S.of(context).discoverOurWorldOfTastes,
-                    subtitle: S.of(context).experienceUniqueDishes,
-                    image: Image.asset(AppImages.visitor, width: 300),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: PageView(
+                    onPageChanged: (index) => selectorController.index = index,
+                    controller: pageController,
+                    children: [
+                      _OnBoardingContent(
+                        title: S.of(context).discoverOurWorldOfTastes,
+                        subtitle: S.of(context).experienceUniqueDishes,
+                        image: Image.asset(AppImages.visitor, width: 300),
+                      ),
+                      _OnBoardingContent(
+                        title: S.of(context).convenientTableReservations,
+                        subtitle: S.of(context).easilyFindYourFavoriteDishes,
+                        image: Image.asset(AppImages.cook, width: 300),
+                      ),
+                      _OnBoardingContent(
+                        title: S.of(context).fastDeliveryToYourHome,
+                        subtitle: S.of(context).areYouHungry,
+                        image: Image.asset(AppImages.delivery, width: 300),
+                      ),
+                    ],
                   ),
-                  _OnBoardingContent(
-                    title: S.of(context).convenientTableReservations,
-                    subtitle: S.of(context).easilyFindYourFavoriteDishes,
-                    image: Image.asset(AppImages.cook, width: 300),
-                  ),
-                  _OnBoardingContent(
-                    title: S.of(context).fastDeliveryToYourHome,
-                    subtitle: S.of(context).areYouHungry,
-                    image: Image.asset(AppImages.delivery, width: 300),
-                  ),
-                ],
+                ),
+                _OnBoardingPageSelectors(controller: selectorController),
+                const SizedBox(height: 55),
+                PrimaryButton(
+                  onPressed: signUp,
+                  child: Text(S.of(context).createAccount),
+                ),
+                const SizedBox(height: 10),
+                PrimaryButton.outlined(
+                  onPressed: logIn,
+                  child: Text(S.of(context).logIn),
+                ),
+                const SizedBox(height: 20),
+              ],
+            ),
+            Positioned(
+              right: 15,
+              top: 10,
+              child: CupertinoButton(
+                onPressed: () => context.router.replace(const AppRoute()), // TODO: fix navigation
+                child: Text(
+                  S.of(context).skip,
+                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                      color: Colors.grey, fontWeight: FontWeight.w500),
+                ),
               ),
             ),
-            _OnBoardingPageSelectors(controller: selectorController),
-            const SizedBox(height: 55),
-            PrimaryButton(
-              onPressed: signUp,
-              child: Text(S.of(context).createAccount),
-            ),
-            const SizedBox(height: 10),
-            PrimaryButton.outlined(
-              onPressed: logIn,
-              child: Text(S.of(context).logIn),
-            ),
-            const SizedBox(height: 20),
           ],
         ),
       ),

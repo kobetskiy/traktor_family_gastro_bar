@@ -138,5 +138,6 @@
   "passwordIsNotStrongEnough": "Пароль недостатньо надійний",
   "noDataSaved": "Дані не збережено",
   "areYouSureYouWantToLeaveThisPageWithout": "Ви впевнені, що хочете покинути цю сторінку, не зберігши дані?",
-  "phoneVerification": "Верифікація телефону"
+  "phoneVerification": "Верифікація телефону",
+  "skip": "Пропустити"
 }

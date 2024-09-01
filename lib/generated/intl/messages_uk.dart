@@ -132,6 +132,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "settings" : MessageLookupByLibrary.simpleMessage("Налаштування"),
     "signUp" : MessageLookupByLibrary.simpleMessage("Зареєструватися"),
     "signUp_authScreen" : MessageLookupByLibrary.simpleMessage("Зареєструйтеся"),
+    "skip" : MessageLookupByLibrary.simpleMessage("Пропустити"),
     "someErrorOccurred" : MessageLookupByLibrary.simpleMessage("Сталася якась помилка"),
     "submit" : MessageLookupByLibrary.simpleMessage("Надіслати"),
     "tellMeWhatProblemYouFound" : MessageLookupByLibrary.simpleMessage("Pозкажіть яку проблему ви знайшли"),

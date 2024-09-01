@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/app_screen.dart';
+import 'package:traktor_family_gastro_bar/features/auth/view/auth_screens.dart';
 import 'package:traktor_family_gastro_bar/features/favorite/view/favorite_screen.dart';
 import 'package:traktor_family_gastro_bar/features/home/view/banner_screen.dart';
 import 'package:traktor_family_gastro_bar/features/home/view/home_screen.dart';
@@ -9,6 +10,7 @@ import 'package:traktor_family_gastro_bar/features/settings/view/main_section_sc
 import 'package:traktor_family_gastro_bar/features/settings/view/more_section_screens/more_section_screens.dart';
 import 'package:traktor_family_gastro_bar/features/settings/view/settings_screen.dart';
 import 'package:traktor_family_gastro_bar/features/settings/widgets/sending_result_screen.dart';
+import 'guards/guards.dart';
 
 part 'router.gr.dart';
 
@@ -16,9 +18,11 @@ part 'router.gr.dart';
 class AppRouter extends RootStackRouter {
   @override
   List<AutoRoute> get routes => [
+        // home routes
         AutoRoute(
           page: AppRoute.page,
           path: '/',
+          guards: [AuthGuard(), OnBoardingGuard()],
           children: [
             AutoRoute(path: 'home', page: HomeRoute.page),
             AutoRoute(path: 'meals_list', page: MealsListRoute.page),
@@ -27,7 +31,12 @@ class AppRouter extends RootStackRouter {
           ],
         ),
         AutoRoute(path: '/banner', page: BannerRoute.page),
-        AutoRoute(path: '/personal_information', page: PersonalInformationRoute.page),
+
+        // settings routes
+        AutoRoute(
+          path: '/personal_information',
+          page: PersonalInformationRoute.page,
+        ),
         AutoRoute(path: '/notification', page: NotificationRoute.page),
         AutoRoute(path: '/language', page: LanguageRoute.page),
         AutoRoute(path: '/theme', page: ThemeRoute.page),
@@ -36,5 +45,11 @@ class AppRouter extends RootStackRouter {
         AutoRoute(path: '/privacy_policy', page: PrivacyPolicyRoute.page),
         AutoRoute(path: '/faq', page: FAQRoute.page),
         AutoRoute(path: '/sending_result', page: SendingResultRoute.page),
+
+        // auth routes
+        AutoRoute(path: '/on_boarding', page: OnBoardingRoute.page),
+        AutoRoute(path: '/log_in', page: LogInRoute.page),
+        AutoRoute(path: '/sign_up', page: SignUpRoute.page),
+        AutoRoute(path: '/reset_password', page: ResetPasswordRoute.page),
       ];
 }

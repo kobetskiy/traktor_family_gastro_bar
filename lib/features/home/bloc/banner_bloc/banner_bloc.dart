@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/features/home/data/service/banner_service.dart';
-import 'package:traktor_family_gastro_bar/features/meals_list/bloc/exeptions.dart';
+import 'package:traktor_family_gastro_bar/features/data/exeptions.dart';
 
 part 'banner_event.dart';
 part 'banner_state.dart';

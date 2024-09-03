@@ -88,9 +88,12 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: PrimaryButton(
-        onPressed: () async => await sendReviewToFirebase(),
-        child: Text(S.of(context).submit),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: PrimaryButton(
+          onPressed: () async => await sendReviewToFirebase(),
+          child: Text(S.of(context).submit),
+        ),
       ),
     );
   }

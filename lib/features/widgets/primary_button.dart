@@ -53,8 +53,8 @@ class PrimaryButton extends StatelessWidget {
     );
 
     return SizedBox(
-      width: width ?? 300,
       height: height ?? 60,
+      width: width ?? MediaQuery.sizeOf(context).width,
       child: isOutlined
           ? OutlinedButton(onPressed: onPressed, style: style, child: child)
           : ElevatedButton(onPressed: onPressed, style: style, child: child),

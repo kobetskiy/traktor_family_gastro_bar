@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/features/data/models/meal_model.dart';
+import 'package:traktor_family_gastro_bar/features/home/data/service/meals_card_service.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/widgets/meal_card/meal_card_information.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
@@ -25,10 +26,26 @@ class MealDetailsScreen extends StatelessWidget {
   }
 }
 
-class _Information extends StatelessWidget {
+class _Information extends StatefulWidget {
   const _Information({required this.mealModel});
 
   final MealModel mealModel;
+
+  @override
+  State<_Information> createState() => _InformationState();
+}
+
+class _InformationState extends State<_Information> {
+  final mealsCardService = MealsCardService();
+
+  void toggleFavorites() async {
+    await mealsCardService.toggleFavorites(
+      context,
+      widget.mealModel.toCartMealModel(),
+    );
+    await mealsCardService.getFavoriteMealsIds();
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,13 +58,13 @@ class _Information extends StatelessWidget {
             children: [
               Flexible(
                 flex: 3,
-                child: Text(mealModel.title,
+                child: Text(widget.mealModel.title,
                     style: Theme.of(context).textTheme.titleLarge),
               ),
               Flexible(
                 flex: 1,
                 child: Text(
-                  '${mealModel.cost} ${S.current.uah}',
+                  '${widget.mealModel.cost} ${S.current.uah}',
                   style: Theme.of(context)
                       .textTheme
                       .titleLarge!
@@ -56,12 +73,12 @@ class _Information extends StatelessWidget {
               )
             ],
           ),
-          mealModel.subtitle != ''
+          widget.mealModel.subtitle != ''
               ? const SizedBox(height: 10)
               : const SizedBox.shrink(),
-          mealModel.subtitle != ''
+          widget.mealModel.subtitle != ''
               ? Text(
-                  mealModel.subtitle,
+                  widget.mealModel.subtitle,
                   style: Theme.of(context)
                       .textTheme
                       .bodySmall!
@@ -75,11 +92,11 @@ class _Information extends StatelessWidget {
                 customBorder: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(6),
                 ),
-                onTap: () {},
-                child: MealCardLikes(likesCount: mealModel.likesCount),
+                onTap: toggleFavorites,
+                child: MealCardLikes(mealModel: widget.mealModel),
               ),
               const SizedBox(width: 15),
-              MealCardGrams(grams: mealModel.grams)
+              MealCardGrams(grams: widget.mealModel.grams)
             ],
           )
         ],

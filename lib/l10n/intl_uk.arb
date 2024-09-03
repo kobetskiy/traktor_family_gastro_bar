@@ -75,7 +75,7 @@
   "addAPhoto": "Додайте фото",
   "apply": "Застосувати",
   "logIn": "Увійти",
-  "youAreNotAuthorized": "Ви не авторизовані, тому ви не можете змінювати особисті дані",
+  "youAreNotAuthorizedSoYouCannotChangePersonalInfo": "Ви не авторизовані, тому ви не можете змінювати особисті дані",
   "phoneNumber": "Номер телефону",
   "enterYourName": "Введіть ваше ім'я",
   "name": "Ім'я",
@@ -139,5 +139,12 @@
   "noDataSaved": "Дані не збережено",
   "areYouSureYouWantToLeaveThisPageWithout": "Ви впевнені, що хочете покинути цю сторінку, не зберігши дані?",
   "phoneVerification": "Верифікація телефону",
-  "skip": "Пропустити"
+  "skip": "Пропустити",
+  "youMustBeLoggedInToAddThisDishTo": "Вам необхідно авторизуватися, щоб додати цю страву до вибраного",
+  "mealTitleAddedToFavorites": "{mealTitle} успішно додано до улюбленого",
+  "youAreNotAuthorized": "Ви не авторизовані",
+  "mealTitleHasBeenRemovedFromFavorites": "{mealTitle} було видалено з улюбленого",
+  "addTheFirstDishToYourFavorites": "Додайте першу страву до улюблених та скуштуйте нашу вишукану кухню",
+  "reserve": "Забронювати",
+  "deliver": "Доставити"
 }

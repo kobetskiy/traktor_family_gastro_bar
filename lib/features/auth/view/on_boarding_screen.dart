@@ -88,7 +88,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen>
               right: 15,
               top: 10,
               child: CupertinoButton(
-                onPressed: () => context.router.replace(const AppRoute()), // TODO: fix navigation
+                onPressed: () => context.router.replace(const AppRoute()), // TODO: fix navigation. app navigate user to the current screen, it shows cuz AppRoute has AuthGuard that shows Onboarding screen, but we tryna navigate to AppRoute that also has AuthGuard and so on 
                 child: Text(
                   S.of(context).skip,
                   style: Theme.of(context).textTheme.bodySmall!.copyWith(

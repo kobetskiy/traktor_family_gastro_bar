@@ -9,6 +9,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:traktor_family_gastro_bar/core/router/router.dart';
 import 'package:traktor_family_gastro_bar/features/auth/services/auth_helper.dart';
 import 'package:traktor_family_gastro_bar/features/data/database/database_constants.dart';
+import 'package:traktor_family_gastro_bar/features/data/services/constants.dart';
 import 'package:traktor_family_gastro_bar/features/settings/data/models/user_model.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
@@ -30,16 +31,16 @@ abstract class AuthService with AuthHelper {
   static Future<UserModel?> getUserData() async {
     try {
       final documentSnapshot = await _firestore
-          .collection(DatabaseCollections.usersCollection)
+          .collection(DatabaseCollections.users)
           .doc(_auth.currentUser?.email)
           .get();
       if (documentSnapshot.exists) {
         return UserModel(
-          email: documentSnapshot.get('email'),
-          id: documentSnapshot.get('id'),
-          name: documentSnapshot.get('name'),
-          phoneNumber: documentSnapshot.get('phoneNumber'),
-        );
+            email: documentSnapshot.get('email'),
+            id: documentSnapshot.get('id'),
+            name: documentSnapshot.get('name'),
+            phoneNumber: documentSnapshot.get('phoneNumber'),
+            favoritesMeals: []);
       } else {
         log('Document does not exist');
         return null;
@@ -84,10 +85,10 @@ abstract class AuthService with AuthHelper {
         message = S.of(context).someErrorOccurred;
       }
       if (!context.mounted) return;
-      AuthHelper.showAuthSnackBar(
+      Constants.showSnackBar(
         context,
         message,
-        AuthHelper.failureIcon(context),
+        Constants.failureIcon(context),
       );
     }
   }
@@ -113,11 +114,7 @@ abstract class AuthService with AuthHelper {
       } else {
         message = S.of(context).wrongEmailOrPassword;
       }
-      AuthHelper.showAuthSnackBar(
-        context,
-        message,
-        AuthHelper.failureIcon(context)
-      );
+      Constants.showSnackBar(context, message, Constants.failureIcon(context));
     }
   }
 
@@ -136,8 +133,7 @@ abstract class AuthService with AuthHelper {
       if (!context.mounted) return;
       message = S.of(context).emailWasSentSuccessfully;
       context.router.maybePop();
-      AuthHelper.showAuthSnackBar(
-          context, message, AuthHelper.successIcon(context));
+      Constants.showSnackBar(context, message, Constants.successIcon(context));
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         message = S.of(context).userNotFound;
@@ -146,8 +142,7 @@ abstract class AuthService with AuthHelper {
       } else {
         message = S.of(context).someErrorOccurred;
       }
-      AuthHelper.showAuthSnackBar(
-          context, message, AuthHelper.failureIcon(context));
+      Constants.showSnackBar(context, message, Constants.failureIcon(context));
     }
   }
 

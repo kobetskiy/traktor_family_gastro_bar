@@ -7,4 +7,5 @@ abstract class AppImages {
   static const String cook = "assets/images/cook.png";
   static const String delivery = "assets/images/delivery.png";
   static const String visitor = "assets/images/visitor.png";
+  static const String noDataFound = "assets/images/no_data_found.png";
 }

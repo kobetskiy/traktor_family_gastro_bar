@@ -93,7 +93,7 @@ class _SignUpScreenState extends State<SignUpScreen> with OverlayLoader {
                   style: textTheme.titleSmall,
                 ),
                 const SizedBox(height: 20),
-                const _AuthSocialMediaButtonRow(),
+                const AuthSocialMediaButtonRow(),
               ],
             ),
           ),
@@ -125,35 +125,6 @@ class _SwitchToLogIn extends StatelessWidget {
               color: Theme.of(context).colorScheme.primary,
             ),
           ),
-        ),
-      ],
-    );
-  }
-}
-
-class _AuthSocialMediaButtonRow extends StatelessWidget {
-  const _AuthSocialMediaButtonRow();
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        AuthSocialMediaButton(
-          icon: AppIcons.google,
-          onPressed: () => AuthService.signInWithGoogle(context),
-        ),
-        const SizedBox(width: 25),
-        AuthSocialMediaButton(
-          icon: AppIcons.facebookLetter,
-          onPressed: () => AuthService.signInWithFacebook(context),
-        ),
-        const SizedBox(width: 25),
-        AuthSocialMediaButton(
-          icon: Theme.of(context).brightness == Brightness.dark
-              ? AppIcons.appleLight
-              : AppIcons.appleDark,
-          onPressed: () {},
         ),
       ],
     );

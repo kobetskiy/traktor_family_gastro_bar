@@ -19,9 +19,14 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'uk';
 
+  static m0(mealTitle) => "${mealTitle} успішно додано до улюбленого";
+
+  static m1(mealTitle) => "${mealTitle} було видалено з улюбленого";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
     "addAPhoto" : MessageLookupByLibrary.simpleMessage("Додайте фото"),
+    "addTheFirstDishToYourFavorites" : MessageLookupByLibrary.simpleMessage("Додайте першу страву до улюблених та скуштуйте нашу вишукану кухню"),
     "alreadyHaveAnAccount" : MessageLookupByLibrary.simpleMessage("Уже маєте акаунт?"),
     "apply" : MessageLookupByLibrary.simpleMessage("Застосувати"),
     "areYouHungry" : MessageLookupByLibrary.simpleMessage("Ви голодні? Не біда! Наші кур’єри доставлять ваше замовлення максимально швидко та якісно."),
@@ -40,6 +45,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "createAccount" : MessageLookupByLibrary.simpleMessage("Створити акаунт"),
     "customizeLanguage" : MessageLookupByLibrary.simpleMessage("Обрати мову застосунку"),
     "dark" : MessageLookupByLibrary.simpleMessage("Темна"),
+    "deliver" : MessageLookupByLibrary.simpleMessage("Доставити"),
     "deliveryNotification" : MessageLookupByLibrary.simpleMessage("Сповіщення про доставку"),
     "describeTheProblem" : MessageLookupByLibrary.simpleMessage("Опишіть проблему"),
     "discoverOurWorldOfTastes" : MessageLookupByLibrary.simpleMessage("Відкрийте наш світ смаків!"),
@@ -83,6 +89,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "logIn_authScreen" : MessageLookupByLibrary.simpleMessage("Авторизуйтесь"),
     "logOut" : MessageLookupByLibrary.simpleMessage("Вийти"),
     "makeAPhoneCall" : MessageLookupByLibrary.simpleMessage("Зателефонувати"),
+    "mealTitleAddedToFavorites" : m0,
+    "mealTitleHasBeenRemovedFromFavorites" : m1,
     "more" : MessageLookupByLibrary.simpleMessage("Інше"),
     "name" : MessageLookupByLibrary.simpleMessage("Ім\'я"),
     "newDishesNotification" : MessageLookupByLibrary.simpleMessage("Сповіщення про нові страви"),
@@ -124,6 +132,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "remarksOrWishes" : MessageLookupByLibrary.simpleMessage("Зауваження або побажання"),
     "reportABug" : MessageLookupByLibrary.simpleMessage("Повідомити про помилку"),
     "reservationNotification" : MessageLookupByLibrary.simpleMessage("Сповіщення про бронювання"),
+    "reserve" : MessageLookupByLibrary.simpleMessage("Забронювати"),
     "resetPassword" : MessageLookupByLibrary.simpleMessage("Відновити пароль"),
     "search" : MessageLookupByLibrary.simpleMessage("Пошук..."),
     "selectTheApplicationTheme" : MessageLookupByLibrary.simpleMessage("Налаштувати тему"),
@@ -160,7 +169,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "wrongEmailOrPassword" : MessageLookupByLibrary.simpleMessage("Неправильна ел. адреса або пароль"),
     "wrongLinkDialogText" : MessageLookupByLibrary.simpleMessage("Схоже, що посилання застаріло. Ми вже виправляємо цю помилку"),
     "yes" : MessageLookupByLibrary.simpleMessage("Так"),
-    "youAreNotAuthorized" : MessageLookupByLibrary.simpleMessage("Ви не авторизовані, тому ви не можете змінювати особисті дані"),
-    "youAreNotAuthorizedNotifications" : MessageLookupByLibrary.simpleMessage("Ви не авторизовані, тому ви не можете увімкнути сповіщення на електронну пошту")
+    "youAreNotAuthorized" : MessageLookupByLibrary.simpleMessage("Ви не авторизовані"),
+    "youAreNotAuthorizedNotifications" : MessageLookupByLibrary.simpleMessage("Ви не авторизовані, тому ви не можете увімкнути сповіщення на електронну пошту"),
+    "youAreNotAuthorizedSoYouCannotChangePersonalInfo" : MessageLookupByLibrary.simpleMessage("Ви не авторизовані, тому ви не можете змінювати особисті дані"),
+    "youMustBeLoggedInToAddThisDishTo" : MessageLookupByLibrary.simpleMessage("Вам необхідно авторизуватися, щоб додати цю страву до вибраного")
   };
 }

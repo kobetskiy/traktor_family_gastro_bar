@@ -56,7 +56,7 @@ class PersonalInformationSection extends StatelessWidget {
                           width: MediaQuery.sizeOf(context).width - 170,
                           child: Text(
                             auth.currentUser != null
-                                ? snapshot.data?.name ?? '...' // TODO: fix name display
+                                ? snapshot.data?.name ?? '...' // TODO: fix name display. dont update ui after changing data in firestore
                                 : S.of(context).logIn,
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,

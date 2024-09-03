@@ -2,7 +2,6 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-import 'package:traktor_family_gastro_bar/bottom_navigation_bar_service.dart';
 import 'package:traktor_family_gastro_bar/core/localization/app_localization.dart';
 import 'package:traktor_family_gastro_bar/core/router/router.dart';
 import 'package:traktor_family_gastro_bar/core/ui/theme.dart';
@@ -11,6 +10,7 @@ import 'package:traktor_family_gastro_bar/features/meals_list/services/tab_servi
 import 'package:traktor_family_gastro_bar/features/settings/bloc/localization_bloc/localization_bloc.dart';
 import 'package:traktor_family_gastro_bar/features/settings/bloc/theme_bloc/theme_bloc.dart';
 
+import 'features/favorite/bloc/favorite_meals_bloc.dart';
 import 'internet_connection/index.dart';
 
 final Connectivity connectivity = Connectivity();
@@ -28,12 +28,13 @@ class _TraktorAppState extends State<TraktorApp> {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        ChangeNotifierProvider<BottomNavigationBarService>(
-            create: (context) => BottomNavigationBarService()),
         ChangeNotifierProvider<TabService>(create: (context) => TabService()),
         BlocProvider<MealsListBloc>(create: (context) => MealsListBloc()),
         BlocProvider<ThemeBloc>(
           create: (context) => ThemeBloc()..add(LoadTheme()),
+        ),
+        BlocProvider<FavoriteMealsBloc>(
+          create: (context) => FavoriteMealsBloc()
         ),
         BlocProvider<LocalizationBloc>(
           create: (context) => LocalizationBloc()..add(LoadLocalization()),

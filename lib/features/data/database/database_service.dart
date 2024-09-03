@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:traktor_family_gastro_bar/features/meals_list/bloc/exeptions.dart';
+import 'package:traktor_family_gastro_bar/features/data/exeptions.dart';
 
 import 'database_constants.dart';
 
@@ -7,7 +7,7 @@ class DatabaseServise {
   Future<QuerySnapshot<Map<String, dynamic>>> getAllMeals(
       String category) async {
     return await FirebaseFirestore.instance
-        .collection(DatabaseCollections.mealsCollection)
+        .collection(DatabaseCollections.meals)
         .where(DatabaseMealFields.category, isEqualTo: category)
         .get();
   }
@@ -17,7 +17,7 @@ class DatabaseServise {
     List<QueryDocumentSnapshot<Map<String, dynamic>>> searchedData = [];
     if (query != '') {
       final allMealsList = await FirebaseFirestore.instance
-          .collection(DatabaseCollections.mealsCollection)
+          .collection(DatabaseCollections.meals)
           .get();
       searchedData.addAll(allMealsList.docs
           .where((element) => element[DatabaseMealFields.title]
@@ -34,7 +34,7 @@ class DatabaseServise {
     String filterField,
   ) async {
     return await FirebaseFirestore.instance
-        .collection(DatabaseCollections.mealsCollection)
+        .collection(DatabaseCollections.meals)
         .orderBy(filterField, descending: true)
         .get();
   }

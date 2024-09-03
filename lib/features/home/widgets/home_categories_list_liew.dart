@@ -1,6 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:traktor_family_gastro_bar/bottom_navigation_bar_service.dart';
 import 'package:traktor_family_gastro_bar/core/ui/icons_constants.dart';
 import 'package:traktor_family_gastro_bar/features/meals_list/services/tab_service.dart';
 
@@ -40,8 +40,7 @@ class _HomeCategoriesContentState extends State<_HomeCategoriesContent> {
   Widget build(BuildContext context) {
     final tabService = Provider.of<TabService>(context, listen: false);
 
-    return Consumer<BottomNavigationBarService>(
-      builder: (context, bottomNavBarService, child) => Card(
+    return Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
         ),
@@ -53,7 +52,7 @@ class _HomeCategoriesContentState extends State<_HomeCategoriesContent> {
           ),
           onTap: () {
             tabService.controller!.index = widget.index;
-            bottomNavBarService.onTap(1);
+            context.tabsRouter.setActiveIndex(1);
           },
           child: SizedBox(
             width: 80,
@@ -70,7 +69,6 @@ class _HomeCategoriesContentState extends State<_HomeCategoriesContent> {
             ),
           ),
         ),
-      ),
     );
   }
 }

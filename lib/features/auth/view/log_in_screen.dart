@@ -1,12 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:traktor_family_gastro_bar/bottom_navigation_bar_service.dart';
 import 'package:traktor_family_gastro_bar/core/router/router.dart';
 import 'package:traktor_family_gastro_bar/core/ui/icons_constants.dart';
 import 'package:traktor_family_gastro_bar/features/auth/services/auth_service.dart';
-import 'package:traktor_family_gastro_bar/features/auth/widgets/auth_social_media_button.dart';
-import 'package:traktor_family_gastro_bar/features/auth/widgets/auth_text_form_field.dart';
+import 'package:traktor_family_gastro_bar/features/auth/widgets/widgets.dart';
 import 'package:traktor_family_gastro_bar/features/data/services/text_field_validator.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/overlay_loader.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/primary_button.dart';
@@ -96,16 +93,9 @@ class _LogInScreenState extends State<LogInScreen> with OverlayLoader {
                 SizedBox(height: MediaQuery.sizeOf(context).height * 0.046),
                 const _SwitchToSignUp(),
                 const SizedBox(height: 30),
-                Consumer<BottomNavigationBarService>(
-                  builder: (context, bottomNavBarService, child) {
-                    return PrimaryButton(
-                      onPressed: () {
-                        bottomNavBarService.onTap(0);
-                        logIn();
-                      },
-                      child: Text(S.of(context).logIn),
-                    );
-                  },
+                PrimaryButton(
+                  onPressed: logIn,
+                  child: Text(S.of(context).logIn),
                 ),
                 SizedBox(height: MediaQuery.sizeOf(context).height * 0.05),
                 Text(
@@ -113,7 +103,7 @@ class _LogInScreenState extends State<LogInScreen> with OverlayLoader {
                   style: textTheme.titleSmall,
                 ),
                 const SizedBox(height: 20),
-                const _AuthSocialMediaButtonRow(),
+                const AuthSocialMediaButtonRow(),
               ],
             ),
           ),
@@ -148,46 +138,6 @@ class _SwitchToSignUp extends StatelessWidget {
         ),
       ],
     );
-  }
-}
-
-class _AuthSocialMediaButtonRow extends StatelessWidget {
-  const _AuthSocialMediaButtonRow();
-
-  @override
-  Widget build(BuildContext context) {
-    return Consumer<BottomNavigationBarService>(
-        builder: (context, bottomNavBarService, child) {
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          AuthSocialMediaButton(
-            icon: AppIcons.google,
-            onPressed: () {
-              bottomNavBarService.onTap(0);
-              AuthService.signInWithGoogle(context);
-            },
-          ),
-          const SizedBox(width: 25),
-          AuthSocialMediaButton(
-            icon: AppIcons.facebookLetter,
-            onPressed: () {
-              bottomNavBarService.onTap(0);
-              AuthService.signInWithFacebook(context);
-            },
-          ),
-          const SizedBox(width: 25),
-          AuthSocialMediaButton(
-            icon: Theme.of(context).brightness == Brightness.dark
-                ? AppIcons.appleLight
-                : AppIcons.appleDark,
-            onPressed: () {
-              bottomNavBarService.onTap(0);
-            },
-          ),
-        ],
-      );
-    });
   }
 }
 

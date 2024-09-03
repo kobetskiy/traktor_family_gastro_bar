@@ -1,9 +1,9 @@
 abstract class DatabaseCollections {
-  static const String mealsCollection = 'meals';
-  static const String bannersCollection = 'banners';
-  static const String errorsCollection = 'errors';
-  static const String reviewsCollection = 'reviews';
-  static const String usersCollection = 'users';
+  static const String meals = 'meals';
+  static const String banners = 'banners';
+  static const String errors = 'errors';
+  static const String reviews = 'reviews';
+  static const String users = 'users';
 }
 
 abstract class DatabaseMealCategories {
@@ -15,6 +15,7 @@ abstract class DatabaseMealCategories {
 }
 
 abstract class DatabaseMealFields {
+  static const String id = 'id';
   static const String title = 'title';
   static const String subtitle = 'subtitle';
   static const String imageURL = 'imageURL';

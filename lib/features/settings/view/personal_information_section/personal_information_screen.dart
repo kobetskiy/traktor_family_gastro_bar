@@ -196,7 +196,9 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen>
                               const SizedBox(height: 20),
                               Center(
                                 child: Text(
-                                  S.of(context).youAreNotAuthorized,
+                                  S
+                                      .of(context)
+                                      .youAreNotAuthorizedSoYouCannotChangePersonalInfo,
                                   style: TextStyle(color: Colors.red[400]),
                                   textAlign: TextAlign.center,
                                 ),
@@ -218,10 +220,13 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen>
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: PrimaryButton(
-        backgroundColor: Theme.of(context).colorScheme.error,
-        onPressed: () async => await logOutAlertDialog(),
-        child: Text(S.of(context).logOut),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: PrimaryButton(
+          backgroundColor: Theme.of(context).colorScheme.error,
+          onPressed: () async => await logOutAlertDialog(),
+          child: Text(S.of(context).logOut),
+        ),
       ),
     );
   }

@@ -20,6 +20,7 @@ class HomeMealsListView extends StatelessWidget {
         itemBuilder: (_, int index) {
           return HomeMealsCard(
             mealModel: MealModel(
+              id: state.data[index][DatabaseMealFields.id],
               title: state.data[index][DatabaseMealFields.title],
               subtitle: state.data[index][DatabaseMealFields.subtitle],
               imageURL: state.data[index][DatabaseMealFields.imageURL],

@@ -65,11 +65,14 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   filterField: DatabaseMealFields.date,
                 ),
                 const SizedBox(height: 20),
-                Center(
-                  child: PrimaryButton.outlined(
-                    width: 315,
-                    child: const ContactUsButtonContent(),
-                    onPressed: () => _showContactUsSheet(context),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Center(
+                    child: PrimaryButton.outlined(
+                      width: 315,
+                      child: const ContactUsButtonContent(),
+                      onPressed: () => _showContactUsSheet(context),
+                    ),
                   ),
                 ),
                 const WatermarkWidget()
@@ -87,37 +90,40 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       builder: (context) => SizedBox(
         width: MediaQuery.sizeOf(context).width,
         height: 500,
-        child: Column(
-          children: [
-            const SizedBox(height: 10),
-            SizedBox(
-              width: 60,
-              height: 3,
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  color: Colors.grey[600],
-                  borderRadius: const BorderRadius.all(Radius.circular(50)),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            children: [
+              const SizedBox(height: 10),
+              SizedBox(
+                width: 60,
+                height: 3,
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: Colors.grey[600],
+                    borderRadius: const BorderRadius.all(Radius.circular(50)),
+                  ),
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 25),
-              child: Text(
-                S.of(context).contactUs,
-                style: Theme.of(context)
-                    .textTheme
-                    .titleLarge!
-                    .copyWith(fontSize: 18),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 25),
+                child: Text(
+                  S.of(context).contactUs,
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleLarge!
+                      .copyWith(fontSize: 18),
+                ),
               ),
-            ),
-            const InstagramButtonLink(),
-            const SizedBox(height: 15),
-            const FacebookButtonLink(),
-            const SizedBox(height: 15),
-            const EmailButtonLink(),
-            const SizedBox(height: 15),
-            const PhoneButtonLink(),
-          ],
+              const InstagramButtonLink(),
+              const SizedBox(height: 15),
+              const FacebookButtonLink(),
+              const SizedBox(height: 15),
+              const EmailButtonLink(),
+              const SizedBox(height: 15),
+              const PhoneButtonLink(),
+            ],
+          ),
         ),
       ),
     );

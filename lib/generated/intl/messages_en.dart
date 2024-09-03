@@ -19,9 +19,14 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
+  static m0(mealTitle) => "${mealTitle} has been successfully added to favorites";
+
+  static m1(mealTitle) => "${mealTitle} has been removed from favorites";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
     "addAPhoto" : MessageLookupByLibrary.simpleMessage("Add a photo"),
+    "addTheFirstDishToYourFavorites" : MessageLookupByLibrary.simpleMessage("Add the first dish to your favorites and taste our exquisite cuisine"),
     "alreadyHaveAnAccount" : MessageLookupByLibrary.simpleMessage("Already have an account?"),
     "apply" : MessageLookupByLibrary.simpleMessage("Apply"),
     "areYouHungry" : MessageLookupByLibrary.simpleMessage("Are you hungry? No problem! Our couriers will deliver your order as quickly as possible and with care for quality."),
@@ -40,6 +45,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "createAccount" : MessageLookupByLibrary.simpleMessage("Create Account"),
     "customizeLanguage" : MessageLookupByLibrary.simpleMessage("Customize language"),
     "dark" : MessageLookupByLibrary.simpleMessage("Dark"),
+    "deliver" : MessageLookupByLibrary.simpleMessage("Deliver"),
     "deliveryNotification" : MessageLookupByLibrary.simpleMessage("Delivery notification"),
     "describeTheProblem" : MessageLookupByLibrary.simpleMessage("Describe the problem"),
     "discoverOurWorldOfTastes" : MessageLookupByLibrary.simpleMessage("Discover our world of tastes!"),
@@ -83,6 +89,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "logIn_authScreen" : MessageLookupByLibrary.simpleMessage("Log In!"),
     "logOut" : MessageLookupByLibrary.simpleMessage("Log Out"),
     "makeAPhoneCall" : MessageLookupByLibrary.simpleMessage("Make a phone call"),
+    "mealTitleAddedToFavorites" : m0,
+    "mealTitleHasBeenRemovedFromFavorites" : m1,
     "more" : MessageLookupByLibrary.simpleMessage("More"),
     "name" : MessageLookupByLibrary.simpleMessage("Name"),
     "newDishesNotification" : MessageLookupByLibrary.simpleMessage("New dishes notification"),
@@ -124,6 +132,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "remarksOrWishes" : MessageLookupByLibrary.simpleMessage("Remarks or wishes"),
     "reportABug" : MessageLookupByLibrary.simpleMessage("Report a bug"),
     "reservationNotification" : MessageLookupByLibrary.simpleMessage("Reservation notification"),
+    "reserve" : MessageLookupByLibrary.simpleMessage("Reserve"),
     "resetPassword" : MessageLookupByLibrary.simpleMessage("Reset password"),
     "search" : MessageLookupByLibrary.simpleMessage("Search..."),
     "selectTheApplicationTheme" : MessageLookupByLibrary.simpleMessage("Select the application theme"),
@@ -160,7 +169,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "wrongEmailOrPassword" : MessageLookupByLibrary.simpleMessage("Wrong email or password"),
     "wrongLinkDialogText" : MessageLookupByLibrary.simpleMessage("It looks like the link is out of date. We are already fixing it"),
     "yes" : MessageLookupByLibrary.simpleMessage("Yes"),
-    "youAreNotAuthorized" : MessageLookupByLibrary.simpleMessage("You are not authorized, so you cannot change personal data"),
-    "youAreNotAuthorizedNotifications" : MessageLookupByLibrary.simpleMessage("You are not authorized, so you cannot enable email notifications")
+    "youAreNotAuthorized" : MessageLookupByLibrary.simpleMessage("You are not authorized"),
+    "youAreNotAuthorizedNotifications" : MessageLookupByLibrary.simpleMessage("You are not authorized, so you cannot enable email notifications"),
+    "youAreNotAuthorizedSoYouCannotChangePersonalInfo" : MessageLookupByLibrary.simpleMessage("You are not authorized, so you cannot change personal data"),
+    "youMustBeLoggedInToAddThisDishTo" : MessageLookupByLibrary.simpleMessage("You must be logged in to add this dish to your favorites")
   };
 }

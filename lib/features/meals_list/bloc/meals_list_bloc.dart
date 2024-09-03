@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:traktor_family_gastro_bar/features/data/database/database_service.dart';
-import 'package:traktor_family_gastro_bar/features/meals_list/bloc/exeptions.dart';
+import 'package:traktor_family_gastro_bar/features/data/exeptions.dart';
 
 part 'meals_list_event.dart';
 part 'meals_list_state.dart';

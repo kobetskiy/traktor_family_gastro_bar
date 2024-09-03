@@ -11,7 +11,7 @@ class OnBoardingGuard extends AutoRouteGuard {
     if (hasOnBoardingShown) {
       resolver.next(true);
     } else {
-      resolver.redirect(const OnBoardingRoute()); // TODO: fix OnBoardingScreen display
+      resolver.redirect(const OnBoardingRoute()); // TODO: fix OnBoardingScreen display. it shows even when user is logged in
     }
   }
 }

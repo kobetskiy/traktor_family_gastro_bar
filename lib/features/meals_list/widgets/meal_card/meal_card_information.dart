@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:traktor_family_gastro_bar/features/data/models/meal_model.dart';
+import 'package:traktor_family_gastro_bar/features/home/data/service/meals_card_service.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
 class MealCardTitle extends StatelessWidget {
@@ -52,13 +54,21 @@ class MealCardSubtitle extends StatelessWidget {
   }
 }
 
-class MealCardLikes extends StatelessWidget {
-  const MealCardLikes({super.key, required this.likesCount});
+class MealCardLikes extends StatefulWidget {
+  const MealCardLikes({super.key, required this.mealModel});
 
-  final int likesCount;
+  final MealModel mealModel;
+
+  @override
+  State<MealCardLikes> createState() => _MealCardLikesState();
+}
+
+class _MealCardLikesState extends State<MealCardLikes> {
+  final mealsCardService = MealsCardService();
 
   @override
   Widget build(BuildContext context) {
+    final cartMeal = widget.mealModel.toCartMealModel();
     return DecoratedBox(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(6),
@@ -69,15 +79,24 @@ class MealCardLikes extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 5),
-              child: Icon(Icons.favorite_border_rounded),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 5),
+              child: FutureBuilder(
+                future: mealsCardService.getFavoriteMealsIds(),
+                builder: (context, snapshot) {
+                  return snapshot.data?.contains(cartMeal.id) ?? false
+                      ? const Icon(Icons.favorite_rounded, color: Colors.red)
+                      : const Icon(Icons.favorite_border_rounded,
+                          color: Colors.white);
+                },
+              ),
             ),
             Padding(
               padding: const EdgeInsets.only(right: 5),
               child: Center(
                 child: Text(
-                  likesCount.toString(),
+                  widget.mealModel.likesCount
+                      .toString(), // TODO: make a likesCount change dynamically
                   style: Theme.of(context).textTheme.titleSmall,
                 ),
               ),

@@ -10,7 +10,7 @@ class ReviewService {
 
   Future<void> _sendReview(
       {required String text, required double rating}) async {
-    await _firestore.collection(DatabaseCollections.reviewsCollection).add({
+    await _firestore.collection(DatabaseCollections.reviews).add({
       'text': text,
       'rating': rating,
     });

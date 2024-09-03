@@ -133,9 +133,12 @@ class _ReportBugScreenState extends State<ReportBugScreen> with OverlayLoader {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: PrimaryButton(
-        onPressed: () async => await sendErrorToFirebase(),
-        child: Text(S.of(context).submit),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: PrimaryButton(
+          onPressed: () async => await sendErrorToFirebase(),
+          child: Text(S.of(context).submit),
+        ),
       ),
     );
   }

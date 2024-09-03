@@ -43,9 +43,12 @@ class SendingResultScreen extends StatelessWidget {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: PrimaryButton(
-        onPressed: () => context.router.popUntilRouteWithPath('/'),
-        child: Text(S.of(context).goBack),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: PrimaryButton(
+          onPressed: () => context.router.popUntilRouteWithPath('/'),
+          child: Text(S.of(context).goBack),
+        ),
       ),
     );
   }

@@ -10,6 +10,7 @@ import 'package:traktor_family_gastro_bar/features/settings/view/main_section_sc
 import 'package:traktor_family_gastro_bar/features/settings/view/more_section_screens/more_section_screens.dart';
 import 'package:traktor_family_gastro_bar/features/settings/view/settings_screen.dart';
 import 'package:traktor_family_gastro_bar/features/settings/widgets/sending_result_screen.dart';
+
 import 'guards/guards.dart';
 
 part 'router.gr.dart';
@@ -19,18 +20,22 @@ class AppRouter extends RootStackRouter {
   @override
   List<AutoRoute> get routes => [
         // home routes
+        AutoRoute(path: '/banner', page: BannerRoute.page),
         AutoRoute(
           page: AppRoute.page,
           path: '/',
-          guards: [AuthGuard(), OnBoardingGuard()],
+          guards: [AuthGuard()],
           children: [
             AutoRoute(path: 'home', page: HomeRoute.page),
             AutoRoute(path: 'meals_list', page: MealsListRoute.page),
-            AutoRoute(path: 'favorite', page: FavoriteRoute.page),
+            AutoRoute(
+              path: 'favorite',
+              page: FavoriteRoute.page,
+              maintainState: false,
+            ),
             AutoRoute(path: 'settings', page: SettingsRoute.page),
           ],
         ),
-        AutoRoute(path: '/banner', page: BannerRoute.page),
 
         // settings routes
         AutoRoute(

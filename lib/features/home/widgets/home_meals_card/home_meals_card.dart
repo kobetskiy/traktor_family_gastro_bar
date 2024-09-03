@@ -1,14 +1,20 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/features/data/models/meal_model.dart';
+import 'package:traktor_family_gastro_bar/features/home/data/service/meals_card_service.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/meal_details_screen.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
-class HomeMealsCard extends StatelessWidget {
+class HomeMealsCard extends StatefulWidget {
   const HomeMealsCard({super.key, required this.mealModel});
 
   final MealModel mealModel;
 
+  @override
+  State<HomeMealsCard> createState() => _HomeMealsCardState();
+}
+
+class _HomeMealsCardState extends State<HomeMealsCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -30,11 +36,11 @@ class HomeMealsCard extends StatelessWidget {
             borderRadius: const BorderRadius.all(Radius.circular(15)),
             child: Column(
               children: [
-                _HomeMealsCardImage(imageURL: mealModel.imageURL),
+                _HomeMealsCardImage(mealModel: widget.mealModel),
                 const SizedBox(height: 7),
-                _HomeMealsCardTitle(title: mealModel.title),
+                _HomeMealsCardTitle(title: widget.mealModel.title),
                 const SizedBox(height: 2),
-                _HomeMealsCardCost(cost: mealModel.cost)
+                _HomeMealsCardCost(cost: widget.mealModel.cost)
               ],
             ),
           ),
@@ -42,7 +48,7 @@ class HomeMealsCard extends StatelessWidget {
         onTap: () => showModalBottomSheet(
           isScrollControlled: true,
           context: context,
-          builder: (_) => MealDetailsScreen(mealModel: mealModel),
+          builder: (_) => MealDetailsScreen(mealModel: widget.mealModel),
         ),
       ),
     );
@@ -86,13 +92,28 @@ class _HomeMealsCardTitle extends StatelessWidget {
   }
 }
 
-class _HomeMealsCardImage extends StatelessWidget {
-  const _HomeMealsCardImage({required this.imageURL});
+class _HomeMealsCardImage extends StatefulWidget {
+  const _HomeMealsCardImage({required this.mealModel});
 
-  final String imageURL;
+  final MealModel mealModel;
+
+  @override
+  State<_HomeMealsCardImage> createState() => _HomeMealsCardImageState();
+}
+
+class _HomeMealsCardImageState extends State<_HomeMealsCardImage> {
+  final mealsCardService = MealsCardService();
 
   @override
   Widget build(BuildContext context) {
+    final cartMeal = widget.mealModel.toCartMealModel();
+
+    void toggleFavorites() async {
+      await mealsCardService.toggleFavorites(context, cartMeal);
+      await mealsCardService.getFavoriteMealsIds();
+      setState(() {});
+    }
+
     return Stack(
       children: [
         ClipRRect(
@@ -100,7 +121,7 @@ class _HomeMealsCardImage extends StatelessWidget {
           child: AspectRatio(
             aspectRatio: 1.33 / 1,
             child: CachedNetworkImage(
-              imageUrl: imageURL,
+              imageUrl: widget.mealModel.imageURL,
               fit: BoxFit.fitWidth,
               progressIndicatorBuilder: (context, url, progress) =>
                   const AspectRatio(aspectRatio: 1.33 / 1),
@@ -127,12 +148,20 @@ class _HomeMealsCardImage extends StatelessWidget {
           top: 10,
           right: 10,
           child: GestureDetector(
-            onTap: () {},
-            child: const Icon(
-              color: Colors.white,
-              Icons.favorite_border_rounded,
-              size: 28,
-            ),
+            onTap: toggleFavorites,
+            child: FutureBuilder(
+                future: mealsCardService.getFavoriteMealsIds(),
+                builder: (context, snapshot) {
+                  return Icon(
+                    snapshot.data?.contains(cartMeal.id) ?? false
+                        ? Icons.favorite_rounded
+                        : Icons.favorite_border_rounded,
+                    color: snapshot.data?.contains(cartMeal.id) ?? false
+                        ? Colors.red
+                        : Colors.white,
+                    size: 28,
+                  );
+                }),
           ),
         ),
       ],

@@ -20,6 +20,7 @@ class MealsListViewWidget extends StatelessWidget {
           physics: const ScrollPhysics(),
           itemBuilder: (_, int index) => MealCard(
             mealModel: MealModel(
+              id: state.data[index][DatabaseMealFields.id],
               title: state.data[index][DatabaseMealFields.title],
               subtitle: state.data[index][DatabaseMealFields.subtitle],
               imageURL: state.data[index][DatabaseMealFields.imageURL],

@@ -1,18 +1,21 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/features/data/models/meal_model.dart';
+import 'package:traktor_family_gastro_bar/features/home/data/service/meals_card_service.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/meal_details_screen.dart';
 
 import 'meal_card_information.dart';
 
-class MealCard extends StatelessWidget {
-  const MealCard({
-    super.key,
-    required this.mealModel,
-  });
+class MealCard extends StatefulWidget {
+  const MealCard({super.key, required this.mealModel});
 
   final MealModel mealModel;
 
+  @override
+  State<MealCard> createState() => _MealCardState();
+}
+
+class _MealCardState extends State<MealCard> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -22,40 +25,42 @@ class MealCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _MealCardInformation(
-              title: mealModel.title,
-              cost: mealModel.cost,
-              subtitle: mealModel.subtitle,
-              likesCount: mealModel.likesCount,
-              grams: mealModel.grams,
-            ),
-            _MealCardImage(imageURL: mealModel.imageURL),
+            _MealCardInformation(mealModel: widget.mealModel),
+            _MealCardImage(imageURL: widget.mealModel.imageURL),
           ],
         ),
       ),
-      onTap: () => showModalBottomSheet(
-        isScrollControlled: true,
-        context: context,
-        builder: (_) => MealDetailsScreen(mealModel: mealModel),
-      ),
+      onTap: () async {
+        await showModalBottomSheet(
+          isScrollControlled: true,
+          context: context,
+          builder: (_) => MealDetailsScreen(mealModel: widget.mealModel),
+        );
+      },
     );
   }
 }
 
-class _MealCardInformation extends StatelessWidget {
-  const _MealCardInformation({
-    required this.title,
-    required this.cost,
-    required this.subtitle,
-    required this.likesCount,
-    required this.grams,
-  });
+class _MealCardInformation extends StatefulWidget {
+  const _MealCardInformation({required this.mealModel});
 
-  final String title;
-  final int cost;
-  final String subtitle;
-  final int likesCount;
-  final String grams;
+  final MealModel mealModel;
+
+  @override
+  State<_MealCardInformation> createState() => _MealCardInformationState();
+}
+
+class _MealCardInformationState extends State<_MealCardInformation> {
+  final mealsCardService = MealsCardService();
+
+  void toggleFavorites() async {
+    await mealsCardService.toggleFavorites(
+      context,
+      widget.mealModel.toCartMealModel(),
+    );
+    await mealsCardService.getFavoriteMealsIds();
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,25 +69,30 @@ class _MealCardInformation extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          MealCardTitle(title: title),
+          MealCardTitle(title: widget.mealModel.title),
           const SizedBox(height: 5),
-          MealCardCost(cost: cost),
-          subtitle != '' ? const SizedBox(height: 5) : const SizedBox.shrink(),
-          subtitle != ''
-              ? MealCardSubtitle(subtitle: subtitle)
+          MealCardCost(cost: widget.mealModel.cost),
+          widget.mealModel.subtitle != ''
+              ? const SizedBox(height: 5)
+              : const SizedBox.shrink(),
+          widget.mealModel.subtitle != ''
+              ? MealCardSubtitle(subtitle: widget.mealModel.subtitle)
               : const SizedBox.shrink(),
           const SizedBox(height: 8),
           Row(
             children: [
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  // getLikesCount();
+                  toggleFavorites();
+                },
                 customBorder: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(6),
                 ),
-                child: MealCardLikes(likesCount: likesCount),
+                child: MealCardLikes(mealModel: widget.mealModel),
               ),
               const SizedBox(width: 15),
-              MealCardGrams(grams: grams)
+              MealCardGrams(grams: widget.mealModel.grams)
             ],
           )
         ],
@@ -100,19 +110,22 @@ class _MealCardImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Flexible(
       flex: 1,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(8.0),
-        child: CachedNetworkImage(
-          imageUrl: imageURL,
-          key: UniqueKey(),
-          fit: BoxFit.cover,
-          placeholder: (_, __) => const ColoredBox(color: Colors.white12),
-          errorWidget: (_, __, ___) => const SizedBox(
-            height: 80.1,
-            width: 106.7,
-            child: ColoredBox(
-              color: Colors.white12,
-              child: Center(child: Icon(Icons.error)),
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxHeight: 120),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(8.0),
+          child: CachedNetworkImage(
+            imageUrl: imageURL,
+            key: UniqueKey(),
+            fit: BoxFit.cover,
+            placeholder: (_, __) => const ColoredBox(color: Colors.white12),
+            errorWidget: (_, __, ___) => const SizedBox(
+              height: 80.1,
+              width: 106.7,
+              child: ColoredBox(
+                color: Colors.white12,
+                child: Center(child: Icon(Icons.error)),
+              ),
             ),
           ),
         ),

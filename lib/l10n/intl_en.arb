@@ -75,7 +75,7 @@
   "addAPhoto": "Add a photo",
   "apply": "Apply",
   "logIn": "Log in",
-  "youAreNotAuthorized": "You are not authorized, so you cannot change personal data",
+  "youAreNotAuthorizedSoYouCannotChangePersonalInfo": "You are not authorized, so you cannot change personal data",
   "phoneNumber": "Phone number",
   "enterYourName": "Enter your name",
   "name": "Name",
@@ -139,5 +139,12 @@
   "noDataSaved": "No data saved",
   "areYouSureYouWantToLeaveThisPageWithout": "Are you sure you want to leave this page without saving your data?",
   "phoneVerification": "Phone verification",
-  "skip": "Skip"
+  "skip": "Skip",
+  "youMustBeLoggedInToAddThisDishTo": "You must be logged in to add this dish to your favorites",
+  "mealTitleAddedToFavorites": "{mealTitle} has been successfully added to favorites",
+  "youAreNotAuthorized": "You are not authorized",
+  "mealTitleHasBeenRemovedFromFavorites": "{mealTitle} has been removed from favorites",
+  "addTheFirstDishToYourFavorites": "Add the first dish to your favorites and taste our exquisite cuisine",
+  "reserve": "Reserve",
+  "deliver": "Deliver"
 }

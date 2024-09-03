@@ -13,7 +13,8 @@ class ResetPasswordScreen extends StatefulWidget {
   State<ResetPasswordScreen> createState() => _ResetPasswordScreenState();
 }
 
-class _ResetPasswordScreenState extends State<ResetPasswordScreen> with OverlayLoader {
+class _ResetPasswordScreenState extends State<ResetPasswordScreen>
+    with OverlayLoader {
   final formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
 
@@ -78,9 +79,12 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> with OverlayL
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: PrimaryButton(
-        onPressed: resetPassword,
-        child: Text(S.of(context).resetPassword),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: PrimaryButton(
+          onPressed: resetPassword,
+          child: Text(S.of(context).resetPassword),
+        ),
       ),
     );
   }

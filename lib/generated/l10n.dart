@@ -808,10 +808,10 @@ class S {
   }
 
   /// `You are not authorized, so you cannot change personal data`
-  String get youAreNotAuthorized {
+  String get youAreNotAuthorizedSoYouCannotChangePersonalInfo {
     return Intl.message(
       'You are not authorized, so you cannot change personal data',
-      name: 'youAreNotAuthorized',
+      name: 'youAreNotAuthorizedSoYouCannotChangePersonalInfo',
       desc: '',
       args: [],
     );
@@ -1452,6 +1452,76 @@ class S {
     return Intl.message(
       'Skip',
       name: 'skip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You must be logged in to add this dish to your favorites`
+  String get youMustBeLoggedInToAddThisDishTo {
+    return Intl.message(
+      'You must be logged in to add this dish to your favorites',
+      name: 'youMustBeLoggedInToAddThisDishTo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `{mealTitle} has been successfully added to favorites`
+  String mealTitleAddedToFavorites(Object mealTitle) {
+    return Intl.message(
+      '$mealTitle has been successfully added to favorites',
+      name: 'mealTitleAddedToFavorites',
+      desc: '',
+      args: [mealTitle],
+    );
+  }
+
+  /// `You are not authorized`
+  String get youAreNotAuthorized {
+    return Intl.message(
+      'You are not authorized',
+      name: 'youAreNotAuthorized',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `{mealTitle} has been removed from favorites`
+  String mealTitleHasBeenRemovedFromFavorites(Object mealTitle) {
+    return Intl.message(
+      '$mealTitle has been removed from favorites',
+      name: 'mealTitleHasBeenRemovedFromFavorites',
+      desc: '',
+      args: [mealTitle],
+    );
+  }
+
+  /// `Add the first dish to your favorites and taste our exquisite cuisine`
+  String get addTheFirstDishToYourFavorites {
+    return Intl.message(
+      'Add the first dish to your favorites and taste our exquisite cuisine',
+      name: 'addTheFirstDishToYourFavorites',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reserve`
+  String get reserve {
+    return Intl.message(
+      'Reserve',
+      name: 'reserve',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Deliver`
+  String get deliver {
+    return Intl.message(
+      'Deliver',
+      name: 'deliver',
       desc: '',
       args: [],
     );

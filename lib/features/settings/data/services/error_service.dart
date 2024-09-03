@@ -27,7 +27,7 @@ class ErrorService {
     String? imageURL = image != null
         ? await _uploadImageToStorage('error/${image.hashCode}', image)
         : null;
-    await _firestore.collection(DatabaseCollections.errorsCollection).add({
+    await _firestore.collection(DatabaseCollections.errors).add({
       'text': text,
       'imageURL': imageURL,
     });

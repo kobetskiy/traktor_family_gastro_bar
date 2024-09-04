@@ -23,4 +23,8 @@ class FavoriteMealsService {
       return [];
     }
   }
+
+  Future<void> reserveMeals() async {}
+  
+  Future<void> deliverMeals() async {}
 }

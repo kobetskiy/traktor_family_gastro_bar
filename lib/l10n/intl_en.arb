@@ -146,5 +146,7 @@
   "mealTitleHasBeenRemovedFromFavorites": "{mealTitle} has been removed from favorites",
   "addTheFirstDishToYourFavorites": "Add the first dish to your favorites and taste our exquisite cuisine",
   "reserve": "Reserve",
-  "deliver": "Deliver"
+  "deliver": "Deliver",
+  "deliveryRegistration": "Delivery registration",
+  "tableReservation": "Table reservation"
 }

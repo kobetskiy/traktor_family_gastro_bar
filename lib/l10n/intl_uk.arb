@@ -146,5 +146,7 @@
   "mealTitleHasBeenRemovedFromFavorites": "{mealTitle} було видалено з улюбленого",
   "addTheFirstDishToYourFavorites": "Додайте першу страву до улюблених та скуштуйте нашу вишукану кухню",
   "reserve": "Забронювати",
-  "deliver": "Доставити"
+  "deliver": "Доставити",
+  "deliveryRegistration": "Оформлення доставки",
+  "tableReservation": "Бронювання столика"
 }

@@ -8,7 +8,13 @@ class MealCardTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(title, style: Theme.of(context).textTheme.titleSmall);
+    return Text(
+      title,
+      style: Theme.of(context)
+          .textTheme
+          .titleSmall!
+          .copyWith(height: 1.3, fontSize: 16),
+    );
   }
 }
 
@@ -19,12 +25,15 @@ class MealCardCost extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      '$cost ${S.of(context).uah}',
-      style: Theme.of(context)
-          .textTheme
-          .titleSmall!
-          .copyWith(color: Theme.of(context).primaryColor),
+    return Padding(
+      padding: const EdgeInsets.only(top: 5),
+      child: Text(
+        '$cost ${S.of(context).uah}',
+        style: Theme.of(context)
+            .textTheme
+            .titleSmall!
+            .copyWith(color: Theme.of(context).primaryColor),
+      ),
     );
   }
 }

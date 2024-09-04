@@ -87,6 +87,25 @@ class BannerRouteArgs {
 }
 
 /// generated route for
+/// [DeliverScreen]
+class DeliverRoute extends PageRouteInfo<void> {
+  const DeliverRoute({List<PageRouteInfo>? children})
+      : super(
+          DeliverRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'DeliverRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const DeliverScreen();
+    },
+  );
+}
+
+/// generated route for
 /// [FAQScreen]
 class FAQRoute extends PageRouteInfo<void> {
   const FAQRoute({List<PageRouteInfo>? children})
@@ -291,6 +310,25 @@ class ReportBugRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return const ReportBugScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [ReserveScreen]
+class ReserveRoute extends PageRouteInfo<void> {
+  const ReserveRoute({List<PageRouteInfo>? children})
+      : super(
+          ReserveRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ReserveRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const ReserveScreen();
     },
   );
 }

@@ -29,7 +29,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
       bloc: _favMealsBloc,
       builder: (context, state) {
         if (state is FavoriteMealsSuccess) {
-          return FavoriteMealsListScreen(state: state);
+          return FavoriteMealsListScreen(state: state, bloc: _favMealsBloc);
         }
         if (state is FavoriteMealsFailure) {
           return const NoDataFoundWidget();

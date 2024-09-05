@@ -1546,6 +1546,66 @@ class S {
       args: [],
     );
   }
+
+  /// `In total: {totalCost}`
+  String totalCost(Object totalCost) {
+    return Intl.message(
+      'In total: $totalCost',
+      name: 'totalCost',
+      desc: '',
+      args: [totalCost],
+    );
+  }
+
+  /// `Next`
+  String get next {
+    return Intl.message(
+      'Next',
+      name: 'next',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Back`
+  String get back {
+    return Intl.message(
+      'Back',
+      name: 'back',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Address`
+  String get address {
+    return Intl.message(
+      'Address',
+      name: 'address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contacts`
+  String get contacts {
+    return Intl.message(
+      'Contacts',
+      name: 'contacts',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Еnter your address`
+  String get enterYourAddress {
+    return Intl.message(
+      'Еnter your address',
+      name: 'enterYourAddress',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

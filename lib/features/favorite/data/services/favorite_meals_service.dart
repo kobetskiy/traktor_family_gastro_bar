@@ -1,7 +1,10 @@
 import 'dart:developer';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:traktor_family_gastro_bar/core/router/router.dart';
 import 'package:traktor_family_gastro_bar/features/data/database/database_constants.dart';
 
 class FavoriteMealsService {
@@ -24,7 +27,11 @@ class FavoriteMealsService {
     }
   }
 
-  Future<void> reserveMeals() async {}
-  
-  Future<void> deliverMeals() async {}
+  Future<void> reserveMeals(BuildContext context) async {
+    context.router.push(const ReserveRoute());
+  }
+
+  Future<void> deliverMeals(BuildContext context) async {
+    context.router.push(const DeliverRoute());
+  }
 }

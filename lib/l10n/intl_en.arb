@@ -148,5 +148,11 @@
   "reserve": "Reserve",
   "deliver": "Deliver",
   "deliveryRegistration": "Delivery registration",
-  "tableReservation": "Table reservation"
+  "tableReservation": "Table reservation",
+  "totalCost": "In total: {totalCost}",
+  "next": "Next",
+  "back": "Back",
+  "address": "Address",
+  "contacts": "Contacts",
+  "enterYourAddress": "Еnter your address"
 }

@@ -40,4 +40,11 @@ abstract class TextFieldValidator {
     }
     return null;
   }
+
+  static String? validateAddress(String? value) {
+    if (value!.trim().isEmpty) {
+      return S.current.enterYourAddress;
+    }
+    return null;
+  }
 }

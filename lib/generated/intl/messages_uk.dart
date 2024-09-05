@@ -23,10 +23,13 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m1(mealTitle) => "${mealTitle} було видалено з улюбленого";
 
+  static m2(totalCost) => "Всього: ${totalCost}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
     "addAPhoto" : MessageLookupByLibrary.simpleMessage("Додайте фото"),
     "addTheFirstDishToYourFavorites" : MessageLookupByLibrary.simpleMessage("Додайте першу страву до улюблених та скуштуйте нашу вишукану кухню"),
+    "address" : MessageLookupByLibrary.simpleMessage("Адреса"),
     "alreadyHaveAnAccount" : MessageLookupByLibrary.simpleMessage("Уже маєте акаунт?"),
     "apply" : MessageLookupByLibrary.simpleMessage("Застосувати"),
     "areYouHungry" : MessageLookupByLibrary.simpleMessage("Ви голодні? Не біда! Наші кур’єри доставлять ваше замовлення максимально швидко та якісно."),
@@ -34,6 +37,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "areYouSureYouWantToLeaveThisPageWithout" : MessageLookupByLibrary.simpleMessage("Ви впевнені, що хочете покинути цю сторінку, не зберігши дані?"),
     "areYouSureYouWantToLog" : MessageLookupByLibrary.simpleMessage("Ви впевнені, що хочете вийти зі свого акаунту?"),
     "auto" : MessageLookupByLibrary.simpleMessage("Авто."),
+    "back" : MessageLookupByLibrary.simpleMessage("Назад"),
     "bar" : MessageLookupByLibrary.simpleMessage("Бар"),
     "barbecueMenu" : MessageLookupByLibrary.simpleMessage("Мангал меню"),
     "cancel" : MessageLookupByLibrary.simpleMessage("Скасувати"),
@@ -41,6 +45,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "chechYourConnection" : MessageLookupByLibrary.simpleMessage("Немає підключення до Інтернету.\nПеревірте підключення до Wi-Fi або мобільного інтернету."),
     "checkTheRequest" : MessageLookupByLibrary.simpleMessage("Перевірте правильність запиту та спробуйте ще раз"),
     "contactUs" : MessageLookupByLibrary.simpleMessage("Зв\'язатися з нами"),
+    "contacts" : MessageLookupByLibrary.simpleMessage("Контакти"),
     "convenientTableReservations" : MessageLookupByLibrary.simpleMessage("Зручне бронювання столиків"),
     "createAccount" : MessageLookupByLibrary.simpleMessage("Створити акаунт"),
     "customizeLanguage" : MessageLookupByLibrary.simpleMessage("Обрати мову застосунку"),
@@ -59,6 +64,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "enterAValidName" : MessageLookupByLibrary.simpleMessage("Введіть дійсне ім\'я"),
     "enterAValidPhoneNumber" : MessageLookupByLibrary.simpleMessage("Введіть дійсний номер телефону"),
     "enterPassword" : MessageLookupByLibrary.simpleMessage("Введіть пароль"),
+    "enterYourAddress" : MessageLookupByLibrary.simpleMessage("Укажіть свою адресу"),
     "enterYourEmail" : MessageLookupByLibrary.simpleMessage("Введіть свою ел. адресу"),
     "enterYourName" : MessageLookupByLibrary.simpleMessage("Введіть ваше ім\'я"),
     "europeanCuisine" : MessageLookupByLibrary.simpleMessage("Європейська кухня"),
@@ -96,6 +102,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "name" : MessageLookupByLibrary.simpleMessage("Ім\'я"),
     "newDishesNotification" : MessageLookupByLibrary.simpleMessage("Сповіщення про нові страви"),
     "newMember" : MessageLookupByLibrary.simpleMessage("Ще не маєте акаунту?"),
+    "next" : MessageLookupByLibrary.simpleMessage("Далі"),
     "noDataSaved" : MessageLookupByLibrary.simpleMessage("Дані не збережено"),
     "noInternet" : MessageLookupByLibrary.simpleMessage("Немає з\'єднання"),
     "nothingFound" : MessageLookupByLibrary.simpleMessage("Нічого не знайдено"),
@@ -152,6 +159,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "thePictureIsTemporarilyUnavailable" : MessageLookupByLibrary.simpleMessage("Картинка тимчасово відсутня"),
     "theme" : MessageLookupByLibrary.simpleMessage("Тема"),
     "thisPhotoWillBeRemoved" : MessageLookupByLibrary.simpleMessage("Це фото буде видалено"),
+    "totalCost" : m2,
     "tryAgain" : MessageLookupByLibrary.simpleMessage("Спробувати ще раз"),
     "uah" : MessageLookupByLibrary.simpleMessage("грн"),
     "userNotFound" : MessageLookupByLibrary.simpleMessage("Користувача не знайдено"),

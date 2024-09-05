@@ -1,13 +1,14 @@
 import 'dart:typed_data';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/core/ui/ui_constants.dart';
 import 'package:traktor_family_gastro_bar/features/data/services/constants.dart';
 import 'package:traktor_family_gastro_bar/features/settings/data/services/error_service.dart';
-import 'package:traktor_family_gastro_bar/features/settings/widgets/settings_text_field.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/app_bar_widget.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/overlay_loader.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/primary_button.dart';
+import 'package:traktor_family_gastro_bar/features/widgets/text_field_widget.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
 @RoutePage()
@@ -107,7 +108,7 @@ class _ReportBugScreenState extends State<ReportBugScreen> with OverlayLoader {
                   const SizedBox(height: 25),
                   Form(
                     key: formKey,
-                    child: SettingsTextField.formMultiline(
+                    child: TextFieldWidget.formMultiline(
                       controller: errorController,
                       hintText: S.of(context).describeTheProblem,
                       validator: (String? value) {

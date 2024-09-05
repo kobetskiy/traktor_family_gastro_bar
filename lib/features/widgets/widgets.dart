@@ -6,3 +6,4 @@ export 'shimmer.dart';
 export 'overlay_loader.dart';
 export 'meal_details_screen.dart';
 export 'watermark_widget.dart';
+export 'text_field_widget.dart';

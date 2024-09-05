@@ -114,7 +114,11 @@ abstract class AuthService with AuthHelper {
       } else {
         message = S.of(context).wrongEmailOrPassword;
       }
-      Constants.showSnackBar(context, message, Constants.failureIcon(context));
+      Constants.showSnackBar(
+        context,
+        message,
+        Constants.failureIcon(context),
+      );
     }
   }
 
@@ -133,7 +137,11 @@ abstract class AuthService with AuthHelper {
       if (!context.mounted) return;
       message = S.of(context).emailWasSentSuccessfully;
       context.router.maybePop();
-      Constants.showSnackBar(context, message, Constants.successIcon(context));
+      Constants.showSnackBar(
+        context,
+        message,
+        Constants.successIcon(context),
+      );
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         message = S.of(context).userNotFound;
@@ -142,7 +150,11 @@ abstract class AuthService with AuthHelper {
       } else {
         message = S.of(context).someErrorOccurred;
       }
-      Constants.showSnackBar(context, message, Constants.failureIcon(context));
+      Constants.showSnackBar(
+        context,
+        message,
+        Constants.failureIcon(context),
+      );
     }
   }
 

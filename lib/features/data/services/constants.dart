@@ -19,7 +19,11 @@ abstract class Constants {
     );
   }
 
-  static showSnackBar(BuildContext context, String text, Icon icon) {
+  static showSnackBar(
+    BuildContext context,
+    String text,
+    Icon icon,
+  ) {
     final snackBar = SnackBar(
       elevation: 7,
       showCloseIcon: true,

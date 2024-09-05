@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 enum SettingsTextFieldType { textField, textFormField, textFormFieldMultiline }
 
-class SettingsTextField extends StatelessWidget {
-  const SettingsTextField({
+class TextFieldWidget extends StatelessWidget {
+  const TextFieldWidget({
     super.key,
     required this.controller,
     this.hintText,
@@ -11,9 +11,10 @@ class SettingsTextField extends StatelessWidget {
     this.keyboardType,
   })  : validator = null,
         settingsTextFieldType = SettingsTextFieldType.textField,
-        enabled = false;
+        enabled = false,
+        suffixIcon = null;
 
-  const SettingsTextField.form({
+  const TextFieldWidget.form({
     super.key,
     required this.controller,
     this.hintText,
@@ -21,9 +22,10 @@ class SettingsTextField extends StatelessWidget {
     this.keyboardType,
     this.validator,
     this.enabled = true,
+    this.suffixIcon,
   }) : settingsTextFieldType = SettingsTextFieldType.textFormField;
 
-  const SettingsTextField.formMultiline({
+  const TextFieldWidget.formMultiline({
     super.key,
     required this.controller,
     this.hintText,
@@ -31,7 +33,8 @@ class SettingsTextField extends StatelessWidget {
     this.keyboardType,
     this.validator,
     this.enabled = true,
-  }) : settingsTextFieldType = SettingsTextFieldType.textFormFieldMultiline;
+  })  : settingsTextFieldType = SettingsTextFieldType.textFormFieldMultiline,
+        suffixIcon = null;
 
   final TextEditingController controller;
   final String? hintText;
@@ -40,6 +43,7 @@ class SettingsTextField extends StatelessWidget {
   final String? Function(String?)? validator;
   final SettingsTextFieldType settingsTextFieldType;
   final bool enabled;
+  final Widget? suffixIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -52,11 +56,12 @@ class SettingsTextField extends StatelessWidget {
             )
           : null,
       hintText: hintText,
-      suffixIcon: IconButton(
-        icon: const Icon(Icons.clear_rounded),
-        color: Colors.grey[600],
-        onPressed: () => controller.clear(),
-      ),
+      suffixIcon: suffixIcon ??
+          IconButton(
+            icon: const Icon(Icons.clear_rounded),
+            color: Colors.grey[600],
+            onPressed: () => controller.clear(),
+          ),
     );
 
     switch (settingsTextFieldType) {

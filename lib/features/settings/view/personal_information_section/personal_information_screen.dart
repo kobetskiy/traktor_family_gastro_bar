@@ -5,7 +5,7 @@ import 'package:traktor_family_gastro_bar/core/router/router.dart';
 import 'package:traktor_family_gastro_bar/features/auth/services/auth_service.dart';
 import 'package:traktor_family_gastro_bar/features/data/services/constants.dart';
 import 'package:traktor_family_gastro_bar/features/data/services/text_field_validator.dart';
-import 'package:traktor_family_gastro_bar/features/settings/widgets/settings_text_field.dart';
+import 'package:traktor_family_gastro_bar/features/widgets/text_field_widget.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/widgets.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
@@ -160,7 +160,7 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen>
                     Text(S.of(context).email,
                         style: Theme.of(context).textTheme.titleLarge),
                     const SizedBox(height: 5),
-                    SettingsTextField.form(
+                    TextFieldWidget.form(
                       controller: emailController,
                       enabled: false,
                       hintText: "example@gmail.com",
@@ -171,7 +171,7 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen>
                     Text(S.of(context).name,
                         style: Theme.of(context).textTheme.titleLarge),
                     const SizedBox(height: 5),
-                    SettingsTextField.form(
+                    TextFieldWidget.form(
                       controller: nameController,
                       enabled: isLoggedIn,
                       hintText: S.of(context).enterYourName,
@@ -182,7 +182,7 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen>
                     Text(S.of(context).phoneNumber,
                         style: Theme.of(context).textTheme.titleLarge),
                     const SizedBox(height: 5),
-                    SettingsTextField.form(
+                    TextFieldWidget.form(
                       controller: phoneController,
                       enabled: isLoggedIn,
                       hintText: "*********",

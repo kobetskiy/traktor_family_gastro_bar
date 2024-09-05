@@ -2,10 +2,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/features/settings/data/services/review_service.dart';
 import 'package:traktor_family_gastro_bar/features/settings/widgets/rating_bar.dart';
-import 'package:traktor_family_gastro_bar/features/settings/widgets/settings_text_field.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/app_bar_widget.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/overlay_loader.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/primary_button.dart';
+import 'package:traktor_family_gastro_bar/features/widgets/text_field_widget.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
 @RoutePage()
@@ -73,7 +73,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
                 const SizedBox(height: 30),
                 Form(
                   key: _formKey,
-                  child: SettingsTextField.formMultiline(
+                  child: TextFieldWidget.formMultiline(
                     controller: reviewController,
                     hintText: S.of(context).remarksOrWishes,
                     validator: (String? value) =>

@@ -23,10 +23,13 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m1(mealTitle) => "${mealTitle} has been removed from favorites";
 
+  static m2(totalCost) => "In total: ${totalCost}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
     "addAPhoto" : MessageLookupByLibrary.simpleMessage("Add a photo"),
     "addTheFirstDishToYourFavorites" : MessageLookupByLibrary.simpleMessage("Add the first dish to your favorites and taste our exquisite cuisine"),
+    "address" : MessageLookupByLibrary.simpleMessage("Address"),
     "alreadyHaveAnAccount" : MessageLookupByLibrary.simpleMessage("Already have an account?"),
     "apply" : MessageLookupByLibrary.simpleMessage("Apply"),
     "areYouHungry" : MessageLookupByLibrary.simpleMessage("Are you hungry? No problem! Our couriers will deliver your order as quickly as possible and with care for quality."),
@@ -34,6 +37,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "areYouSureYouWantToLeaveThisPageWithout" : MessageLookupByLibrary.simpleMessage("Are you sure you want to leave this page without saving your data?"),
     "areYouSureYouWantToLog" : MessageLookupByLibrary.simpleMessage("Are you sure you want to log out of your account?"),
     "auto" : MessageLookupByLibrary.simpleMessage("Auto"),
+    "back" : MessageLookupByLibrary.simpleMessage("Back"),
     "bar" : MessageLookupByLibrary.simpleMessage("Bar"),
     "barbecueMenu" : MessageLookupByLibrary.simpleMessage("Barbecue menu"),
     "cancel" : MessageLookupByLibrary.simpleMessage("Cancel"),
@@ -41,6 +45,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "chechYourConnection" : MessageLookupByLibrary.simpleMessage("No internet connection found.\nCheck your connection to Wi-Fi or mobile network."),
     "checkTheRequest" : MessageLookupByLibrary.simpleMessage("Check the request is correct and try again"),
     "contactUs" : MessageLookupByLibrary.simpleMessage("Contact us"),
+    "contacts" : MessageLookupByLibrary.simpleMessage("Contacts"),
     "convenientTableReservations" : MessageLookupByLibrary.simpleMessage("Convenient table reservations"),
     "createAccount" : MessageLookupByLibrary.simpleMessage("Create Account"),
     "customizeLanguage" : MessageLookupByLibrary.simpleMessage("Customize language"),
@@ -59,6 +64,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "enterAValidName" : MessageLookupByLibrary.simpleMessage("Enter a valid name"),
     "enterAValidPhoneNumber" : MessageLookupByLibrary.simpleMessage("Enter a valid phone number"),
     "enterPassword" : MessageLookupByLibrary.simpleMessage("Enter password"),
+    "enterYourAddress" : MessageLookupByLibrary.simpleMessage("Еnter your address"),
     "enterYourEmail" : MessageLookupByLibrary.simpleMessage("Enter your email"),
     "enterYourName" : MessageLookupByLibrary.simpleMessage("Enter your name"),
     "europeanCuisine" : MessageLookupByLibrary.simpleMessage("European cuisine"),
@@ -96,6 +102,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "name" : MessageLookupByLibrary.simpleMessage("Name"),
     "newDishesNotification" : MessageLookupByLibrary.simpleMessage("New dishes notification"),
     "newMember" : MessageLookupByLibrary.simpleMessage("New member?"),
+    "next" : MessageLookupByLibrary.simpleMessage("Next"),
     "noDataSaved" : MessageLookupByLibrary.simpleMessage("No data saved"),
     "noInternet" : MessageLookupByLibrary.simpleMessage("No internet"),
     "nothingFound" : MessageLookupByLibrary.simpleMessage("Nothing found"),
@@ -152,6 +159,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "thePictureIsTemporarilyUnavailable" : MessageLookupByLibrary.simpleMessage("The picture is temporarily unavailable"),
     "theme" : MessageLookupByLibrary.simpleMessage("Theme"),
     "thisPhotoWillBeRemoved" : MessageLookupByLibrary.simpleMessage("This photo will be removed"),
+    "totalCost" : m2,
     "tryAgain" : MessageLookupByLibrary.simpleMessage("Try again"),
     "uah" : MessageLookupByLibrary.simpleMessage("uah"),
     "userNotFound" : MessageLookupByLibrary.simpleMessage("User not found"),

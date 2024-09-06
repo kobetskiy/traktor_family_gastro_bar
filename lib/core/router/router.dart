@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/app_screen.dart';
 import 'package:traktor_family_gastro_bar/features/auth/view/auth_screens.dart';
+import 'package:traktor_family_gastro_bar/features/favorite/data/models/cart_meal_model.dart';
 import 'package:traktor_family_gastro_bar/features/favorite/view/deliver_screens/deliver_screen.dart';
 import 'package:traktor_family_gastro_bar/features/favorite/view/favorite_screen.dart';
 import 'package:traktor_family_gastro_bar/features/favorite/view/reserve_screens/reserve_screen.dart';

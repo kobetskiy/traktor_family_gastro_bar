@@ -31,7 +31,7 @@ class _SignUpScreenState extends State<SignUpScreen> with OverlayLoader {
         email: emailController.text.trim(),
         password: passwordController.text.trim(),
       );
-      stopLoading();
+      await stopLoading();
     }
   }
 

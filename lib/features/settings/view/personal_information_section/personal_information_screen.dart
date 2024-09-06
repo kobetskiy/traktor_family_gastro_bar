@@ -5,7 +5,6 @@ import 'package:traktor_family_gastro_bar/core/router/router.dart';
 import 'package:traktor_family_gastro_bar/features/auth/services/auth_service.dart';
 import 'package:traktor_family_gastro_bar/features/data/services/constants.dart';
 import 'package:traktor_family_gastro_bar/features/data/services/text_field_validator.dart';
-import 'package:traktor_family_gastro_bar/features/widgets/text_field_widget.dart';
 import 'package:traktor_family_gastro_bar/features/widgets/widgets.dart';
 import 'package:traktor_family_gastro_bar/generated/l10n.dart';
 
@@ -50,7 +49,7 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen>
           onPressed: () async {
             startLoading();
             await AuthService.logOut(context: context);
-            stopLoading();
+            await stopLoading();
           },
           child: Text(S.of(context).yes),
         ),
@@ -91,20 +90,11 @@ class _PersonalInformationScreenState extends State<PersonalInformationScreen>
   Future<void> updatePersonalInformation() async {
     if (_formKey.currentState!.validate()) {
       startLoading();
-      if (nameController.text.trim() != auth.currentUser!.displayName) {
-        await AuthService.updateName(
-          auth.currentUser!,
-          nameController.text.trim(),
-        );
-      }
-      final userData = await AuthService.getUserData();
-      if (phoneController.text.trim() != userData?.phoneNumber) {
-        await AuthService.updatePhoneNumber(
-          auth.currentUser!,
-          phoneController.text.trim(),
-        );
-      }
-      stopLoading();
+      AuthService.updatePersonalInformation(
+        nameController.text.trim(),
+        phoneController.text.trim(),
+      );
+      await stopLoading();
       if (!mounted) return;
       context.router.replaceAll([const AppRoute()]);
     }

@@ -1,5 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:traktor_family_gastro_bar/core/router/router.dart';
 import 'package:traktor_family_gastro_bar/features/data/database/database_constants.dart';
+import 'package:traktor_family_gastro_bar/features/data/services/constants.dart';
 import 'package:traktor_family_gastro_bar/features/favorite/bloc/favorite_meals_bloc.dart';
 import 'package:traktor_family_gastro_bar/features/favorite/data/models/cart_meal_model.dart';
 import 'package:traktor_family_gastro_bar/features/favorite/data/services/favorite_meals_service.dart';
@@ -44,8 +47,7 @@ class _FavoriteMealsListScreenState extends State<FavoriteMealsListScreen> {
                     cartModel: CartMealModel(
                       id: widget.state.data[index][DatabaseMealFields.id],
                       title: widget.state.data[index][DatabaseMealFields.title],
-                      imageURL: widget.state.data[index]
-                          [DatabaseMealFields.imageURL],
+                      imageURL: widget.state.data[index][DatabaseMealFields.imageURL],
                       cost: widget.state.data[index][DatabaseMealFields.cost],
                     ),
                     bloc: widget.bloc,
@@ -85,6 +87,26 @@ class _BottomButtonsState extends State<_BottomButtons> {
     return totalCost;
   }
 
+  Future<void> orderDelivery() async {
+    if (calculateTotalCost() < 300) {
+      Constants.showSnackBar(
+        context,
+        "Мінімальна сума для доставки повинна бути 300 грн",
+        Constants.failureIcon(context),
+      );
+    } else {
+      List<CartMealModel> cartModelsList = widget.state.data.map((meal) {
+        return CartMealModel(
+          id: meal[DatabaseMealFields.id],
+          title: meal[DatabaseMealFields.title],
+          imageURL: meal[DatabaseMealFields.imageURL],
+          cost: meal[DatabaseMealFields.cost],
+        );
+      }).toList();
+      context.router.push(DeliverRoute(cartModelsList: cartModelsList));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -105,7 +127,7 @@ class _BottomButtonsState extends State<_BottomButtons> {
               Expanded(
                 child: PrimaryButton.outlined(
                   onPressed: () async {
-                    await favMealsService.reserveMeals(context);
+                    context.router.push(const ReserveRoute());
                   },
                   child: Text(S.of(context).reserve),
                 ),
@@ -113,9 +135,7 @@ class _BottomButtonsState extends State<_BottomButtons> {
               const SizedBox(width: 15),
               Expanded(
                 child: PrimaryButton(
-                  onPressed: () async {
-                    await favMealsService.deliverMeals(context);
-                  },
+                  onPressed: orderDelivery,
                   child: Text(S.of(context).deliver),
                 ),
               ),

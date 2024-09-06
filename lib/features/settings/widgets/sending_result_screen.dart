@@ -29,7 +29,11 @@ class SendingResultScreen extends StatelessWidget {
                 ? Image.asset(AppImages.success)
                 : Image.asset(AppImages.failure),
             const SizedBox(height: 20),
-            Text(title, style: Theme.of(context).textTheme.titleLarge),
+            Text(
+              title,
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
             const SizedBox(height: 10),
             Text(
               subtitle,

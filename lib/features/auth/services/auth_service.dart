@@ -28,6 +28,19 @@ abstract class AuthService with AuthHelper {
     AuthHelper.updateUserField(user, 'name', name);
   }
 
+  static Future<void> updatePersonalInformation(
+    String name,
+    String phone,
+  ) async {
+    if (name != _auth.currentUser!.displayName) {
+      await AuthService.updateName(_auth.currentUser!, name);
+    }
+    final userData = await AuthService.getUserData();
+    if (phone != userData?.phoneNumber) {
+      await AuthService.updatePhoneNumber(_auth.currentUser!, phone);
+    }
+  }
+
   static Future<UserModel?> getUserData() async {
     try {
       final documentSnapshot = await _firestore

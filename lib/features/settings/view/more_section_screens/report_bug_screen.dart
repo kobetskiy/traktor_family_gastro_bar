@@ -62,7 +62,7 @@ class _ReportBugScreenState extends State<ReportBugScreen> with OverlayLoader {
       );
       errorController.clear();
       setState(() {});
-      stopLoading();
+      await stopLoading();
     }
   }
 

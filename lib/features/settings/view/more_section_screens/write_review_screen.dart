@@ -33,7 +33,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
       );
       reviewController.clear();
       setState(() {});
-      stopLoading();
+      await stopLoading();
     }
   }
 

@@ -154,5 +154,13 @@
   "back": "Back",
   "address": "Address",
   "contacts": "Contacts",
-  "enterYourAddress": "Еnter your address"
+  "enterYourAddress": "Еnter your address",
+  "weWillCallYouInAFewMinutes": "We will call you in a few minutes to confirm delivery",
+  "theDeliveryHasBeenCompletedSuccessfully": "The delivery has been completed successfully!",
+  "addressAndHouseNumber": "Address and house number",
+  "streetBuildingApartmentNumber": "Street, building, apartment number",
+  "commentToTheAddress": "Comment to the address",
+  "entranceFloorAndOther": "Entrance, floor and other",
+  "withinTheCurrentCurfew": "Within the current curfew, the last order cannot be accepted later than 9:30 p.m. Because our couriers need to return after delivery. Order readiness time from 20 minutes. Order delivery time from 20 minutes. In case of air alarms, delivery time may increase",
+  "doYouWantToLeaveATip": "Do you want to leave a tip?"
 }

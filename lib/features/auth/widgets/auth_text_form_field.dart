@@ -5,7 +5,7 @@ class AuthTextFormField extends StatelessWidget {
     super.key,
     required this.controller,
     required this.label,
-    required this.keyboardType,
+    this.keyboardType,
     this.isObscureText,
     this.suffixIcon,
     this.validator,
@@ -14,7 +14,7 @@ class AuthTextFormField extends StatelessWidget {
   final String label;
   final TextEditingController controller;
   final bool? isObscureText;
-  final TextInputType keyboardType;
+  final TextInputType? keyboardType;
   final Widget? suffixIcon;
   final String? Function(String?)? validator;
 
@@ -23,7 +23,7 @@ class AuthTextFormField extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     return TextFormField(
       controller: controller,
-      keyboardType: keyboardType,
+      keyboardType: keyboardType ?? TextInputType.name,
       style: Theme.of(context).textTheme.bodySmall!.copyWith(fontSize: 15),
       obscureText: isObscureText ?? false,
       validator: validator,

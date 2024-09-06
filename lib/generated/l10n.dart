@@ -1606,6 +1606,86 @@ class S {
       args: [],
     );
   }
+
+  /// `We will call you in a few minutes to confirm delivery`
+  String get weWillCallYouInAFewMinutes {
+    return Intl.message(
+      'We will call you in a few minutes to confirm delivery',
+      name: 'weWillCallYouInAFewMinutes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The delivery has been completed successfully!`
+  String get theDeliveryHasBeenCompletedSuccessfully {
+    return Intl.message(
+      'The delivery has been completed successfully!',
+      name: 'theDeliveryHasBeenCompletedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Address and house number`
+  String get addressAndHouseNumber {
+    return Intl.message(
+      'Address and house number',
+      name: 'addressAndHouseNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Street, building, apartment number`
+  String get streetBuildingApartmentNumber {
+    return Intl.message(
+      'Street, building, apartment number',
+      name: 'streetBuildingApartmentNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Comment to the address`
+  String get commentToTheAddress {
+    return Intl.message(
+      'Comment to the address',
+      name: 'commentToTheAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Entrance, floor and other`
+  String get entranceFloorAndOther {
+    return Intl.message(
+      'Entrance, floor and other',
+      name: 'entranceFloorAndOther',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Within the current curfew, the last order cannot be accepted later than 9:30 p.m. Because our couriers need to return after delivery. Order readiness time from 20 minutes. Order delivery time from 20 minutes. In case of air alarms, delivery time may increase`
+  String get withinTheCurrentCurfew {
+    return Intl.message(
+      'Within the current curfew, the last order cannot be accepted later than 9:30 p.m. Because our couriers need to return after delivery. Order readiness time from 20 minutes. Order delivery time from 20 minutes. In case of air alarms, delivery time may increase',
+      name: 'withinTheCurrentCurfew',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do you want to leave a tip?`
+  String get doYouWantToLeaveATip {
+    return Intl.message(
+      'Do you want to leave a tip?',
+      name: 'doYouWantToLeaveATip',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -22,12 +22,16 @@ abstract class TextFieldValidator {
     return null;
   }
 
-  static String? validatePhone(String? value) {
+  static String? validatePhone(String? value, {bool? canBeNull}) {
     final phoneRegExp = RegExp(r'^\d{9}$');
-    if (value == null || value.trim().isEmpty) return null;
-    if (!phoneRegExp.hasMatch(value.trim())) {
-      return S.current.enterAValidPhoneNumber;
+    if (canBeNull ?? true) {
+      if (value == null || value.trim().isEmpty) return null;
+    } else {
+      if (!phoneRegExp.hasMatch(value!.trim())) {
+        return S.current.enterAValidPhoneNumber;
+      }
     }
+
     return null;
   }
 

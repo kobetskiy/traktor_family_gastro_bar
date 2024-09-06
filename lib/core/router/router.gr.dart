@@ -88,10 +88,17 @@ class BannerRouteArgs {
 
 /// generated route for
 /// [DeliverScreen]
-class DeliverRoute extends PageRouteInfo<void> {
-  const DeliverRoute({List<PageRouteInfo>? children})
-      : super(
+class DeliverRoute extends PageRouteInfo<DeliverRouteArgs> {
+  DeliverRoute({
+    Key? key,
+    required List<CartMealModel> cartModelsList,
+    List<PageRouteInfo>? children,
+  }) : super(
           DeliverRoute.name,
+          args: DeliverRouteArgs(
+            key: key,
+            cartModelsList: cartModelsList,
+          ),
           initialChildren: children,
         );
 
@@ -100,9 +107,29 @@ class DeliverRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const DeliverScreen();
+      final args = data.argsAs<DeliverRouteArgs>();
+      return DeliverScreen(
+        key: args.key,
+        cartModelsList: args.cartModelsList,
+      );
     },
   );
+}
+
+class DeliverRouteArgs {
+  const DeliverRouteArgs({
+    this.key,
+    required this.cartModelsList,
+  });
+
+  final Key? key;
+
+  final List<CartMealModel> cartModelsList;
+
+  @override
+  String toString() {
+    return 'DeliverRouteArgs{key: $key, cartModelsList: $cartModelsList}';
+  }
 }
 
 /// generated route for

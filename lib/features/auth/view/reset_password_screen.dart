@@ -22,7 +22,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen>
     if (formKey.currentState!.validate()) {
       startLoading();
       await AuthService.resetPassword(context, emailController.text.trim());
-      stopLoading();
+      await stopLoading();
     }
   }
 

@@ -47,7 +47,8 @@ class _FavoriteMealsListScreenState extends State<FavoriteMealsListScreen> {
                     cartModel: CartMealModel(
                       id: widget.state.data[index][DatabaseMealFields.id],
                       title: widget.state.data[index][DatabaseMealFields.title],
-                      imageURL: widget.state.data[index][DatabaseMealFields.imageURL],
+                      imageURL: widget.state.data[index]
+                          [DatabaseMealFields.imageURL],
                       cost: widget.state.data[index][DatabaseMealFields.cost],
                     ),
                     bloc: widget.bloc,
@@ -87,6 +88,18 @@ class _BottomButtonsState extends State<_BottomButtons> {
     return totalCost;
   }
 
+  List<CartMealModel> getCartModelListFromState() {
+    List<CartMealModel> cartModelsList = widget.state.data.map((meal) {
+      return CartMealModel(
+        id: meal[DatabaseMealFields.id],
+        title: meal[DatabaseMealFields.title],
+        imageURL: meal[DatabaseMealFields.imageURL],
+        cost: meal[DatabaseMealFields.cost],
+      );
+    }).toList();
+    return cartModelsList;
+  }
+
   Future<void> orderDelivery() async {
     if (calculateTotalCost() < 300) {
       Constants.showSnackBar(
@@ -95,16 +108,16 @@ class _BottomButtonsState extends State<_BottomButtons> {
         Constants.failureIcon(context),
       );
     } else {
-      List<CartMealModel> cartModelsList = widget.state.data.map((meal) {
-        return CartMealModel(
-          id: meal[DatabaseMealFields.id],
-          title: meal[DatabaseMealFields.title],
-          imageURL: meal[DatabaseMealFields.imageURL],
-          cost: meal[DatabaseMealFields.cost],
-        );
-      }).toList();
-      context.router.push(DeliverRoute(cartModelsList: cartModelsList));
+      context.router.push(
+        DeliverRoute(cartModelsList: getCartModelListFromState()),
+      );
     }
+  }
+
+  Future<void> orderReservation() async {
+    context.router.push(
+      ReserveRoute(cartModelsList: getCartModelListFromState()),
+    );
   }
 
   @override
@@ -126,9 +139,7 @@ class _BottomButtonsState extends State<_BottomButtons> {
             children: [
               Expanded(
                 child: PrimaryButton.outlined(
-                  onPressed: () async {
-                    context.router.push(const ReserveRoute());
-                  },
+                  onPressed: orderReservation,
                   child: Text(S.of(context).reserve),
                 ),
               ),

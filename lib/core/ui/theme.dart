@@ -7,7 +7,7 @@ abstract class _AppColors {
   static const lightSecondary = Color.fromRGBO(183, 124, 41, 1);
   static const lightSurface = Color(0xFFEEEEEE);
   static const error = Color(0xFFFF5B4F);
-  static const sucess = Color(0xFF27AE60);
+  static const success = Color(0xFF27AE60);
 }
 
 abstract class AppTheme {
@@ -50,6 +50,12 @@ abstract class AppTheme {
         borderRadius: BorderRadius.all(Radius.circular(8)),
       ),
     ),
+    // dropdownMenuTheme: const DropdownMenuThemeData(
+    //   menuStyle: MenuStyle(
+    //     backgroundColor: WidgetStatePropertyAll(Colors.red),
+
+    //   ),
+    // ),
     snackBarTheme: SnackBarThemeData(
       backgroundColor: Colors.grey[850],
       contentTextStyle: const TextStyle(
@@ -169,5 +175,5 @@ BottomSheetThemeData bottomSheetTheme(Color backgroundColor) {
 }
 
 extension ColorSchemeExtension on ColorScheme {
-  Color get success => _AppColors.sucess;
+  Color get success => _AppColors.success;
 }

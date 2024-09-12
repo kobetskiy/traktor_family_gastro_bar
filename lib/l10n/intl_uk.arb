@@ -162,5 +162,21 @@
   "commentToTheAddress": "Коментар до адреси",
   "entranceFloorAndOther": "Під’їзд, поверх та інше",
   "withinTheCurrentCurfew": "В межах діючої комендантської години останнє замовлення не може бути прийняте пізніше 21:30год. Оскільки нашим кур’єрам необхідно повернутися після доставки. Час готовності замовлення від 20хв. Час доставки замовлень від 20хв. У разі наявності повітряних тривог час доставки може збільшуватись",
-  "doYouWantToLeaveATip": "Бажаєте залишити чайові?"
+  "doYouWantToLeaveATip": "Бажаєте залишити чайові?",
+  "time": "Час",
+  "pleaseSelectAnOption": "Оберіть один із варіантів",
+  "selectATime": "Оберіть час",
+  "selectNumberOfGuest": "Оберіть кількість гостей",
+  "selectADuration": "Оберіть тривалість",
+  "selectADate": "Оберіть дату",
+  "moreThan4Hours": "Більше 4 годин",
+  "weWillConfirmYourBookingAsSoonAsPossible": "Ми підтвердимо ваше бронювання якомога швидше",
+  "moreThan5": "Більше 5",
+  "date": "Дата",
+  "numberOfGuests": "Кількість гостей",
+  "duration": "Тривалість",
+  "nHours": "{N} годин",
+  "OneHour": "1 година",
+  "wishesOrComments": "Побажання або коментар",
+  "aTableByTheWindow": "Столик біля вікна"
 }

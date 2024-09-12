@@ -4,7 +4,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:traktor_family_gastro_bar/core/router/router.dart';
-import 'package:traktor_family_gastro_bar/features/auth/services/auth_service.dart';
 import 'package:traktor_family_gastro_bar/features/favorite/data/models/cart_meal_model.dart';
 import 'package:traktor_family_gastro_bar/features/favorite/data/services/favorite_meals_service.dart';
 import 'package:traktor_family_gastro_bar/features/favorite/widgets/custom_stepper.dart';
@@ -27,7 +26,6 @@ class DeliverScreen extends StatefulWidget {
 class _DeliverScreenState extends State<DeliverScreen> with OverlayLoader {
   int _currentStep = 0;
   PageController? _pageController;
-  int tip = 0;
   final auth = FirebaseAuth.instance;
   final favoriteMealsService = FavoriteMealsService();
 
@@ -38,22 +36,13 @@ class _DeliverScreenState extends State<DeliverScreen> with OverlayLoader {
   final contactFormKey = GlobalKey<FormState>();
   final nameController = TextEditingController();
   final phoneController = TextEditingController();
+  int tip = 0;
 
   @override
   void initState() {
     super.initState();
     _pageController = PageController(initialPage: _currentStep);
-    _loadUserData();
-  }
-
-  Future<void> _loadUserData() async {
-    if (auth.currentUser != null) {
-      final userData = await AuthService.getUserData();
-      if (userData != null) {
-        nameController.text = userData.name;
-        phoneController.text = userData.phoneNumber?.substring(4) ?? '';
-      }
-    }
+    favoriteMealsService.loadUserData(nameController, phoneController);
   }
 
   void goToStep(int stepIndex) {
@@ -76,7 +65,7 @@ class _DeliverScreenState extends State<DeliverScreen> with OverlayLoader {
     try {
       if (contactFormKey.currentState!.validate()) {
         startLoading();
-        await AuthService.updatePersonalInformation(
+        await favoriteMealsService.updatePersonalInformationIfItChanged(
           nameController.text.trim(),
           phoneController.text.trim(),
         );

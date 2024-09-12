@@ -44,51 +44,56 @@ class _OnBoardingScreenState extends State<OnBoardingScreen>
       body: SafeArea(
         child: Stack(
           children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: PageView(
-                    onPageChanged: (index) => selectorController.index = index,
-                    controller: pageController,
-                    children: [
-                      _OnBoardingContent(
-                        title: S.of(context).discoverOurWorldOfTastes,
-                        subtitle: S.of(context).experienceUniqueDishes,
-                        image: Image.asset(AppImages.visitor, width: 300),
-                      ),
-                      _OnBoardingContent(
-                        title: S.of(context).convenientTableReservations,
-                        subtitle: S.of(context).easilyFindYourFavoriteDishes,
-                        image: Image.asset(AppImages.cook, width: 300),
-                      ),
-                      _OnBoardingContent(
-                        title: S.of(context).fastDeliveryToYourHome,
-                        subtitle: S.of(context).areYouHungry,
-                        image: Image.asset(AppImages.delivery, width: 300),
-                      ),
-                    ],
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: PageView(
+                      onPageChanged: (index) =>
+                          selectorController.index = index,
+                      controller: pageController,
+                      children: [
+                        _OnBoardingContent(
+                          title: S.of(context).discoverOurWorldOfTastes,
+                          subtitle: S.of(context).experienceUniqueDishes,
+                          image: Image.asset(AppImages.visitor, width: 300),
+                        ),
+                        _OnBoardingContent(
+                          title: S.of(context).convenientTableReservations,
+                          subtitle: S.of(context).easilyFindYourFavoriteDishes,
+                          image: Image.asset(AppImages.cook, width: 300),
+                        ),
+                        _OnBoardingContent(
+                          title: S.of(context).fastDeliveryToYourHome,
+                          subtitle: S.of(context).areYouHungry,
+                          image: Image.asset(AppImages.delivery, width: 300),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                _OnBoardingPageSelectors(controller: selectorController),
-                const SizedBox(height: 55),
-                PrimaryButton(
-                  onPressed: signUp,
-                  child: Text(S.of(context).createAccount),
-                ),
-                const SizedBox(height: 10),
-                PrimaryButton.outlined(
-                  onPressed: logIn,
-                  child: Text(S.of(context).logIn),
-                ),
-                const SizedBox(height: 20),
-              ],
+                  _OnBoardingPageSelectors(controller: selectorController),
+                  const SizedBox(height: 55),
+                  PrimaryButton(
+                    onPressed: signUp,
+                    child: Text(S.of(context).createAccount),
+                  ),
+                  const SizedBox(height: 10),
+                  PrimaryButton.outlined(
+                    onPressed: logIn,
+                    child: Text(S.of(context).logIn),
+                  ),
+                  const SizedBox(height: 20),
+                ],
+              ),
             ),
             Positioned(
               right: 15,
               top: 10,
               child: CupertinoButton(
-                onPressed: () => context.router.replace(const AppRoute()), // TODO: fix navigation. app navigate user to the current screen, it shows cuz AppRoute has AuthGuard that shows Onboarding screen, but we tryna navigate to AppRoute that also has AuthGuard and so on 
+                onPressed: () => context.router.replace(
+                    const AppRoute()), // TODO: fix navigation. app navigate user to the current screen, it shows cuz AppRoute has AuthGuard that shows Onboarding screen, but we tryna navigate to AppRoute that also has AuthGuard and so on
                 child: Text(
                   S.of(context).skip,
                   style: Theme.of(context).textTheme.bodySmall!.copyWith(
@@ -129,35 +134,33 @@ class _OnBoardingContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: Column(
-        children: [
-          SizedBox(height: MediaQuery.sizeOf(context).height * 0.02),
-          image,
-          const SizedBox(height: 20),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Text(
-              title,
-              style: Theme.of(context)
-                  .textTheme
-                  .titleLarge!
-                  .copyWith(fontSize: 26),
-              textAlign: TextAlign.center,
-            ),
-          ),
-          const SizedBox(height: 10),
-          Text(
-            subtitle,
-            style: Theme.of(context)
-                .textTheme
-                .bodySmall!
-                .copyWith(color: Colors.grey),
+    return Column(
+      children: [
+        SizedBox(height: MediaQuery.sizeOf(context).height * 0.08),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: image,
+        ),
+        const SizedBox(height: 20),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Text(
+            title,
+            style:
+                Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 26),
             textAlign: TextAlign.center,
           ),
-        ],
-      ),
+        ),
+        const SizedBox(height: 10),
+        Text(
+          subtitle,
+          style: Theme.of(context)
+              .textTheme
+              .bodySmall!
+              .copyWith(color: Colors.grey),
+          textAlign: TextAlign.center,
+        ),
+      ],
     );
   }
 }

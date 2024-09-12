@@ -343,10 +343,17 @@ class ReportBugRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [ReserveScreen]
-class ReserveRoute extends PageRouteInfo<void> {
-  const ReserveRoute({List<PageRouteInfo>? children})
-      : super(
+class ReserveRoute extends PageRouteInfo<ReserveRouteArgs> {
+  ReserveRoute({
+    Key? key,
+    required List<CartMealModel> cartModelsList,
+    List<PageRouteInfo>? children,
+  }) : super(
           ReserveRoute.name,
+          args: ReserveRouteArgs(
+            key: key,
+            cartModelsList: cartModelsList,
+          ),
           initialChildren: children,
         );
 
@@ -355,9 +362,29 @@ class ReserveRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const ReserveScreen();
+      final args = data.argsAs<ReserveRouteArgs>();
+      return ReserveScreen(
+        key: args.key,
+        cartModelsList: args.cartModelsList,
+      );
     },
   );
+}
+
+class ReserveRouteArgs {
+  const ReserveRouteArgs({
+    this.key,
+    required this.cartModelsList,
+  });
+
+  final Key? key;
+
+  final List<CartMealModel> cartModelsList;
+
+  @override
+  String toString() {
+    return 'ReserveRouteArgs{key: $key, cartModelsList: $cartModelsList}';
+  }
 }
 
 /// generated route for

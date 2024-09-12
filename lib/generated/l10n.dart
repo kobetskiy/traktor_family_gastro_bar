@@ -1686,6 +1686,166 @@ class S {
       args: [],
     );
   }
+
+  /// `Time`
+  String get time {
+    return Intl.message(
+      'Time',
+      name: 'time',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please select an option`
+  String get pleaseSelectAnOption {
+    return Intl.message(
+      'Please select an option',
+      name: 'pleaseSelectAnOption',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select a time`
+  String get selectATime {
+    return Intl.message(
+      'Select a time',
+      name: 'selectATime',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select number of guest`
+  String get selectNumberOfGuest {
+    return Intl.message(
+      'Select number of guest',
+      name: 'selectNumberOfGuest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select a duration`
+  String get selectADuration {
+    return Intl.message(
+      'Select a duration',
+      name: 'selectADuration',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select a date`
+  String get selectADate {
+    return Intl.message(
+      'Select a date',
+      name: 'selectADate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `More than 4 hours`
+  String get moreThan4Hours {
+    return Intl.message(
+      'More than 4 hours',
+      name: 'moreThan4Hours',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We will confirm your booking as soon as possible`
+  String get weWillConfirmYourBookingAsSoonAsPossible {
+    return Intl.message(
+      'We will confirm your booking as soon as possible',
+      name: 'weWillConfirmYourBookingAsSoonAsPossible',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `More than 5`
+  String get moreThan5 {
+    return Intl.message(
+      'More than 5',
+      name: 'moreThan5',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Date`
+  String get date {
+    return Intl.message(
+      'Date',
+      name: 'date',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Number of guests`
+  String get numberOfGuests {
+    return Intl.message(
+      'Number of guests',
+      name: 'numberOfGuests',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Duration`
+  String get duration {
+    return Intl.message(
+      'Duration',
+      name: 'duration',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `{N} hours`
+  String nHours(Object N) {
+    return Intl.message(
+      '$N hours',
+      name: 'nHours',
+      desc: '',
+      args: [N],
+    );
+  }
+
+  /// `1 hour`
+  String get OneHour {
+    return Intl.message(
+      '1 hour',
+      name: 'OneHour',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wishes or comments`
+  String get wishesOrComments {
+    return Intl.message(
+      'Wishes or comments',
+      name: 'wishesOrComments',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `A table by the window`
+  String get aTableByTheWindow {
+    return Intl.message(
+      'A table by the window',
+      name: 'aTableByTheWindow',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

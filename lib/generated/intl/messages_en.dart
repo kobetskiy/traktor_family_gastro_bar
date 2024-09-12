@@ -23,10 +23,14 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m1(mealTitle) => "${mealTitle} has been removed from favorites";
 
-  static m2(totalCost) => "In total: ${totalCost}";
+  static m2(N) => "${N} hours";
+
+  static m3(totalCost) => "In total: ${totalCost}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
+    "OneHour" : MessageLookupByLibrary.simpleMessage("1 hour"),
+    "aTableByTheWindow" : MessageLookupByLibrary.simpleMessage("A table by the window"),
     "addAPhoto" : MessageLookupByLibrary.simpleMessage("Add a photo"),
     "addTheFirstDishToYourFavorites" : MessageLookupByLibrary.simpleMessage("Add the first dish to your favorites and taste our exquisite cuisine"),
     "address" : MessageLookupByLibrary.simpleMessage("Address"),
@@ -52,12 +56,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "createAccount" : MessageLookupByLibrary.simpleMessage("Create Account"),
     "customizeLanguage" : MessageLookupByLibrary.simpleMessage("Customize language"),
     "dark" : MessageLookupByLibrary.simpleMessage("Dark"),
+    "date" : MessageLookupByLibrary.simpleMessage("Date"),
     "deliver" : MessageLookupByLibrary.simpleMessage("Deliver"),
     "deliveryNotification" : MessageLookupByLibrary.simpleMessage("Delivery notification"),
     "deliveryRegistration" : MessageLookupByLibrary.simpleMessage("Delivery registration"),
     "describeTheProblem" : MessageLookupByLibrary.simpleMessage("Describe the problem"),
     "discoverOurWorldOfTastes" : MessageLookupByLibrary.simpleMessage("Discover our world of tastes!"),
     "doYouWantToLeaveATip" : MessageLookupByLibrary.simpleMessage("Do you want to leave a tip?"),
+    "duration" : MessageLookupByLibrary.simpleMessage("Duration"),
     "easilyFindYourFavoriteDishes" : MessageLookupByLibrary.simpleMessage("Easily find your favorite dishes in our interactive menu. Just choose what you want and place your order in a few clicks."),
     "email" : MessageLookupByLibrary.simpleMessage("Email"),
     "emailAlreadyInUse" : MessageLookupByLibrary.simpleMessage("Email already in use"),
@@ -103,6 +109,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "mealTitleAddedToFavorites" : m0,
     "mealTitleHasBeenRemovedFromFavorites" : m1,
     "more" : MessageLookupByLibrary.simpleMessage("More"),
+    "moreThan4Hours" : MessageLookupByLibrary.simpleMessage("More than 4 hours"),
+    "moreThan5" : MessageLookupByLibrary.simpleMessage("More than 5"),
+    "nHours" : m2,
     "name" : MessageLookupByLibrary.simpleMessage("Name"),
     "newDishesNotification" : MessageLookupByLibrary.simpleMessage("New dishes notification"),
     "newMember" : MessageLookupByLibrary.simpleMessage("New member?"),
@@ -113,6 +122,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "notifications" : MessageLookupByLibrary.simpleMessage("Notifications"),
     "notifyUsOfAnErrorInTheOperationOfApp" : MessageLookupByLibrary.simpleMessage("Notify us of an error in the operation of the application and we will solve it in the near future"),
     "novelty" : MessageLookupByLibrary.simpleMessage("Novelty"),
+    "numberOfGuests" : MessageLookupByLibrary.simpleMessage("Number of guests"),
     "oopsSomethingWentWrong" : MessageLookupByLibrary.simpleMessage("Oops, something went wrong"),
     "orLogInWith" : MessageLookupByLibrary.simpleMessage("Or log in with"),
     "orSignUpWith" : MessageLookupByLibrary.simpleMessage("Or sign up with"),
@@ -122,6 +132,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "personalInformation" : MessageLookupByLibrary.simpleMessage("Personal information"),
     "phoneNumber" : MessageLookupByLibrary.simpleMessage("Phone number"),
     "phoneVerification" : MessageLookupByLibrary.simpleMessage("Phone verification"),
+    "pleaseSelectAnOption" : MessageLookupByLibrary.simpleMessage("Please select an option"),
     "pleaseTryAgainLater" : MessageLookupByLibrary.simpleMessage("Please try again later"),
     "pleaseWriteRemarksOrWishes" : MessageLookupByLibrary.simpleMessage("Please write remarks or wishes"),
     "popular" : MessageLookupByLibrary.simpleMessage("Popular"),
@@ -147,6 +158,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "reserve" : MessageLookupByLibrary.simpleMessage("Reserve"),
     "resetPassword" : MessageLookupByLibrary.simpleMessage("Reset password"),
     "search" : MessageLookupByLibrary.simpleMessage("Search..."),
+    "selectADate" : MessageLookupByLibrary.simpleMessage("Select a date"),
+    "selectADuration" : MessageLookupByLibrary.simpleMessage("Select a duration"),
+    "selectATime" : MessageLookupByLibrary.simpleMessage("Select a time"),
+    "selectNumberOfGuest" : MessageLookupByLibrary.simpleMessage("Select number of guest"),
     "selectTheApplicationTheme" : MessageLookupByLibrary.simpleMessage("Select the application theme"),
     "serverError" : MessageLookupByLibrary.simpleMessage("Server error"),
     "setUpNotifications" : MessageLookupByLibrary.simpleMessage("Set up notifications"),
@@ -165,7 +180,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "thePictureIsTemporarilyUnavailable" : MessageLookupByLibrary.simpleMessage("The picture is temporarily unavailable"),
     "theme" : MessageLookupByLibrary.simpleMessage("Theme"),
     "thisPhotoWillBeRemoved" : MessageLookupByLibrary.simpleMessage("This photo will be removed"),
-    "totalCost" : m2,
+    "time" : MessageLookupByLibrary.simpleMessage("Time"),
+    "totalCost" : m3,
     "tryAgain" : MessageLookupByLibrary.simpleMessage("Try again"),
     "uah" : MessageLookupByLibrary.simpleMessage("uah"),
     "userNotFound" : MessageLookupByLibrary.simpleMessage("User not found"),
@@ -174,10 +190,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "weAreAlreadyWorkingOnASolutionToThisProblem" : MessageLookupByLibrary.simpleMessage("We are already working on a solution to this problem"),
     "weTryToImproveOurServiceEveryDay" : MessageLookupByLibrary.simpleMessage("We try to improve our service every day to see you more often in our restaurant"),
     "weWillCallYouInAFewMinutes" : MessageLookupByLibrary.simpleMessage("We will call you in a few minutes to confirm delivery"),
+    "weWillConfirmYourBookingAsSoonAsPossible" : MessageLookupByLibrary.simpleMessage("We will confirm your booking as soon as possible"),
     "weWillFixThisErrorAsSoonAsPossible" : MessageLookupByLibrary.simpleMessage("We will fix this error as soon as possible"),
     "welcomeBack" : MessageLookupByLibrary.simpleMessage("Welcome back"),
     "whatAreThePaymentMethods" : MessageLookupByLibrary.simpleMessage("What are the payment methods?"),
     "whatAreThePaymentMethodsContent" : MessageLookupByLibrary.simpleMessage("To choose to pay for the product using a bank card on the corresponding page, click the button \"Pay for the order by bank card\". Payment is made through the liqpay system using Bank cards of the Visa and Mastercard payment systems"),
+    "wishesOrComments" : MessageLookupByLibrary.simpleMessage("Wishes or comments"),
     "withinTheCurrentCurfew" : MessageLookupByLibrary.simpleMessage("Within the current curfew, the last order cannot be accepted later than 9:30 p.m. Because our couriers need to return after delivery. Order readiness time from 20 minutes. Order delivery time from 20 minutes. In case of air alarms, delivery time may increase"),
     "writeAReview" : MessageLookupByLibrary.simpleMessage("Write a review"),
     "writeOnEmail" : MessageLookupByLibrary.simpleMessage("Write on Email"),

@@ -5,6 +5,7 @@ abstract class DatabaseCollections {
   static const String reviews = 'reviews';
   static const String users = 'users';
   static const String deliveries = 'deliveries';
+  static const String reserves = 'reserves';
 }
 
 abstract class DatabaseMealCategories {

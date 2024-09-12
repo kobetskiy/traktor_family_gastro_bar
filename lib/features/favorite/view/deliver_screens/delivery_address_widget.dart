@@ -79,7 +79,8 @@ class _AddressTextField extends StatelessWidget {
         TextFieldWidget.form(
           controller: addressController,
           hintText: S.of(context).streetBuildingApartmentNumber,
-          validator: TextFieldValidator.validateAddress,
+          validator: (value) => TextFieldValidator.validateNotNull(
+              value, S.current.enterYourAddress),
         ),
       ],
     );

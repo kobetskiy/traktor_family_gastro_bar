@@ -23,10 +23,14 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m1(mealTitle) => "${mealTitle} було видалено з улюбленого";
 
-  static m2(totalCost) => "Всього: ${totalCost}";
+  static m2(N) => "${N} годин";
+
+  static m3(totalCost) => "Всього: ${totalCost}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
+    "OneHour" : MessageLookupByLibrary.simpleMessage("1 година"),
+    "aTableByTheWindow" : MessageLookupByLibrary.simpleMessage("Столик біля вікна"),
     "addAPhoto" : MessageLookupByLibrary.simpleMessage("Додайте фото"),
     "addTheFirstDishToYourFavorites" : MessageLookupByLibrary.simpleMessage("Додайте першу страву до улюблених та скуштуйте нашу вишукану кухню"),
     "address" : MessageLookupByLibrary.simpleMessage("Адреса"),
@@ -52,12 +56,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "createAccount" : MessageLookupByLibrary.simpleMessage("Створити акаунт"),
     "customizeLanguage" : MessageLookupByLibrary.simpleMessage("Обрати мову застосунку"),
     "dark" : MessageLookupByLibrary.simpleMessage("Темна"),
+    "date" : MessageLookupByLibrary.simpleMessage("Дата"),
     "deliver" : MessageLookupByLibrary.simpleMessage("Доставити"),
     "deliveryNotification" : MessageLookupByLibrary.simpleMessage("Сповіщення про доставку"),
     "deliveryRegistration" : MessageLookupByLibrary.simpleMessage("Оформлення доставки"),
     "describeTheProblem" : MessageLookupByLibrary.simpleMessage("Опишіть проблему"),
     "discoverOurWorldOfTastes" : MessageLookupByLibrary.simpleMessage("Відкрийте наш світ смаків!"),
     "doYouWantToLeaveATip" : MessageLookupByLibrary.simpleMessage("Бажаєте залишити чайові?"),
+    "duration" : MessageLookupByLibrary.simpleMessage("Тривалість"),
     "easilyFindYourFavoriteDishes" : MessageLookupByLibrary.simpleMessage("Знайдіть свої улюблені страви в нашому інтерактивному меню. Просто виберіть те, що ви хочете, і зробіть замовлення в пару кліків."),
     "email" : MessageLookupByLibrary.simpleMessage("Ел. адреса"),
     "emailAlreadyInUse" : MessageLookupByLibrary.simpleMessage("Ця ел. пошта вже використовується"),
@@ -103,6 +109,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "mealTitleAddedToFavorites" : m0,
     "mealTitleHasBeenRemovedFromFavorites" : m1,
     "more" : MessageLookupByLibrary.simpleMessage("Інше"),
+    "moreThan4Hours" : MessageLookupByLibrary.simpleMessage("Більше 4 годин"),
+    "moreThan5" : MessageLookupByLibrary.simpleMessage("Більше 5"),
+    "nHours" : m2,
     "name" : MessageLookupByLibrary.simpleMessage("Ім\'я"),
     "newDishesNotification" : MessageLookupByLibrary.simpleMessage("Сповіщення про нові страви"),
     "newMember" : MessageLookupByLibrary.simpleMessage("Ще не маєте акаунту?"),
@@ -113,6 +122,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "notifications" : MessageLookupByLibrary.simpleMessage("Сповіщення"),
     "notifyUsOfAnErrorInTheOperationOfApp" : MessageLookupByLibrary.simpleMessage("Повідомте нас про помилку у роботі застосунка і ми вирішимо її у найближчий час"),
     "novelty" : MessageLookupByLibrary.simpleMessage("Новинки"),
+    "numberOfGuests" : MessageLookupByLibrary.simpleMessage("Кількість гостей"),
     "oopsSomethingWentWrong" : MessageLookupByLibrary.simpleMessage("Упс, щось пішло не так"),
     "orLogInWith" : MessageLookupByLibrary.simpleMessage("Або увійдіть за допомогою"),
     "orSignUpWith" : MessageLookupByLibrary.simpleMessage("Або зареєструйтесь за допомогою"),
@@ -122,6 +132,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "personalInformation" : MessageLookupByLibrary.simpleMessage("Особиста інформація"),
     "phoneNumber" : MessageLookupByLibrary.simpleMessage("Номер телефону"),
     "phoneVerification" : MessageLookupByLibrary.simpleMessage("Верифікація телефону"),
+    "pleaseSelectAnOption" : MessageLookupByLibrary.simpleMessage("Оберіть один із варіантів"),
     "pleaseTryAgainLater" : MessageLookupByLibrary.simpleMessage("Спробуйте будь ласка пізніше"),
     "pleaseWriteRemarksOrWishes" : MessageLookupByLibrary.simpleMessage("Напишіть зауваження або побажання"),
     "popular" : MessageLookupByLibrary.simpleMessage("Популярні"),
@@ -147,6 +158,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "reserve" : MessageLookupByLibrary.simpleMessage("Забронювати"),
     "resetPassword" : MessageLookupByLibrary.simpleMessage("Відновити пароль"),
     "search" : MessageLookupByLibrary.simpleMessage("Пошук..."),
+    "selectADate" : MessageLookupByLibrary.simpleMessage("Оберіть дату"),
+    "selectADuration" : MessageLookupByLibrary.simpleMessage("Оберіть тривалість"),
+    "selectATime" : MessageLookupByLibrary.simpleMessage("Оберіть час"),
+    "selectNumberOfGuest" : MessageLookupByLibrary.simpleMessage("Оберіть кількість гостей"),
     "selectTheApplicationTheme" : MessageLookupByLibrary.simpleMessage("Налаштувати тему"),
     "serverError" : MessageLookupByLibrary.simpleMessage("Помилка серверу"),
     "setUpNotifications" : MessageLookupByLibrary.simpleMessage("Налаштувати сповіщення"),
@@ -165,7 +180,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "thePictureIsTemporarilyUnavailable" : MessageLookupByLibrary.simpleMessage("Картинка тимчасово відсутня"),
     "theme" : MessageLookupByLibrary.simpleMessage("Тема"),
     "thisPhotoWillBeRemoved" : MessageLookupByLibrary.simpleMessage("Це фото буде видалено"),
-    "totalCost" : m2,
+    "time" : MessageLookupByLibrary.simpleMessage("Час"),
+    "totalCost" : m3,
     "tryAgain" : MessageLookupByLibrary.simpleMessage("Спробувати ще раз"),
     "uah" : MessageLookupByLibrary.simpleMessage("грн"),
     "userNotFound" : MessageLookupByLibrary.simpleMessage("Користувача не знайдено"),
@@ -174,10 +190,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "weAreAlreadyWorkingOnASolutionToThisProblem" : MessageLookupByLibrary.simpleMessage("Ми вже працюємо над вирішенням цієї промлеми"),
     "weTryToImproveOurServiceEveryDay" : MessageLookupByLibrary.simpleMessage("Ми намагаємося покращувати наш сервіс кожен день, щоб бачити вас частіше у нашому ресторані"),
     "weWillCallYouInAFewMinutes" : MessageLookupByLibrary.simpleMessage("Ми зателефонуємо вам за декілька хвилин для підтвердження доставки"),
+    "weWillConfirmYourBookingAsSoonAsPossible" : MessageLookupByLibrary.simpleMessage("Ми підтвердимо ваше бронювання якомога швидше"),
     "weWillFixThisErrorAsSoonAsPossible" : MessageLookupByLibrary.simpleMessage("Ми виправимо цю помилку якнайшвидше"),
     "welcomeBack" : MessageLookupByLibrary.simpleMessage("З поверенням!"),
     "whatAreThePaymentMethods" : MessageLookupByLibrary.simpleMessage("Які є способи оплати?"),
     "whatAreThePaymentMethodsContent" : MessageLookupByLibrary.simpleMessage("Для вибору оплати товару за допомогою банківської картки на відповідній сторінці необхідно натиснути кнопку «Оплата замовлення банківською карткою». Оплата відбувається через систему liqpay з використанням Банківських карток платіжних систем Visa та Mastercard"),
+    "wishesOrComments" : MessageLookupByLibrary.simpleMessage("Побажання або коментар"),
     "withinTheCurrentCurfew" : MessageLookupByLibrary.simpleMessage("В межах діючої комендантської години останнє замовлення не може бути прийняте пізніше 21:30год. Оскільки нашим кур’єрам необхідно повернутися після доставки. Час готовності замовлення від 20хв. Час доставки замовлень від 20хв. У разі наявності повітряних тривог час доставки може збільшуватись"),
     "writeAReview" : MessageLookupByLibrary.simpleMessage("Написати відгук"),
     "writeOnEmail" : MessageLookupByLibrary.simpleMessage("Написати на Email"),

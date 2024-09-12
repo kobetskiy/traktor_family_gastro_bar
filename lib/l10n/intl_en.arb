@@ -162,5 +162,21 @@
   "commentToTheAddress": "Comment to the address",
   "entranceFloorAndOther": "Entrance, floor and other",
   "withinTheCurrentCurfew": "Within the current curfew, the last order cannot be accepted later than 9:30 p.m. Because our couriers need to return after delivery. Order readiness time from 20 minutes. Order delivery time from 20 minutes. In case of air alarms, delivery time may increase",
-  "doYouWantToLeaveATip": "Do you want to leave a tip?"
+  "doYouWantToLeaveATip": "Do you want to leave a tip?",
+  "time": "Time",
+  "pleaseSelectAnOption": "Please select an option",
+  "selectATime": "Select a time",
+  "selectNumberOfGuest": "Select number of guest",
+  "selectADuration": "Select a duration",
+  "selectADate": "Select a date",
+  "moreThan4Hours": "More than 4 hours",
+  "weWillConfirmYourBookingAsSoonAsPossible": "We will confirm your booking as soon as possible",
+  "moreThan5": "More than 5",
+  "date": "Date",
+  "numberOfGuests": "Number of guests",
+  "duration": "Duration",
+  "nHours": "{N} hours",
+  "OneHour": "1 hour",
+  "wishesOrComments": "Wishes or comments",
+  "aTableByTheWindow": "A table by the window"
 }

@@ -45,9 +45,9 @@ abstract class TextFieldValidator {
     return null;
   }
 
-  static String? validateAddress(String? value) {
-    if (value!.trim().isEmpty) {
-      return S.current.enterYourAddress;
+  static String? validateNotNull(String? value, String errorMessage) {
+    if (value?.trim().isEmpty ?? true) {
+      return errorMessage;
     }
     return null;
   }
